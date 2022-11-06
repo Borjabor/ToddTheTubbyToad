@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 5022943424578809547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.4416, y: 1.4016, z: -1.4570312}
-  m_LocalScale: {x: 1.2024672, y: 1.2024672, z: 1.2024672}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.98, y: 1.98, z: 1.98}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5022943424694270144}
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
   m_FlipX: 0
@@ -104,7 +104,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 910972b1f845c324595144140477da0a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -124,7 +124,7 @@ SpringJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 8.26, y: 0.023208825}
+  m_ConnectedAnchor: {x: 15.788303, y: 14.954707}
   m_AutoConfigureDistance: 0
   m_Distance: 0.005
   m_DampingRatio: 1
@@ -362,7 +362,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Positions:
   - {x: 1, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -527,7 +527,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -553,14 +553,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grappleRope: {fileID: 5022943424898015274}
   grappleToAll: 0
-  grappableLayerNumber: 9
+  grappableLayerNumber: 3
   m_camera: {fileID: 0}
   gunHolder: {fileID: 5022943424578809545}
   gunPivot: {fileID: 5022943424694270144}
   firePoint: {fileID: 5022943425722725231}
   rotateOverTime: 0
   rotationSpeed: 12.9
-  hasMaxDistance: 0
+  hasMaxDistance: 1
   maxDistance: 20
   launchToPoint: 1
   Launch_Type: 1

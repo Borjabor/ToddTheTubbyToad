@@ -25,6 +25,8 @@ public class GrappleRope : MonoBehaviour
     
     bool drawLine = true;
     bool straightLine = true;
+
+    public Animator animator;
     
 
     private void Awake()
@@ -37,6 +39,7 @@ public class GrappleRope : MonoBehaviour
 
     private void OnEnable()
     {
+        animator.SetTrigger("Hook");
         moveTime = 0;
         m_lineRenderer.enabled = true;
         m_lineRenderer.positionCount = percision;

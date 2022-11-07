@@ -67,16 +67,6 @@ public class CharacterController2D : MonoBehaviour
 	private SpriteRenderer _bodyRenderer;
 	[SerializeField]
 	private GameObject _characterSprite;
-	
-	[Header("Events")]
-	[Space]
-
-	public UnityEvent OnLandEvent;
-
-	
-
-	[System.Serializable]
-	public class BoolEvent : UnityEvent<bool> { }
 
 
 	private void Awake()
@@ -84,8 +74,6 @@ public class CharacterController2D : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D>();
         _checkpoint = transform.position;
 		_audioSource = GetComponent<AudioSource>();
-
-        if (OnLandEvent == null) OnLandEvent = new UnityEvent();
 
     }
 

@@ -50,6 +50,7 @@ public class GrappleRope : MonoBehaviour
 
     private void OnDisable()
     {
+        animator.SetTrigger("HookOff");
         m_lineRenderer.enabled = false;
         isGrappling = false;
     }

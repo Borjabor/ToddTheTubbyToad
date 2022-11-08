@@ -28,8 +28,6 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private bool launchToPoint = true;
     [SerializeField] private LaunchType Launch_Type = LaunchType.Transform_Launch;
     [Range(0, 5)] [SerializeField] private float launchSpeed = 5;
-    [SerializeField]
-    private bool _stopLaunch = false;
     [Header("This is Proportion of Distance Between Frog and Anchorpoint")]
     [Range(0, 1)][SerializeField]
     private float _distanceRatio = 0.5f;
@@ -54,7 +52,8 @@ public class GrapplingGun : MonoBehaviour
     Vector2 Mouse_FirePoint_DistanceVector;
 
     public Rigidbody2D ballRigidbody;
-    
+    [SerializeField]
+    private float _tongueLengthChanger = 0.8f;
 
 
     private void Start()
@@ -67,11 +66,6 @@ public class GrapplingGun : MonoBehaviour
     private void Update()
     {
         Mouse_FirePoint_DistanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _stopLaunch = !_stopLaunch;
-        }
         
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -94,6 +88,18 @@ public class GrapplingGun : MonoBehaviour
                 {
                     gunHolder.position = Vector3.Lerp(gunHolder.position, grapplePoint, Time.deltaTime * launchSpeed);
                 }
+            }
+            
+            if (Launch_Type == LaunchType.Physics_Launch)
+            {
+                if (Input.GetKey(KeyCode.W))
+                {
+                    m_springJoint2D.distance -= (float)(_tongueLengthChanger * Time.deltaTime);
+                }else if (Input.GetKey(KeyCode.S))
+                {
+                    m_springJoint2D.distance += (float)(_tongueLengthChanger * Time.deltaTime);
+                }
+                
             }
 
         }
@@ -168,14 +174,7 @@ public class GrapplingGun : MonoBehaviour
             if (Launch_Type == LaunchType.Physics_Launch)
             {
                 m_springJoint2D.connectedAnchor = grapplePoint;
-                if (!_stopLaunch)
-                {
-                    m_springJoint2D.distance = 0;
-                }
-                else
-                {
-                    m_springJoint2D.distance = (grapplePoint - (Vector2)gunPivot.position).magnitude * _distanceRatio;
-                }
+                m_springJoint2D.distance = 0;
                 m_springJoint2D.frequency = launchSpeed;
                 m_springJoint2D.enabled = true;
             }

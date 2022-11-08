@@ -67,16 +67,6 @@ public class CharacterController2D : MonoBehaviour
 	private SpriteRenderer _bodyRenderer;
 	[SerializeField]
 	private GameObject _characterSprite;
-	
-	[Header("Events")]
-	[Space]
-
-	public UnityEvent OnLandEvent;
-
-	
-
-	[System.Serializable]
-	public class BoolEvent : UnityEvent<bool> { }
 
 
 	private void Awake()
@@ -84,8 +74,6 @@ public class CharacterController2D : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D>();
         _checkpoint = transform.position;
 		_audioSource = GetComponent<AudioSource>();
-
-        if (OnLandEvent == null) OnLandEvent = new UnityEvent();
 
     }
 
@@ -128,7 +116,7 @@ public class CharacterController2D : MonoBehaviour
 	{
 		//Vector2 targetVelocity = new Vector2(move * 10f, _rb.velocity.y);
 		// _rb.AddForce(Vector2.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, _movementSmoothing));
-		_rb.AddForce(new Vector2(move * 10f, _rb.velocity.y));
+		_rb.AddForce(new Vector2(move * 10f, 0f));
 	}
 
 	private void GetInputs()
@@ -136,7 +124,7 @@ public class CharacterController2D : MonoBehaviour
         _horizontalMove = Input.GetAxis("Horizontal") * _moveSpeed;
     }
 
-	private void OnTriggerEnter2D(Collider2D other)
+	/*private void OnTriggerEnter2D(Collider2D other)
 	{
 
 		if (other.gameObject.CompareTag("Checkpoint"))
@@ -190,7 +178,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 		
-	}
+	}*/
 
 	private IEnumerator Respawn()
 	{

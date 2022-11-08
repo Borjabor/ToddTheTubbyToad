@@ -8,11 +8,14 @@ public class Tentacle : MonoBehaviour
     public LineRenderer _lineRend;
     public Vector3[] _segmentPoses;
     private Vector3[] _segmentV;
+    private Vector3 _offset;
 
     public Transform _targetDir;
     public float _targetDist;
     public float _smoothSpeed;
     public float _trailSpeed;
+    public static GameObject GrabbedObject;
+    
 
     void Start()
     {
@@ -27,7 +30,15 @@ public class Tentacle : MonoBehaviour
 
         for (int i = 1; i < _segmentPoses.Length; i++)
         {
-            _segmentPoses[i] = Vector3.SmoothDamp(_segmentPoses[i], _segmentPoses[i - 1] +_targetDir.right * _targetDist, ref _segmentV[i], _smoothSpeed + i / _trailSpeed);
+            if (GrabbedObject == null)
+            {
+                _segmentPoses[i] = Vector3.SmoothDamp(_segmentPoses[i], _segmentPoses[i - 1] +_targetDir.right * _targetDist, ref _segmentV[i], _smoothSpeed + i / _trailSpeed);
+            }
+            else
+            {
+                _offset = _targetDir.position + (GrabbedObject.transform.position - _targetDir.position)/2;
+                _segmentPoses[i] = _offset;
+            }
         }
         _lineRend.SetPositions(_segmentPoses);
     }

@@ -116,7 +116,7 @@ public class CharacterController2D : MonoBehaviour
 	{
 		//Vector2 targetVelocity = new Vector2(move * 10f, _rb.velocity.y);
 		// _rb.AddForce(Vector2.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, _movementSmoothing));
-		_rb.AddForce(new Vector2(move * 10f, _rb.velocity.y));
+		_rb.AddForce(new Vector2(move * 10f, 0f));
 	}
 
 	private void GetInputs()
@@ -124,7 +124,7 @@ public class CharacterController2D : MonoBehaviour
         _horizontalMove = Input.GetAxis("Horizontal") * _moveSpeed;
     }
 
-	private void OnTriggerEnter2D(Collider2D other)
+	/*private void OnTriggerEnter2D(Collider2D other)
 	{
 
 		if (other.gameObject.CompareTag("Checkpoint"))
@@ -178,7 +178,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 		
-	}
+	}*/
 
 	private IEnumerator Respawn()
 	{

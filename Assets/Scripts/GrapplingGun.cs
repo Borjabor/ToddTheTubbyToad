@@ -66,52 +66,55 @@ public class GrapplingGun : MonoBehaviour
     private void Update()
     {
         Mouse_FirePoint_DistanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
-        
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+        if (!CharacterController2D._isRespawning)
         {
-            SetGrapplePoint();
-        }
-        else if (Input.GetKey(KeyCode.Mouse0))
-        {
-            if (grappleRope.enabled)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                RotateGun(grapplePoint, false);
+                SetGrapplePoint();
+            }
+            else if (Input.GetKey(KeyCode.Mouse0))
+            {
+                if (grappleRope.enabled)
+                {
+                    RotateGun(grapplePoint, false);
+                }
+                else
+                {
+                    RotateGun(m_camera.ScreenToWorldPoint(Input.mousePosition), false);
+                }
+
+                if (launchToPoint && grappleRope.isGrappling)
+                {
+                    if (Launch_Type == LaunchType.Transform_Launch)
+                    {
+                        gunHolder.position = Vector3.Lerp(gunHolder.position, grapplePoint, Time.deltaTime * launchSpeed);
+                    }
+                }
+            
+                if (Launch_Type == LaunchType.Physics_Launch)
+                {
+                    if (Input.GetKey(KeyCode.W))
+                    {
+                        m_springJoint2D.distance -= (float)(_tongueLengthChanger * Time.deltaTime);
+                    }else if (Input.GetKey(KeyCode.S))
+                    {
+                        m_springJoint2D.distance += (float)(_tongueLengthChanger * Time.deltaTime);
+                    }
+                
+                }
+
+            }
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                grappleRope.enabled = false;
+                m_springJoint2D.enabled = false;
+                ballRigidbody.gravityScale = 1;
             }
             else
             {
-                RotateGun(m_camera.ScreenToWorldPoint(Input.mousePosition), false);
+                RotateGun(m_camera.ScreenToWorldPoint(Input.mousePosition), true);
             }
-
-            if (launchToPoint && grappleRope.isGrappling)
-            {
-                if (Launch_Type == LaunchType.Transform_Launch)
-                {
-                    gunHolder.position = Vector3.Lerp(gunHolder.position, grapplePoint, Time.deltaTime * launchSpeed);
-                }
-            }
-            
-            if (Launch_Type == LaunchType.Physics_Launch)
-            {
-                if (Input.GetKey(KeyCode.W))
-                {
-                    m_springJoint2D.distance -= (float)(_tongueLengthChanger * Time.deltaTime);
-                }else if (Input.GetKey(KeyCode.S))
-                {
-                    m_springJoint2D.distance += (float)(_tongueLengthChanger * Time.deltaTime);
-                }
-                
-            }
-
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            grappleRope.enabled = false;
-            m_springJoint2D.enabled = false;
-            ballRigidbody.gravityScale = 1;
-        }
-        else
-        {
-            RotateGun(m_camera.ScreenToWorldPoint(Input.mousePosition), true);
         }
     }
 

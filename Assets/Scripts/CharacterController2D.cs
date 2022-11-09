@@ -23,7 +23,7 @@ public class CharacterController2D : MonoBehaviour
 	const float _groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool _grounded;            // Whether or not the player is grounded.
     private Vector2 _checkpoint;
-    private bool _isRespawning = false;
+    public static bool _isRespawning = false;
     [SerializeField]
     private float _iFramesDuration;
     [SerializeField]
@@ -66,7 +66,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] 
 	private SpriteRenderer _bodyRenderer;
 	[SerializeField]
-	private GameObject _characterSprite;
+	private SpriteRenderer _characterSprite;
+	[SerializeField] 
+	private GameObject _arms;
 
 
 	private void Awake()
@@ -124,83 +126,65 @@ public class CharacterController2D : MonoBehaviour
         _horizontalMove = Input.GetAxis("Horizontal") * _moveSpeed;
     }
 
-	/*private void OnTriggerEnter2D(Collider2D other)
+	private void OnTriggerEnter2D(Collider2D other)
 	{
 
 		if (other.gameObject.CompareTag("Checkpoint"))
 		{
-			_audioSource.PlayOneShot(_checkpointAudio);
+			//_audioSource.PlayOneShot(_checkpointAudio);
 			_checkpoint = other.transform.position;
 		}
 		
-		if (other.gameObject.CompareTag("Collectible"))
+		if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
 		{
-			Destroy(other.gameObject);
-			_audioSource.PlayOneShot(_buffPickupAudio);
-			CollectiblesCounter.TotalPoints++;
+			StartCoroutine(Respawn());
 		}
-	}
-
-	private void OnCollisionStay2D(Collision2D other)
-	{
-		foreach(ContactPoint2D hitPos in other.contacts)
-		{
-            if(hitPos.normal.y <= 0  && other.gameObject.CompareTag("Enemy"))
-            {
-                StartCoroutine(Respawn());
-            }
-			
-			else if(hitPos.normal.y > 0  && other.gameObject.CompareTag("Enemy"))
-            {
-                _rb.velocity = Vector2.up * (_jumpForce/2);
-            }
-        }
-	}
-
-	private void OnCollisionEnter2D(Collision2D other)
-	{
-		if(other.gameObject.CompareTag("Spikes") && !_isRespawning)
-		{
-            //_rb.AddForce(new Vector2(-transform.localScale.x * _knockbackX, _knockbackY), ForceMode2D.Impulse);
-            StartCoroutine(Respawn());
-        }
-
-		foreach(ContactPoint2D hitPos in other.contacts)
-		{
-            if(hitPos.normal.y <= 0  && other.gameObject.CompareTag("Enemy"))
-            {
-	            Physics2D.IgnoreLayerCollision(0, 6, true);
-                StartCoroutine(Respawn());
-            }
-			else if(hitPos.normal.y > 0  && other.gameObject.CompareTag("Enemy"))
-            {
-                _rb.velocity = Vector2.up * (_jumpForce/2);
-            }
-        }
 		
-	}*/
+		// if (other.gameObject.CompareTag("Collectible"))
+		// {
+		// 	Destroy(other.gameObject);
+		// 	_audioSource.PlayOneShot(_buffPickupAudio);
+		// 	CollectiblesCounter.TotalPoints++;
+		// }
+	}
+
+	// private void OnCollisionEnter2D(Collision2D other)
+	// {
+	// 	if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
+	// 	{
+ //            StartCoroutine(Respawn());
+ //        }
+ //
+	// 	// foreach(ContactPoint2D hitPos in other.contacts)
+	// 	// {
+ //  //           if(hitPos.normal.y <= 0  && other.gameObject.CompareTag("Enemy"))
+ //  //           {
+	//  //            Physics2D.IgnoreLayerCollision(0, 6, true);
+ //  //               StartCoroutine(Respawn());
+ //  //           }
+	// 	// 	else if(hitPos.normal.y > 0  && other.gameObject.CompareTag("Enemy"))
+ //  //           {
+ //  //               _rb.velocity = Vector2.up * (_jumpForce/2);
+ //  //           }
+ //  //       }
+	// 	
+	// }
 
 	private IEnumerator Respawn()
 	{
 		_isRespawning = true;
-		_liveCount.LoseLife();
 		_rb.velocity = Vector2.zero;
-		_audioSource.PlayOneShot(_deathAudio);
-		_characterSprite.SetActive(false);
-		_deathParticles.Play();
+		//_audioSource.PlayOneShot(_deathAudio);
+		_characterSprite.enabled = false;
+		_arms.SetActive(false);
+		//_deathParticles.Play();
 		yield return new WaitForSeconds(1.5f);
-		if(_liveCount._remainingLives <= 0)
-		{
-			_liveCount._remainingLives = 5;
-			transform.position = _checkpoint;
-		}
-		_characterSprite.SetActive(true);
+		transform.position = _checkpoint;
+		_characterSprite.enabled = true;
+		_arms.SetActive(true);
 		_isRespawning = false;
-		
-        
 		StartCoroutine(Invulnerability());
-
-    }
+	}
 
 	private IEnumerator Invulnerability()
 	{

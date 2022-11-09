@@ -6,15 +6,20 @@ public class Room : MonoBehaviour
 {
 
     public GameObject _virtualCamera;
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            _virtualCamera.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            _virtualCamera.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

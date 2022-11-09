@@ -66,7 +66,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] 
 	private SpriteRenderer _bodyRenderer;
 	[SerializeField]
-	private GameObject _characterSprite;
+	private SpriteRenderer _characterSprite;
+	[SerializeField] 
+	private GameObject _arms;
 
 
 	private void Awake()
@@ -133,46 +135,53 @@ public class CharacterController2D : MonoBehaviour
 			_checkpoint = other.transform.position;
 		}
 		
-		if (other.gameObject.CompareTag("Collectible"))
-		{
-			Destroy(other.gameObject);
-			_audioSource.PlayOneShot(_buffPickupAudio);
-			CollectiblesCounter.TotalPoints++;
-		}
-	}
-
-	private void OnCollisionEnter2D(Collision2D other)
-	{
 		if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
 		{
-            StartCoroutine(Respawn());
-        }
-
-		// foreach(ContactPoint2D hitPos in other.contacts)
-		// {
-  //           if(hitPos.normal.y <= 0  && other.gameObject.CompareTag("Enemy"))
-  //           {
-	 //            Physics2D.IgnoreLayerCollision(0, 6, true);
-  //               StartCoroutine(Respawn());
-  //           }
-		// 	else if(hitPos.normal.y > 0  && other.gameObject.CompareTag("Enemy"))
-  //           {
-  //               _rb.velocity = Vector2.up * (_jumpForce/2);
-  //           }
-  //       }
+			StartCoroutine(Respawn());
+		}
 		
+		// if (other.gameObject.CompareTag("Collectible"))
+		// {
+		// 	Destroy(other.gameObject);
+		// 	_audioSource.PlayOneShot(_buffPickupAudio);
+		// 	CollectiblesCounter.TotalPoints++;
+		// }
 	}
+
+	// private void OnCollisionEnter2D(Collision2D other)
+	// {
+	// 	if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
+	// 	{
+ //            StartCoroutine(Respawn());
+ //        }
+ //
+	// 	// foreach(ContactPoint2D hitPos in other.contacts)
+	// 	// {
+ //  //           if(hitPos.normal.y <= 0  && other.gameObject.CompareTag("Enemy"))
+ //  //           {
+	//  //            Physics2D.IgnoreLayerCollision(0, 6, true);
+ //  //               StartCoroutine(Respawn());
+ //  //           }
+	// 	// 	else if(hitPos.normal.y > 0  && other.gameObject.CompareTag("Enemy"))
+ //  //           {
+ //  //               _rb.velocity = Vector2.up * (_jumpForce/2);
+ //  //           }
+ //  //       }
+	// 	
+	// }
 
 	private IEnumerator Respawn()
 	{
 		_isRespawning = true;
 		_rb.velocity = Vector2.zero;
-		_audioSource.PlayOneShot(_deathAudio);
-		_characterSprite.SetActive(false);
-		_deathParticles.Play();
+		//_audioSource.PlayOneShot(_deathAudio);
+		_characterSprite.enabled = false;
+		_arms.SetActive(false);
+		//_deathParticles.Play();
 		yield return new WaitForSeconds(1.5f);
 		transform.position = _checkpoint;
-		_characterSprite.SetActive(true);
+		_characterSprite.enabled = true;
+		_arms.SetActive(true);
 		_isRespawning = false;
 		StartCoroutine(Invulnerability());
 	}

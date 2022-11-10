@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GrapplingGun : MonoBehaviour
 {
@@ -61,6 +62,14 @@ public class GrapplingGun : MonoBehaviour
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
         ballRigidbody.gravityScale = 1;
+    }
+
+    private void OnDisable()
+    {
+        grappleRope.enabled = false;
+        m_springJoint2D.enabled = false;
+        ballRigidbody.gravityScale = 1;
+        
     }
 
     private void Update()

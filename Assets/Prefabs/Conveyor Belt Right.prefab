@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3506842771350577653}
   - component: {fileID: 3506842771350577643}
   - component: {fileID: 398764332757424569}
+  - component: {fileID: 2596400299840119794}
   m_Layer: 3
   m_Name: Conveyor Belt Right
   m_TagString: Untagged
@@ -98,7 +99,7 @@ SurfaceEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Speed: -5
+  m_Speed: 5
   m_SpeedVariation: 0
   m_ForceScale: 1
   m_UseContactForce: 0
@@ -130,3 +131,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8, y: 2}
   m_EdgeRadius: 0
+--- !u!95 &2596400299840119794
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506842771350577641}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38dcb1c6e137eee48895fa3c35cacbb0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -175,6 +175,7 @@ public class CharacterController2D : MonoBehaviour
 		_isRespawning = true;
 		_rb.velocity = Vector2.zero;
 		//_audioSource.PlayOneShot(_deathAudio);
+		CameraShake.Instance.ShakeCamera(2f, 0.2f);
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);
 		//_deathParticles.Play();

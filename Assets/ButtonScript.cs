@@ -13,7 +13,7 @@ public class ButtonScript : MonoBehaviour
         _oringialPos = transform.position;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player" || collision.transform.tag == "Object")
         {
@@ -22,16 +22,13 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player" || collision.transform.tag == "Object")
         {
             collision.transform.parent = transform;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
         moveBack = true;
         collision.transform.parent = null;
     }
@@ -49,5 +46,10 @@ public class ButtonScript : MonoBehaviour
                 moveBack = false;
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }

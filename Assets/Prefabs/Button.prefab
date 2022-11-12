@@ -184,9 +184,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaaa052386cb4844ead0ca1bcbe96144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPos: {fileID: 0}
+  _targetPos: {fileID: 8477060783742993529}
   _affectedObject: {fileID: 0}
   _AffectedObject: 0
+  button: {fileID: 3062763854374829793}
+  animator: {fileID: 0}
 --- !u!61 &151117662
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -225,6 +227,7 @@ GameObject:
   - component: {fileID: 1463688214860450002}
   - component: {fileID: 1129088517}
   - component: {fileID: 1129088520}
+  - component: {fileID: 3062763854374829793}
   m_Layer: 2
   m_Name: Button
   m_TagString: Untagged
@@ -352,3 +355,23 @@ PolygonCollider2D:
       - {x: 1.5625, y: -0.15625}
       - {x: 1.5621872, y: -0.029762268}
       - {x: 1.3772278, y: 0.15449524}
+--- !u!95 &3062763854374829793
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477060783742993529}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd2146e079fd0134a8ae87dc42f8c14e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

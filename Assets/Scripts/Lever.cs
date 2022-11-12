@@ -54,7 +54,8 @@ public class Lever : MonoBehaviour
                 break;
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();
-                animator.SetTrigger("Conveyor_Right_On");
+                animator.SetTrigger("Conveyor_Right");
+                animator.SetTrigger("Conveyor_Left");
                 belt.enabled = true;
                 break;
         }
@@ -74,7 +75,6 @@ public class Lever : MonoBehaviour
                 break;
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();
-                animator.SetTrigger("Conveyor_Off");
                 belt.enabled = false;
                 break;
         }

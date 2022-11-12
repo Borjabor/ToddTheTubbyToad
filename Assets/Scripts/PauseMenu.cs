@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,16 +10,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject _pauseMenu;
 
-    [SerializeField]
-    private AudioMixer mixer;
-    public string parameterName = "MasterVolume";
-
     private bool _isPaused;
 
     private void Awake()
     {
         _levelLoader = GetComponentInChildren<LevelLoader>();
-        Cursor.visible = true;
     }
 
     private void Update()
@@ -69,20 +63,5 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu.SetActive(false);
         _levelLoader.ReloadCurrentLevel();
     }
- 
-     protected float Parameter
-     {
-         get
-         {
-             float parameter;
-             mixer.GetFloat(parameterName, out parameter);
-             return parameter;
-         }
-         set
-         {
-             mixer.SetFloat(parameterName, value);
-         }
-     }
-
 
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6074760971004680133}
   - component: {fileID: 6074760971004680134}
-  - component: {fileID: 6074760971004680135}
   - component: {fileID: 6074760971004680132}
   m_Layer: 2
   m_Name: AreaOnewayBlock
@@ -60,21 +59,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6731019, y: 6.5407023}
   m_EdgeRadius: 0
---- !u!114 &6074760971004680135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6074760971004680136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bae9e57b60a1d29408fd5c0f09a2c7be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _closeSprite: {fileID: 0}
-  _openSprite: {fileID: 0}
-  _particles: {fileID: 0}
 --- !u!251 &6074760971004680132
 PlatformEffector2D:
   m_ObjectHideFlags: 0

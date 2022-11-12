@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -331872760, guid: 42dbda2eddfc4b04792146c8864fb98d, type: 3}
-  m_Color: {r: 0.51320755, g: 1, b: 0.53046477, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -150,7 +150,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.9297979, y: -0.016222203}
-  m_ConnectedAnchor: {x: -0.010608673, y: -0.117515564}
+  m_ConnectedAnchor: {x: -0.010612488, y: -0.117515564}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -171,7 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7194d08ff67a674caa885d2796c88fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _doorOpen: {fileID: 0}
+  _affectedObject: {fileID: 0}
+  _AffectedObject: 0
 --- !u!1 &3172485921313466572
 GameObject:
   m_ObjectHideFlags: 0

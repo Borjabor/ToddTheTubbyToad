@@ -12,6 +12,9 @@ public class Lever : MonoBehaviour
     [SerializeField] private GameObject _affectedObject;
     public AffectedObject _AffectedObject;
 
+    public Animator animator;
+
+
 
     public enum AffectedObject
     {
@@ -51,6 +54,7 @@ public class Lever : MonoBehaviour
                 break;
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();
+                animator.SetBool("PressButton", true);
                 belt.enabled = true;
                 break;
         }
@@ -70,6 +74,7 @@ public class Lever : MonoBehaviour
                 break;
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();
+                animator.SetBool("PressButton", false);
                 belt.enabled = false;
                 break;
         }

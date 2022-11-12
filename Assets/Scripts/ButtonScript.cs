@@ -14,6 +14,8 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] private GameObject _affectedObject;
     public AffectedObject _AffectedObject;
 
+    public Animator animator;
+
     public enum AffectedObject
     {
         Door,
@@ -77,6 +79,8 @@ public class ButtonScript : MonoBehaviour
                 break;
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();
+                animator.SetTrigger("Conveyor_Right");
+                animator.SetTrigger("Conveyor_Left");
                 belt.enabled = true;
                 break;
         }

@@ -173,6 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _affectedObject: {fileID: 0}
   _AffectedObject: 0
+  lever: {fileID: 1963077777796704866}
+  animator: {fileID: 0}
 --- !u!1 &3172485921313466572
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +219,7 @@ GameObject:
   - component: {fileID: 5775169120098616361}
   - component: {fileID: 621271686}
   - component: {fileID: 621271685}
+  - component: {fileID: 1963077777796704866}
   m_Layer: 2
   m_Name: Lever
   m_TagString: Untagged
@@ -329,3 +332,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.2}
   m_Size: {x: 1.27, y: 1.09}
   m_Direction: 0
+--- !u!95 &1963077777796704866
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5775169120098616367}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 198a673f32da6fb44b7eda1d7aa66998, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

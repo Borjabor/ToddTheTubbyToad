@@ -12,6 +12,7 @@ public class Lever : MonoBehaviour
     [SerializeField] private GameObject _affectedObject;
     public AffectedObject _AffectedObject;
 
+    public Animator lever;
     public Animator animator;
 
 
@@ -33,10 +34,12 @@ public class Lever : MonoBehaviour
         if (_hj.jointAngle <= -85)
         {
             AffectedObjectOn();
+            lever.SetBool("Lever_State", true);
         }
         else
         {
             AffectedObjectOff();
+            lever.SetBool("Lever_State", false);
         }
     }
     

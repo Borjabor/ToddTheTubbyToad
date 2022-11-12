@@ -14,6 +14,9 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] private GameObject _affectedObject;
     public AffectedObject _AffectedObject;
 
+    public Animator button;
+    bool Button_State = false;
+
     public Animator animator;
 
     bool Conveyor = false;
@@ -35,6 +38,7 @@ public class ButtonScript : MonoBehaviour
         {
             //transform.Translate(0, -0.01f, 0);
             transform.position = Vector2.MoveTowards(transform.position, _targetPos.transform.position, Time.deltaTime);
+            button.SetBool("Button_State", true);
             moveBack = false;
             AffectedObjectOn();
         }
@@ -47,6 +51,7 @@ public class ButtonScript : MonoBehaviour
         {
             collision.transform.parent = transform;
         }
+        button.SetBool("Button_State", false);
         moveBack = true;
         collision.transform.parent = null;
         AffectedObjectOff();

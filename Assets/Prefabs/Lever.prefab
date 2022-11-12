@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1067777676}
   - component: {fileID: 1067777677}
   - component: {fileID: 1067777675}
+  - component: {fileID: 1813069287}
   m_Layer: 2
   m_Name: Handdle
   m_TagString: Untagged
@@ -158,6 +159,19 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: -90
     m_UpperAngle: 0
+--- !u!114 &1813069287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104517078648991539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7194d08ff67a674caa885d2796c88fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _doorOpen: {fileID: 0}
 --- !u!1 &3172485921313466572
 GameObject:
   m_ObjectHideFlags: 0

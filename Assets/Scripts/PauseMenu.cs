@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
            PauseGame();
         }
 
-        if(_isPaused != true) {
+        if(!_isPaused) {
             Cursor.visible = false;
         }
     }

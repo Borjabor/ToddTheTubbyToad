@@ -17,20 +17,17 @@ public class Checkpoint : MonoBehaviour
 
     private void Awake()
     {
-        _closeSprite.SetActive(true);
-        _openSprite.SetActive(false);
+        //_closeSprite.SetActive(true);
+        //_openSprite.SetActive(false);
         _checkpointCollider = GetComponent<BoxCollider2D>();
-        
+        //_checkpointCollider.isTrigger = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Object"))
         {
-            _particles.Play();
-            _closeSprite.SetActive(false);
-            _openSprite.SetActive(true);
-            _checkpointCollider.enabled = false;
+            Destroy(other.gameObject);
         }
     }
 }

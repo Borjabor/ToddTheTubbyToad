@@ -17,6 +17,8 @@ public class Lever : MonoBehaviour
     public Animator FanAnimation;
     public Animator BladeAnimation;
 
+    [SerializeField] ParticleSystem _fanParticles = null;
+
 
     public enum AffectedObject
     {
@@ -56,6 +58,7 @@ public class Lever : MonoBehaviour
                 var fan = _affectedObject.GetComponent<AreaEffector2D>();
                 FanAnimation.SetBool("Fan_State", true);
                 BladeAnimation.SetBool("Fan_State", true);
+                _fanParticles.Play();
                 fan.enabled = true;
                 break;
             case AffectedObject.ConveyorBelt:
@@ -86,5 +89,9 @@ public class Lever : MonoBehaviour
                 belt.enabled = false;
                 break;
         }
+    }
+    public void Collect()
+    {
+        _fanParticles.Play();
     }
 }

@@ -14,7 +14,8 @@ public class Lever : MonoBehaviour
 
     public Animator lever;
     public Animator animator;
-
+    public Animator FanAnimation;
+    public Animator BladeAnimation;
 
 
     public enum AffectedObject
@@ -53,6 +54,8 @@ public class Lever : MonoBehaviour
                 break;
             case AffectedObject.Fan:
                 var fan = _affectedObject.GetComponent<AreaEffector2D>();
+                FanAnimation.SetBool("Fan_State", true);
+                BladeAnimation.SetBool("Fan_State", true);
                 fan.enabled = true;
                 break;
             case AffectedObject.ConveyorBelt:
@@ -73,6 +76,8 @@ public class Lever : MonoBehaviour
                 break;
             case AffectedObject.Fan:
                 var fan = _affectedObject.GetComponent<AreaEffector2D>();
+                FanAnimation.SetBool("Fan_State", false);
+                BladeAnimation.SetBool("Fan_State", false);
                 fan.enabled = false;
                 break;
             case AffectedObject.ConveyorBelt:

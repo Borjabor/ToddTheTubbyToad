@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &217466580
 Transform:
   m_ObjectHideFlags: 0
@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217466579}
-  m_LocalRotation: {x: 0.0336941, y: 0.0097413, z: -0.27756473, w: 0.96006656}
+  m_LocalRotation: {x: -0, y: -0, z: -0.3039672, w: 0.95268255}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5022943424578809545}
-  m_RootOrder: 0
+  m_Father: {fileID: 6870909053363577948}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &217466581
 MonoBehaviour:
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 6.09
+  m_PointLightOuterRadius: 1.687924
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -873,8 +873,9 @@ Transform:
   m_Children:
   - {fileID: 5022943424694270144}
   - {fileID: 5664082228360630523}
+  - {fileID: 217466580}
   m_Father: {fileID: 5022943424578809545}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5022943424578809547
 GameObject:
@@ -912,7 +913,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 217466580}
   - {fileID: 6870909053363577948}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   _jumpParticles: {fileID: 0}
   _bodyRenderer: {fileID: 0}
   _characterSprite: {fileID: 5022943424578809546}
-  _arms: {fileID: 5584573282379803583}
+  _arms: {fileID: 4996452830057207418}
 --- !u!82 &8453835682904377283
 AudioSource:
   m_ObjectHideFlags: 0

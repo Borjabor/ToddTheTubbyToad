@@ -10,8 +10,12 @@ public class LevelLoader : MonoBehaviour
     private float _transitionTime = 1f;
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadCurrentLevel();
+        }
     }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -33,9 +37,8 @@ public class LevelLoader : MonoBehaviour
 
     public IEnumerator LoadLevel(int levelIndex)
     {
-        Transition.SetTrigger("Start");
+        //Transition.SetTrigger("Start");
         yield return new WaitForSeconds(_transitionTime);
-        CollectiblesCounter.TotalPoints = 0;
         SceneManager.LoadScene(levelIndex);
 
     }

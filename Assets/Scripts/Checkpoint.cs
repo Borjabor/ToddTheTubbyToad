@@ -5,14 +5,6 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    [SerializeField] 
-    private GameObject _closeSprite;
-    [SerializeField] 
-    private GameObject _openSprite;
-
-    [SerializeField] private ParticleSystem _particles;
-    
-
     private Collider2D _checkpointCollider;
 
     private void Awake()

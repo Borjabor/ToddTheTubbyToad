@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -76,8 +77,7 @@ public class CharacterController2D : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D>();
         _checkpoint = transform.position;
 		_audioSource = GetComponent<AudioSource>();
-
-    }
+	}
 
 	void Update()
 	{

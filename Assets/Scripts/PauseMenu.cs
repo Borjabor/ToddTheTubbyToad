@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
+        _pauseMenu.SetActive(false);
         _levelLoader = GetComponentInChildren<LevelLoader>();
     }
 
@@ -33,13 +34,13 @@ public class PauseMenu : MonoBehaviour
         if(_isPaused)
         {
             Time.timeScale = 0f;
-             _pauseMenu.SetActive(true);
-             Cursor.visible = true;
+            _pauseMenu.SetActive(true);
+            Cursor.visible = true;
         }
         else 
         {
             Time.timeScale = 1;
-             _pauseMenu.SetActive(false);
+            _pauseMenu.SetActive(false);
         }
     }
 

@@ -44,6 +44,14 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField]
     private Texture2D _cannotAttach;
     
+    [Header("Tongue Audio")]
+    [SerializeField] 
+    private AudioClip _tongueConnect;
+    [SerializeField] 
+    private AudioClip _tongueDisconnect;
+    [SerializeField] 
+    private AudioSource _playerAudio;
+    
     
 
 
@@ -128,6 +136,7 @@ public class GrapplingGun : MonoBehaviour
                 grappleRope.enabled = false;
                 m_springJoint2D.enabled = false;
                 ballRigidbody.gravityScale = 1;
+                
             }
             else
             {
@@ -216,6 +225,7 @@ public class GrapplingGun : MonoBehaviour
                 m_springJoint2D.distance = 0;
                 m_springJoint2D.frequency = launchSpeed;
                 m_springJoint2D.enabled = true;
+                _playerAudio.PlayOneShot(_tongueConnect);
             }
         }
     }

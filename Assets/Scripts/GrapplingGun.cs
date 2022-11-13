@@ -37,6 +37,14 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private bool autoCongifureDistance = false;
     [SerializeField] private float targetDistance = 3;
     [SerializeField] private float targetFrequency = 3;
+    
+    [Header("Mouse Cursor")] 
+    [SerializeField]
+    private Texture2D _canAttach;
+    [SerializeField]
+    private Texture2D _cannotAttach;
+    
+    
 
 
     private enum LaunchType
@@ -76,6 +84,7 @@ public class GrapplingGun : MonoBehaviour
     {
         Mouse_FirePoint_DistanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
 
+        SetCursor();
         if (!CharacterController2D._isRespawning)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -155,6 +164,24 @@ public class GrapplingGun : MonoBehaviour
             }
         }
     }
+    
+    void SetCursor()
+    {
+        if (Physics2D.Raycast(firePoint.position, Mouse_FirePoint_DistanceVector.normalized))
+        {
+            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, Mouse_FirePoint_DistanceVector.normalized);
+            if ((_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll) && ((Vector2.Distance(_hit.point, firePoint.position) <= maxDistance) || !hasMaxDistance))
+            {
+                Cursor.SetCursor(_canAttach, Vector2.zero, CursorMode.ForceSoftware);
+            }
+            else
+            {
+                Cursor.SetCursor(_cannotAttach, Vector2.zero, CursorMode.ForceSoftware);
+            }
+        }
+    }
+    
+    
 
     public void Grapple()
     {

@@ -1080,7 +1080,7 @@ MonoBehaviour:
   _jumpParticles: {fileID: 0}
   _bodyRenderer: {fileID: 0}
   _characterSprite: {fileID: 5022943424578809546}
-  _arms: {fileID: 5584573282379803583}
+  _arms: {fileID: 4996452830057207418}
 --- !u!82 &8453835682904377283
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1614,6 +1614,8 @@ MonoBehaviour:
   autoCongifureDistance: 1
   targetDistance: 3
   targetFrequency: 1
+  _canAttach: {fileID: 2800000, guid: 2b03c7ff4ffdb6f4eb0d736e0cc38afd, type: 3}
+  _cannotAttach: {fileID: 2800000, guid: 1b79706d6ad296049b47d0e4852454a7, type: 3}
   m_springJoint2D: {fileID: 5022943424578809544}
   grapplePoint: {x: 0, y: 0}
   DistanceVector: {x: 0, y: 0}

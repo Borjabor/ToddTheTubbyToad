@@ -7,7 +7,18 @@ public class Grab : MonoBehaviour
 {
     [HideInInspector]
     public static bool _isHolding = false;
+    
+    [Header("Audio")]
+    [SerializeField] 
+    private AudioClip _grabbing;
+    private AudioSource _playerAudio;
 
+    private void Awake()
+    {
+        _playerAudio = GetComponent<AudioSource>();
+
+    }
+    
     private void Update()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -32,6 +43,7 @@ public class Grab : MonoBehaviour
             {
                 FixedJoint2D fj = transform.gameObject.AddComponent(typeof(FixedJoint2D)) as FixedJoint2D;
                 fj.connectedBody = rb;
+                _playerAudio.PlayOneShot(_grabbing);
             }
             else
             {

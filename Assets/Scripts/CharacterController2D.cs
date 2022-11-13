@@ -30,16 +30,14 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     private int _numberOfFlashes;
 
-	//Audio
+	[Header("Audio")]
 	private AudioSource _audioSource;
-	[SerializeField] 
-	private AudioClip _buffPickupAudio;
-	[SerializeField] 
-	private AudioClip _checkpointAudio;
 	[SerializeField]
-	private AudioClip _jumpAudio;
+	private AudioClip _collideAudio;
 	[SerializeField]
 	private AudioClip _deathAudio;
+	
+	private SpringJoint2D _springJoint;
 
 
     [SerializeField]
@@ -77,19 +75,21 @@ public class CharacterController2D : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D>();
         _checkpoint = transform.position;
 		_audioSource = GetComponent<AudioSource>();
+		_springJoint = GetComponent<SpringJoint2D>();
+
 	}
 
 	void Update()
 	{
 		GetInputs();
 		
-		if(_horizontalMove != 0 && _rb.velocity.y == 0)
-		{
-			if (!_audioSource.isPlaying)
-			{
-				_audioSource.Play();
-			}
-		}
+		// if(_horizontalMove != 0 && _rb.velocity.y == 0)
+		// {
+		// 	if (!_audioSource.isPlaying)
+		// 	{
+		// 		_audioSource.Play();
+		// 	}
+		// }
 	}
 
 	private void FixedUpdate()
@@ -148,33 +148,17 @@ public class CharacterController2D : MonoBehaviour
 		// }
 	}
 
-	// private void OnCollisionEnter2D(Collision2D other)
-	// {
-	// 	if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
-	// 	{
- //            StartCoroutine(Respawn());
- //        }
- //
-	// 	// foreach(ContactPoint2D hitPos in other.contacts)
-	// 	// {
- //  //           if(hitPos.normal.y <= 0  && other.gameObject.CompareTag("Enemy"))
- //  //           {
-	//  //            Physics2D.IgnoreLayerCollision(0, 6, true);
- //  //               StartCoroutine(Respawn());
- //  //           }
-	// 	// 	else if(hitPos.normal.y > 0  && other.gameObject.CompareTag("Enemy"))
- //  //           {
- //  //               _rb.velocity = Vector2.up * (_jumpForce/2);
- //  //           }
- //  //       }
-	// 	
-	// }
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		_audioSource.PlayOneShot(_collideAudio);
+		
+	}
 
 	private IEnumerator Respawn()
 	{
 		_isRespawning = true;
 		_rb.velocity = Vector2.zero;
-		//_audioSource.PlayOneShot(_deathAudio);
+		_audioSource.PlayOneShot(_deathAudio);
 		CameraShake.Instance.ShakeCamera(2f, 0.2f);
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);

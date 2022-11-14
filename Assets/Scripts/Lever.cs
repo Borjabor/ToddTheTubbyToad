@@ -12,7 +12,12 @@ public class Lever : MonoBehaviour
     [SerializeField] private GameObject _affectedObject;
     public AffectedObject _AffectedObject;
 
+    [Header("Lever:")]
     public Animator lever;
+    [SerializeField] ParticleSystem _eletricity;
+    private bool _hasPlayed = false;
+
+    [Header("Gameplay Objects:")]
     public Animator animator;
     public Animator FanAnimation;
     public Animator BladeAnimation;
@@ -38,11 +43,17 @@ public class Lever : MonoBehaviour
         {
             AffectedObjectOn();
             lever.SetBool("Lever_State", true);
+            if (!_hasPlayed)
+            {
+                _eletricity.Play();
+                _hasPlayed = true;
+            }
         }
         else
         {
             AffectedObjectOff();
             lever.SetBool("Lever_State", false);
+            _hasPlayed = false;
         }
     }
     
@@ -91,8 +102,11 @@ public class Lever : MonoBehaviour
                 break;
         }
     }
-    public void Collect()
+    public void Particles()
     {
-        _fanParticles.Play();
+        if (!_eletricity.isPlaying) 
+        {
+            _eletricity.Play();
+        }
     }
 }

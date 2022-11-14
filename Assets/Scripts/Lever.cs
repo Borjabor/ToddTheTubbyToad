@@ -19,6 +19,10 @@ public class Lever : MonoBehaviour
 
     [SerializeField] ParticleSystem _fanParticles = null;
 
+    [SerializeField] private AudioSource _audioSource;
+    
+    
+
 
     public enum AffectedObject
     {
@@ -30,6 +34,7 @@ public class Lever : MonoBehaviour
     private void Awake()
     {
         _hj = GetComponent<HingeJoint2D>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -39,7 +44,7 @@ public class Lever : MonoBehaviour
             AffectedObjectOn();
             lever.SetBool("Lever_State", true);
         }
-        else
+        else if(_hj.jointAngle >= -75)
         {
             AffectedObjectOff();
             lever.SetBool("Lever_State", false);

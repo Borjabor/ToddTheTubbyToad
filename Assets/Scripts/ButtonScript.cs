@@ -21,6 +21,8 @@ public class ButtonScript : MonoBehaviour
     public Animator BladeAnimation;
 
     [SerializeField] ParticleSystem _fanParticles;
+    private AudioSource _audioSource;
+    private bool _hasPlayed = false;
 
 
 
@@ -33,6 +35,7 @@ public class ButtonScript : MonoBehaviour
     private void Start()
     {
         _oringialPos = transform.position;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -43,6 +46,11 @@ public class ButtonScript : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, _targetPos.transform.position, Time.deltaTime);
             button.SetBool("Button_State", true);
             moveBack = false;
+            if (!_hasPlayed && transform.position.y == _targetPos.transform.position.y)
+            {
+                _audioSource.Play();
+                _hasPlayed = true;
+            }
             AffectedObjectOn();
         }
     }
@@ -57,6 +65,7 @@ public class ButtonScript : MonoBehaviour
         button.SetBool("Button_State", false);
         moveBack = true;
         collision.transform.parent = null;
+        _hasPlayed = false;
         AffectedObjectOff();
     }
 

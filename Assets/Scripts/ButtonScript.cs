@@ -89,6 +89,7 @@ public class ButtonScript : MonoBehaviour
                 BladeAnimation.SetBool("Fan_State", true);
                 if (!_fanParticles.isPlaying) _fanParticles.Play();
                 fan.enabled = true;
+                if (FanAnimation.isInitialized) _fanParticles.Play();
                 break;
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();
@@ -110,7 +111,7 @@ public class ButtonScript : MonoBehaviour
                 var fan = _affectedObject.GetComponent<AreaEffector2D>();
                 FanAnimation.SetBool("Fan_State", false);
                 BladeAnimation.SetBool("Fan_State", false);
-                _fanParticles.Stop();
+                if (_fanParticles.isPlaying) _fanParticles.Stop();
                 fan.enabled = false;
                 break;
             case AffectedObject.ConveyorBelt:

@@ -84,10 +84,15 @@ public class Lever : MonoBehaviour
                 doorOpen.OpenDoor();
                 break;
             case AffectedObject.Fan:
+
                 var fan = _affectedObject.GetComponent<AreaEffector2D>();
+
                 FanAnimation.SetBool("Fan_State", true);
+
                 BladeAnimation.SetBool("Fan_State", true);
+
                 if (!_fanParticles.isPlaying) _fanParticles.Play();
+
                 fan.enabled = true;
                 break;
             case AffectedObject.ConveyorBelt:

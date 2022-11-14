@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EffectorSounds : MonoBehaviour
 {
+    [SerializeField]
     private Effector2D _effector;
     private AudioSource _audioSource;
 
@@ -16,6 +17,6 @@ public class EffectorSounds : MonoBehaviour
 
     private void Update()
     {
-        if(_effector.enabled = true && !_audioSource.isPlaying) _audioSource.Play();
+        if(_effector.enabled && !_audioSource.isPlaying) _audioSource.Play();
     }
 }

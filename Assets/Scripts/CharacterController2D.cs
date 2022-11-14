@@ -36,7 +36,8 @@ public class CharacterController2D : MonoBehaviour
 	private AudioClip _collideAudio;
 	[SerializeField]
 	private AudioClip _deathAudio;
-	
+	[SerializeField]
+	private AudioClip _splashAudio;
 	private SpringJoint2D _springJoint;
 
 
@@ -140,6 +141,11 @@ public class CharacterController2D : MonoBehaviour
 			StartCoroutine(Respawn());
 		}
 		
+		if (other.gameObject.CompareTag("Water"))
+		{
+			_audioSource.PlayOneShot(_splashAudio);
+		}
+		
 		// if (other.gameObject.CompareTag("Collectible"))
 		// {
 		// 	Destroy(other.gameObject);
@@ -150,8 +156,10 @@ public class CharacterController2D : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		_audioSource.PlayOneShot(_collideAudio);
-		
+		if (!other.gameObject.CompareTag("Water"))
+		{
+			_audioSource.PlayOneShot(_collideAudio);
+		}
 	}
 
 	private IEnumerator Respawn()

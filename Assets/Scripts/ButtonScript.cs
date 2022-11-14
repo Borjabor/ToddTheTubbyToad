@@ -89,6 +89,7 @@ public class ButtonScript : MonoBehaviour
                 BladeAnimation.SetBool("Fan_State", true);
                 if (!_fanParticles.isPlaying) _fanParticles.Play();
                 fan.enabled = true;
+                if (FanAnimation.isInitialized) _fanParticles.Play();
                 break;
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();

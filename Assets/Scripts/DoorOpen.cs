@@ -10,6 +10,7 @@ public class DoorOpen : MonoBehaviour
     private Vector2 _startPos;
     [SerializeField] private float _openSpeed = 4f;
     private bool _isOpening = false;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -33,10 +34,12 @@ public class DoorOpen : MonoBehaviour
         if (_isOpening)
         {
             transform.position = Vector2.MoveTowards(transform.position, _targetPos.transform.position, _openSpeed * Time.deltaTime);
+            if(!_audioSource.isPlaying && transform.position.y != _targetPos.transform.position.y) _audioSource.Play();
         }
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, _startPos, _openSpeed * Time.deltaTime);
+            if(!_audioSource.isPlaying && transform.position.y != _startPos.y) _audioSource.Play();
         }
         
         //StartCoroutine(FadeCoroutine());

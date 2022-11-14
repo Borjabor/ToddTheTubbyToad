@@ -10,21 +10,29 @@ public class Lever : MonoBehaviour
     //[SerializeField] private DoorOpen _doorOpen;
 
     [SerializeField] private GameObject _affectedObject;
-    public AffectedObject _AffectedObject;
-
-    [Header("Lever:")]
-    public Animator lever;
-    [SerializeField] ParticleSystem _eletricity;
-    private bool _hasPlayed = false;
-
-    [Header("Gameplay Objects:")]
+    public AffectedObject _AffectedObject;
+
+
+
+    [Header("Lever:")]
+
+    public Animator lever;
+    private AudioSource _audioSource;
+    [SerializeField] ParticleSystem _eletricity;
+
+    private bool _hasPlayed = false;
+
+
+
+    [Header("Gameplay Objects:")]
+
     public Animator animator;
     public Animator FanAnimation;
     public Animator BladeAnimation;
 
     [SerializeField] ParticleSystem _fanParticles;
 
-    [SerializeField] private AudioSource _audioSource;
+    
     
     
 
@@ -46,19 +54,24 @@ public class Lever : MonoBehaviour
     {
         if (_hj.jointAngle <= -85)
         {
-            AffectedObjectOn();
-            lever.SetBool("Lever_State", true);
-            if (!_hasPlayed)
-            {
-                _eletricity.Play();
-                _hasPlayed = true;
-            }
+            AffectedObjectOn();
+            lever.SetBool("Lever_State", true);
+            if (!_hasPlayed)
+            {
+                _eletricity.Play();
+                _audioSource.Play();
+                _hasPlayed = true;
+            }
         }
-        else
-        {
-            AffectedObjectOff();
-            lever.SetBool("Lever_State", false);
-            _hasPlayed = false;
+        else if (_hj.jointAngle >= -55)
+        {
+            AffectedObjectOff();
+            lever.SetBool("Lever_State", false);
+            if (_hasPlayed)
+            {
+                _audioSource.Play();
+                _hasPlayed = false;
+            }
         }
     }
     
@@ -70,11 +83,16 @@ public class Lever : MonoBehaviour
                 var doorOpen = _affectedObject.GetComponent<DoorOpen>();
                 doorOpen.OpenDoor();
                 break;
-            case AffectedObject.Fan:
-                var fan = _affectedObject.GetComponent<AreaEffector2D>();
-                FanAnimation.SetBool("Fan_State", true);
-                BladeAnimation.SetBool("Fan_State", true);
-                if (!_fanParticles.isPlaying) _fanParticles.Play();
+            case AffectedObject.Fan:
+
+                var fan = _affectedObject.GetComponent<AreaEffector2D>();
+
+                FanAnimation.SetBool("Fan_State", true);
+
+                BladeAnimation.SetBool("Fan_State", true);
+
+                if (!_fanParticles.isPlaying) _fanParticles.Play();
+
                 fan.enabled = true;
                 break;
             case AffectedObject.ConveyorBelt:
@@ -107,11 +125,17 @@ public class Lever : MonoBehaviour
                 break;
         }
     }
-    public void Particles()
-    {
-        if (!_eletricity.isPlaying) 
-        {
-            _eletricity.Play();
-        }
+    public void Particles()
+
+    {
+
+        if (!_eletricity.isPlaying) 
+
+        {
+
+            _eletricity.Play();
+
+        }
+
     }
 }

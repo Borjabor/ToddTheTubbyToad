@@ -16,6 +16,7 @@ public class DoorOpen : MonoBehaviour
     {
         //GoalReachable.enabled = false;
         _startPos = transform.position;
+        _audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {

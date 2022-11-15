@@ -4964,7 +4964,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.9297979, y: -0.016222203}
-  m_ConnectedAnchor: {x: -0.010606766, y: -0.11751467}
+  m_ConnectedAnchor: {x: -0.010608673, y: -0.117515564}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5003,20 +5003,20 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4384917cbce654e47900f407d01962a2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ee9abe8d9c54c574c923f43fff6f1cc0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.524
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  DopplerLevel: 0
+  MinDistance: 2.21
+  MaxDistance: 5.17
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -5049,7 +5049,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

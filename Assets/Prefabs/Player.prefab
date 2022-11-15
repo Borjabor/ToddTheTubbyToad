@@ -5706,6 +5706,7 @@ GameObject:
   - component: {fileID: 1558921303}
   - component: {fileID: 8453835682904377283}
   - component: {fileID: 1558921310}
+  - component: {fileID: 8906364018968300671}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -6001,6 +6002,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grabbing: {fileID: 0}
+--- !u!81 &8906364018968300671
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022943424578809547}
+  m_Enabled: 1
 --- !u!1 &5022943424694270145
 GameObject:
   m_ObjectHideFlags: 0

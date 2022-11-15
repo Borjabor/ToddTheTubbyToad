@@ -49,6 +49,8 @@ public class GrapplingGun : MonoBehaviour
     private AudioClip _tongueConnect;
     [SerializeField] 
     private AudioClip _tongueDisconnect;
+    [SerializeField]
+    private AudioClip _tongueThrow;
     [SerializeField] 
     private AudioSource _playerAudio;
     
@@ -71,6 +73,9 @@ public class GrapplingGun : MonoBehaviour
     public Rigidbody2D ballRigidbody;
     [SerializeField]
     private float _tongueLengthChanger = 0.8f;
+
+    private bool _hasPlayed = false;
+
 
 
     private void Start()
@@ -104,6 +109,11 @@ public class GrapplingGun : MonoBehaviour
                 if (grappleRope.enabled)
                 {
                     RotateGun(grapplePoint, false);
+                    if (!_hasPlayed)
+                    {
+                        _playerAudio.PlayOneShot(_tongueThrow);
+                        _hasPlayed = true;
+                    }
                 }
                 else
                 {
@@ -136,7 +146,12 @@ public class GrapplingGun : MonoBehaviour
                 grappleRope.enabled = false;
                 m_springJoint2D.enabled = false;
                 ballRigidbody.gravityScale = 1;
-                
+
+                if (_hasPlayed)
+                {
+                    _hasPlayed = false;
+                }
+
             }
             else
             {

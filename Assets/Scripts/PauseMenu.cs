@@ -24,10 +24,6 @@ public class PauseMenu : MonoBehaviour
            _isPaused = !_isPaused;
            PauseGame();
         }
-
-        if(!_isPaused) {
-            Cursor.visible = false;
-        }
     }
 
     void PauseGame() {
@@ -35,7 +31,6 @@ public class PauseMenu : MonoBehaviour
         {
             Time.timeScale = 0f;
             _pauseMenu.SetActive(true);
-            Cursor.visible = true;
         }
         else 
         {
@@ -46,7 +41,6 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame() {
        Time.timeScale = 1;
-       Cursor.visible = false;
        _pauseMenu.SetActive(false);
     }
 
@@ -60,7 +54,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart() {
         Time.timeScale = 1;
-        Cursor.visible = false;
         _pauseMenu.SetActive(false);
         _levelLoader.ReloadCurrentLevel();
     }

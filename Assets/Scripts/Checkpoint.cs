@@ -15,11 +15,11 @@ public class Checkpoint : MonoBehaviour
         //_checkpointCollider.isTrigger = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Object"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
+    // private void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Object"))
+    //     {
+    //         Destroy(other.gameObject);
+    //     }
+    // }
 }

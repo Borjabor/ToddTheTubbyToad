@@ -5708,6 +5708,7 @@ GameObject:
   - component: {fileID: 1558921310}
   - component: {fileID: 8906364018968300671}
   - component: {fileID: 7813752183544200102}
+  - component: {fileID: 625112414}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -6002,6 +6003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b8cb810bb32647a750d5f4bc00db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 625112414}
   _grabbing: {fileID: 8300000, guid: a18da65141703b34a8e6c59d37008250, type: 3}
 --- !u!81 &8906364018968300671
 AudioListener:
@@ -6107,6 +6109,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &625112414
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022943424578809547}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.011023521, y: -0.016576305}
+  serializedVersion: 2
+  m_Radius: 0.77385306
 --- !u!1 &5022943424694270145
 GameObject:
   m_ObjectHideFlags: 0

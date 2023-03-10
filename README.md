@@ -8,4 +8,9 @@ I made simple tweaks to the grappling hook mechanics, like allowing the player t
 More specifically this video: https://www.youtube.com/watch?v=dnNCVcVS6uw
 Also, direct links to their page containing the code: https://bitbucket.org/Vespper/grappling-hook/src/master/
 
+Roles:
+
+André Borja (@Borjabor - me) - Programmer & 2D Artist
+Eduardo Cavalcante (@EduTKN) - Level designer
+Marie Kyle Reine (@MKR-E) - 2D Artist & Sound Designer
 

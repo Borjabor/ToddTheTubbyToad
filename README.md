@@ -11,6 +11,8 @@ Also, direct links to their page containing the code: https://bitbucket.org/Vesp
 Roles:
 
 André Borja (@Borjabor - me) - Programmer & 2D Artist
+
 Eduardo Cavalcante (@EduTKN) - Level designer
+
 Marie Kyle Reine (@MKR-E) - 2D Artist & Sound Designer
 

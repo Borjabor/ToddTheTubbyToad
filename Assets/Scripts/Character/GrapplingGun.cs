@@ -98,7 +98,7 @@ public class GrapplingGun : MonoBehaviour
         Mouse_FirePoint_DistanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
 
         SetCursor();
-        if (!CharacterController2D._isRespawning)
+        if (!CharacterController._isRespawning)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {

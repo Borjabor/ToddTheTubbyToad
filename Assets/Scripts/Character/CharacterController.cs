@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class CharacterController2D : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
 	private Rigidbody2D _rb;
-	
+
 	[SerializeField] 
-	private LiveCount _liveCount;
+	private GameState _gameState;
 
 	[Range(0, .3f)] [SerializeField]
 	private float _movementSmoothing = .05f;	// How much to smooth out the movement
@@ -82,14 +82,6 @@ public class CharacterController2D : MonoBehaviour
 	void Update()
 	{
 		GetInputs();
-		
-		// if(_horizontalMove != 0 && _rb.velocity.y == 0)
-		// {
-		// 	if (!_audioSource.isPlaying)
-		// 	{
-		// 		_audioSource.Play();
-		// 	}
-		// }
 	}
 
 	private void FixedUpdate()
@@ -99,25 +91,11 @@ public class CharacterController2D : MonoBehaviour
         {
 	        //_moveParticles.Play();
         }
-
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        /*Collider2D[] colliders = Physics2D.OverlapCircleAll(_groundCheck.position, _groundedRadius, _whatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-		{
-			if (colliders[i].gameObject != gameObject)
-			{
-				_grounded = true;
-				_coyoteTimeCounter = _coyoteTime;
-				if (!wasGrounded) OnLandEvent.Invoke();
-			}
-		}*/
 	}
 
 
 	private void Move(float move)
 	{
-		//Vector2 targetVelocity = new Vector2(move * 10f, _rb.velocity.y);
-		// _rb.AddForce(Vector2.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, _movementSmoothing));
 		_rb.AddForce(new Vector2(move * 10f, 0f));
 	}
 
@@ -139,13 +117,6 @@ public class CharacterController2D : MonoBehaviour
 		{
 			StartCoroutine(Respawn());
 		}
-		
-		// if (other.gameObject.CompareTag("Collectible"))
-		// {
-		// 	Destroy(other.gameObject);
-		// 	_audioSource.PlayOneShot(_buffPickupAudio);
-		// 	CollectiblesCounter.TotalPoints++;
-		// }
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)

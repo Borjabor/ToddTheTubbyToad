@@ -3,30 +3,40 @@
 public class GrappleRope : MonoBehaviour
 {
     [Header("General refrences:")]
-    [SerializeField] private GrapplingGun _grapplingGun;
-    [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] 
+    private GrapplingGun _grapplingGun;
+    [SerializeField] 
+    private LineRenderer _lineRenderer;
 
     [Header("General Settings:")]
-    [SerializeField] private int _precision = 20;
-    [Range(0, 100)][SerializeField] private float _straightenLineSpeed = 4;
+    [SerializeField] 
+    private int _precision = 20;
+    [Range(0, 100)][SerializeField] 
+    private float _straightenLineSpeed = 4;
 
     [Header("Animation:")]
-    public AnimationCurve ropeAnimationCurve;
-    [SerializeField] [Range(0.01f, 4)] private float WaveSize = 20;
-    float waveSize;
+    [SerializeField] 
+    private AnimationCurve ropeAnimationCurve;
+    [SerializeField] [Range(0.01f, 4)] 
+    private float _waveSize = 20;
+    float _currentWaveSize;
 
     [Header("Rope Speed:")]
-    public AnimationCurve ropeLaunchSpeedCurve;
-    [SerializeField] [Range(1, 50)] private float ropeLaunchSpeedMultiplayer = 4;
+    [SerializeField] 
+    private AnimationCurve _ropeLaunchSpeedCurve;
+    [SerializeField] [Range(1, 50)] 
+    private float _ropeLaunchSpeedMultiplayer = 4;
 
-    float moveTime = 0;
+    private float _moveTime = 0;
 
-    [SerializeField]public bool isGrappling = false;
+    [SerializeField] 
+    private bool _isGrappling = false;
     
-    bool drawLine = true;
-    bool straightLine = true;
+    private bool _drawLine = true;
+    private bool _straightLine = true;
 
-    public Animator animator;
+    [SerializeField] 
+    private Animator _animator;
     
 
     private void Awake()
@@ -34,25 +44,25 @@ public class GrappleRope : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.enabled = false;
         _lineRenderer.positionCount = _precision;
-        waveSize = WaveSize;
+        _currentWaveSize = _waveSize;
     }
 
     private void OnEnable()
     {
-        animator.SetTrigger("Hook");
-        moveTime = 0;
+        _animator.SetTrigger("Hook");
+        _moveTime = 0;
         _lineRenderer.enabled = true;
         _lineRenderer.positionCount = _precision;
-        waveSize = WaveSize;
-        straightLine = false;
+        _currentWaveSize = _waveSize;
+        _straightLine = false;
         LinePointToFirePoint();
     }
 
     private void OnDisable()
     {
-        animator.SetTrigger("HookOff");
+        _animator.SetTrigger("HookOff");
         _lineRenderer.enabled = false;
-        isGrappling = false;
+        _isGrappling = false;
     }
 
     void LinePointToFirePoint()
@@ -65,9 +75,9 @@ public class GrappleRope : MonoBehaviour
 
     void Update()
     {
-        moveTime += Time.deltaTime;
+        _moveTime += Time.deltaTime;
 
-        if (drawLine)
+        if (_drawLine)
         {
             DrawRope();
         }
@@ -75,7 +85,7 @@ public class GrappleRope : MonoBehaviour
 
     void DrawRope()
     {
-        if (!straightLine) 
+        if (!_straightLine) 
         {
             if (_lineRenderer.GetPosition(_precision - 1).x != _grapplingGun.GrapplePoint.x)
             {
@@ -83,24 +93,24 @@ public class GrappleRope : MonoBehaviour
             }
             else 
             {
-                straightLine = true;
+                _straightLine = true;
             }
         }
         else 
         {
-            if (!isGrappling) 
+            if (!_isGrappling) 
             {
                 _grapplingGun.Grapple();
-                isGrappling = true;
+                _isGrappling = true;
             }
-            if (waveSize > 0)
+            if (_currentWaveSize > 0)
             {
-                waveSize -= Time.deltaTime * _straightenLineSpeed;
+                _currentWaveSize -= Time.deltaTime * _straightenLineSpeed;
                 DrawRopeWaves();
             }
             else 
             {
-                waveSize = 0;
+                _currentWaveSize = 0;
                 DrawRopeNoWaves();
             }
         }
@@ -111,9 +121,9 @@ public class GrappleRope : MonoBehaviour
         for (int i = 0; i < _precision; i++)
         {
             float delta = (float)i / ((float)_precision - 1f);
-            Vector2 offset = Vector2.Perpendicular(_grapplingGun.DistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * waveSize;
+            Vector2 offset = Vector2.Perpendicular(_grapplingGun.DistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * _currentWaveSize;
             Vector2 targetPosition = Vector2.Lerp(_grapplingGun.transform.position, _grapplingGun.GrapplePoint, delta) + offset;
-            Vector2 currentPosition = Vector2.Lerp(_grapplingGun.transform.position, targetPosition, ropeLaunchSpeedCurve.Evaluate(moveTime) * ropeLaunchSpeedMultiplayer);
+            Vector2 currentPosition = Vector2.Lerp(_grapplingGun.transform.position, targetPosition, _ropeLaunchSpeedCurve.Evaluate(_moveTime) * _ropeLaunchSpeedMultiplayer);
 
             _lineRenderer.SetPosition(i, currentPosition);
         }

@@ -16,12 +16,6 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] 
     private Camera _camera;
 
-    [Header("Transform Refrences:")]
-    [SerializeField] 
-    private Transform _gunHolder;
-    [SerializeField] 
-    private Transform _gunPivot;
-
     [Header("Distance:")]
     [SerializeField] 
     private bool _hasMaxDistance = true;
@@ -29,20 +23,11 @@ public class GrapplingGun : MonoBehaviour
     private float _maxDistance = 4;
 
     [Header("Launching")]
-    [SerializeField] private bool _launchToPoint = true;
     [Range(0, 5)] [SerializeField] 
     private float _launchSpeed = 5;
     [Header("This is Proportion of Distance Between Frog and Anchorpoint")]
     [Range(0, 1)][SerializeField]
     private float _distanceRatio = 0.5f;
-
-    [Header("No Launch To Point")]
-    [SerializeField] 
-    private bool _autoCongifureDistance = false;
-    [SerializeField] 
-    private float _targetDistance = 3;
-    [SerializeField] 
-    private float _targetFrequency = 3;
     
     [Header("Mouse Cursor")] 
     [SerializeField]
@@ -91,7 +76,7 @@ public class GrapplingGun : MonoBehaviour
 
     private void Update()
     { 
-        _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - _gunPivot.position;
+        _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         SetCursor();
         if (CharacterController._isRespawning) return;
@@ -140,7 +125,7 @@ public class GrapplingGun : MonoBehaviour
             if ((_hit.transform.gameObject.layer == _grappableLayerNumber || _grappleToAll) && ((Vector2.Distance(_hit.point, transform.position) <= _maxDistance) || !_hasMaxDistance))
             {
                 GrapplePoint = _hit.point;
-                DistanceVector = GrapplePoint - (Vector2)_gunPivot.position;
+                DistanceVector = GrapplePoint - (Vector2)transform.position;
                 _grappleRope.enabled = true;
             }
         }
@@ -166,32 +151,11 @@ public class GrapplingGun : MonoBehaviour
 
     public void Grapple()
     {
-
-        if (!_launchToPoint && !_autoCongifureDistance)
-        {
-            _springJoint2D.distance = _targetDistance;
-            _springJoint2D.frequency = _targetFrequency;
-        }
-
-        if (!_launchToPoint)
-        {
-            if (_autoCongifureDistance)
-            {
-                _springJoint2D.autoConfigureDistance = true;
-                _springJoint2D.frequency = 0;
-            }
-            _springJoint2D.connectedAnchor = GrapplePoint;
-            _springJoint2D.enabled = true;
-        }
-
-        else
-        {
-            _springJoint2D.connectedAnchor = GrapplePoint;
-            _springJoint2D.distance = 0;
-            _springJoint2D.frequency = _launchSpeed;
-            _springJoint2D.enabled = true;
-            _playerAudio.PlayOneShot(_tongueConnect);
-        }
+        _springJoint2D.connectedAnchor = GrapplePoint;
+        _springJoint2D.distance = (GrapplePoint - (Vector2)transform.position).magnitude * _distanceRatio;
+        _springJoint2D.frequency = _launchSpeed;
+        _springJoint2D.enabled = true;
+        _playerAudio.PlayOneShot(_tongueConnect);
     }
 
     private void OnDrawGizmos()

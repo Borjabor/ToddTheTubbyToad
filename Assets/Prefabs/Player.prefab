@@ -5902,7 +5902,6 @@ MonoBehaviour:
   _moveSpeed: 50
   _knockbackX: 0
   _knockbackY: 0
-  _jumpForce: 0
   _deathParticles: {fileID: 4783419296119104602}
   _moveParticles: {fileID: 0}
   _jumpParticles: {fileID: 0}
@@ -6096,10 +6095,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90422f3859c7b2468c1eacce1aedc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grapplingGun: {fileID: 5022943426334401310}
-  m_lineRenderer: {fileID: 5022943424898015275}
-  percision: 120
-  straightenLineSpeed: 11.5
+  _grapplingGun: {fileID: 5022943426334401310}
+  _lineRenderer: {fileID: 5022943424898015275}
+  _precision: 20
+  _straightenLineSpeed: 4
   ropeAnimationCurve:
     serializedVersion: 2
     m_Curve:
@@ -6319,9 +6318,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5022943425722725224}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.047, y: 0.28, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1.4916245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5022943424898015268}
@@ -6354,9 +6353,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5022943426334401304}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002, y: -0.13, z: -0.01}
-  m_LocalScale: {x: 0.5664833, y: 0.20714885, z: 0.67041004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5022943425722725231}
@@ -6427,34 +6426,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df87d28dc270174d9df6d438f978cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grappleRope: {fileID: 5022943424898015274}
-  grappleToAll: 0
-  grappableLayerNumber: 3
-  m_camera: {fileID: 0}
-  gunHolder: {fileID: 5022943424578809545}
-  gunPivot: {fileID: 5022943424694270144}
-  firePoint: {fileID: 5022943425722725231}
-  rotateOverTime: 0
-  rotationSpeed: 12.9
-  hasMaxDistance: 1
-  maxDistance: 25
-  launchToPoint: 1
-  Launch_Type: 1
-  launchSpeed: 0.57
+  _grappleRope: {fileID: 5022943424898015274}
+  _grappleToAll: 0
+  _grappableLayerNumber: 3
+  _camera: {fileID: 0}
+  _gunHolder: {fileID: 5022943424578809545}
+  _gunPivot: {fileID: 5022943424694270144}
+  _hasMaxDistance: 1
+  _maxDistance: 25
+  _launchToPoint: 1
+  _launchSpeed: 0.6
   _distanceRatio: 0.5
-  autoCongifureDistance: 1
-  targetDistance: 3
-  targetFrequency: 1
+  _autoCongifureDistance: 1
+  _targetDistance: 3
+  _targetFrequency: 1
   _canAttach: {fileID: 2800000, guid: 2b03c7ff4ffdb6f4eb0d736e0cc38afd, type: 3}
   _cannotAttach: {fileID: 2800000, guid: 1b79706d6ad296049b47d0e4852454a7, type: 3}
   _tongueConnect: {fileID: 8300000, guid: ba42e07f52e0bba48a7612d6ace22450, type: 3}
   _tongueDisconnect: {fileID: 0}
   _tongueThrow: {fileID: 8300000, guid: b11a35135a2c52345bf2e0b79a41f040, type: 3}
   _playerAudio: {fileID: 161812886496927472}
-  m_springJoint2D: {fileID: 5022943424578809544}
-  grapplePoint: {x: 0, y: 0}
-  DistanceVector: {x: 0, y: 0}
-  ballRigidbody: {fileID: 5022943424578809551}
+  _springJoint2D: {fileID: 5022943424578809544}
+  _rb: {fileID: 5022943424578809551}
   _tongueLengthChanger: 5
 --- !u!82 &161812886496927472
 AudioSource:

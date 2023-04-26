@@ -50,10 +50,6 @@ public class CharacterController : MonoBehaviour
 	[SerializeField]
     private float _knockbackY = 5f;
 
-    [Header("Jump")]
-	[SerializeField]
-	private float _jumpForce = 30f;
-
     [Header("Particles")]
 	[SerializeField]
 	private ParticleSystem _deathParticles;

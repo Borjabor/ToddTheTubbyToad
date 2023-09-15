@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Articy.Unity;
-using Articy.Stygian_Crossing.GlobalVariables;
+//using Articy.Stygian_Crossing.GlobalVariables;
 using UnityEditor;
 using UnityEngine;
 

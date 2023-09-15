@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Articy.Unity;
 using Articy.Unity.Interfaces;
-using Articy.Stygian_Crossing;
+//using Articy.Stygian_Crossing;
 
 //using Articy.UnityImporterTutorial; //has to be renamed to project used from Articy
 
@@ -98,7 +98,7 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
         //_dialogueText.text = string.Empty;
         _speakerName.text = string.Empty;
         
-
+        /*
         var objectWithSpeaker = aObject as IObjectWithSpeaker;
         var speakerEntity = objectWithSpeaker.Speaker as Entity;
         if (objectWithSpeaker != null)
@@ -146,6 +146,7 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
         // }
 
         StartCoroutine(ScrollDown());
+        */
     }
 
     private IEnumerator ScrollDown()

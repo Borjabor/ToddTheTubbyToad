@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class GrapplingGun : MonoBehaviour
+public class HookShot : MonoBehaviour
 {
     [Header("Scripts:")]
     [SerializeField] 
-    private GrappleRope _grappleRope;
+    private Tongue _tongue;
     [Header("Layer Settings:")]
     [SerializeField] 
     private bool _grappleToAll = false;
@@ -45,13 +46,12 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] 
     private AudioSource _playerAudio;
     
+    [FormerlySerializedAs("_springJoint2D")]
     [Header("Component Refrences:")]
-    [SerializeField] 
-    private SpringJoint2D _springJoint2D;
+    private SpringJoint2D _springJoint;
     public Vector2 GrapplePoint { get; private set; }
     public Vector2 DistanceVector{ get; private set; }
     private Vector2 _mouseFirePointDistanceVector;
-    [SerializeField] 
     private Rigidbody2D _rb;
     [SerializeField]
     private float _tongueLengthChanger = 0.8f;
@@ -59,19 +59,20 @@ public class GrapplingGun : MonoBehaviour
     private bool _hasPlayed = false;
 
 
-    private void Start()
+    private void Awake()
     {
-        _grappleRope.enabled = false;
-        _springJoint2D.enabled = false;
+        _rb = GetComponent<Rigidbody2D>();
+        _springJoint = GetComponent<SpringJoint2D>();
+        _tongue.enabled = false;
+        _springJoint.enabled = false;
         _rb.gravityScale = 1;
     }
 
     private void OnDisable()
     {
-        _grappleRope.enabled = false;
-        _springJoint2D.enabled = false;
+        _tongue.enabled = false;
+        _springJoint.enabled = false;
         _rb.gravityScale = 1;
-        
     }
 
     private void Update()
@@ -86,7 +87,7 @@ public class GrapplingGun : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (_grappleRope.enabled)
+            if (_tongue.enabled)
             {
                 if (!_hasPlayed)
                 {
@@ -97,17 +98,17 @@ public class GrapplingGun : MonoBehaviour
 
             if (Input.GetKey(KeyCode.W))
             {
-                _springJoint2D.distance -= (float)(_tongueLengthChanger * Time.deltaTime);
+                _springJoint.distance -= (float)(_tongueLengthChanger * Time.deltaTime);
             }else if (Input.GetKey(KeyCode.S))
             {
-                _springJoint2D.distance += (float)(_tongueLengthChanger * Time.deltaTime);
+                _springJoint.distance += (float)(_tongueLengthChanger * Time.deltaTime);
             }
 
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            _grappleRope.enabled = false;
-            _springJoint2D.enabled = false;
+            _tongue.enabled = false;
+            _springJoint.enabled = false;
             _rb.gravityScale = 1;
 
             if (_hasPlayed)
@@ -126,7 +127,7 @@ public class GrapplingGun : MonoBehaviour
             {
                 GrapplePoint = _hit.point;
                 DistanceVector = GrapplePoint - (Vector2)transform.position;
-                _grappleRope.enabled = true;
+                _tongue.enabled = true;
             }
         }
     }
@@ -151,10 +152,10 @@ public class GrapplingGun : MonoBehaviour
 
     public void Grapple()
     {
-        _springJoint2D.connectedAnchor = GrapplePoint;
-        _springJoint2D.distance = (GrapplePoint - (Vector2)transform.position).magnitude * _distanceRatio;
-        _springJoint2D.frequency = _launchSpeed;
-        _springJoint2D.enabled = true;
+        _springJoint.connectedAnchor = GrapplePoint;
+        _springJoint.distance = (GrapplePoint - (Vector2)transform.position).magnitude * _distanceRatio;
+        _springJoint.frequency = _launchSpeed;
+        _springJoint.enabled = true;
         _playerAudio.PlayOneShot(_tongueConnect);
     }
 

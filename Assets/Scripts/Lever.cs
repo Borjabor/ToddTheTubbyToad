@@ -13,7 +13,6 @@ public class Lever : MonoBehaviour
     public AffectedObject _AffectedObject;
 
 
-
     [Header("Lever:")]
 
     public Animator lever;
@@ -23,7 +22,6 @@ public class Lever : MonoBehaviour
     private bool _hasPlayed = false;
 
 
-
     [Header("Gameplay Objects:")]
 
     public Animator animator;
@@ -31,10 +29,6 @@ public class Lever : MonoBehaviour
     public Animator BladeAnimation;
 
     [SerializeField] ParticleSystem _fanParticles;
-
-    
-    
-    
 
 
     public enum AffectedObject
@@ -83,18 +77,15 @@ public class Lever : MonoBehaviour
                 var doorOpen = _affectedObject.GetComponent<DoorOpen>();
                 doorOpen.OpenDoor();
                 break;
+            
             case AffectedObject.Fan:
-
                 var fan = _affectedObject.GetComponent<AreaEffector2D>();
-
                 FanAnimation.SetBool("Fan_State", true);
-
                 BladeAnimation.SetBool("Fan_State", true);
-
                 if (!_fanParticles.isPlaying) _fanParticles.Play();
-
                 fan.enabled = true;
                 break;
+            
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();
                 animator.SetBool("PressButton", true);
@@ -111,6 +102,7 @@ public class Lever : MonoBehaviour
                 var doorOpen = _affectedObject.GetComponent<DoorOpen>();
                 doorOpen.CloseDoor();
                 break;
+            
             case AffectedObject.Fan:
                 var fan = _affectedObject.GetComponent<AreaEffector2D>();
                 FanAnimation.SetBool("Fan_State", false);
@@ -118,6 +110,7 @@ public class Lever : MonoBehaviour
                 _fanParticles.Stop();
                 fan.enabled = false;
                 break;
+            
             case AffectedObject.ConveyorBelt:
                 var belt = _affectedObject.GetComponent<SurfaceEffector2D>();
                 animator.SetBool("PressButton", false);
@@ -125,16 +118,12 @@ public class Lever : MonoBehaviour
                 break;
         }
     }
+    
     public void Particles()
-
     {
-
-        if (!_eletricity.isPlaying) 
-
+        if (!_eletricity.isPlaying)
         {
-
             _eletricity.Play();
-
         }
 
     }

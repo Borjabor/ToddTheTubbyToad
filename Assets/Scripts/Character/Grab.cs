@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Grab : MonoBehaviour
 {
-    [HideInInspector]
-    public static bool _isHolding = false;
+    // Possibility - add the toggleable hold as an option to the player
+    
+    private bool _isHolding;
 
     [SerializeField] private CircleCollider2D _collider;
     
@@ -37,7 +38,7 @@ public class Grab : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    /*private void OnCollisionEnter2D(Collision2D other)
     {
         if (_isHolding && other.gameObject.CompareTag("Object"))
         {
@@ -54,12 +55,10 @@ public class Grab : MonoBehaviour
                 FixedJoint2D fj = transform.gameObject.AddComponent(typeof(FixedJoint2D)) as FixedJoint2D;
             }
         }
-    }
+    }*/
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
-        
         if (other.gameObject.CompareTag("Object"))
         {
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
@@ -75,6 +74,5 @@ public class Grab : MonoBehaviour
                 FixedJoint2D fj = transform.gameObject.AddComponent(typeof(FixedJoint2D)) as FixedJoint2D;
             }
         }
-        
     }
 }

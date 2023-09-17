@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EffectorSounds : MonoBehaviour
 {
-    [SerializeField] private Effector2D _effector;
+    private Effector2D _effector;
     private AudioSource _audioSource;
 
     private void Awake()

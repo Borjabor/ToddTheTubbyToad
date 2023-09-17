@@ -1,0 +1,20 @@
+Anita meeting
+
+- Save system -- share project done in class; singletons
+- JSON tips in general
+- Checkpoints
+- Pause system (thinking of scriptable objects, and events to create Game States, and have player/environment/AI logic driven by them) -- coroutine; FSM to affect everything that needs it (physics doesn't stop, apparently; check how to work; possible save state to keep the forces) - https://discussions.unity.com/t/stop-physics-without-using-time-timescale-0/29713
+- Changing levels: how to keep player info, like collectibles, upgrades, etc? Might not be needed for TTTT, but god to ask in general. DontDestroyOnLoad, and match coordinates on new scene? Save info in external file like json to lead between scenes? -- Copy game object; save info externally (some type of game manager to copy info over; look into game manager conecept)
+- Tips on an overworld working, for level selection -- GameManager too; holds info; states, etc
+- Game is pretty simple. Any advanced programming concepts I could use, to showcase some skill? We don't really think of having AI, but mayb we could include an enemy or two. Still, they would be simple, like a roaming enemy that shoots on sight -- Possibly and event manager system; maybe add to uniy's input system or a parallel event manager to showcase ability
+- Multiplayer online, for a possible future VS mode -- photon; launch multiple instances to debug networking; unity net code, for peer to peer?
+- Using gamepad stick to aim and shoot tongue, and maybe haptic feedback
+- Gamepad, new input system and menus/ui (some problem with timescale 0?)
+- Scale mechanic: detect objects weighing down, even if not touching directly -- overlapping collideable objects, and go from one to another; Perhaps queue/stack, starting with the scale; algorithm to check the collideable objects in order; Maybe the "magic" way, just with objects within a zone might be better at first
+
+- Player controller: is it bad to do most or all of the logic inside the single "player" script?
+
+- Suggestions?
+- Cutscenes?
+
+-- code portofolio -  post focusing on feature > combo code and video behaviour - maybe make it a story (feature going from initial to how it is now, for instance) - personal blog/website showcasing stuff

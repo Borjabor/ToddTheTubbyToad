@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1236863407218899966}
   - component: {fileID: 3558204056363207213}
   - component: {fileID: 8301340637755630536}
-  - component: {fileID: -7762502579793075207}
+  - component: {fileID: 8420274688549082723}
   m_Layer: 3
   m_Name: Conveyor Belt Left
   m_TagString: Untagged
@@ -29,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2596400299066475438}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 199.44, y: 7.06, z: -0.43920034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2596400299066475442
 SpriteRenderer:
@@ -117,6 +117,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
@@ -135,7 +154,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!95 &3558204056363207213
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -152,7 +171,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &8301340637755630536
 AudioSource:
   m_ObjectHideFlags: 0
@@ -249,7 +269,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-7762502579793075207
+--- !u!114 &8420274688549082723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,4 +281,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6a8e78030895c49a8663c24250d297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effector: {fileID: 2596400299066475436}
+  _effector: {fileID: 0}

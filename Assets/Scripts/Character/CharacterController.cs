@@ -15,7 +15,8 @@ public class CharacterController : MonoBehaviour
 	[Range(0, .3f)] [SerializeField]
 	private float _movementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField]
-	private bool _airControl = false;							// Whether or not a player can steer while jumping;
+	private bool _airControl;							// Whether or not a player can steer while jumping;
+	/*
 	[SerializeField]
 	private LayerMask _whatIsGround;							// A mask determining what is ground to the character
 	[SerializeField]
@@ -23,12 +24,9 @@ public class CharacterController : MonoBehaviour
 
 	const float _groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool _grounded;            // Whether or not the player is grounded.
+	*/
     private Vector2 _checkpoint;
-    public static bool _isRespawning = false;
-    [SerializeField]
-    private float _iFramesDuration;
-    [SerializeField]
-    private int _numberOfFlashes;
+    public static bool _isRespawning;
 
 	[Header("Audio")]
 	private AudioSource _audioSource;
@@ -44,12 +42,6 @@ public class CharacterController : MonoBehaviour
     private float _moveSpeed = 60f;
 	private float _horizontalMove = 0f;
 
-	[Header("Knockback")]
-    [SerializeField]
-    private float _knockbackX = 25f;
-	[SerializeField]
-    private float _knockbackY = 5f;
-
     [Header("Particles")]
 	[SerializeField]
 	private ParticleSystem _deathParticles;
@@ -57,9 +49,7 @@ public class CharacterController : MonoBehaviour
 	private ParticleSystem _moveParticles;
 	[SerializeField]
 	private ParticleSystem _jumpParticles;
-
-	[SerializeField] 
-	private SpriteRenderer _bodyRenderer;
+	
 	[SerializeField]
 	private SpriteRenderer _characterSprite;
 	[SerializeField] 
@@ -78,6 +68,12 @@ public class CharacterController : MonoBehaviour
 	void Update()
 	{
 		GetInputs();
+		float time = Time.timeScale;
+		if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 1;
+		if (Input.GetKeyDown(KeyCode.UpArrow) && Time.timeScale <= 1) Time.timeScale += 0.1f;
+		if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
+		if(time != Time.timeScale) Debug.Log($"{time}");
+
 	}
 
 	private void FixedUpdate()
@@ -136,20 +132,6 @@ public class CharacterController : MonoBehaviour
 		_characterSprite.enabled = true;
 		_arms.SetActive(true);
 		_isRespawning = false;
-		StartCoroutine(Invulnerability());
-	}
-
-	private IEnumerator Invulnerability()
-	{
-		
-		for (int i = 0; i < _numberOfFlashes; i++)
-		{
-			_bodyRenderer.color = new Color(0.8f, 0.2f, 0.2f, 0.5f);
-			yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
-			_bodyRenderer.color = Color.white;
-			yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
-		}
-		Physics2D.IgnoreLayerCollision(0, 6, false);
 	}
 
 }

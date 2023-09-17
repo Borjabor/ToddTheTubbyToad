@@ -61,6 +61,7 @@ public class HookShot : MonoBehaviour
 
     private void Awake()
     {
+        _camera = Camera.main;
         _rb = GetComponent<Rigidbody2D>();
         _springJoint = GetComponent<SpringJoint2D>();
         _tongue.enabled = false;

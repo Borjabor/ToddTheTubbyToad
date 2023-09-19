@@ -72,6 +72,7 @@ public class CharacterController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 1;
 		if (Input.GetKeyDown(KeyCode.UpArrow) && Time.timeScale <= 1) Time.timeScale += 0.1f;
 		if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
+		if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
 		if(time != Time.timeScale) Debug.Log($"{time}");
 
 	}

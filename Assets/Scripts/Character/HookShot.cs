@@ -14,7 +14,7 @@ public class HookShot : MonoBehaviour
     private int _grappableLayerNumber = 3;
 
     [Header("Main Camera")]
-    [SerializeField] 
+    //[SerializeField] 
     private Camera _camera;
 
     [Header("Distance:")]
@@ -26,7 +26,7 @@ public class HookShot : MonoBehaviour
     [Header("Launching")]
     [Range(0, 5)] [SerializeField] 
     private float _launchSpeed = 5;
-    [Header("This is Proportion of Distance Between Frog and Anchorpoint")]
+    [Header("This is Ration of Distance Between Frog and Anchorpoint")]
     [Range(0, 1)][SerializeField]
     private float _distanceRatio = 0.5f;
     
@@ -66,14 +66,12 @@ public class HookShot : MonoBehaviour
         _springJoint = GetComponent<SpringJoint2D>();
         _tongue.enabled = false;
         _springJoint.enabled = false;
-        _rb.gravityScale = 1;
     }
 
     private void OnDisable()
     {
         _tongue.enabled = false;
         _springJoint.enabled = false;
-        _rb.gravityScale = 1;
     }
 
     private void Update()
@@ -110,7 +108,6 @@ public class HookShot : MonoBehaviour
         {
             _tongue.enabled = false;
             _springJoint.enabled = false;
-            _rb.gravityScale = 1;
 
             if (_hasPlayed)
             {

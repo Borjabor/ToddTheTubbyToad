@@ -5733,7 +5733,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.4416, y: 1.4016, z: -1.4570312}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000006, y: 1.0000006, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6870909053363577948}
@@ -5817,7 +5817,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!231 &5022943424578809544
 SpringJoint2D:
@@ -5835,7 +5835,7 @@ SpringJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 8.426671, y: 4.1808753}
+  m_ConnectedAnchor: {x: 0.794055, y: 2.1083488}
   m_AutoConfigureDistance: 0
   m_Distance: 6.8860545
   m_DampingRatio: 1
@@ -6083,14 +6083,14 @@ MonoBehaviour:
   _hasMaxDistance: 1
   _maxDistance: 25
   _launchSpeed: 0.6
-  _distanceRatio: 0.2
+  _distanceRatio: 0.05
   _canAttach: {fileID: 2800000, guid: 2b03c7ff4ffdb6f4eb0d736e0cc38afd, type: 3}
   _cannotAttach: {fileID: 2800000, guid: 1b79706d6ad296049b47d0e4852454a7, type: 3}
   _tongueConnect: {fileID: 8300000, guid: ba42e07f52e0bba48a7612d6ace22450, type: 3}
   _tongueDisconnect: {fileID: 0}
   _tongueThrow: {fileID: 8300000, guid: b11a35135a2c52345bf2e0b79a41f040, type: 3}
   _playerAudio: {fileID: 7813752183544200102}
-  _tongueLengthChanger: 0.8
+  _tongueLengthChanger: 5
 --- !u!1 &5022943424898015269
 GameObject:
   m_ObjectHideFlags: 0

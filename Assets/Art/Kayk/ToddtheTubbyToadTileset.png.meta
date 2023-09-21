@@ -3,7 +3,7 @@ guid: 42dbda2eddfc4b04792146c8864fb98d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -74,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -86,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -98,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -110,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -207,8 +214,8 @@ TextureImporter:
         y: 196
         width: 28
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,8 +235,8 @@ TextureImporter:
         y: 202
         width: 22
         height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -396,8 +403,8 @@ TextureImporter:
         y: 181
         width: 32
         height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -438,8 +445,8 @@ TextureImporter:
         y: 184
         width: 50
         height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -564,8 +571,8 @@ TextureImporter:
         y: 166
         width: 32
         height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -585,8 +592,8 @@ TextureImporter:
         y: 174
         width: 50
         height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -607,7 +614,7 @@ TextureImporter:
         width: 32
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -630,33 +637,32 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ToddtheTubbyToadTileset_8: -1956696384
-      ToddtheTubbyToadTileset_4: 960961375
-      ToddtheTubbyToadTileset_19: 213121884
-      ToddtheTubbyToadTileset_23: -74247419
-      ToddtheTubbyToadTileset_2: 1772126644
-      ToddtheTubbyToadTileset_18: -928443031
-      ToddtheTubbyToadTileset_1: 2114703547
-      ToddtheTubbyToadTileset_13: -1390089898
       ToddtheTubbyToadTileset_0: 1685176108
-      ToddtheTubbyToadTileset_17: -453342629
-      ToddtheTubbyToadTileset_11: -331988693
-      ToddtheTubbyToadTileset_7: -1171415603
-      ToddtheTubbyToadTileset_9: 1429439213
-      ToddtheTubbyToadTileset_14: -331872760
-      ToddtheTubbyToadTileset_20: -1620747091
-      ToddtheTubbyToadTileset_3: 1603117056
-      ToddtheTubbyToadTileset_6: 1604014720
-      ToddtheTubbyToadTileset_16: 1379227976
-      ToddtheTubbyToadTileset_21: -1765887656
+      ToddtheTubbyToadTileset_1: 2114703547
       ToddtheTubbyToadTileset_10: 273760387
-      ToddtheTubbyToadTileset_5: 1943343537
-      ToddtheTubbyToadTileset_15: -172680575
+      ToddtheTubbyToadTileset_11: -331988693
       ToddtheTubbyToadTileset_12: -467643654
+      ToddtheTubbyToadTileset_13: -1390089898
+      ToddtheTubbyToadTileset_14: -331872760
+      ToddtheTubbyToadTileset_15: -172680575
+      ToddtheTubbyToadTileset_16: 1379227976
+      ToddtheTubbyToadTileset_17: -453342629
+      ToddtheTubbyToadTileset_18: -928443031
+      ToddtheTubbyToadTileset_19: 213121884
+      ToddtheTubbyToadTileset_2: 1772126644
+      ToddtheTubbyToadTileset_20: -1620747091
+      ToddtheTubbyToadTileset_21: -1765887656
       ToddtheTubbyToadTileset_22: 2147324656
-  spritePackingTag: 
+      ToddtheTubbyToadTileset_23: -74247419
+      ToddtheTubbyToadTileset_3: 1603117056
+      ToddtheTubbyToadTileset_4: 960961375
+      ToddtheTubbyToadTileset_5: 1943343537
+      ToddtheTubbyToadTileset_6: 1604014720
+      ToddtheTubbyToadTileset_7: -1171415603
+      ToddtheTubbyToadTileset_8: -1956696384
+      ToddtheTubbyToadTileset_9: 1429439213
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

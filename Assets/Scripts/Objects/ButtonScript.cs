@@ -24,21 +24,27 @@ public class ButtonScript : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _affectedObjectI = _affectedObject.GetComponent<IOnOffObjects>();
     }
+    
+    private void Update()
+    {
+        if (moveBack)
+        {
+            if (transform.position.y < _oringialPos.y)
+            {
+                transform.Translate(0, 0.01f, 0);
+            }
+            else
+            {
+                moveBack = false;
+            }
+        }
+    }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player" || collision.transform.tag == "Object")
         {
-            //transform.Translate(0, -0.01f, 0);
-            transform.position = Vector2.MoveTowards(transform.position, _targetPos.transform.position, Time.deltaTime);
-            button.SetBool("Button_State", true);
-            moveBack = false;
-            if (!_hasPlayed && transform.position.y == _targetPos.transform.position.y)
-            {
-                _audioSource.Play();
-                _hasPlayed = true;
-            }
-            _affectedObjectI.TurnOn();
+            StartCoroutine(Push());
         }
     }
 
@@ -56,18 +62,22 @@ public class ButtonScript : MonoBehaviour
         _affectedObjectI.TurnOff();
     }
 
-    private void Update()
+    private IEnumerator Push()
     {
-        if (moveBack)
+        while (transform.position != _targetPos.transform.position)
         {
-            if (transform.position.y < _oringialPos.y)
+            transform.position = Vector2.MoveTowards(transform.position, _targetPos.transform.position, Time.deltaTime);
+            button.SetBool("Button_State", true);
+            moveBack = false;
+            if (!_hasPlayed && transform.position.y == _targetPos.transform.position.y)
             {
-                transform.Translate(0, 0.01f, 0);
+                _audioSource.Play();
+                _hasPlayed = true;
             }
-            else
-            {
-                moveBack = false;
-            }
+
+            if (Vector2.Distance(transform.position, _targetPos.transform.position) <= 0.1f) break;
+            yield return 0;
         }
+        _affectedObjectI.TurnOn();
     }
 }

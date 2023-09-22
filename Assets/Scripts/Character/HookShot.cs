@@ -14,7 +14,6 @@ public class HookShot : MonoBehaviour
     private int _grappableLayerNumber = 3;
 
     [Header("Main Camera")]
-    //[SerializeField] 
     private Camera _camera;
 
     [Header("Distance:")]

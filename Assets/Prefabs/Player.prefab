@@ -5980,7 +5980,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e3adf8814c71899458e0cadc6ca495e1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.364
+  m_Volume: 0.075
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6079,13 +6079,12 @@ MonoBehaviour:
   _tongue: {fileID: 5022943424898015274}
   _grappleToAll: 0
   _grappableLayerNumber: 3
-  _camera: {fileID: 0}
   _hasMaxDistance: 1
   _maxDistance: 25
   _launchSpeed: 0.6
   _distanceRatio: 0.05
-  _canAttach: {fileID: 2800000, guid: 2b03c7ff4ffdb6f4eb0d736e0cc38afd, type: 3}
-  _cannotAttach: {fileID: 2800000, guid: 1b79706d6ad296049b47d0e4852454a7, type: 3}
+  _canAttach: {fileID: 0}
+  _cannotAttach: {fileID: 0}
   _tongueConnect: {fileID: 8300000, guid: ba42e07f52e0bba48a7612d6ace22450, type: 3}
   _tongueDisconnect: {fileID: 0}
   _tongueThrow: {fileID: 8300000, guid: b11a35135a2c52345bf2e0b79a41f040, type: 3}
@@ -6442,7 +6441,6 @@ MonoBehaviour:
   _tongue: {fileID: 0}
   _grappleToAll: 0
   _grappableLayerNumber: 3
-  _camera: {fileID: 0}
   _hasMaxDistance: 1
   _maxDistance: 25
   _launchSpeed: 0.6

@@ -33,7 +33,6 @@ public class Tongue : MonoBehaviour
     [SerializeField] 
     private bool _isGrappling = false;
     
-    private bool _drawLine = true;
     private bool _straightLine = true;
 
     [SerializeField] 
@@ -78,10 +77,7 @@ public class Tongue : MonoBehaviour
     {
         _moveTime += Time.deltaTime;
 
-        if (_drawLine)
-        {
-            DrawRope();
-        }
+        DrawRope();
     }
 
     void DrawRope()

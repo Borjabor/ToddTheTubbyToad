@@ -19,6 +19,7 @@ public class Lever : MonoBehaviour
     [SerializeField] ParticleSystem _eletricity;
 
     private bool _hasPlayed = false;
+    private bool _turnedOn;
 
     private void Awake()
     {
@@ -29,18 +30,7 @@ public class Lever : MonoBehaviour
 
     private void Update()
     {
-        if (_hj.jointAngle <= -85)
-        {
-            _affectedObjectI.TurnOn();
-            lever.SetBool("Lever_State", true);
-            if (!_hasPlayed)
-            {
-                _eletricity.Play();
-                _audioSource.Play();
-                _hasPlayed = true;
-            }
-        }
-        else if (_hj.jointAngle >= -55)
+        if (_hj.jointAngle >= -55)
         {
             _affectedObjectI.TurnOff();
             lever.SetBool("Lever_State", false);
@@ -48,6 +38,21 @@ public class Lever : MonoBehaviour
             {
                 _audioSource.Play();
                 _hasPlayed = false;
+            }
+        }
+
+        if (_turnedOn) return;
+        
+        if (_hj.jointAngle <= -85)
+        {
+            _affectedObjectI.TurnOn();
+            _turnedOn = true;
+            lever.SetBool("Lever_State", true);
+            if (!_hasPlayed)
+            {
+                _eletricity.Play();
+                _audioSource.Play();
+                _hasPlayed = true;
             }
         }
     }

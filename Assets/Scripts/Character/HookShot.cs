@@ -14,7 +14,6 @@ public class HookShot : MonoBehaviour
     private int _grappableLayerNumber = 3;
 
     [Header("Main Camera")]
-    //[SerializeField] 
     private Camera _camera;
 
     [Header("Distance:")]
@@ -57,6 +56,9 @@ public class HookShot : MonoBehaviour
     private float _tongueLengthChanger = 0.8f;
 
     private bool _hasPlayed = false;
+    private GameObject _movingObject;
+    private float _xOffset;
+    private float _yOffset;
 
 
     private void Awake()
@@ -77,7 +79,7 @@ public class HookShot : MonoBehaviour
     private void Update()
     { 
         _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
+        
         SetCursor();
         if (CharacterController._isRespawning) return;
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -86,13 +88,18 @@ public class HookShot : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (_tongue.enabled)
+            if (!_tongue.enabled) return;
+            if (!_hasPlayed)
             {
-                if (!_hasPlayed)
-                {
-                    _playerAudio.PlayOneShot(_tongueThrow);
-                    _hasPlayed = true;
-                }
+                _playerAudio.PlayOneShot(_tongueThrow);
+                _hasPlayed = true;
+            }
+
+            if (_movingObject != null && _springJoint.enabled)
+            {
+                Debug.Log($"Attached to moving object");
+                _springJoint.connectedAnchor = new Vector2(_movingObject.transform.position.x - _xOffset,_movingObject.transform.position.y - _yOffset);
+                GrapplePoint = _springJoint.connectedAnchor;
             }
 
             if (Input.GetKey(KeyCode.W))
@@ -102,12 +109,12 @@ public class HookShot : MonoBehaviour
             {
                 _springJoint.distance += (float)(_tongueLengthChanger * Time.deltaTime);
             }
-
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             _tongue.enabled = false;
             _springJoint.enabled = false;
+            _movingObject = null;
 
             if (_hasPlayed)
             {
@@ -118,14 +125,22 @@ public class HookShot : MonoBehaviour
 
     void SetGrapplePoint()
     {
+        Debug.Log($"set");
         if (Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
-            if ((_hit.transform.gameObject.layer == _grappableLayerNumber || _grappleToAll) && ((Vector2.Distance(_hit.point, transform.position) <= _maxDistance) || !_hasMaxDistance))
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
+            if ((hit.transform.gameObject.layer == _grappableLayerNumber || _grappleToAll) && ((Vector2.Distance(hit.point, transform.position) <= _maxDistance) || !_hasMaxDistance))
             {
-                GrapplePoint = _hit.point;
+                GrapplePoint = hit.point;
                 DistanceVector = GrapplePoint - (Vector2)transform.position;
                 _tongue.enabled = true;
+            }
+
+            if (hit.transform.gameObject.CompareTag("MovingObject"))
+            {
+                _movingObject = hit.transform.gameObject;
+                _xOffset = _movingObject.transform.position.x - _springJoint.connectedAnchor.x;
+                _yOffset = _movingObject.transform.position.y - _springJoint.connectedAnchor.y;
             }
         }
     }
@@ -146,15 +161,23 @@ public class HookShot : MonoBehaviour
         }
     }
     
-    
-
     public void Grapple()
     {
         _springJoint.connectedAnchor = GrapplePoint;
         _springJoint.distance = (GrapplePoint - (Vector2)transform.position).magnitude * _distanceRatio;
         _springJoint.frequency = _launchSpeed;
+        if (_movingObject != null)
+        {
+            _xOffset = _movingObject.transform.position.x - _springJoint.connectedAnchor.x;
+            _yOffset = _movingObject.transform.position.y - _springJoint.connectedAnchor.y;
+        }
         _springJoint.enabled = true;
         _playerAudio.PlayOneShot(_tongueConnect);
+    }
+
+    public void MoveGrapple()
+    {
+        
     }
 
     private void OnDrawGizmos()

@@ -4,18 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class CharacterController : MonoBehaviour
 {
 	private Rigidbody2D _rb;
 
 	[SerializeField] 
-	private GameState _gameState;
-
-	[Range(0, .3f)] [SerializeField]
-	private float _movementSmoothing = .05f;	// How much to smooth out the movement
-	[SerializeField]
-	private bool _airControl;							// Whether or not a player can steer while jumping;
+	private GameState _gameState;						// Whether or not a player can steer while jumping;
 	/*
 	[SerializeField]
 	private LayerMask _whatIsGround;							// A mask determining what is ground to the character
@@ -34,13 +30,12 @@ public class CharacterController : MonoBehaviour
 	private AudioClip _collideAudio;
 	[SerializeField]
 	private AudioClip _deathAudio;
-	
-	private SpringJoint2D _springJoint;
-
+	[SerializeField] 
+	private AudioClip _grabbing;
 
     [SerializeField]
     private float _moveSpeed = 60f;
-	private float _horizontalMove = 0f;
+	private float _horizontalMove;
 
     [Header("Particles")]
 	[SerializeField]
@@ -54,6 +49,13 @@ public class CharacterController : MonoBehaviour
 	private SpriteRenderer _characterSprite;
 	[SerializeField] 
 	private GameObject _arms;
+	
+	private bool _isHolding;
+
+	[FormerlySerializedAs("_collider")]
+	[SerializeField]
+	private CircleCollider2D _triggerZone;
+	
 
 
 	private void Awake()
@@ -61,8 +63,7 @@ public class CharacterController : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D>();
         _checkpoint = transform.position;
 		_audioSource = GetComponent<AudioSource>();
-		_springJoint = GetComponent<SpringJoint2D>();
-
+		_triggerZone.enabled = false;
 	}
 
 	void Update()
@@ -74,6 +75,7 @@ public class CharacterController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
 		if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
 		if(time != Time.timeScale) Debug.Log($"{time}");
+		
 
 	}
 
@@ -95,6 +97,18 @@ public class CharacterController : MonoBehaviour
 	private void GetInputs()
 	{		
         _horizontalMove = Input.GetAxis("Horizontal") * _moveSpeed;
+        if (Input.GetKey(KeyCode.Space))
+        {
+	        _isHolding = true;
+	        _triggerZone.enabled = true;
+        }
+        else
+        {
+	        _isHolding = false;
+	        _triggerZone.enabled = false;
+	        Tentacle.GrabbedObject = null;
+	        Destroy(GetComponent<FixedJoint2D>());
+        }
     }
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -110,12 +124,28 @@ public class CharacterController : MonoBehaviour
 		{
 			StartCoroutine(Respawn());
 		}
+		
+		if(GetComponent<FixedJoint2D>() != null) return;
+		if (other.gameObject.CompareTag("Object"))
+		{
+			Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
+			Tentacle.GrabbedObject = other.gameObject;
+			if (rb != null)
+			{
+				FixedJoint2D fj = transform.gameObject.AddComponent(typeof(FixedJoint2D)) as FixedJoint2D;
+				fj.connectedBody = rb;
+				_audioSource.PlayOneShot(_grabbing);
+			}
+			else
+			{
+				FixedJoint2D fj = transform.gameObject.AddComponent(typeof(FixedJoint2D)) as FixedJoint2D;
+			}
+		}
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		_audioSource.PlayOneShot(_collideAudio);
-		
 	}
 
 	private IEnumerator Respawn()

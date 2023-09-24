@@ -9,16 +9,9 @@ public class HookShot : MonoBehaviour
     private Tongue _tongue;
     [Header("Layer Settings:")]
     [SerializeField] 
-    private bool _grappleToAll = false;
-    [SerializeField] 
     private int _grappableLayerNumber = 3;
 
-    [Header("Main Camera")]
-    private Camera _camera;
-
     [Header("Distance:")]
-    [SerializeField] 
-    private bool _hasMaxDistance = true;
     [SerializeField] 
     private float _maxDistance = 4;
 
@@ -45,8 +38,6 @@ public class HookShot : MonoBehaviour
     [SerializeField] 
     private AudioSource _playerAudio;
     
-    [FormerlySerializedAs("_springJoint2D")]
-    [Header("Component Refrences:")]
     private SpringJoint2D _springJoint;
     public Vector2 GrapplePoint { get; private set; }
     public Vector2 DistanceVector{ get; private set; }
@@ -59,7 +50,9 @@ public class HookShot : MonoBehaviour
     private GameObject _movingObject;
     private float _xOffset;
     private float _yOffset;
-
+    
+    private Camera _camera;
+    private RaycastHit2D _hit;
 
     private void Awake()
     {
@@ -77,7 +70,7 @@ public class HookShot : MonoBehaviour
     }
 
     private void Update()
-    { 
+    {
         _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         
         SetCursor();
@@ -125,40 +118,37 @@ public class HookShot : MonoBehaviour
 
     void SetGrapplePoint()
     {
-        Debug.Log($"set");
-        if (Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized))
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
-            if ((hit.transform.gameObject.layer == _grappableLayerNumber || _grappleToAll) && ((Vector2.Distance(hit.point, transform.position) <= _maxDistance) || !_hasMaxDistance))
-            {
-                GrapplePoint = hit.point;
-                DistanceVector = GrapplePoint - (Vector2)transform.position;
-                _tongue.enabled = true;
-            }
+        if (!CanAttach()) return;
+            
+        DistanceVector = GrapplePoint - (Vector2)transform.position;
+        _tongue.enabled = true;
+        GrapplePoint = _hit.point;
 
-            if (hit.transform.gameObject.CompareTag("MovingObject"))
-            {
-                _movingObject = hit.transform.gameObject;
-                _xOffset = _movingObject.transform.position.x - _springJoint.connectedAnchor.x;
-                _yOffset = _movingObject.transform.position.y - _springJoint.connectedAnchor.y;
-            }
+        if (_hit.transform.gameObject.CompareTag("MovingObject"))
+        {
+            _movingObject = _hit.transform.gameObject;
+            _xOffset = _movingObject.transform.position.x - _springJoint.connectedAnchor.x;
+            _yOffset = _movingObject.transform.position.y - _springJoint.connectedAnchor.y;
         }
     }
     
     void SetCursor()
     {
-        if (Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized))
+        if (CanAttach())
         {
-            RaycastHit2D _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
-            if ((_hit.transform.gameObject.layer == _grappableLayerNumber || _grappleToAll) && ((Vector2.Distance(_hit.point, transform.position) <= _maxDistance) || !_hasMaxDistance))
-            {
-                Cursor.SetCursor(_canAttach, Vector2.zero, CursorMode.ForceSoftware);
-            }
-            else
-            {
-                Cursor.SetCursor(_cannotAttach, Vector2.zero, CursorMode.ForceSoftware);
-            }
+            Cursor.SetCursor(_canAttach, Vector2.zero, CursorMode.ForceSoftware);
         }
+        else
+        {
+            Cursor.SetCursor(_cannotAttach, Vector2.zero, CursorMode.ForceSoftware);
+        }
+    }
+    
+    private bool CanAttach()
+    {
+        _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
+        if (_hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance) return true;
+        return false;
     }
     
     public void Grapple()
@@ -182,11 +172,8 @@ public class HookShot : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (_hasMaxDistance)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, _maxDistance);
-        }
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, _maxDistance);
     }
 
 }

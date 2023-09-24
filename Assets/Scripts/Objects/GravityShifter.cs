@@ -8,7 +8,8 @@ public class GravityShifter : MonoBehaviour, IOnOffObjects
     [SerializeField]
     private bool _isOn;
     private BoxCollider2D _collider;
-    [SerializeField] private LayerMask _shiftLayerMask;
+    [SerializeField]
+    private LayerMask _shiftLayerMask;
 
     private void Awake()
     {
@@ -17,23 +18,13 @@ public class GravityShifter : MonoBehaviour, IOnOffObjects
 
     public void TurnOn()
     {
-        Debug.Log($"On");
-        Collider2D[] collider2Ds = Physics2D.OverlapAreaAll(_collider.bounds.min,_collider.bounds.max);
+        _isOn = true;
+        Collider2D[] collider2Ds = Physics2D.OverlapAreaAll(_collider.bounds.min,_collider.bounds.max, _shiftLayerMask);
         foreach (Collider2D collider2D in collider2Ds)
         {
-            Debug.Log($"Called");
-            if (collider2D.GetComponent<Rigidbody2D>() != null)
-            {
-                collider2D.GetComponent<Rigidbody2D>().gravityScale *= -1.0f;
-            }
-            Debug.Log($"{collider2D.name}");
+            var rb = collider2D.GetComponent<Rigidbody2D>();
+            if (rb) rb.gravityScale *= -1.0f;
         }
-    }
-    
-    private void OnDrawGizmos()
-    {
-        // Gizmos.DrawWireSphere(transform.position, 5.0f);
-        // Gizmos.DrawCube(_collider.bounds.center, new Vector3(5f,5f, 5f));
     }
 
     public void TurnOff()
@@ -41,22 +32,17 @@ public class GravityShifter : MonoBehaviour, IOnOffObjects
         _isOn = false;
     }
 
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (!_isOn) return;
-    //     Debug.Log($"Detect");
-    //     if (other.GetComponent<Rigidbody2D>())
-    //     {
-    //         other.GetComponent<Rigidbody2D>().gravityScale *= -1f;
-    //     }
-    // }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!_isOn) return;
+        var rb = other.GetComponent<Rigidbody2D>();
+        if (rb) rb.gravityScale *= -1.0f;
+    }
     
     private void OnTriggerExit2D(Collider2D other)
     {
         if (!_isOn) return;
-        if (other.GetComponent<Rigidbody2D>())
-        {
-            other.GetComponent<Rigidbody2D>().gravityScale *= -1f;
-        }
+        var rb = other.GetComponent<Rigidbody2D>();
+        if (rb) rb.gravityScale *= -1.0f;
     }
 }

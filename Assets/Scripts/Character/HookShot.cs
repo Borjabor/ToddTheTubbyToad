@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -38,16 +39,17 @@ public class HookShot : MonoBehaviour
     [SerializeField] 
     private AudioSource _playerAudio;
     
-    private SpringJoint2D _springJoint;
     public Vector2 GrapplePoint { get; private set; }
     public Vector2 DistanceVector{ get; private set; }
     private Vector2 _mouseFirePointDistanceVector;
+    private SpringJoint2D _springJoint;
     private Rigidbody2D _rb;
     [SerializeField]
     private float _tongueLengthChanger = 0.8f;
 
     private bool _hasPlayed = false;
     private GameObject _movingObject;
+    private GameObject _pullObject;
     private float _xOffset;
     private float _yOffset;
     
@@ -71,8 +73,6 @@ public class HookShot : MonoBehaviour
 
     private void Update()
     {
-        _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        
         SetCursor();
         if (CharacterController._isRespawning) return;
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -88,10 +88,17 @@ public class HookShot : MonoBehaviour
                 _hasPlayed = true;
             }
 
-            if (_movingObject != null && _springJoint.enabled)
+            if (_movingObject && _springJoint.enabled)
             {
-                Debug.Log($"Attached to moving object");
-                _springJoint.connectedAnchor = new Vector2(_movingObject.transform.position.x - _xOffset,_movingObject.transform.position.y - _yOffset);
+                var position = _movingObject.transform.position;
+                _springJoint.connectedAnchor = new Vector2(position.x - _xOffset,position.y - _yOffset);
+                GrapplePoint = _springJoint.connectedAnchor;
+            }
+
+            if (_pullObject && _springJoint.enabled)
+            {
+                var anchor = _pullObject.transform.position;
+                _springJoint.connectedAnchor = anchor;
                 GrapplePoint = _springJoint.connectedAnchor;
             }
 
@@ -105,9 +112,12 @@ public class HookShot : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            _rb.bodyType = RigidbodyType2D.Dynamic;
             _tongue.enabled = false;
             _springJoint.enabled = false;
             _movingObject = null;
+            _pullObject = null;
+            _springJoint.connectedBody = null;
 
             if (_hasPlayed)
             {
@@ -116,7 +126,7 @@ public class HookShot : MonoBehaviour
         }
     }
 
-    void SetGrapplePoint()
+    private void SetGrapplePoint()
     {
         if (!CanAttach()) return;
             
@@ -127,12 +137,18 @@ public class HookShot : MonoBehaviour
         if (_hit.transform.gameObject.CompareTag("MovingObject"))
         {
             _movingObject = _hit.transform.gameObject;
-            _xOffset = _movingObject.transform.position.x - _springJoint.connectedAnchor.x;
-            _yOffset = _movingObject.transform.position.y - _springJoint.connectedAnchor.y;
+            var position = _movingObject.transform.position;
+            var connectedAnchor = _springJoint.connectedAnchor;
+            _xOffset = position.x - connectedAnchor.x;
+            _yOffset = position.y - connectedAnchor.y;
+        }else if (_hit.transform.gameObject.CompareTag("PullObject"))
+        {
+            _springJoint.connectedBody = _hit.rigidbody;
+            _pullObject = _hit.transform.gameObject;
         }
     }
     
-    void SetCursor()
+    private void SetCursor()
     {
         if (CanAttach())
         {
@@ -146,28 +162,26 @@ public class HookShot : MonoBehaviour
     
     private bool CanAttach()
     {
+        _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
-        if (_hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance) return true;
-        return false;
+        return _hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance;
     }
     
     public void Grapple()
     {
+        if (_pullObject) _rb.bodyType = RigidbodyType2D.Static;
         _springJoint.connectedAnchor = GrapplePoint;
         _springJoint.distance = (GrapplePoint - (Vector2)transform.position).magnitude * _distanceRatio;
         _springJoint.frequency = _launchSpeed;
-        if (_movingObject != null)
+        if (_movingObject)
         {
-            _xOffset = _movingObject.transform.position.x - _springJoint.connectedAnchor.x;
-            _yOffset = _movingObject.transform.position.y - _springJoint.connectedAnchor.y;
+            var position = _movingObject.transform.position;
+            var connectedAnchor = _springJoint.connectedAnchor;
+            _xOffset = position.x - connectedAnchor.x;
+            _yOffset = position.y - connectedAnchor.y;
         }
         _springJoint.enabled = true;
         _playerAudio.PlayOneShot(_tongueConnect);
-    }
-
-    public void MoveGrapple()
-    {
-        
     }
 
     private void OnDrawGizmos()

@@ -187,9 +187,9 @@ GameObject:
   - component: {fileID: 1937509180640080751}
   - component: {fileID: 3009235887565545498}
   - component: {fileID: 5492663923203399847}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Lamp
-  m_TagString: Untagged
+  m_TagString: MovingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,7 +529,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.020000458, y: 0.6225004}
-  m_ConnectedAnchor: {x: 0, y: -0.6874981}
+  m_ConnectedAnchor: {x: 0, y: -0.6875}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -703,7 +703,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -0.6437502}
-  m_ConnectedAnchor: {x: 0, y: 0.65625}
+  m_ConnectedAnchor: {x: -0.00000047683716, y: 0.65625}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1190,7 +1190,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.050001144, y: -0.6499996}
-  m_ConnectedAnchor: {x: -0.048999786, y: 0.47000027}
+  m_ConnectedAnchor: {x: -0.04900074, y: 0.47000027}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

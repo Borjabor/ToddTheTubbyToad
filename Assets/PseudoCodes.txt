@@ -8,3 +8,15 @@ Moving Grapple Point:
 
 detect to what is attaching, and modify it accordingly
 Perhaps turn itself into child if it is supposed to move
+
+Vine:
+
+Already working, just by turning chains into "Object" tag. 
+Improve - 
+		void WithForeachLoop()
+			{
+				foreach (Transform child in transform)
+					print("Foreach loop: " + child);
+			}
+			
+		works to get all the children. Use this to make it versatile, probably automatically creating the connections and possibly already organizing the chain, so designers can just go crazy and duplicate stuff

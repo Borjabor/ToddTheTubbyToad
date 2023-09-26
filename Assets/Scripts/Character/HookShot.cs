@@ -55,6 +55,7 @@ public class HookShot : MonoBehaviour
     
     private Camera _camera;
     private RaycastHit2D _hit;
+    private bool _isStuck;
 
     private void Awake()
     {
@@ -112,7 +113,7 @@ public class HookShot : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            _rb.bodyType = RigidbodyType2D.Dynamic;
+            if(!_isStuck) _rb.bodyType = RigidbodyType2D.Dynamic;
             _tongue.enabled = false;
             _springJoint.enabled = false;
             _movingObject = null;
@@ -141,7 +142,7 @@ public class HookShot : MonoBehaviour
             var connectedAnchor = _springJoint.connectedAnchor;
             _xOffset = position.x - connectedAnchor.x;
             _yOffset = position.y - connectedAnchor.y;
-        }else if (_hit.transform.gameObject.CompareTag("PullObject"))
+        }else if (_hit.transform.gameObject.GetComponent<Boxes>())
         {
             _springJoint.connectedBody = _hit.rigidbody;
             _pullObject = _hit.transform.gameObject;
@@ -169,7 +170,8 @@ public class HookShot : MonoBehaviour
     
     public void Grapple()
     {
-        if (_pullObject) _rb.bodyType = RigidbodyType2D.Static;
+        _rb.bodyType = _pullObject ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
+        if (_rb.bodyType == RigidbodyType2D.Dynamic) _isStuck = false;
         _springJoint.connectedAnchor = GrapplePoint;
         _springJoint.distance = (GrapplePoint - (Vector2)transform.position).magnitude * _distanceRatio;
         _springJoint.frequency = _launchSpeed;
@@ -182,6 +184,13 @@ public class HookShot : MonoBehaviour
         }
         _springJoint.enabled = true;
         _playerAudio.PlayOneShot(_tongueConnect);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        var sticky = other.gameObject.GetComponent<StickySurface>();
+        _isStuck = true;
+        if (sticky) _rb.bodyType = RigidbodyType2D.Static;
     }
 
     private void OnDrawGizmos()

@@ -30,6 +30,12 @@ public class GravityShifter : MonoBehaviour, IOnOffObjects
     public void TurnOff()
     {
         _isOn = false;
+        Collider2D[] collider2Ds = Physics2D.OverlapAreaAll(_collider.bounds.min,_collider.bounds.max, _shiftLayerMask);
+        foreach (Collider2D collider2D in collider2Ds)
+        {
+            var rb = collider2D.GetComponent<Rigidbody2D>();
+            if (rb) rb.gravityScale *= -1.0f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -41,8 +47,7 @@ public class GravityShifter : MonoBehaviour, IOnOffObjects
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!_isOn) return;
         var rb = other.GetComponent<Rigidbody2D>();
-        if (rb) rb.gravityScale *= -1.0f;
+        if (rb && rb.gravityScale < 0) rb.gravityScale *= -1.0f;
     }
 }

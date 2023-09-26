@@ -40,26 +40,24 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.transform.tag == "Player" || collision.transform.tag == "Object")
+        if (other.transform.tag == "Player" || other.transform.tag == "Object")
         {
             StartCoroutine(Push());
         }
     }
 
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.transform.tag == "Player" || collision.transform.tag == "Object")
+        if (other.transform.tag == "Player" || other.transform.tag == "Object")
         {
-            collision.transform.parent = transform;
-        }
-        button.SetBool("Button_State", false);
-        moveBack = true;
-        collision.transform.parent = null;
-        _hasPlayed = false;
-        _affectedObjectI.TurnOff();
+            //collision.transform.parent = transform;
+            button.SetBool("Button_State", false);
+            moveBack = true;
+            _hasPlayed = false;
+            _affectedObjectI.TurnOff(); }
     }
 
     private IEnumerator Push()

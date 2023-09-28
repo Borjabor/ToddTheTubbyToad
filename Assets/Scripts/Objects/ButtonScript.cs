@@ -16,9 +16,10 @@ public class ButtonScript : MonoBehaviour
     private IOnOffObjects _affectedObjectI;
     private BoxCollider2D _collider;
 
-    public Animator button;
+    [SerializeField]
+    private Animator button;
     private AudioSource _audioSource;
-    private bool _hasPlayed = false;
+    private bool _hasPlayed;
 
     private void Awake()
     {
@@ -27,75 +28,57 @@ public class ButtonScript : MonoBehaviour
         _affectedObjectI = _affectedObject.GetComponent<IOnOffObjects>();
         _collider = GetComponent<BoxCollider2D>();
     }
-    
-    private void Update()
-    {
-        // Can be another Coroutine
-        if (moveBack)
-        {
-            if (transform.position.y < _oringialPos.y)
-            {
-                transform.Translate(0, 0.01f, 0);
-            }
-            else
-            {
-                moveBack = false;
-            }
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.tag == "Player" || other.transform.tag == "Object")
         {
-            StartCoroutine(Push());
+            StartCoroutine(MoveDown());
         }
     }
 
-
     private void OnTriggerExit2D(Collider2D other)
     {
-        // if (other.transform.tag == "Player" || other.transform.tag == "Object")
-        // {
-        //     //collision.transform.parent = transform;
-        //     button.SetBool("Button_State", false);
-        //     moveBack = true;
-        //     _hasPlayed = false;
-        //     _affectedObjectI.TurnOff(); 
-        // }
-        
         Collider2D[] collider2Ds = Physics2D.OverlapAreaAll(_collider.bounds.min,_collider.bounds.max);
         int rigidBodies = 0;
         foreach (Collider2D collider2D in collider2Ds)
         {
             if (collider2D.GetComponent<Rigidbody2D>()) rigidBodies++;
         }
-        Debug.Log($"{rigidBodies}");
+        
         if (rigidBodies <= 1)
         {
-            button.SetBool("Button_State", false);
-            moveBack = true;
-            _hasPlayed = false;
-            _affectedObjectI.TurnOff(); 
+            StartCoroutine(MoveUp());
         }
     }
 
-    private IEnumerator Push()
+    private IEnumerator MoveDown()
     {
         while (transform.position != _targetPos.transform.position)
         {
             transform.position = Vector2.MoveTowards(transform.position, _targetPos.transform.position, Time.deltaTime);
             button.SetBool("Button_State", true);
-            moveBack = false;
             if (!_hasPlayed && transform.position.y == _targetPos.transform.position.y)
             {
                 _audioSource.Play();
                 _hasPlayed = true;
             }
-
+            _hasPlayed = false;
             if (Vector2.Distance(transform.position, _targetPos.transform.position) <= 0.1f) break;
             yield return 0;
         }
         _affectedObjectI.TurnOn();
+    }
+
+    private IEnumerator MoveUp()
+    {
+        _affectedObjectI.TurnOff();
+        while (transform.position.y < _oringialPos.y)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, _oringialPos, Time.deltaTime);
+            button.SetBool("Button_State", false);
+            if (Vector2.Distance(transform.position, _oringialPos) <= 0.1f) break;
+            yield return 0;
+        }
     }
 }

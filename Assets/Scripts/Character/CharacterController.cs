@@ -87,8 +87,7 @@ public class CharacterController : MonoBehaviour
 	        //_moveParticles.Play();
         }
 	}
-
-
+	
 	private void Move(float move)
 	{
 		_rb.AddForce(new Vector2(move * 10f, 0f));

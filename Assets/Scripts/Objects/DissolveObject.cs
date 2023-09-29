@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dissolve : MonoBehaviour
+public class DissolveObject : MonoBehaviour
 {
     private AudioSource _audioSource;
     private Renderer _renderer;

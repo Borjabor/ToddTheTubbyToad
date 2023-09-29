@@ -106,9 +106,11 @@ public class HookShot : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 _springJoint.distance -= (float)(_tongueLengthChanger * Time.deltaTime);
+                if (_springJoint.distance <= 2) _springJoint.distance = 2;
             }else if (Input.GetKey(KeyCode.S))
             {
                 _springJoint.distance += (float)(_tongueLengthChanger * Time.deltaTime);
+                if (_springJoint.distance >= _maxDistance) _springJoint.distance = _maxDistance;
             }
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -142,7 +144,7 @@ public class HookShot : MonoBehaviour
             var connectedAnchor = _springJoint.connectedAnchor;
             _xOffset = position.x - connectedAnchor.x;
             _yOffset = position.y - connectedAnchor.y;
-        }else if (_hit.transform.gameObject.GetComponent<Boxes>())
+        }else if (_hit.transform.gameObject.GetComponent<DissolveObject>())
         {
             _springJoint.connectedBody = _hit.rigidbody;
             _pullObject = _hit.transform.gameObject;

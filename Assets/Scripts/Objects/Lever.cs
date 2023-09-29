@@ -30,9 +30,10 @@ public class Lever : MonoBehaviour
 
     private void Update()
     {
-        if (_hj.jointAngle >= -55)
+        if (_hj.jointAngle <= 35)
         {
             _affectedObjectI.TurnOff();
+            _turnedOn = false;
             lever.SetBool("Lever_State", false);
             if (_hasPlayed)
             {
@@ -43,7 +44,7 @@ public class Lever : MonoBehaviour
 
         if (_turnedOn) return;
         
-        if (_hj.jointAngle <= -85)
+        if (_hj.jointAngle >= 45)
         {
             _affectedObjectI.TurnOn();
             _turnedOn = true;

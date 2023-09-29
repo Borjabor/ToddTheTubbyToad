@@ -8,8 +8,6 @@ using UnityEngine.Serialization;
 
 public class CharacterController : MonoBehaviour
 {
-	private Rigidbody2D _rb;
-
 	[SerializeField] 
 	private GameState _gameState;						// Whether or not a player can steer while jumping;
 	/*
@@ -49,8 +47,10 @@ public class CharacterController : MonoBehaviour
 	private SpriteRenderer _characterSprite;
 	[SerializeField] 
 	private GameObject _arms;
+	private Rigidbody2D _rb;
 	
 	private bool _isHolding;
+	public bool IsSafe = true;
 
 	[FormerlySerializedAs("_collider")]
 	[SerializeField]
@@ -69,12 +69,12 @@ public class CharacterController : MonoBehaviour
 	void Update()
 	{
 		GetInputs();
-		float time = Time.timeScale;
-		if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 1;
-		if (Input.GetKeyDown(KeyCode.UpArrow) && Time.timeScale <= 1) Time.timeScale += 0.1f;
-		if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
-		if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
-		if(time != Time.timeScale) Debug.Log($"{time}");
+		// float time = Time.timeScale;
+		// if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 1;
+		// if (Input.GetKeyDown(KeyCode.UpArrow) && Time.timeScale <= 1) Time.timeScale += 0.1f;
+		// if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
+		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
+		// if(time != Time.timeScale) Debug.Log($"{time}");
 		
 
 	}
@@ -147,7 +147,7 @@ public class CharacterController : MonoBehaviour
 		_audioSource.PlayOneShot(_collideAudio);
 	}
 
-	private IEnumerator Respawn()
+	public IEnumerator Respawn()
 	{
 		_isRespawning = true;
 		_rb.velocity = Vector2.zero;

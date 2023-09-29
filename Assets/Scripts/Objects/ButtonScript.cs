@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonScript : MonoBehaviour
+public class ButtonScript : ObjectFSM
 {
     private Vector3 _oringialPos;
     [Tooltip("Drag button here")]
@@ -33,7 +33,7 @@ public class ButtonScript : MonoBehaviour
     {
         if (other.transform.tag == "Player" || other.transform.tag == "Object")
         {
-            StartCoroutine(MoveDown());
+            SetState(On());
         }
     }
 
@@ -48,11 +48,11 @@ public class ButtonScript : MonoBehaviour
         
         if (rigidBodies <= 1)
         {
-            StartCoroutine(MoveUp());
+            SetState(Off());
         }
     }
 
-    private IEnumerator MoveDown()
+    protected override IEnumerator On()
     {
         while (transform.position != _targetPos.transform.position)
         {
@@ -70,7 +70,7 @@ public class ButtonScript : MonoBehaviour
         _affectedObjectI.TurnOn();
     }
 
-    private IEnumerator MoveUp()
+    protected override IEnumerator Off()
     {
         _affectedObjectI.TurnOff();
         while (transform.position.y < _oringialPos.y)

@@ -10,10 +10,10 @@ public class LevelLoader : MonoBehaviour
     private float _transitionTime = 1f;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReloadCurrentLevel();
-        }
+        // if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     ReloadCurrentLevel();
+        // }
     }
     
 

@@ -5,7 +5,7 @@ public class Tongue : MonoBehaviour
 {
     [Header("General refrences:")]
     [SerializeField] 
-    private HookShot hookShot;
+    private CharacterController _hookShot;
     [SerializeField] 
     private LineRenderer _lineRenderer;
 
@@ -16,6 +16,8 @@ public class Tongue : MonoBehaviour
     private float _straightenLineSpeed = 4;
 
     [Header("Animation:")]
+    [SerializeField] 
+    private Animator _animator;
     [SerializeField] 
     private AnimationCurve ropeAnimationCurve;
     [SerializeField] [Range(0.01f, 4)] 
@@ -34,9 +36,6 @@ public class Tongue : MonoBehaviour
     private bool _isGrappling = false;
     
     private bool _straightLine = true;
-
-    [SerializeField] 
-    private Animator _animator;
     
 
     private void Awake()
@@ -69,7 +68,7 @@ public class Tongue : MonoBehaviour
     {
         for (int i = 0; i < _precision; i++)
         {
-            _lineRenderer.SetPosition(i, hookShot.transform.position);
+            _lineRenderer.SetPosition(i, _hookShot.transform.position);
         }
     }
 
@@ -84,7 +83,7 @@ public class Tongue : MonoBehaviour
     {
         if (!_straightLine) 
         {
-            if (_lineRenderer.GetPosition(_precision - 1).x != hookShot.GrapplePoint.x)
+            if (_lineRenderer.GetPosition(_precision - 1).x != _hookShot.GrapplePoint.x)
             {
                 DrawRopeWaves();
             }
@@ -97,7 +96,7 @@ public class Tongue : MonoBehaviour
         {
             if (!_isGrappling) 
             {
-                hookShot.Grapple();
+                _hookShot.Grapple();
                 _isGrappling = true;
             }
             if (_currentWaveSize > 0)
@@ -118,9 +117,9 @@ public class Tongue : MonoBehaviour
         for (int i = 0; i < _precision; i++)
         {
             float delta = (float)i / ((float)_precision - 1f);
-            Vector2 offset = Vector2.Perpendicular(hookShot.DistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * _currentWaveSize;
-            Vector2 targetPosition = Vector2.Lerp(hookShot.transform.position, hookShot.GrapplePoint, delta) + offset;
-            Vector2 currentPosition = Vector2.Lerp(hookShot.transform.position, targetPosition, _ropeLaunchSpeedCurve.Evaluate(_moveTime) * _ropeLaunchSpeedMultiplayer);
+            Vector2 offset = Vector2.Perpendicular(_hookShot.DistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * _currentWaveSize;
+            Vector2 targetPosition = Vector2.Lerp(_hookShot.transform.position, _hookShot.GrapplePoint, delta) + offset;
+            Vector2 currentPosition = Vector2.Lerp(_hookShot.transform.position, targetPosition, _ropeLaunchSpeedCurve.Evaluate(_moveTime) * _ropeLaunchSpeedMultiplayer);
 
             _lineRenderer.SetPosition(i, currentPosition);
         }
@@ -129,8 +128,8 @@ public class Tongue : MonoBehaviour
     void DrawRopeNoWaves() 
     {
         _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPosition(0, hookShot.GrapplePoint);
-        _lineRenderer.SetPosition(1, hookShot.transform.position);
+        _lineRenderer.SetPosition(0, _hookShot.GrapplePoint);
+        _lineRenderer.SetPosition(1, _hookShot.transform.position);
     }
 
 }

@@ -6,13 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="1e4f51d1-009c-4de6-ba19-242b08ebd2e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToddTheTubbyToad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToddTheTubbyToad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AnitaMeetingAndTips.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AnitaMeetingAndTips.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ArticyImporter/Content/Generated/ArticyEditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArticyImporter/Content/Generated/ArticyEditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Hanging lamp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Hanging lamp.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PseudoCodes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PseudoCodes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Testing_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Testing_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraShake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraShake.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/CharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/CharacterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Boxes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Boxes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/ButtonScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/ButtonScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StickySurface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StickySurface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/HookShot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/HookShot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/Tongue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/Tongue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DangerZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DangerZone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LightSphere.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LightSphere.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +29,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Affector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/CharacterController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/RopeSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DangerZone.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IOnOffObjects.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightSphere.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/ConveyorBelt.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Fan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Lever.cs" root0="FORCE_HIGHLIGHTING" />
@@ -100,10 +108,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="64752">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="64752" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -133,7 +141,7 @@
       <workItem from="1694839389207" duration="6056000" />
       <workItem from="1694910599665" duration="21000" />
       <workItem from="1694910692333" duration="1128000" />
-      <workItem from="1695765977871" duration="3829000" />
+      <workItem from="1695765977871" duration="20700000" />
     </task>
     <servers />
   </component>
@@ -156,6 +164,38 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Character/Tongue.cs</url>
+          <line>87</line>
+          <properties documentPath="C:\Users\andre\UnityProjects\ToddTheTubbyToad\Assets\Scripts\Character\Tongue.cs" initialLine="87" containingFunctionPresentation="Method 'DrawRope'">
+            <startOffsets>
+              <option value="2129" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2145" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Character/Tongue.cs</url>
+          <line>91</line>
+          <properties documentPath="C:\Users\andre\UnityProjects\ToddTheTubbyToad\Assets\Scripts\Character\Tongue.cs" initialLine="91" containingFunctionPresentation="Method 'DrawRope'">
+            <startOffsets>
+              <option value="2208" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2229" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

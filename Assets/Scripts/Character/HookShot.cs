@@ -115,17 +115,22 @@ public class HookShot : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            if(!_isStuck) _rb.bodyType = RigidbodyType2D.Dynamic;
-            _tongue.enabled = false;
-            _springJoint.enabled = false;
-            _movingObject = null;
-            _pullObject = null;
-            _springJoint.connectedBody = null;
+            Detach();
+        }
+    }
 
-            if (_hasPlayed)
-            {
-                _hasPlayed = false;
-            }
+    public void Detach()
+    {
+        if (!_isStuck) _rb.bodyType = RigidbodyType2D.Dynamic;
+        _tongue.enabled = false;
+        _springJoint.enabled = false;
+        _movingObject = null;
+        _pullObject = null;
+        _springJoint.connectedBody = null;
+
+        if (_hasPlayed)
+        {
+            _hasPlayed = false;
         }
     }
 

@@ -186,7 +186,6 @@ GameObject:
   - component: {fileID: 1937509180640080749}
   - component: {fileID: 1937509180640080751}
   - component: {fileID: 3009235887565545498}
-  - component: {fileID: 5492663923203399847}
   m_Layer: 2
   m_Name: Lamp
   m_TagString: Untagged
@@ -324,20 +323,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.625, y: 0.9375}
   m_Direction: 0
---- !u!114 &5492663923203399847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937509180640080750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0784a74f0415df24abcd8e0010f339f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _material: {fileID: 0}
-  _renderer: {fileID: 0}
 --- !u!1 &1937509181216533646
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +514,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.020000458, y: 0.6225004}
-  m_ConnectedAnchor: {x: 0, y: -0.6874981}
+  m_ConnectedAnchor: {x: 0, y: -0.6875}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

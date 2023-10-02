@@ -5662,6 +5662,73 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &4827370234116227608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8127553344269321509}
+  - component: {fileID: 5396889838700612592}
+  m_Layer: 2
+  m_Name: HugZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8127553344269321509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4827370234116227608}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5022943424578809545}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5396889838700612592
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4827370234116227608}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.78
 --- !u!1 &4996452830057207418
 GameObject:
   m_ObjectHideFlags: 0
@@ -5710,11 +5777,10 @@ GameObject:
   - component: {fileID: 5022943424578809551}
   - component: {fileID: 5022943424578809544}
   - component: {fileID: 5022943424578809550}
-  - component: {fileID: 625112414}
   - component: {fileID: 1558921302}
   - component: {fileID: 1558921303}
-  - component: {fileID: 7813752183544200102}
   - component: {fileID: 7790498098874865937}
+  - component: {fileID: 7813752183544200102}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -5737,6 +5803,7 @@ Transform:
   m_Children:
   - {fileID: 6870909053363577948}
   - {fileID: 847247364617633773}
+  - {fileID: 8127553344269321509}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5022943424578809546
@@ -5834,7 +5901,7 @@ SpringJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 3.222478, y: 6.195267}
+  m_ConnectedAnchor: {x: 9.579568, y: -2.868712}
   m_AutoConfigureDistance: 0
   m_Distance: 6.8860545
   m_DampingRatio: 1
@@ -5874,41 +5941,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.02}
   serializedVersion: 2
   m_Radius: 0.67
---- !u!58 &625112414
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5022943424578809547}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.011023521, y: -0.016576305}
-  serializedVersion: 2
-  m_Radius: 0.77385306
 --- !u!95 &1558921302
 Animator:
   serializedVersion: 5
@@ -5946,13 +5978,39 @@ MonoBehaviour:
   _collideAudio: {fileID: 0}
   _deathAudio: {fileID: 8300000, guid: 9eaf34f5b5ef47744980bffbdb062167, type: 3}
   _grabbing: {fileID: 8300000, guid: a18da65141703b34a8e6c59d37008250, type: 3}
-  _moveSpeed: 50
   _deathParticles: {fileID: 4783419296119104602}
   _moveParticles: {fileID: 0}
   _jumpParticles: {fileID: 0}
+  _moveSpeed: 50
   _characterSprite: {fileID: 5022943424578809546}
   _arms: {fileID: 4996452830057207418}
-  _triggerZone: {fileID: 625112414}
+  _hookShot: {fileID: 7790498098874865937}
+  _triggerZone: {fileID: 5396889838700612592}
+  IsSafe: 1
+--- !u!114 &7790498098874865937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022943424578809547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df87d28dc270174d9df6d438f978cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tongue: {fileID: 5022943424898015274}
+  _grappableLayerNumber: 3
+  _maxDistance: 25
+  _launchSpeed: 0.6
+  _distanceRatio: 0.05
+  _canAttach: {fileID: 0}
+  _cannotAttach: {fileID: 0}
+  _tongueConnect: {fileID: 8300000, guid: ba42e07f52e0bba48a7612d6ace22450, type: 3}
+  _tongueDisconnect: {fileID: 0}
+  _tongueThrow: {fileID: 8300000, guid: b11a35135a2c52345bf2e0b79a41f040, type: 3}
+  _playerAudio: {fileID: 7813752183544200102}
+  _tongueLengthChanger: 5
 --- !u!82 &7813752183544200102
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6049,30 +6107,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7790498098874865937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5022943424578809547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df87d28dc270174d9df6d438f978cb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tongue: {fileID: 5022943424898015274}
-  _grappableLayerNumber: 3
-  _maxDistance: 25
-  _launchSpeed: 0.6
-  _distanceRatio: 0.05
-  _canAttach: {fileID: 0}
-  _cannotAttach: {fileID: 0}
-  _tongueConnect: {fileID: 8300000, guid: ba42e07f52e0bba48a7612d6ace22450, type: 3}
-  _tongueDisconnect: {fileID: 0}
-  _tongueThrow: {fileID: 8300000, guid: b11a35135a2c52345bf2e0b79a41f040, type: 3}
-  _playerAudio: {fileID: 7813752183544200102}
-  _tongueLengthChanger: 5
 --- !u!1 &5022943424898015269
 GameObject:
   m_ObjectHideFlags: 0

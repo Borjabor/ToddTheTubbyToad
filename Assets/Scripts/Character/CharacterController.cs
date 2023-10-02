@@ -262,6 +262,11 @@ public class CharacterController : MonoBehaviour
 		_isStuck = true;
 		if (sticky) _rb.bodyType = RigidbodyType2D.Static;
 		
+		if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
+		{
+			Die();
+		}
+		
 		if (other.gameObject.GetComponent<Bubble>())
 		{
 			_currentBubble = other.gameObject.GetComponent<Bubble>();

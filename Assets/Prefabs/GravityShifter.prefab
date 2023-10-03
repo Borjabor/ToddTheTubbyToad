@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1333926265107406129}
   - component: {fileID: 1868761393623692846}
   - component: {fileID: 1628190431370877605}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GravityShifter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,4 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa645f99a6effb41b7359f0828bcdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isLocal: 0
+  _isOn: 0
+  _shiftLayerMask:
+    serializedVersion: 2
+    m_Bits: 4

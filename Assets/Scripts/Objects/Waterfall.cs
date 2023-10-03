@@ -14,6 +14,7 @@ public class Waterfall : MonoBehaviour
     private LineRenderer _lineRenderer;
     [SerializeField]
     private LayerMask _obstableLayerMask;
+    [SerializeField]
     private BoxCollider2D _boxCollider2D;
     [SerializeField]
     private GameObject _splashEffect;
@@ -25,7 +26,9 @@ public class Waterfall : MonoBehaviour
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
-        _boxCollider2D = GetComponent<BoxCollider2D>();
+        //_boxCollider2D = GetComponent<BoxCollider2D>();
+        _lineRenderer.startWidth = _boxCollider2D.size.x;
+        _lineRenderer.endWidth = _boxCollider2D.size.x;
         _lineRenderer.positionCount = 2;
         for (int i = 0; i < 2; i++)
         {
@@ -71,5 +74,11 @@ public class Waterfall : MonoBehaviour
     {
         _splashEffect.SetActive(currentLength >= currentMaxLength);
         _splashEffect.transform.position = transform.position - Vector3.up * currentLength;
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, _boxCollider2D.size.x/2);
     }
 }

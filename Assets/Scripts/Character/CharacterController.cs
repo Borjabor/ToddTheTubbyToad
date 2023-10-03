@@ -240,7 +240,7 @@ public class CharacterController : MonoBehaviour
 				FixedJoint2D fj = transform.gameObject.AddComponent(typeof(FixedJoint2D)) as FixedJoint2D;
 				fj.connectedBody = rb;
 				fj.enableCollision = true;
-				other.gameObject.layer = 2;
+				//other.gameObject.layer = 2;
 				_audioSource.PlayOneShot(_grabbing);
 			}
 			else
@@ -252,7 +252,7 @@ public class CharacterController : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Object")) other.gameObject.layer = 3;
+		//if (other.gameObject.CompareTag("Object")) other.gameObject.layer = 3;
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)

@@ -5901,7 +5901,7 @@ SpringJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 9.579568, y: -2.868712}
+  m_ConnectedAnchor: {x: 2, y: 5}
   m_AutoConfigureDistance: 0
   m_Distance: 6.8860545
   m_DampingRatio: 1
@@ -5975,9 +5975,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameState: {fileID: 0}
+  _tongue: {fileID: 5022943424898015274}
+  _grappableLayerNumber: 3
+  _maxDistance: 25
+  _launchSpeed: 0.6
+  _distanceRatio: 0.05
+  _canAttach: {fileID: 0}
+  _cannotAttach: {fileID: 0}
   _collideAudio: {fileID: 0}
   _deathAudio: {fileID: 8300000, guid: 9eaf34f5b5ef47744980bffbdb062167, type: 3}
   _grabbing: {fileID: 8300000, guid: a18da65141703b34a8e6c59d37008250, type: 3}
+  _tongueConnect: {fileID: 8300000, guid: ba42e07f52e0bba48a7612d6ace22450, type: 3}
+  _tongueDisconnect: {fileID: 0}
+  _tongueThrow: {fileID: 8300000, guid: b11a35135a2c52345bf2e0b79a41f040, type: 3}
   _deathParticles: {fileID: 4783419296119104602}
   _moveParticles: {fileID: 0}
   _jumpParticles: {fileID: 0}
@@ -5987,6 +5997,7 @@ MonoBehaviour:
   _hookShot: {fileID: 7790498098874865937}
   _triggerZone: {fileID: 5396889838700612592}
   IsSafe: 1
+  _tongueLengthChanger: 5
 --- !u!114 &7790498098874865937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5994,7 +6005,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5022943424578809547}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2df87d28dc270174d9df6d438f978cb1, type: 3}
   m_Name: 
@@ -6152,10 +6163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90422f3859c7b2468c1eacce1aedc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hookShot: {fileID: 7790498098874865937}
+  _hookShot: {fileID: 1558921303}
   _lineRenderer: {fileID: 5022943424898015275}
   _precision: 120
   _straightenLineSpeed: 11.1
+  _animator: {fileID: 1558921302}
   ropeAnimationCurve:
     serializedVersion: 2
     m_Curve:
@@ -6252,7 +6264,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   _ropeLaunchSpeedMultiplayer: 5.6
   _isGrappling: 0
-  _animator: {fileID: 1558921302}
 --- !u!120 &5022943424898015275
 LineRenderer:
   serializedVersion: 2

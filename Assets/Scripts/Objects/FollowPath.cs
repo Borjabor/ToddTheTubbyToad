@@ -15,14 +15,24 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     private bool _forward;
     
     private AudioSource _audioSource;
+
     [SerializeField]
     private bool _startOn;
+    [SerializeField]
+    private bool _loop;
+    [SerializeField]
+    private float _timeToWait = 2f;
+
+    
+
+    
     
     void Awake()
     {
         _nodes = GetComponentsInChildren<Node>();
         _currentNodePosition = _nodes[_currentNodeIndex].transform.position;
         if (_startOn) TurnOn();
+        if (_loop) _timeToWait = 0f;
     }
     
     public void TurnOn()
@@ -53,13 +63,20 @@ public class FollowPath : ObjectFSM, IOnOffObjects
         {
             //Debug.Log($"Going forward");
             _forward = true;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(_timeToWait);
         }
         else if (_currentNodeIndex >= _nodes.Length - 1)
         {
             //Debug.Log($"Returning");
-            _forward = false;
-            yield return new WaitForSeconds(2f);
+            if (_loop)
+            {
+                _currentNodeIndex = -1;
+            }
+            else
+            {
+                _forward = false;
+            }
+            yield return new WaitForSeconds(_timeToWait);
         }
 
         _currentNodeIndex = _forward ? _currentNodeIndex + 1 : _currentNodeIndex - 1;

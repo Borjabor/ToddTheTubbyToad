@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6074760971004680133}
   - component: {fileID: 6074760971004680134}
-  - component: {fileID: 6074760971004680132}
   m_Layer: 2
   m_Name: Checkpoint
   m_TagString: Checkpoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -65,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.4710405, y: 2.7703516}
+  m_Offset: {x: 0, y: 1.93}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -78,22 +77,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6731019, y: 6.5407023}
   m_EdgeRadius: 0
---- !u!251 &6074760971004680132
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6074760971004680136}
-  m_Enabled: 0
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: -90
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1

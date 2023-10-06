@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b575ae6f6f9706747a164d4fdd0e0625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _length: 5
+  _length: 3
   _lineRend: {fileID: 443723250}
   _segmentPoses: []
   _targetDir: {fileID: 902931519}
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b575ae6f6f9706747a164d4fdd0e0625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _length: 5
+  _length: 3
   _lineRend: {fileID: 1183241206}
   _segmentPoses: []
   _targetDir: {fileID: 1313713047}
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b575ae6f6f9706747a164d4fdd0e0625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _length: 5
+  _length: 3
   _lineRend: {fileID: 1567226333}
   _segmentPoses: []
   _targetDir: {fileID: 1704086031}
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b575ae6f6f9706747a164d4fdd0e0625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _length: 5
+  _length: 3
   _lineRend: {fileID: 1910290621}
   _segmentPoses: []
   _targetDir: {fileID: 2119073610}
@@ -5901,9 +5901,9 @@ SpringJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2, y: 5}
+  m_ConnectedAnchor: {x: 1, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 6.8860545
+  m_Distance: 1
   m_DampingRatio: 1
   m_Frequency: 0
 --- !u!58 &5022943424578809550
@@ -6014,7 +6014,7 @@ MonoBehaviour:
   _grappableLayerNumber: 3
   _maxDistance: 25
   _launchSpeed: 0.6
-  _distanceRatio: 0.05
+  _distanceRatio: 0.018
   _canAttach: {fileID: 0}
   _cannotAttach: {fileID: 0}
   _tongueConnect: {fileID: 8300000, guid: ba42e07f52e0bba48a7612d6ace22450, type: 3}

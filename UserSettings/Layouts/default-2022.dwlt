@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: SpriteEditorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -196,7 +196,7 @@ MonoBehaviour:
     height: 407.5
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 13}
+  m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 18}
   - {fileID: 19}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneHierarchyWindow
+  m_Name: 
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -255,7 +255,7 @@ MonoBehaviour:
   - {fileID: 21}
   - {fileID: 22}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -523,7 +523,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 25}
+      snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar

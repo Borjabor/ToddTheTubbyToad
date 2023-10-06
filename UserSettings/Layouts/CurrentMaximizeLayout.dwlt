@@ -93,7 +93,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -478,7 +478,7 @@ MonoBehaviour:
       displayed: 1
       snapOffset: {x: 48, y: 16.5}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 2
       id: AINavigationOverlay
       index: 8
       layout: 4
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
-    m_SpeedMin: 0.01
+    m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
     m_EasingDuration: 0.4
@@ -1222,7 +1222,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 17}
+      m_ClientGUIView: {fileID: 0}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}

@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class SupportCameras : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject _mainCamera;
+    public GameObject _supportingCamera;
 
-    // Update is called once per frame
-    void Update()
+
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            _supportingCamera.SetActive(true);
+            _mainCamera.SetActive(false);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _supportingCamera.SetActive(false);
+        _mainCamera.SetActive(true);
     }
 }

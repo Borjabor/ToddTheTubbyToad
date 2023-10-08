@@ -277,16 +277,17 @@ public class CharacterController : MonoBehaviour
 	public void Die()
 	{
 		StartCoroutine(Respawn());
-	}
-	
-	private IEnumerator Respawn()
+        CameraShake.Instance.ShakeCamera(5f, 0.2f);
+    }
+
+    private IEnumerator Respawn()
 	{
 		_isRespawning = true;
 		IsSafe = true;
 		_rb.velocity = Vector2.zero;
 		Detach();
 		_audioSource.PlayOneShot(_deathAudio);
-		CameraShake.Instance.ShakeCamera(5f, 0.2f);
+		//CameraShake.Instance.ShakeCamera(5f, 0.2f);
 		_deathParticles.Play();
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);

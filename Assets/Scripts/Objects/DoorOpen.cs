@@ -10,6 +10,8 @@ public class DoorOpen : ObjectFSM, IOnOffObjects
     [SerializeField] private float _openSpeed = 4f;
     private AudioSource _audioSource;
 
+    public Animator DoorAnimator;
+
     private void Awake()
     {
         _startPos = transform.position;
@@ -19,11 +21,13 @@ public class DoorOpen : ObjectFSM, IOnOffObjects
     public void TurnOn()
     {
         SetState(On());
+        DoorAnimator.SetBool("Is_Open", true);
     }
     
     public void TurnOff()
     {
         SetState(Off());
+        DoorAnimator.SetBool("Is_Open", false);
     }
 
     protected override IEnumerator On()

@@ -5463,11 +5463,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 144
+        y: 112
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5484,11 +5484,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 272
-        y: 144
+        y: 112
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5505,11 +5505,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 128
+        y: 96
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5526,7 +5526,70 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 272
-        y: 128
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7fbc9a8cd9e414cb24e5a1f509c37b
+      internalID: -935459141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gear_Large_On
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 133
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5affa363cf575094c9af8d578d913e79
+      internalID: -1953371015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gear_Large_Off
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 165
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c975ce36c11c6794993301825a0ae689
+      internalID: 800812208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gear_Small_Off
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -5536,8 +5599,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a7fbc9a8cd9e414cb24e5a1f509c37b
-      internalID: -935459141
+      spriteID: 44d0898cb2d81744fa54ce7b752ddb64
+      internalID: -1157668965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gear_Small_On
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b0439d61036fc4aac47016953ef53e
+      internalID: 304598499
       vertices: []
       indices: 
       edges: []
@@ -5579,6 +5663,10 @@ TextureImporter:
       Fan_Blades: -807835472
       Fan_Grate_Off: 66898554
       Fan_Grate_On: -1849991475
+      Gear_Large_Off: 800812208
+      Gear_Large_On: -1953371015
+      Gear_Small_Off: -1157668965
+      Gear_Small_On: 304598499
       Icicle_1: -420180876
       Icicle_2: -82595187
       Icicle_3: 411351794

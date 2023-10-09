@@ -14,7 +14,6 @@ public class SupportCameras : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             _supportingCamera.SetActive(true);
-
             foreach (var cam in _mainCamera)
             {
                 cam.SetActive(false);

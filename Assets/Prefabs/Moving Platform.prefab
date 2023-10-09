@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 879355380077724849}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -121,13 +121,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4106123857772058566}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.643738, y: -3.967392, z: 0.14803565}
+  m_LocalRotation: {x: -0, y: 0.06725412, z: -0, w: 0.9977359}
+  m_LocalPosition: {x: 0, y: 0, z: 0.14803565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7327102463145591396}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 7.713, z: 0}
 --- !u!1971053207 &8949171204969956140
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -184,8 +184,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 3.8125343, y: 3.9892046, z: 0}
-    m_Extent: {x: 6.8970976, y: 0.5224073, z: 0}
+    m_Center: {x: 0.0011220872, y: 1.5, z: 0}
+    m_Extent: {x: 0.50030607, y: 1.500102, z: 0}
   m_SpriteSortPoint: 0
 --- !u!114 &6998956588593830496
 MonoBehaviour:
@@ -202,18 +202,18 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 1
     m_ControlPoints:
-    - position: {x: -3.0839539, y: 3.9667969, z: 0}
-      leftTangent: {x: -1.3512573, y: -0.0016479492, z: 0}
-      rightTangent: {x: 2.1343384, y: 0.0026016235, z: 0}
-      mode: 1
+    - position: {x: 0.0014281832, y: 0, z: 0.000057996047}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
       height: 1
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 10.677399, y: 3.9771194, z: 0}
-      leftTangent: {x: -1.2743835, y: 0.0823288, z: 0}
-      rightTangent: {x: 0.9200134, y: -0.059432983, z: 0}
-      mode: 1
+    - position: {x: 0.0008159564, y: 3, z: 0.00003070059}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
       height: 1
       spriteIndex: 0
       corner: 1
@@ -261,7 +261,7 @@ Transform:
   m_GameObject: {fileID: 4783047616900859475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -306,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 6910570148582658709}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -158,11 +158,10 @@ public class CharacterController : MonoBehaviour
         _horizontalMove = Input.GetAxis("Horizontal") * _moveSpeed;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-	        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, _triggerZone.radius);
+	        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, _triggerZone.radius * 2f);
 	        foreach (Collider2D collider2D in collider2Ds)
 	        {
-		        IInteractable interactable = collider2D.GetComponent<IInteractable>();
-		        if(interactable != null && Vector2.Distance(collider2D.transform.position, transform.position) < 4f) interactable.Interact();
+		        collider2D.GetComponent<IInteractable>()?.Interact();
 	        }
         }
         else if (Input.GetKey(KeyCode.Space))
@@ -413,7 +412,7 @@ public class CharacterController : MonoBehaviour
 	    Gizmos.color = Color.green;
 	    Gizmos.DrawWireSphere(transform.position, _maxDistance);
 	    Gizmos.color = Color.red;
-	    Gizmos.DrawWireSphere(transform.position, _triggerZone.radius);
+	    Gizmos.DrawWireSphere(transform.position, _triggerZone.radius *2);
     }
 
 }

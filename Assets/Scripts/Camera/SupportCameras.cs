@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SupportCameras : MonoBehaviour
 {
-    public GameObject[] _mainCamera;
-    public GameObject _supportingCamera;
+    [SerializeField] private GameObject _mainCamera;
+    [SerializeField] private GameObject _supportingCamera;
 
 
 
@@ -14,20 +14,22 @@ public class SupportCameras : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             _supportingCamera.SetActive(true);
-
-            foreach (var cam in _mainCamera)
-            {
-                cam.SetActive(false);
-            }
-
+            _mainCamera.SetActive(false);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            _supportingCamera.SetActive(true);
+            _mainCamera.SetActive(false);
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         _supportingCamera.SetActive(false);
-        foreach (var cam in _mainCamera)
-        {
-            cam.SetActive(true);
-        }
+        _mainCamera.SetActive(true);
     }
 }

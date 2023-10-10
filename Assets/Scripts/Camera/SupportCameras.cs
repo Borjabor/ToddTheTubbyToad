@@ -17,6 +17,16 @@ public class SupportCameras : MonoBehaviour
             _mainCamera.SetActive(false);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            _supportingCamera.SetActive(true);
+            _mainCamera.SetActive(false);
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         _supportingCamera.SetActive(false);

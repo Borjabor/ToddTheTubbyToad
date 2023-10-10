@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SupportCameras : MonoBehaviour
 {
-    public GameObject _mainCamera;
-    public GameObject _supportingCamera;
+    [SerializeField] private GameObject _mainCamera;
+    [SerializeField] private GameObject _supportingCamera;
 
 
 

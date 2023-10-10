@@ -5,8 +5,8 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
 
-    public GameObject _virtualCamera;
-    public GameObject[] _supportCameras;
+    [SerializeField] private GameObject _virtualCamera;
+    [SerializeField] private GameObject[] _supportCameras;
     //public GameObject _SupportCameras2;
 
 

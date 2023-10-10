@@ -128,6 +128,7 @@ namespace DialogueSystem
             if (dialogueIsFinished)
             {
                 _continueClose = ExitDialogue;
+                _continueButton.onClick.AddListener(_continueClose);
                 // _continueButton.gameObject.SetActive(false);
                 // _closeButton.gameObject.SetActive(true);
             }

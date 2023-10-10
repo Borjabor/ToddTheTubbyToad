@@ -6,11 +6,11 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Articy.Unity;
+using DialogueSystem;
 
 public class CharacterController : MonoBehaviour
 {
-	[SerializeField]
-	private GameState _gameState;
+	[SerializeField] private GameState _gameState;
     private Vector2 _checkpoint;
     public static bool _isRespawning;
     
@@ -123,6 +123,7 @@ public class CharacterController : MonoBehaviour
 
 	void Update()
 	{
+		if(_gameState.Value is States.DIALOGUE or States.PAUSED) return;
 		if (_isRespawning) return;
 		SetCursor();
 		GetInputs();

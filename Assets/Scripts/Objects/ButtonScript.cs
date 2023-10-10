@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ButtonScript : ObjectFSM
 {
+    private bool _isPressed;
     private Vector3 _oringialPos;
     [Tooltip("Drag button here")]
     [SerializeField] 
     private GameObject _targetPos;
-    bool moveBack = false;
     [Tooltip("Drag Desired Affected Object Here")]
     [SerializeField]
     private GameObject _affectedObject;
@@ -34,6 +35,15 @@ public class ButtonScript : ObjectFSM
         if (other.transform.tag == "Player" || other.transform.tag == "Object")
         {
             SetState(On());
+            _isPressed = true;
+        }
+    }
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.transform.tag == "Player" || other.transform.tag == "Object")
+        {
+            if(!_isPressed) SetState(On());
         }
     }
 
@@ -43,12 +53,13 @@ public class ButtonScript : ObjectFSM
         int rigidBodies = 0;
         foreach (Collider2D collider2D in collider2Ds)
         {
-            if (collider2D.GetComponent<Rigidbody2D>()) rigidBodies++;
+            if (collider2D.GetComponent<Rigidbody2D>() && !collider2D.GetComponent<Tilemap>()) rigidBodies++;
         }
         
-        if (rigidBodies <= 1)
+        if (rigidBodies < 1)
         {
             SetState(Off());
+            _isPressed = false;
         }
     }
 

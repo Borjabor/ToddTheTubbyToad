@@ -13,16 +13,21 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     private int _currentNodeIndex;
     private Vector2 _currentNodePosition;
     private bool _forward;
-    
     private AudioSource _audioSource;
+
     [SerializeField]
     private bool _startOn;
+    [SerializeField]
+    private bool _loop;
+    [SerializeField]
+    private float _timeToWait = 2f;
     
     void Awake()
     {
         _nodes = GetComponentsInChildren<Node>();
         _currentNodePosition = _nodes[_currentNodeIndex].transform.position;
         if (_startOn) TurnOn();
+        if (_loop) _timeToWait = 0f;
     }
     
     public void TurnOn()
@@ -42,29 +47,31 @@ public class FollowPath : ObjectFSM, IOnOffObjects
             _movingObject.transform.position = Vector2.MoveTowards(_movingObject.transform.position, _currentNodePosition, _moveSpeed * Time.deltaTime);
             yield return 0;
         }
-        //Debug.Log($"Changing state");
         SetState(GetNextNode());
     }
 
     private IEnumerator GetNextNode()
     {
-        //Debug.Log($"Getting Next node");
         if (_currentNodeIndex == 0)
         {
-            //Debug.Log($"Going forward");
             _forward = true;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(_timeToWait);
         }
         else if (_currentNodeIndex >= _nodes.Length - 1)
         {
-            //Debug.Log($"Returning");
-            _forward = false;
-            yield return new WaitForSeconds(2f);
+            if (_loop)
+            {
+                _currentNodeIndex = -1;
+            }
+            else
+            {
+                _forward = false;
+            }
+            yield return new WaitForSeconds(_timeToWait);
         }
 
         _currentNodeIndex = _forward ? _currentNodeIndex + 1 : _currentNodeIndex - 1;
         _currentNodePosition = _nodes[_currentNodeIndex].transform.position;
-        //ebug.Log($"Current Node Index: {_currentNodeIndex}");
         SetState(On());
     }
 

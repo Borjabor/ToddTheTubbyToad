@@ -5,11 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Articy.Unity;
+using DialogueSystem;
 
 public class CharacterController : MonoBehaviour
 {
-	[SerializeField]
-	private GameState _gameState;
+	[SerializeField] private GameState _gameState;
     private Vector2 _checkpoint;
     public static bool _isRespawning;
     
@@ -45,7 +46,6 @@ public class CharacterController : MonoBehaviour
 	[SerializeField] 
 	private AudioClip _grabbing;
 	private AudioSource _audioSource;
-	
 	[SerializeField] 
 	private AudioClip _tongueConnect;
 	[SerializeField] 
@@ -73,7 +73,7 @@ public class CharacterController : MonoBehaviour
 	[SerializeField]
 	private HookShot _hookShot;
 	[SerializeField]
-	private Collider2D _triggerZone;
+	private CircleCollider2D _triggerZone;
 	
 	private bool _isHolding;
 	public bool IsSafe = true;
@@ -96,7 +96,11 @@ public class CharacterController : MonoBehaviour
 	private Camera _camera;
 	private RaycastHit2D _hit;
 	private bool _isStuck;
-
+	
+	[Header("Dialogue")]
+	[SerializeField]
+	private DialogueManager _dialogueManager;
+	private ArticyObject _articyObject;
 
 	private void Awake()
 	{
@@ -119,6 +123,7 @@ public class CharacterController : MonoBehaviour
 
 	void Update()
 	{
+		if(_gameState.Value is States.DIALOGUE or States.PAUSED) return;
 		if (_isRespawning) return;
 		SetCursor();
 		GetInputs();
@@ -128,8 +133,6 @@ public class CharacterController : MonoBehaviour
 		// if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
 		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
 		// if(time != Time.timeScale) Debug.Log($"{time}");
-		
-
 	}
 
 	private void FixedUpdate()
@@ -154,7 +157,15 @@ public class CharacterController : MonoBehaviour
 	private void GetInputs()
 	{		
         _horizontalMove = Input.GetAxis("Horizontal") * _moveSpeed;
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+	        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, _triggerZone.radius * 2f);
+	        foreach (Collider2D collider2D in collider2Ds)
+	        {
+		        collider2D.GetComponent<IInteractable>()?.Interact();
+	        }
+        }
+        else if (Input.GetKey(KeyCode.Space))
         {
 	        _isHolding = true;
 	        _triggerZone.enabled = true;
@@ -223,12 +234,12 @@ public class CharacterController : MonoBehaviour
 		{
 			Die();
 		}
-		
-		if (other.gameObject.GetComponent<Bubble>())
-		{
-			_currentBubble = other.gameObject.GetComponent<Bubble>();
-			StartCoroutine(GetInBubble());
-		}
+			//For bubble generator implementation
+		// if (other.gameObject.GetComponent<Bubble>())
+		// {
+		// 	_currentBubble = other.gameObject.GetComponent<Bubble>();
+		// 	StartCoroutine(GetInBubble());
+		// }
 		
 		if(GetComponent<FixedJoint2D>() != null) return;
 		if (other.gameObject.CompareTag("Object"))
@@ -402,6 +413,8 @@ public class CharacterController : MonoBehaviour
     {
 	    Gizmos.color = Color.green;
 	    Gizmos.DrawWireSphere(transform.position, _maxDistance);
+	    Gizmos.color = Color.red;
+	    Gizmos.DrawWireSphere(transform.position, _triggerZone.radius *2);
     }
 
 }

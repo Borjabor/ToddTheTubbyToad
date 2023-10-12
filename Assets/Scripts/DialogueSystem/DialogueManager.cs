@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Articy.Unity;
 using Articy.Unity.Interfaces;
 using TMPro;
@@ -23,9 +24,9 @@ namespace DialogueSystem
         [SerializeField] 
         private TextMeshProUGUI _dialogueText;
         [SerializeField] 
-        private Button _continueButton;
+        private Button _continueCloseButton;
         [SerializeField] 
-        private Button _closeButton;
+        private TextMeshProUGUI _buttonText;
         
         [Header("Speakers")]
         [SerializeField] 
@@ -51,7 +52,8 @@ namespace DialogueSystem
             _isPlayer = false;
             _flowPlayer = GetComponent<ArticyFlowPlayer>();
             _continueClose = ContinueDialogue;
-            _continueButton.onClick.AddListener(_continueClose); //not working. Perhaps just use Update get inputs
+            _continueCloseButton.onClick.AddListener(_continueClose); //not working. Perhaps just use Update get inputs (added to FinishedDialogue; seems to work in part)
+            _buttonText.text = "Continue";
             _dialoguePanel.SetActive(false);
         }
 
@@ -75,14 +77,14 @@ namespace DialogueSystem
             _flowPlayer.StartOn = aObject;
         }
 
-        public void ExitDialogue()
+        async public void ExitDialogue()
         {
-            _gameState.Value = States.NORMAL;
-            Debug.Log($"exitingDialogue");
-        
             DialogueActive = false;
             _dialoguePanel.SetActive(DialogueActive);
             _flowPlayer.FinishCurrentPausedObject();
+            Debug.Log($"exitingDialogue");
+            await Task.Delay(TimeSpan.FromSeconds(1f));
+            _gameState.Value = States.NORMAL;
         }
 
         public void OnFlowPlayerPaused(IFlowObject aObject)
@@ -128,7 +130,8 @@ namespace DialogueSystem
             if (dialogueIsFinished)
             {
                 _continueClose = ExitDialogue;
-                _continueButton.onClick.AddListener(_continueClose);
+                _continueCloseButton.onClick.AddListener(_continueClose);
+                _buttonText.text = "Close";
                 // _continueButton.gameObject.SetActive(false);
                 // _closeButton.gameObject.SetActive(true);
             }

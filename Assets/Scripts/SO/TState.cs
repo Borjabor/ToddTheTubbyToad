@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TState<T> : ScriptableObject
 {
-    public event Action<T> Observers;
+    public event Action<T> StateChange;
 
     [SerializeField] private T _value;
 
@@ -15,7 +15,7 @@ public class TState<T> : ScriptableObject
         set
         {
             _value = value;
-            Observers?.Invoke(_value);
+            StateChange?.Invoke(_value);
         }
     }
 }

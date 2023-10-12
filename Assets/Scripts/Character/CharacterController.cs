@@ -12,6 +12,7 @@ public class CharacterController : MonoBehaviour
 {
 	[SerializeField] private GameState _gameState;
     private Vector2 _checkpoint;
+    private Vector2 _velocity;
     public static bool _isRespawning;
     
     [Header("Tongue Draw Script:")]
@@ -109,22 +110,28 @@ public class CharacterController : MonoBehaviour
 		_audioSource = GetComponent<AudioSource>();
 		_triggerZone.enabled = false;
 		_camera = Camera.main;
-		_rb = GetComponent<Rigidbody2D>();
 		_springJoint = GetComponent<SpringJoint2D>();
 		_tongue.enabled = false;
 		_springJoint.enabled = false;
 	}
-	
+
+	private void OnEnable()
+	{
+		_gameState.StateChange += ChangeRigidbody;
+	}
+
 	private void OnDisable()
 	{
+		_gameState.StateChange -= ChangeRigidbody;
 		_tongue.enabled = false;
 		_springJoint.enabled = false;
 	}
 
 	void Update()
 	{
-		if(_gameState.Value is States.DIALOGUE or States.PAUSED) return;
+		if (_gameState.Value is States.DIALOGUE or States.PAUSED) return;
 		if (_isRespawning) return;
+		
 		SetCursor();
 		GetInputs();
 		// float time = Time.timeScale;
@@ -137,11 +144,26 @@ public class CharacterController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if(!_isRespawning) Move(_horizontalMove * Time.fixedDeltaTime);
-        if (_horizontalMove != 0 && _rb.velocity.y == 0)
-        {
-	        //_moveParticles.Play();
-        }
+		// if(!_isRespawning) Move(_horizontalMove * Time.fixedDeltaTime);
+  //       if (_horizontalMove != 0 && _rb.velocity.y == 0)
+  //       {
+	 //        //_moveParticles.Play();
+  //       }
+	}
+	
+	private void ChangeRigidbody(States obj)
+	{
+		if (obj == States.DIALOGUE || obj == States.PAUSED)
+		{
+			_velocity = _rb.velocity;
+			_rb.bodyType = RigidbodyType2D.Static;
+		}
+
+		if (obj == States.NORMAL)
+		{
+			_rb.bodyType = RigidbodyType2D.Dynamic;
+			_rb.velocity = _velocity;
+		}
 	}
 	
 	private void Move(float move)

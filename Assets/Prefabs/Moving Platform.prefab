@@ -75,9 +75,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8002924687910992996}
+  - {fileID: 5871657822414102938}
   - {fileID: 5048162343114199658}
   - {fileID: 7669283154780077484}
-  - {fileID: 5871657822414102938}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6503223555534344075
@@ -95,6 +95,8 @@ MonoBehaviour:
   _movingObject: {fileID: 6910570148582658709}
   _moveSpeed: 4
   _startOn: 0
+  _loop: 0
+  _timeToWait: 2
 --- !u!1 &4106123857772058566
 GameObject:
   m_ObjectHideFlags: 0

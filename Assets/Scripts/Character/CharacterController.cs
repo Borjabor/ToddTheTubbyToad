@@ -216,7 +216,7 @@ public class CharacterController : MonoBehaviour
 		        _hasPlayed = true;
 	        }
 
-	        if (_movingObject && _springJoint.enabled)
+	        if (_movingObject && _tongue.enabled)
 	        {
 		        var position = _movingObject.transform.position;
 		        _springJoint.connectedAnchor = new Vector2(position.x - _xOffset,position.y - _yOffset);
@@ -361,9 +361,10 @@ public class CharacterController : MonoBehaviour
 	        _currentBubble.Pop();
 	        _rb.isKinematic = false;
         }
+        
         DistanceVector = GrapplePoint - (Vector2)transform.position;
-        _tongue.enabled = true;
         GrapplePoint = _hit.point;
+        _tongue.enabled = true;
 
         if (_hit.transform.gameObject.CompareTag("MovingObject"))
         {
@@ -372,12 +373,12 @@ public class CharacterController : MonoBehaviour
             var connectedAnchor = _springJoint.connectedAnchor;
             _xOffset = position.x - connectedAnchor.x;
             _yOffset = position.y - connectedAnchor.y;
-        }else if (_hit.transform.gameObject.GetComponent<DissolveObject>())
-        {
-	        if(_hit.rigidbody.bodyType == RigidbodyType2D.Static) return;
-            _springJoint.connectedBody = _hit.rigidbody;
-            _pullObject = _hit.transform.gameObject;
         }
+        
+        if (!_hit.transform.gameObject.GetComponent<DissolveObject>()) return;
+        if(_hit.rigidbody.bodyType == RigidbodyType2D.Static) return;
+        _springJoint.connectedBody = _hit.rigidbody;
+        _pullObject = _hit.transform.gameObject;
     }
 	
 	public void Detach()

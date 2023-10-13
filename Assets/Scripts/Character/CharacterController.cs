@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Articy.Unity;
 using DialogueSystem;
+using UnityEngine.Tilemaps;
 
 public class CharacterController : MonoBehaviour
 {
 	[SerializeField] private GameState _gameState;
     private Vector2 _checkpoint;
+    private Vector2 _velocity;
     public static bool _isRespawning;
     
     [Header("Tongue Draw Script:")]
@@ -74,6 +76,10 @@ public class CharacterController : MonoBehaviour
 	private HookShot _hookShot;
 	[SerializeField]
 	private CircleCollider2D _triggerZone;
+	[SerializeField]
+	private GameObject _screenCenter;
+
+	
 	
 	private bool _isHolding;
 	public bool IsSafe = true;
@@ -96,11 +102,6 @@ public class CharacterController : MonoBehaviour
 	private Camera _camera;
 	private RaycastHit2D _hit;
 	private bool _isStuck;
-	
-	[Header("Dialogue")]
-	[SerializeField]
-	private DialogueManager _dialogueManager;
-	private ArticyObject _articyObject;
 
 	private void Awake()
 	{
@@ -109,26 +110,31 @@ public class CharacterController : MonoBehaviour
 		_audioSource = GetComponent<AudioSource>();
 		_triggerZone.enabled = false;
 		_camera = Camera.main;
-		_rb = GetComponent<Rigidbody2D>();
 		_springJoint = GetComponent<SpringJoint2D>();
 		_tongue.enabled = false;
 		_springJoint.enabled = false;
 	}
-	
+
+	private void OnEnable()
+	{
+		_gameState.StateChange += ChangeRigidbody;
+	}
+
 	private void OnDisable()
 	{
+		_gameState.StateChange -= ChangeRigidbody;
 		_tongue.enabled = false;
 		_springJoint.enabled = false;
 	}
 
 	void Update()
 	{
-		if(_gameState.Value is States.DIALOGUE or States.PAUSED) return;
+		if (_gameState.Value != States.NORMAL) return;
 		if (_isRespawning) return;
+		
 		SetCursor();
 		GetInputs();
 		// float time = Time.timeScale;
-		// if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 1;
 		// if (Input.GetKeyDown(KeyCode.UpArrow) && Time.timeScale <= 1) Time.timeScale += 0.1f;
 		// if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
 		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
@@ -142,6 +148,21 @@ public class CharacterController : MonoBehaviour
         {
 	        //_moveParticles.Play();
         }
+	}
+	
+	private void ChangeRigidbody(States obj)
+	{
+		if (obj == States.DIALOGUE || obj == States.PAUSED)
+		{
+			_velocity = _rb.velocity;
+			_rb.bodyType = RigidbodyType2D.Static;
+		}
+
+		if (obj == States.NORMAL)
+		{
+			_rb.bodyType = RigidbodyType2D.Dynamic;
+			_rb.velocity = _velocity;
+		}
 	}
 	
 	private void Move(float move)
@@ -162,6 +183,10 @@ public class CharacterController : MonoBehaviour
 	        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, _triggerZone.radius * 2f);
 	        foreach (Collider2D collider2D in collider2Ds)
 	        {
+		        if(collider2D.GetComponent<Tilemap>()) return;
+		        var positionX = collider2D.transform.position.x - transform.position.x > 0 ? 1 : -1;
+		        var positionY = _screenCenter.transform.position.y - transform.position.y > 0 ? 1 : -1;
+		        DialogueManager.GetInstance().GetPlayer(positionX, positionY);
 		        collider2D.GetComponent<IInteractable>()?.Interact();
 	        }
         }
@@ -191,7 +216,7 @@ public class CharacterController : MonoBehaviour
 		        _hasPlayed = true;
 	        }
 
-	        if (_movingObject && _springJoint.enabled)
+	        if (_movingObject && _tongue.enabled)
 	        {
 		        var position = _movingObject.transform.position;
 		        _springJoint.connectedAnchor = new Vector2(position.x - _xOffset,position.y - _yOffset);
@@ -336,9 +361,10 @@ public class CharacterController : MonoBehaviour
 	        _currentBubble.Pop();
 	        _rb.isKinematic = false;
         }
+        
         DistanceVector = GrapplePoint - (Vector2)transform.position;
-        _tongue.enabled = true;
         GrapplePoint = _hit.point;
+        _tongue.enabled = true;
 
         if (_hit.transform.gameObject.CompareTag("MovingObject"))
         {
@@ -347,12 +373,12 @@ public class CharacterController : MonoBehaviour
             var connectedAnchor = _springJoint.connectedAnchor;
             _xOffset = position.x - connectedAnchor.x;
             _yOffset = position.y - connectedAnchor.y;
-        }else if (_hit.transform.gameObject.GetComponent<DissolveObject>())
-        {
-	        if(_hit.rigidbody.bodyType == RigidbodyType2D.Static) return;
-            _springJoint.connectedBody = _hit.rigidbody;
-            _pullObject = _hit.transform.gameObject;
         }
+        
+        if (!_hit.transform.gameObject.GetComponent<DissolveObject>()) return;
+        if(_hit.rigidbody.bodyType == RigidbodyType2D.Static) return;
+        _springJoint.connectedBody = _hit.rigidbody;
+        _pullObject = _hit.transform.gameObject;
     }
 	
 	public void Detach()

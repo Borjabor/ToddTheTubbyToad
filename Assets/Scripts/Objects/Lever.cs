@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -56,14 +57,5 @@ public class Lever : MonoBehaviour
                 _hasPlayed = true;
             }
         }
-    }
-    
-    public void Particles()
-    {
-        if (!_eletricity.isPlaying)
-        {
-            _eletricity.Play();
-        }
-
     }
 }

@@ -21,7 +21,7 @@ namespace DialogueSystem
 
         public void Interact()
         {
-            //if(_gameState.Value is States.DIALOGUE or States.PAUSED) return;
+            if(_gameState.Value != States.NORMAL) return;
             DialogueManager.GetInstance().EnterDialogue(_dialogue);
             Debug.Log($"interact");
         }

@@ -120,7 +120,6 @@ public class Tongue : MonoBehaviour
             Vector2 offset = Vector2.Perpendicular(_hookShot.DistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * _currentWaveSize;
             Vector2 targetPosition = Vector2.Lerp(_hookShot.transform.position, _hookShot.GrapplePoint, delta) + offset;
             Vector2 currentPosition = Vector2.Lerp(_hookShot.transform.position, targetPosition, _ropeLaunchSpeedCurve.Evaluate(_moveTime) * _ropeLaunchSpeedMultiplayer);
-
             _lineRenderer.SetPosition(i, currentPosition);
         }
     }

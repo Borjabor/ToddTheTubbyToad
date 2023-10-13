@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
         if (_startOn) TurnOn();
         if (_loop) _timeToWait = 0f;
     }
-    
+
     public void TurnOn()
     {
         SetState(On());

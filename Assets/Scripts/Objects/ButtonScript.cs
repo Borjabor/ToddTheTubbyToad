@@ -34,7 +34,7 @@ public class ButtonScript : ObjectFSM
     {
         if (other.transform.tag == "Player" || other.transform.tag == "Object")
         {
-            SetState(On());
+            if(!_isPressed) SetState(On());
             _isPressed = true;
         }
     }
@@ -56,11 +56,7 @@ public class ButtonScript : ObjectFSM
             if (collider2D.GetComponent<Rigidbody2D>() && !collider2D.GetComponent<Tilemap>()) rigidBodies++;
         }
         
-        if (rigidBodies < 1)
-        {
-            SetState(Off());
-            _isPressed = false;
-        }
+        if (rigidBodies < 1) SetState(Off());
     }
 
     protected override IEnumerator On()
@@ -84,6 +80,7 @@ public class ButtonScript : ObjectFSM
     protected override IEnumerator Off()
     {
         _affectedObjectI.TurnOff();
+        _isPressed = false;
         while (transform.position.y < _oringialPos.y)
         {
             transform.position = Vector2.MoveTowards(transform.position, _oringialPos, Time.deltaTime);

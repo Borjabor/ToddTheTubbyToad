@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Articy.Unity;
 using DialogueSystem;
+using UnityEngine.Tilemaps;
 
 public class CharacterController : MonoBehaviour
 {
@@ -75,6 +76,10 @@ public class CharacterController : MonoBehaviour
 	private HookShot _hookShot;
 	[SerializeField]
 	private CircleCollider2D _triggerZone;
+	[SerializeField]
+	private GameObject _screenCenter;
+
+	
 	
 	private bool _isHolding;
 	public bool IsSafe = true;
@@ -97,11 +102,6 @@ public class CharacterController : MonoBehaviour
 	private Camera _camera;
 	private RaycastHit2D _hit;
 	private bool _isStuck;
-	
-	[Header("Dialogue")]
-	[SerializeField]
-	private DialogueManager _dialogueManager;
-	private ArticyObject _articyObject;
 
 	private void Awake()
 	{
@@ -129,13 +129,12 @@ public class CharacterController : MonoBehaviour
 
 	void Update()
 	{
-		if (_gameState.Value is States.DIALOGUE or States.PAUSED) return;
+		if (_gameState.Value != States.NORMAL) return;
 		if (_isRespawning) return;
 		
 		SetCursor();
 		GetInputs();
 		// float time = Time.timeScale;
-		// if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 1;
 		// if (Input.GetKeyDown(KeyCode.UpArrow) && Time.timeScale <= 1) Time.timeScale += 0.1f;
 		// if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
 		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
@@ -144,11 +143,11 @@ public class CharacterController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		// if(!_isRespawning) Move(_horizontalMove * Time.fixedDeltaTime);
-  //       if (_horizontalMove != 0 && _rb.velocity.y == 0)
-  //       {
-	 //        //_moveParticles.Play();
-  //       }
+		if(!_isRespawning) Move(_horizontalMove * Time.fixedDeltaTime);
+        if (_horizontalMove != 0 && _rb.velocity.y == 0)
+        {
+	        //_moveParticles.Play();
+        }
 	}
 	
 	private void ChangeRigidbody(States obj)
@@ -184,6 +183,10 @@ public class CharacterController : MonoBehaviour
 	        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, _triggerZone.radius * 2f);
 	        foreach (Collider2D collider2D in collider2Ds)
 	        {
+		        if(collider2D.GetComponent<Tilemap>()) return;
+		        var positionX = collider2D.transform.position.x - transform.position.x > 0 ? 1 : -1;
+		        var positionY = _screenCenter.transform.position.y - transform.position.y > 0 ? 1 : -1;
+		        DialogueManager.GetInstance().GetPlayer(positionX, positionY);
 		        collider2D.GetComponent<IInteractable>()?.Interact();
 	        }
         }

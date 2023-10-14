@@ -29,9 +29,6 @@ public class DissolveObject : MonoBehaviour
             Debug.Log($"hit check");
             StartCoroutine(Dissolve());
         }
-        
-        var sticky = other.gameObject.GetComponent<StickySurface>();
-        if (sticky) _rb.bodyType = RigidbodyType2D.Static;
     }
 
     private IEnumerator Dissolve()

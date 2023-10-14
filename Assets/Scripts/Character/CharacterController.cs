@@ -79,8 +79,10 @@ public class CharacterController : MonoBehaviour
 	private ParticleSystem _jumpParticles;
 
 	[Header("Other")]
+	[SerializeField]
+	private float _moveSpeed = 60f;
+	public float MoveSpeed => _moveSpeed;
 	private float _horizontalMove;
-	public float _moveSpeed { get; private set; } 
 	[SerializeField]
 	private SpriteRenderer _characterSprite;
 	[SerializeField] 
@@ -145,12 +147,6 @@ public class CharacterController : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			_gameState.Value++;
-			if(_gameState.Value > States.CUTSCENE) _gameState.Value = States.NORMAL;
-			Debug.Log($"{_gameState.Value}");
-		}
 		if (_gameState.Value != States.NORMAL) return;
 		if (_isRespawning) return;
 		
@@ -232,7 +228,7 @@ public class CharacterController : MonoBehaviour
 		        _hasPlayed = true;
 	        }
 
-	        if (_movingObject && _tongue.enabled)
+	        if (_movingObject && _springJoint.enabled)
 	        {
 		        var position = _movingObject.transform.position;
 		        _springJoint.connectedAnchor = new Vector2(position.x - _xOffset,position.y - _yOffset);
@@ -302,11 +298,6 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerExit2D(Collider2D other)
-	{
-		//if (other.gameObject.CompareTag("Object")) other.gameObject.layer = 3;
-	}
-
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		_audioSource.PlayOneShot(_collideAudio);
@@ -329,7 +320,7 @@ public class CharacterController : MonoBehaviour
 	public void Die()
 	{
 		StartCoroutine(Respawn());
-        CameraShake.Instance.ShakeCamera(5f, 0.2f);
+        //CameraShake.Instance.ShakeCamera(5f, 0.2f);
     }
 
     private IEnumerator Respawn()
@@ -363,7 +354,7 @@ public class CharacterController : MonoBehaviour
 
 		if (Vector2.Distance(transform.position, _currentBubble.transform.position) <= 0.1f)
 			transform.position = _currentBubble.transform.position;
-		Debug.Log($"in bubble");
+		_playerState.Value = PlayerStates.INBUBBLE;
 	}
 	
 	//Hookshot methods
@@ -373,7 +364,6 @@ public class CharacterController : MonoBehaviour
 
         if (_currentBubble)
         {
-	        transform.parent = null;
 	        _currentBubble.Pop();
 	        _rb.isKinematic = false;
         }
@@ -389,6 +379,11 @@ public class CharacterController : MonoBehaviour
             var connectedAnchor = _springJoint.connectedAnchor;
             _xOffset = position.x - connectedAnchor.x;
             _yOffset = position.y - connectedAnchor.y;
+        }
+        
+        if (_hit.transform.gameObject.GetComponent<Bubble>())
+        {
+	        _currentBubble = _hit.transform.gameObject.GetComponent<Bubble>();
         }
         
         if (!_hit.transform.gameObject.GetComponent<DissolveObject>()) return;
@@ -422,6 +417,12 @@ public class CharacterController : MonoBehaviour
     //This is the final method to determine the anchor point; Probably where a new location should be set to fix the offset
     public void Grapple()
     {
+	    if (_currentBubble)
+	    {
+		    _currentBubble.Pop();
+		    Detach();
+		    return;
+	    }
         _rb.bodyType = _pullObject ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
         if (_rb.bodyType == RigidbodyType2D.Dynamic) _isStuck = false;
         var fixedJoint = GetComponent<FixedJoint2D>();

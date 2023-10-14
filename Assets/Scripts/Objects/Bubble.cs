@@ -11,8 +11,13 @@ public class Bubble : MonoBehaviour
     private Collider2D _collider;
     [SerializeField]
     private CharacterController _player;
-    private float _moveSpeed = 60f;
+    private float _moveSpeed;
     private float _horizontalMove;
+
+    [SerializeField]
+    private float _riseSpeed;
+
+    
 
     private void Awake()
     {
@@ -20,7 +25,7 @@ public class Bubble : MonoBehaviour
         _playerState = Resources.Load<PlayerState>("SOAssets/Player State");
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
-        _moveSpeed = _player._moveSpeed;
+        _moveSpeed = _player.MoveSpeed;
     }
     
     void Update()
@@ -34,28 +39,35 @@ public class Bubble : MonoBehaviour
     private void GetInputs()
     {
         _horizontalMove = Input.GetAxis("Horizontal") * _moveSpeed;
+        Debug.Log($"{_moveSpeed}");
     }
 
     private void FixedUpdate()
     {
         if (_gameState.Value != States.NORMAL) return;
+        transform.Translate(Vector2.up * (_riseSpeed * Time.fixedDeltaTime));
         if(_playerState.Value == PlayerStates.NORMAL) return;
         Move(_horizontalMove * Time.fixedDeltaTime);
     }
 
-
     public void Pop()
     {
+        _playerState.Value = PlayerStates.NORMAL;
+        transform.DetachChildren();
         Destroy(gameObject);
     }
 
-    public void Move(float move)
+    private void Move(float move)
     {
         _rb.AddForce(new Vector2(move * 10f, 0f));
     }
 
-    public void Collide()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        _collider.isTrigger = false;
+        if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("MainCamera") && !other.gameObject.CompareTag("Object"))
+        {
+            Debug.Log($"{other.name}");
+            Destroy(gameObject);
+        }
     }
 }

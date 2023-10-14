@@ -11,62 +11,76 @@ using UnityEngine.Tilemaps;
 
 public class CharacterController : MonoBehaviour
 {
-	[SerializeField] private GameState _gameState;
-    private Vector2 _checkpoint;
-    private Vector2 _velocity;
-    public static bool _isRespawning;
-    
-    [Header("Tongue Draw Script:")]
-    [SerializeField] 
-    private Tongue _tongue;
-    [Header("Layer Settings:")]
-    [SerializeField] 
-    private int _grappableLayerNumber = 3;
-    
-    [Header("Attach Distance:")]
-    [SerializeField] 
-    private float _maxDistance = 4;
-    
-    [Header("Tongue Launch")]
-    [Range(0, 5)] [SerializeField] 
-    private float _launchSpeed = 5;
-    [Header("This is Ration of Distance Between Frog and Anchorpoint")]
-    [Range(0, 1)][SerializeField]
-    private float _distanceRatio = 0.5f;
-    
-    [Header("Mouse Cursor")] 
-    [SerializeField]
-    private Texture2D _canAttach;
-    [SerializeField]
-    private Texture2D _cannotAttach;
+	private GameState _gameState;
+	private PlayerState _playerState;
+
+	private Vector2 _checkpoint;
+	private Vector2 _velocity;
+	public static bool _isRespawning;
+
+	[Header("Tongue Draw Script:")]
+	[SerializeField]
+	private Tongue _tongue;
+
+	[Header("Layer Settings:")]
+	[SerializeField]
+	private int _grappableLayerNumber = 3;
+
+	[Header("Attach Distance:")]
+	[SerializeField]
+	private float _maxDistance = 4;
+
+	[Header("Tongue Launch")]
+	[Range(0, 5)]
+	[SerializeField]
+	private float _launchSpeed = 5;
+
+	[Header("This is Ration of Distance Between Frog and Anchorpoint")]
+	[Range(0, 1)]
+	[SerializeField]
+	private float _distanceRatio = 0.5f;
+
+	[Header("Mouse Cursor")]
+	[SerializeField]
+	private Texture2D _canAttach;
+
+	[SerializeField]
+	private Texture2D _cannotAttach;
 
 	[Header("Audio")]
 	[SerializeField]
 	private AudioClip _collideAudio;
+
 	[SerializeField]
 	private AudioClip _deathAudio;
-	[SerializeField] 
+
+	[SerializeField]
 	private AudioClip _grabbing;
+
 	private AudioSource _audioSource;
-	[SerializeField] 
+
+	[SerializeField]
 	private AudioClip _tongueConnect;
-	[SerializeField] 
+
+	[SerializeField]
 	private AudioClip _tongueDisconnect;
+
 	[SerializeField]
 	private AudioClip _tongueThrow;
 
-    [Header("Particles")]
+	[Header("Particles")]
 	[SerializeField]
 	private ParticleSystem _deathParticles;
+
 	[SerializeField]
 	private ParticleSystem _moveParticles;
+
 	[SerializeField]
 	private ParticleSystem _jumpParticles;
-	
+
 	[Header("Other")]
-	[SerializeField]
-	private float _moveSpeed = 60f;
 	private float _horizontalMove;
+	public float _moveSpeed { get; private set; } 
 	[SerializeField]
 	private SpriteRenderer _characterSprite;
 	[SerializeField] 
@@ -105,6 +119,8 @@ public class CharacterController : MonoBehaviour
 
 	private void Awake()
 	{
+		_gameState = Resources.Load<GameState>("SOAssets/Game State");
+		_playerState = Resources.Load<PlayerState>("SOAssets/Player State");
 		_rb = GetComponent<Rigidbody2D>();
         _checkpoint = transform.position;
 		_audioSource = GetComponent<AudioSource>();
@@ -129,13 +145,18 @@ public class CharacterController : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			_gameState.Value++;
+			if(_gameState.Value > States.CUTSCENE) _gameState.Value = States.NORMAL;
+			Debug.Log($"{_gameState.Value}");
+		}
 		if (_gameState.Value != States.NORMAL) return;
 		if (_isRespawning) return;
 		
 		SetCursor();
 		GetInputs();
 		// float time = Time.timeScale;
-		// if (Input.GetKeyDown(KeyCode.UpArrow) && Time.timeScale <= 1) Time.timeScale += 0.1f;
 		// if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
 		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
 		// if(time != Time.timeScale) Debug.Log($"{time}");
@@ -143,7 +164,7 @@ public class CharacterController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if(!_isRespawning) Move(_horizontalMove * Time.fixedDeltaTime);
+		if(!_isRespawning && _playerState.Value != PlayerStates.INBUBBLE) Move(_horizontalMove * Time.fixedDeltaTime);
         if (_horizontalMove != 0 && _rb.velocity.y == 0)
         {
 	        //_moveParticles.Play();
@@ -167,11 +188,6 @@ public class CharacterController : MonoBehaviour
 	
 	private void Move(float move)
 	{
-		if (_currentBubble)
-		{
-			_currentBubble.Move(move);
-			return;
-		}
 		_rb.AddForce(new Vector2(move * 10f, 0f));
 	}
 
@@ -260,11 +276,11 @@ public class CharacterController : MonoBehaviour
 			Die();
 		}
 			//For bubble generator implementation
-		// if (other.gameObject.GetComponent<Bubble>())
-		// {
-		// 	_currentBubble = other.gameObject.GetComponent<Bubble>();
-		// 	StartCoroutine(GetInBubble());
-		// }
+		if (other.gameObject.GetComponent<Bubble>())
+		{
+			_currentBubble = other.gameObject.GetComponent<Bubble>();
+			StartCoroutine(GetInBubble());
+		}
 		
 		if(GetComponent<FixedJoint2D>() != null) return;
 		if (other.gameObject.CompareTag("Object"))
@@ -303,11 +319,11 @@ public class CharacterController : MonoBehaviour
 			Die();
 		}
 		
-		if (other.gameObject.GetComponent<Bubble>())
-		{
-			_currentBubble = other.gameObject.GetComponent<Bubble>();
-			StartCoroutine(GetInBubble());
-		}
+		// if (other.gameObject.GetComponent<Bubble>())
+		// {
+		// 	_currentBubble = other.gameObject.GetComponent<Bubble>();
+		// 	StartCoroutine(GetInBubble());
+		// }
 	}
 
 	public void Die()
@@ -403,6 +419,7 @@ public class CharacterController : MonoBehaviour
         return _hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance;
     }
     
+    //This is the final method to determine the anchor point; Probably where a new location should be set to fix the offset
     public void Grapple()
     {
         _rb.bodyType = _pullObject ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;

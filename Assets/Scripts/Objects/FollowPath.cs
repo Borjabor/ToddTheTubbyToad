@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class FollowPath : ObjectFSM, IOnOffObjects
 {
+    [SerializeField]
+    private GameState _gameState;
+    
     private Node[] _nodes;
 
     [SerializeField]
@@ -25,6 +28,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     
     void Awake()
     {
+        _gameState = Resources.Load<GameState>("SOAssets/Game State");
         _nodes = GetComponentsInChildren<Node>();
         _currentNodePosition = _nodes[_currentNodeIndex].transform.position;
         if (_startOn) TurnOn();
@@ -45,6 +49,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     {
         while ((Vector2)_movingObject.transform.position != _currentNodePosition)
         {
+            yield return new WaitUntil(() => _gameState.Value == States.NORMAL);
             _movingObject.transform.position = Vector2.MoveTowards(_movingObject.transform.position, _currentNodePosition, _moveSpeed * Time.deltaTime);
             yield return 0;
         }

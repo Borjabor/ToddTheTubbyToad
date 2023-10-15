@@ -60,11 +60,10 @@ public class WaterSpring : MonoBehaviour
         if (other.gameObject.tag.Equals("Object"))
         {
             //Is this just getting the rigidbody?
-            //FallingObject fallingObject = other.gameObject.GetComponent<FallingObject>();
-            //Rigidbody2D rb = fallingObject.rigidbody2D;
-            //var speed = rb.velocity;
-            //Velocity += speed.y/resistance;
-
+            SplashingObject SplashingObject = other.gameObject.GetComponent<SplashingObject>();
+            Rigidbody2D Rigidbody2D = SplashingObject.Rigidbody2D;
+            var speed = Rigidbody2D.velocity;
+            Velocity += speed.y/resistance;
         }
     }
 }

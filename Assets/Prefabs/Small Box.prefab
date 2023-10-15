@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2560143905751025970}
   - component: {fileID: 8796655430839884830}
   - component: {fileID: 8501842129099440205}
+  - component: {fileID: -7406420512497291891}
   m_Layer: 2
   m_Name: Small Box
   m_TagString: Object
@@ -268,3 +269,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7406420512497291891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560143905751025968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e04840849f773489fa1b564a611899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 2560143905751025973}

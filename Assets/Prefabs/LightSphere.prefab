@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 5845239487393638735}
   - component: {fileID: 8591363523214107597}
   - component: {fileID: 6585078553163323772}
+  - component: {fileID: -3169239894265618283}
   m_Layer: 2
   m_Name: LightSphere
   m_TagString: Object
@@ -422,3 +423,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0784a74f0415df24abcd8e0010f339f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3169239894265618283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7974666222690394179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e04840849f773489fa1b564a611899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 5845239487393638735}

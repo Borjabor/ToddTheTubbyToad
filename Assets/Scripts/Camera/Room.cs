@@ -6,8 +6,8 @@ public class Room : MonoBehaviour
 {
 
     [SerializeField] private GameObject _virtualCamera;
-    [SerializeField] private GameObject[] _supportCameras;
-    [SerializeField] private GameObject _NextRoomCamera;
+    //[SerializeField] private GameObject[] _supportCameras;
+    //[SerializeField] private GameObject _NextRoomCamera;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -28,7 +28,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    void Update()
+    /*void Update()
     {
         foreach (GameObject go in _supportCameras)
         {
@@ -42,6 +42,6 @@ public class Room : MonoBehaviour
         {
             _virtualCamera.SetActive(false);
         }
-    }
+    }*/
 
 }

@@ -34,7 +34,6 @@ public class DangerZone : MonoBehaviour
     {
         if (_player.IsSafe)
         {
-            Debug.Log($"Safe");
             _virtualCamera.m_Lens.OrthographicSize = _startingZoom;
             _currentZoom = _startingZoom;
             _cameraNoise.m_AmplitudeGain = 0;

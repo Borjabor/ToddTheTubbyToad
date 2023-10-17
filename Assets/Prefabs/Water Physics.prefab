@@ -9,13 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1594050840682628941}
-  - component: {fileID: 1594050840682628936}
+  - component: {fileID: 256063243208184468}
   - component: {fileID: 1594050840682628943}
-  - component: {fileID: 1594050840682628942}
+  - component: {fileID: 3335775854330698634}
   - component: {fileID: 2888535519382340431}
   - component: {fileID: 6086559477087799667}
+  - component: {fileID: 1935173716935121855}
   m_Layer: 2
-  m_Name: Water
+  m_Name: Water Physics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +37,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1594050840682628936
+--- !u!212 &256063243208184468
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,9 +77,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.29814878, g: 0.5527964, b: 0.9433962, a: 0.3254902}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 90ac870a2b945154ab43e6765113a6d1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!253 &1594050840682628942
+--- !u!253 &3335775854330698634
 BuoyancyEffector2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +146,7 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: 0.52
+  m_SurfaceLevel: 0.51
   m_Density: 2.17
   m_LinearDrag: 5
   m_AngularDrag: 5
@@ -262,3 +263,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioTriggerEnter: {fileID: 2888535519382340431}
   _audioCollisionEnter: {fileID: 0}
+--- !u!50 &1935173716935121855
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594050840682628940}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

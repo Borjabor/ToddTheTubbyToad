@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5863118327873350904}
   - component: {fileID: 8856799488713871740}
   - component: {fileID: 288208264667249194}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpringPref
   m_TagString: Spring
   m_Icon: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   force: 0
   height: 0
   springTransform: {fileID: 185546836276335373}
+  spriteShapeController: {fileID: 0}
 --- !u!58 &288208264667249194
 CircleCollider2D:
   m_ObjectHideFlags: 0

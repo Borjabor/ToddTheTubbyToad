@@ -93,7 +93,7 @@ public class CharacterController : MonoBehaviour
 	[SerializeField]
 	private CircleCollider2D _triggerZone;
 	[SerializeField]
-	private GameObject _screenCenter;
+	//private GameObject _screenCenter;
 
 	
 	
@@ -197,7 +197,7 @@ public class CharacterController : MonoBehaviour
 	        {
 		        if(collider2D.GetComponent<Tilemap>()) return;
 		        var positionX = collider2D.transform.position.x - transform.position.x > 0 ? 1 : -1;
-		        var positionY = _screenCenter.transform.position.y - transform.position.y > 0 ? 1 : -1;
+		        var positionY = _camera.transform.position.y - transform.position.y > 0 ? 1 : -1;
 		        DialogueManager.GetInstance().GetPlayer(positionX, positionY);
 		        collider2D.GetComponent<IInteractable>()?.Interact();
 	        }
@@ -330,7 +330,7 @@ public class CharacterController : MonoBehaviour
 		_rb.velocity = Vector2.zero;
 		Detach();
 		_audioSource.PlayOneShot(_deathAudio);
-		//CameraShake.Instance.ShakeCamera(5f, 0.2f);
+		CameraShake.GetInstance().ShakeCamera(5f, 0.2f);
 		_deathParticles.Play();
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);

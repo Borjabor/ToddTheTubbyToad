@@ -5,15 +5,22 @@ using Cinemachine;
 
 public class CameraShake : MonoBehaviour
 {
-    public static CameraShake Instance { get; private set; }
+    private static CameraShake instance;
 
     private CinemachineVirtualCamera _cinemachineVirtualCamera;
     private float shakeTimer;
 
-    private void Awake()
+    private void OnEnable()
     {
-        Instance = this;
+        if(instance != null) Debug.Log($"There is another camera shake");
+        instance = this;
+        Debug.Log($"{instance.name}");
        _cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>(); 
+    }
+    
+    public static CameraShake GetInstance()
+    {
+        return instance;
     }
 
     public void ShakeCamera(float intesity, float time)

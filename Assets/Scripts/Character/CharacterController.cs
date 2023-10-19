@@ -92,10 +92,9 @@ public class CharacterController : MonoBehaviour
 	private HookShot _hookShot;
 	[SerializeField]
 	private CircleCollider2D _triggerZone;
+
 	[SerializeField]
 	//private GameObject _screenCenter;
-
-	
 	
 	private bool _isHolding;
 	public bool IsSafe = true;
@@ -131,6 +130,7 @@ public class CharacterController : MonoBehaviour
 		_springJoint = GetComponent<SpringJoint2D>();
 		_tongue.enabled = false;
 		_springJoint.enabled = false;
+		CameraManager.Instance.SetPlayer(GetComponent<CharacterController>());
 	}
 
 	private void OnEnable()
@@ -174,8 +174,7 @@ public class CharacterController : MonoBehaviour
 			_velocity = _rb.velocity;
 			_rb.bodyType = RigidbodyType2D.Static;
 		}
-
-		if (obj == States.NORMAL)
+		else if (obj == States.NORMAL)
 		{
 			_rb.bodyType = RigidbodyType2D.Dynamic;
 			_rb.velocity = _velocity;
@@ -320,7 +319,6 @@ public class CharacterController : MonoBehaviour
 	public void Die()
 	{
 		StartCoroutine(Respawn());
-        //CameraShake.Instance.ShakeCamera(5f, 0.2f);
     }
 
     private IEnumerator Respawn()
@@ -330,7 +328,7 @@ public class CharacterController : MonoBehaviour
 		_rb.velocity = Vector2.zero;
 		Detach();
 		_audioSource.PlayOneShot(_deathAudio);
-		CameraShake.GetInstance().ShakeCamera(5f, 0.2f);
+		CameraManager.Instance.ShakeCamera(5f, 0.2f);
 		_deathParticles.Play();
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);

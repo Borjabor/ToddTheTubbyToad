@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7183056133831023769}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 18.094027, y: 0.43565375, z: 2840.5288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7183056135687146134}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7183056133831023765
 MonoBehaviour:
@@ -131,14 +131,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7183056135291903449}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.65, y: -7.2650604, z: 2817.6113}
-  m_LocalScale: {x: 0.975, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7183056135687146134}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &7183056135291903447
 PolygonCollider2D:
@@ -150,6 +150,25 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -166,9 +185,12 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -20.26548, y: -3.2673793}
-      - {x: 36.964363, y: -3.225575}
-      - {x: 36.408703, y: 25.082136}
+      - {x: 31.852966, y: -3.225575}
+      - {x: 35.58748, y: -2.3046856}
+      - {x: 33.20288, y: 32.928463}
+      - {x: 0.07858372, y: 33.123627}
       - {x: -20.307604, y: 25.44017}
+  m_UseDelaunayMesh: 0
 --- !u!114 &7183056135291903446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,14 +216,13 @@ GameObject:
   - component: {fileID: 7183056135687146131}
   - component: {fileID: 7183056135687146132}
   - component: {fileID: 7183056135687146133}
-  - component: {fileID: 7183056135687146130}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7183056135687146134
 Transform:
   m_ObjectHideFlags: 0
@@ -209,14 +230,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7183056135687146135}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.68133426, y: 1.8814902, z: 1.4570312}
+  m_LocalPosition: {x: 7.4556985, y: 5.5364294, z: 2817.6113}
   m_LocalScale: {x: 1.025641, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7183056133831023768}
   m_Father: {fileID: 7183056135291903448}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7183056135687146131
 MonoBehaviour:
@@ -247,6 +268,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
+    FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
@@ -283,15 +305,3 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 7183056135291903447}
   m_Damping: 0.5
   m_MaxWindowSize: -1
---- !u!114 &7183056135687146130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7183056135687146135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6910aaba230d9ec44beeda8f39b01215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

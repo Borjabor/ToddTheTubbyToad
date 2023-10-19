@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField]
+    private GameObject _test;
+
+    
     protected override void SingletonAwake()
     {
     }
@@ -20,4 +24,5 @@ public class GameManager : Singleton<GameManager>
     {
         
     }
+    
 }

@@ -9,22 +9,26 @@ public class Room : MonoBehaviour
     //[SerializeField] private GameObject[] _supportCameras;
     //[SerializeField] private GameObject _NextRoomCamera;
 
+    private void OnEnable()
+    {
+        CameraManager.Instance.SetCamera(_virtualCamera);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        if (other.CompareTag("Player"))
         {
-            _virtualCamera.SetActive(true);
+            CameraManager.Instance.SetCamera(_virtualCamera);
         }
     }
     
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !other.isTrigger)
-        {
-            _virtualCamera.SetActive(false);
-        }
-    }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Player") && !other.isTrigger)
+    //     {
+    //         _virtualCamera.SetActive(false);
+    //     }
+    // }
 
     /*void Update()
     {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Bubble : MonoBehaviour
 {
@@ -39,7 +40,6 @@ public class Bubble : MonoBehaviour
     private void GetInputs()
     {
         _horizontalMove = Input.GetAxis("Horizontal") * _moveSpeed;
-        Debug.Log($"{_moveSpeed}");
     }
 
     private void FixedUpdate()
@@ -64,9 +64,8 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("MainCamera") && !other.gameObject.CompareTag("Object"))
+        if (other.gameObject.CompareTag("MovingObject") || other.gameObject.GetComponent<Tilemap>() != null)
         {
-            Debug.Log($"{other.name}");
             Destroy(gameObject);
         }
     }

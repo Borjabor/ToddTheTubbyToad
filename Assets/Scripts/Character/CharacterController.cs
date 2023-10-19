@@ -245,7 +245,7 @@ public class CharacterController : MonoBehaviour
 	        if (Input.GetKey(KeyCode.W))
 	        {
 		        _springJoint.distance -= (float)(_tongueLengthChanger * Time.deltaTime);
-		        if (_springJoint.distance <= 2) _springJoint.distance = 2;
+		        if (_springJoint.distance <= 2) _springJoint.distance = 0;
 	        }else if (Input.GetKey(KeyCode.S))
 	        {
 		        _springJoint.distance += (float)(_tongueLengthChanger * Time.deltaTime);

@@ -9,6 +9,7 @@ public class Waterfall : MonoBehaviour
 {
     [SerializeField]
     private float _maxLength;
+    private float _currentMaxLength;
     [SerializeField]
     private float _fallSpeed;
     private LineRenderer _lineRenderer;
@@ -19,14 +20,30 @@ public class Waterfall : MonoBehaviour
     [SerializeField]
     private GameObject _splashEffect;
 
+    [SerializeField]
+    private Material _lavaMaterial;
+
     
+    
+    [Header("Geyser Variant")]
+    [SerializeField]
+    private bool _isGeyser;
+    private Vector3 direction;
+
+    [SerializeField]
+    private float _activeTime = 3f;
+    [SerializeField]
+    private float _inactiveTime = 5f;
+    private float _elapsedTime;
+    private bool _isActive;
     
     private float _lastLength;
 
     private void Awake()
     {
+        direction = _isGeyser ? Vector3.up : -Vector3.up;
+        _currentMaxLength = _maxLength;
         _lineRenderer = GetComponent<LineRenderer>();
-        //_boxCollider2D = GetComponent<BoxCollider2D>();
         _lineRenderer.startWidth = _boxCollider2D.size.x;
         _lineRenderer.endWidth = _boxCollider2D.size.x;
         _lineRenderer.positionCount = 2;
@@ -38,17 +55,44 @@ public class Waterfall : MonoBehaviour
 
     private void Update()
     {
+        if(_isGeyser) GeyserTimer();
+        
         GetCurrentLength(out float currentMaxLength);
         CalculateActualLength(currentMaxLength, out float currentLength);
         ResizeLine(currentLength);
         RescaleCollider(currentLength);
         CheckForSplash(currentLength, currentMaxLength);
+        
+    }
+
+    private void GeyserTimer()
+    {
+        if (!_isActive)
+        {
+            _currentMaxLength = Mathf.Lerp(_currentMaxLength, 0f, (_inactiveTime / _activeTime) * Time.deltaTime);
+            _elapsedTime += Time.deltaTime;
+            if (_elapsedTime >= _inactiveTime)
+            {
+                _isActive = true;
+                _elapsedTime = 0f;
+            }
+        }
+        else
+        {
+            _currentMaxLength = _maxLength;
+            _elapsedTime += Time.deltaTime;
+            if (_elapsedTime >= _activeTime)
+            {
+                _elapsedTime = 0f;
+                _isActive = false;
+            }
+        }
     }
 
     private void GetCurrentLength(out float currentMaxLength)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, _maxLength, _obstableLayerMask);
-        currentMaxLength = hit ? Vector2.Distance(transform.position, hit.point) : _maxLength;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _currentMaxLength, _obstableLayerMask);
+        currentMaxLength = hit ? Vector2.Distance(transform.position, hit.point) : _currentMaxLength;
     }
 
     private void CalculateActualLength(float currentMaxLength, out float currentLength)
@@ -60,7 +104,7 @@ public class Waterfall : MonoBehaviour
 
     private void ResizeLine(float currentLength)
     {
-        _lineRenderer.SetPosition(1, transform.position - Vector3.up * currentLength);
+        _lineRenderer.SetPosition(1, transform.position + direction * currentLength);
         _lineRenderer.material.SetFloat("_Length", currentLength);
     }
 
@@ -73,7 +117,7 @@ public class Waterfall : MonoBehaviour
     private void CheckForSplash(float currentLength, float currentMaxLength)
     {
         _splashEffect.SetActive(currentLength >= currentMaxLength);
-        _splashEffect.transform.position = transform.position - Vector3.up * currentLength;
+        _splashEffect.transform.position = transform.position + direction * currentLength;
     }
     
     private void OnDrawGizmos()

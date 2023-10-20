@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public enum States { NORMAL,DIALOGUE, PAUSED, CUTSCENE}
-[CreateAssetMenu(menuName = "Scriptable/States/GameState")]
+[CreateAssetMenu(menuName = "ScriptableObjects/States/GameState")]
 public class GameState : TState<States>
 {
     private void OnValidate()

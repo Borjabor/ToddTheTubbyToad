@@ -9,14 +9,14 @@ public class CameraManager : Singleton<CameraManager>
     private GameObject _currentVirtualCamera;
     [SerializeField]
     private CinemachineVirtualCamera _cinemachineVirtualCamera;
+    [SerializeField]
     private CinemachineBasicMultiChannelPerlin _cameraNoise;
+    private CharacterController _player;
     private float _shakeTimer;
     [SerializeField]
     private float _timeToDeath = 3f;
     [SerializeField]
     private float _cameraShakeAmount = 2f;
-    [SerializeField]
-    private CharacterController _player;
     private float _startingZoom;
     private float _currentZoom;
     private float _targetZoom;
@@ -44,9 +44,9 @@ public class CameraManager : Singleton<CameraManager>
         _player = player;
     }
 
-    public void ShakeCamera(float intesity, float time)
+    public void ShakeCamera(float intensity, float time)
     { 
-        _cameraNoise.m_AmplitudeGain = intesity;
+        _cameraNoise.m_AmplitudeGain = intensity;
         _shakeTimer = time;
     }
 

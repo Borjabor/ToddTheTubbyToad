@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 
-
-
 public class TState<T> : ScriptableObject
 {
     public event Action<T> StateChange;

@@ -5,21 +5,11 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private Collider2D _checkpointCollider;
-
-    private void Awake()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        //_closeSprite.SetActive(true);
-        //_openSprite.SetActive(false);
-        _checkpointCollider = GetComponent<BoxCollider2D>();
-        //_checkpointCollider.isTrigger = true;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameManager.Instance.SaveCheckpoint(transform.position);
+        }
     }
-
-    // private void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Object"))
-    //     {
-    //         Destroy(other.gameObject);
-    //     }
-    // }
 }

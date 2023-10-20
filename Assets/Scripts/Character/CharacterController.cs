@@ -153,7 +153,8 @@ public class CharacterController : MonoBehaviour
 		SetCursor();
 		GetInputs();
 		// float time = Time.timeScale;
-		// if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
+		if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+		if(Input.GetKeyDown(KeyCode.L)) GameManager.Instance.Load();
 		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
 		// if(time != Time.timeScale) Debug.Log($"{time}");
 	}
@@ -333,11 +334,12 @@ public class CharacterController : MonoBehaviour
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);
 		yield return new WaitForSeconds(1.5f);
-		transform.position = _checkpoint;
-		_deathParticles.Stop();
-		_characterSprite.enabled = true;
-		_arms.SetActive(true);
+		// transform.position = _checkpoint;
+		// _deathParticles.Stop();
+		// _characterSprite.enabled = true;
+		// _arms.SetActive(true);
 		_isRespawning = false;
+		GameManager.Instance.Load();
 	}
 
 	private IEnumerator GetInBubble()

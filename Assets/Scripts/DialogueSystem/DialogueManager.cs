@@ -6,7 +6,7 @@ using Articy.Unity.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Articy.UnityImporterTutorial;
+using Articy.Todd_The_Tubby_Toad;
 using UnityEngine.Events; //has to be renamed to project used from Articy
 
 namespace DialogueSystem

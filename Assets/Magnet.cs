@@ -12,9 +12,7 @@ public class Magnet : MonoBehaviour, IOnOffObjects
     //private Animator _bladeAnimator;
     private AreaEffector2D _areaEffector;
     private ParticleSystem _magnetParticles;
-    [SerializeField]
-    private GameObject _stick;
-
+    
     [SerializeField]
     private bool _startOn;
 
@@ -31,7 +29,7 @@ public class Magnet : MonoBehaviour, IOnOffObjects
        // _bladeAnimator.SetBool("Fan_State", true);
         if (!_magnetParticles.isPlaying) _magnetParticles.Play();
         _areaEffector.enabled = true;
-        _stick.SetActive(true);
+        //_parent.SetActive(true);
     }
 
     public void TurnOff()
@@ -40,7 +38,9 @@ public class Magnet : MonoBehaviour, IOnOffObjects
         //_bladeAnimator.SetBool("Fan_State", false);
         _magnetParticles.Stop();
         _areaEffector.enabled = false;
-        _stick.SetActive(false);
+        //_parent.SetActive(false);
 
     }
-}
+
+    }
+

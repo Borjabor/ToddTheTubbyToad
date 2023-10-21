@@ -16,11 +16,11 @@ public class PipesSpriteMask : MonoBehaviour
     [SerializeField] 
     private bool startOn;
 
-
     private void Awake()
     {
         _spriteRenderer.enabled = false;
         _spriteMask = GetComponent<SpriteMask>();
+        TurnOff();
         if(startOn) TurnOn();
     }
 

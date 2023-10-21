@@ -11,12 +11,13 @@ using UnityEngine.Tilemaps;
 
 public class CharacterController : MonoBehaviour
 {
+	#region Variables
 	private GameState _gameState;
 	private PlayerState _playerState;
 
 	private Vector2 _checkpoint;
 	private Vector2 _velocity;
-	public static bool _isRespawning;
+	//public static bool _isRespawning;
 
 	[Header("Tongue Draw Script:")]
 	[SerializeField]
@@ -92,15 +93,15 @@ public class CharacterController : MonoBehaviour
 	private HookShot _hookShot;
 	[SerializeField]
 	private CircleCollider2D _triggerZone;
+
 	[SerializeField]
 	//private GameObject _screenCenter;
-
-	
 	
 	private bool _isHolding;
 	public bool IsSafe = true;
 	private Bubble _currentBubble;
-	
+
+	#region HookshotData
 	//Hookshot Data
 	public Vector2 GrapplePoint { get; private set; }
 	public Vector2 DistanceVector{ get; private set; }
@@ -118,6 +119,9 @@ public class CharacterController : MonoBehaviour
 	private Camera _camera;
 	private RaycastHit2D _hit;
 	private bool _isStuck;
+	
+	#endregion
+	#endregion
 
 	private void Awake()
 	{
@@ -131,6 +135,7 @@ public class CharacterController : MonoBehaviour
 		_springJoint = GetComponent<SpringJoint2D>();
 		_tongue.enabled = false;
 		_springJoint.enabled = false;
+		CameraManager.Instance.SetPlayer(GetComponent<CharacterController>());
 	}
 
 	private void OnEnable()
@@ -148,19 +153,19 @@ public class CharacterController : MonoBehaviour
 	void Update()
 	{
 		if (_gameState.Value != States.NORMAL) return;
-		if (_isRespawning) return;
 		
 		SetCursor();
 		GetInputs();
 		// float time = Time.timeScale;
-		// if (Input.GetKeyDown(KeyCode.DownArrow) && Time.timeScale >= 0) Time.timeScale -= 0.1f;
+		//if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+		//if(Input.GetKeyDown(KeyCode.L)) GameManager.Instance.Load();
 		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
 		// if(time != Time.timeScale) Debug.Log($"{time}");
 	}
 
 	private void FixedUpdate()
 	{
-		if(!_isRespawning && _playerState.Value != PlayerStates.INBUBBLE) Move(_horizontalMove * Time.fixedDeltaTime);
+		if(_playerState.Value == PlayerStates.NORMAL) Move(_horizontalMove * Time.fixedDeltaTime);
         if (_horizontalMove != 0 && _rb.velocity.y == 0)
         {
 	        //_moveParticles.Play();
@@ -174,8 +179,7 @@ public class CharacterController : MonoBehaviour
 			_velocity = _rb.velocity;
 			_rb.bodyType = RigidbodyType2D.Static;
 		}
-
-		if (obj == States.NORMAL)
+		else if (obj == States.NORMAL)
 		{
 			_rb.bodyType = RigidbodyType2D.Dynamic;
 			_rb.velocity = _velocity;
@@ -267,7 +271,7 @@ public class CharacterController : MonoBehaviour
 			_checkpoint = other.transform.position;
 		}
 		
-		if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
+		if(other.gameObject.CompareTag("Hazard") && _playerState.Value != PlayerStates.RESPAWN)
 		{
 			Die();
 		}
@@ -305,7 +309,7 @@ public class CharacterController : MonoBehaviour
 		_isStuck = true;
 		if (sticky) _rb.bodyType = RigidbodyType2D.Static;
 		
-		if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
+		if(other.gameObject.CompareTag("Hazard") && _playerState.Value != PlayerStates.RESPAWN)
 		{
 			Die();
 		}
@@ -320,17 +324,16 @@ public class CharacterController : MonoBehaviour
 	public void Die()
 	{
 		StartCoroutine(Respawn());
-        //CameraShake.Instance.ShakeCamera(5f, 0.2f);
     }
 
     private IEnumerator Respawn()
 	{
-		_isRespawning = true;
+		_playerState.Value = PlayerStates.RESPAWN;
 		IsSafe = true;
 		_rb.velocity = Vector2.zero;
 		Detach();
 		_audioSource.PlayOneShot(_deathAudio);
-		CameraShake.GetInstance().ShakeCamera(5f, 0.2f);
+		CameraManager.Instance.ShakeCamera(5f, 0.2f);
 		_deathParticles.Play();
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);
@@ -339,7 +342,8 @@ public class CharacterController : MonoBehaviour
 		_deathParticles.Stop();
 		_characterSprite.enabled = true;
 		_arms.SetActive(true);
-		_isRespawning = false;
+		_playerState.Value = PlayerStates.NORMAL;
+		//GameManager.Instance.Load();
 	}
 
 	private IEnumerator GetInBubble()

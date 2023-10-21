@@ -39,9 +39,6 @@ namespace DialogueSystem
         private RectTransform _speakerContainer;
         [SerializeField]
         private string _playerArticyTag;
-
-        
-
         
     
         private bool _isPlayer;

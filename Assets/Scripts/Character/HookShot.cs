@@ -75,7 +75,7 @@ public class HookShot : MonoBehaviour
     private void Update()
     {
         SetCursor();
-        if (CharacterController._isRespawning) return;
+        //if (CharacterController._isRespawning) return;
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SetGrapplePoint();

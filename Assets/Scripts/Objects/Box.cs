@@ -31,11 +31,9 @@ public class Box : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<Bubble>())
-        {
-            _currentBubble = other.gameObject.GetComponent<Bubble>();
-            StartCoroutine(GetInBubble());
-        }
+        if (!other.gameObject.GetComponent<Bubble>()) return;
+        _currentBubble = other.gameObject.GetComponent<Bubble>();
+        StartCoroutine(GetInBubble());
     }
     
     private IEnumerator GetInBubble()

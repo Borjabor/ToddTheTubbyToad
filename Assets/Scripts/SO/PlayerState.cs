@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum PlayerStates { NORMAL,INBUBBLE}
+public enum PlayerStates { NORMAL,INBUBBLE, RESPAWN}
 [CreateAssetMenu(menuName = "ScriptableObjects/States/PlayerState")]
 public class PlayerState : TState<PlayerStates>
 {

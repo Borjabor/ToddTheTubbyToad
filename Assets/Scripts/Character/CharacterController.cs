@@ -11,12 +11,13 @@ using UnityEngine.Tilemaps;
 
 public class CharacterController : MonoBehaviour
 {
+	#region Variables
 	private GameState _gameState;
 	private PlayerState _playerState;
 
 	private Vector2 _checkpoint;
 	private Vector2 _velocity;
-	public static bool _isRespawning;
+	//public static bool _isRespawning;
 
 	[Header("Tongue Draw Script:")]
 	[SerializeField]
@@ -99,7 +100,8 @@ public class CharacterController : MonoBehaviour
 	private bool _isHolding;
 	public bool IsSafe = true;
 	private Bubble _currentBubble;
-	
+
+	#region HookshotData
 	//Hookshot Data
 	public Vector2 GrapplePoint { get; private set; }
 	public Vector2 DistanceVector{ get; private set; }
@@ -117,6 +119,9 @@ public class CharacterController : MonoBehaviour
 	private Camera _camera;
 	private RaycastHit2D _hit;
 	private bool _isStuck;
+	
+	#endregion
+	#endregion
 
 	private void Awake()
 	{
@@ -148,20 +153,19 @@ public class CharacterController : MonoBehaviour
 	void Update()
 	{
 		if (_gameState.Value != States.NORMAL) return;
-		if (_isRespawning) return;
 		
 		SetCursor();
 		GetInputs();
 		// float time = Time.timeScale;
-		if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
-		if(Input.GetKeyDown(KeyCode.L)) GameManager.Instance.Load();
+		//if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+		//if(Input.GetKeyDown(KeyCode.L)) GameManager.Instance.Load();
 		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
 		// if(time != Time.timeScale) Debug.Log($"{time}");
 	}
 
 	private void FixedUpdate()
 	{
-		if(!_isRespawning && _playerState.Value != PlayerStates.INBUBBLE) Move(_horizontalMove * Time.fixedDeltaTime);
+		if(_playerState.Value == PlayerStates.NORMAL) Move(_horizontalMove * Time.fixedDeltaTime);
         if (_horizontalMove != 0 && _rb.velocity.y == 0)
         {
 	        //_moveParticles.Play();
@@ -267,7 +271,7 @@ public class CharacterController : MonoBehaviour
 			_checkpoint = other.transform.position;
 		}
 		
-		if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
+		if(other.gameObject.CompareTag("Hazard") && _playerState.Value != PlayerStates.RESPAWN)
 		{
 			Die();
 		}
@@ -305,7 +309,7 @@ public class CharacterController : MonoBehaviour
 		_isStuck = true;
 		if (sticky) _rb.bodyType = RigidbodyType2D.Static;
 		
-		if(other.gameObject.CompareTag("Hazard") && !_isRespawning)
+		if(other.gameObject.CompareTag("Hazard") && _playerState.Value != PlayerStates.RESPAWN)
 		{
 			Die();
 		}
@@ -324,7 +328,7 @@ public class CharacterController : MonoBehaviour
 
     private IEnumerator Respawn()
 	{
-		_isRespawning = true;
+		_playerState.Value = PlayerStates.RESPAWN;
 		IsSafe = true;
 		_rb.velocity = Vector2.zero;
 		Detach();
@@ -334,12 +338,12 @@ public class CharacterController : MonoBehaviour
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);
 		yield return new WaitForSeconds(1.5f);
-		// transform.position = _checkpoint;
-		// _deathParticles.Stop();
-		// _characterSprite.enabled = true;
-		// _arms.SetActive(true);
-		_isRespawning = false;
-		GameManager.Instance.Load();
+		transform.position = _checkpoint;
+		_deathParticles.Stop();
+		_characterSprite.enabled = true;
+		_arms.SetActive(true);
+		_playerState.Value = PlayerStates.NORMAL;
+		//GameManager.Instance.Load();
 	}
 
 	private IEnumerator GetInBubble()

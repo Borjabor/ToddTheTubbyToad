@@ -11,6 +11,10 @@ namespace DialogueSystem
         protected GameState _gameState;
         [SerializeField] 
         private GameObject _prompt;
+        [SerializeField]
+        private GameObject _cutscene;
+
+        
 
 
         private void Awake()
@@ -23,7 +27,8 @@ namespace DialogueSystem
         {
             if(_gameState.Value != States.NORMAL) return;
             DialogueManager.GetInstance().EnterDialogue(_dialogue);
-            Debug.Log($"interact");
+            if(_cutscene != null) DialogueManager.GetInstance().SetCutscene(_cutscene);
+            //Debug.Log($"interact");
         }
 
         public void ShowPrompt()

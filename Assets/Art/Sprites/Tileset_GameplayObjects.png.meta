@@ -119,6 +119,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -5643,7 +5656,7 @@ TextureImporter:
         width: 48
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5651,6 +5664,48 @@ TextureImporter:
       bones: []
       spriteID: 2e60d8fd4fed1614b8c139d44d2b1f69
       internalID: -323476019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magnet_Off
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 208
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bfc493573605534ba0b91901f9f12c6
+      internalID: 627262081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magnet_On
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 176
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3e5361132d1d54db24d4dd7ca24f25
+      internalID: 623581494
       vertices: []
       indices: 
       edges: []
@@ -5710,6 +5765,8 @@ TextureImporter:
       Lever_Base_On: 2137006052
       Lever_Stick: -1877890547
       LightOrb: -1611825838
+      Magnet_Off: 627262081
+      Magnet_On: 623581494
       Pipe_Blue_Off_Bottom: -1253387800
       Pipe_Blue_Off_BottomLeft: 275061896
       Pipe_Blue_Off_BottomRight: 1575152293

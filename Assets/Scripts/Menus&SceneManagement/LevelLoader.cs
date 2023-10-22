@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
     public Animator Transition;
     private float _transitionTime = 1f;
+    
     void Update()
     {
         // if (Input.GetKeyDown(KeyCode.R))
@@ -15,7 +17,6 @@ public class LevelLoader : MonoBehaviour
         //     ReloadCurrentLevel();
         // }
     }
-    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,7 +26,7 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void LoadNextLevel()
+    private void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
@@ -35,12 +36,16 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 
+    public void LoadSpecificLevel(int index)
+    {
+        StartCoroutine(LoadLevel(index));
+    }
+
     public IEnumerator LoadLevel(int levelIndex)
     {
         Transition.SetTrigger("Start");
         yield return new WaitForSeconds(_transitionTime);
         SceneManager.LoadScene(levelIndex);
-
     }
 
 }

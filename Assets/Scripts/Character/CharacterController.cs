@@ -17,7 +17,6 @@ public class CharacterController : MonoBehaviour
 
 	private Vector2 _checkpoint;
 	private Vector2 _velocity;
-	//public static bool _isRespawning;
 
 	[Header("Tongue Draw Script:")]
 	[SerializeField]
@@ -204,6 +203,7 @@ public class CharacterController : MonoBehaviour
 		        var positionY = _camera.transform.position.y - transform.position.y > 0 ? 1 : -1;
 		        DialogueManager.GetInstance().GetPlayer(positionX, positionY);
 		        collider2D.GetComponent<IInteractable>()?.Interact();
+		        //Debug.Log($"{collider2D.name}");
 	        }
         }
         else if (Input.GetKey(KeyCode.Space))

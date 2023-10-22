@@ -6,8 +6,7 @@ using Articy.Unity.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Articy.UnityImporterTutorial;
-using UnityEngine.Events; //has to be renamed to project used from Articy
+using Articy.Todd_The_Tubby_Toad;
 
 namespace DialogueSystem
 {
@@ -46,6 +45,7 @@ namespace DialogueSystem
 
         private ArticyFlowPlayer _flowPlayer;
         private ArticyObject _currentDialogue;
+        private GameObject _cutscene;
 
 
         private void Awake()
@@ -67,14 +67,21 @@ namespace DialogueSystem
             return instance;
         }
 
+        public void SetCutscene(GameObject cutsceneTrigger)
+        {
+            _cutscene = cutsceneTrigger;
+        }
+
         private void ContinueDialogue()
         {
             _flowPlayer.Play();
         }
         
-        public void EnterDialogue(IArticyObject aObject)
+        public async void EnterDialogue(IArticyObject aObject)
         {
             _gameState.Value = States.DIALOGUE;
+            await Task.Delay((int) (1000.0f * Time.deltaTime));
+            _continueCloseButton.Select();
             _dialogueText.text = string.Empty;
             _continueCloseButton.onClick.RemoveListener(ExitDialogue);
             _continueCloseButton.onClick.AddListener(ContinueDialogue);
@@ -91,6 +98,11 @@ namespace DialogueSystem
             _dialoguePanel.SetActive(DialogueActive);
             _flowPlayer.FinishCurrentPausedObject();
             await Task.Delay(TimeSpan.FromSeconds(1f));
+            if (_cutscene != null)
+            {
+                _cutscene.SetActive(true);
+                _cutscene = null;
+            }
             _gameState.Value = States.NORMAL;
         }
 

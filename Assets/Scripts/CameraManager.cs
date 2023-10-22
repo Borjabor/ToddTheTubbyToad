@@ -53,10 +53,7 @@ public class CameraManager : Singleton<CameraManager>
     private void Update()
     {
         _shakeTimer -= Time.deltaTime;
-        if(_shakeTimer <= 0f)
-        {
-            _cameraNoise.m_AmplitudeGain = 0f;
-        }
+        if(_shakeTimer > 0f) return;
         
         if (_player.IsSafe)
         {

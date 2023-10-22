@@ -46028,6 +46028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 547707535}
+  _riseSpeed: 0
 --- !u!58 &1084796707
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -46157,11 +46158,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!224 &1139890416 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6307662053103272340, guid: dad536987b324ee489311391fcff90dc, type: 3}
-  m_PrefabInstance: {fileID: 4493119556369935560}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1159265720
 GameObject:
   m_ObjectHideFlags: 3
@@ -52727,98 +52723,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3007241337321949386, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4061329965257319422, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4061329965257319422, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4061329965257319422, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 4061329965257319422, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_MoveAction
-      value: 
-      objectReference: {fileID: -8959736628364906286, guid: 94c3f647cf802354ab4d139198c47880, type: 3}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_PointAction
-      value: 
-      objectReference: {fileID: -7957822431661167664, guid: 94c3f647cf802354ab4d139198c47880, type: 3}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_ActionsAsset
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 94c3f647cf802354ab4d139198c47880, type: 3}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_CancelAction
-      value: 
-      objectReference: {fileID: -5577860843024318451, guid: 94c3f647cf802354ab4d139198c47880, type: 3}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_SubmitAction
-      value: 
-      objectReference: {fileID: -8106355793494748093, guid: 94c3f647cf802354ab4d139198c47880, type: 3}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_LeftClickAction
-      value: 
-      objectReference: {fileID: -6789747502922189500, guid: 94c3f647cf802354ab4d139198c47880, type: 3}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_RightClickAction
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_MiddleClickAction
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_ScrollWheelAction
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_DeselectOnBackgroundClick
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_TrackedDevicePositionAction
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4613279590689281689, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_TrackedDeviceOrientationAction
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6025242403397716169, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307662053103272340, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307662053103272340, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307662053103272340, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307662053103272340, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -796
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307662053103272340, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6691763991690109082, guid: dad536987b324ee489311391fcff90dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.38498
@@ -52862,18 +52766,6 @@ PrefabInstance:
     - target: {fileID: 7816076093530321078, guid: dad536987b324ee489311391fcff90dc, type: 3}
       propertyPath: m_Name
       value: SystemsContainer
-      objectReference: {fileID: 0}
-    - target: {fileID: 7899808525142712280, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: _playerArticyTag
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7899808525142712280, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: _speakerContainer
-      value: 
-      objectReference: {fileID: 1139890416}
-    - target: {fileID: 8091627229641952431, guid: dad536987b324ee489311391fcff90dc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53047,6 +52939,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 612194552708861457, guid: 3ea61ed91b0d8f346941b41632a53d1d, type: 3}
+      propertyPath: reference.lowId
+      value: 477
+      objectReference: {fileID: 0}
     - target: {fileID: 3678885730587013436, guid: 3ea61ed91b0d8f346941b41632a53d1d, type: 3}
       propertyPath: m_Name
       value: NPC

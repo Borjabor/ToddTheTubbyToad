@@ -156,6 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c4b0a44a71e994a838fd81a45c8a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentVirtualCamera: {fileID: 0}
+  _cinemachineVirtualCamera: {fileID: 0}
+  _cameraNoise: {fileID: 0}
+  _timeToDeath: 3
+  _cameraShakeAmount: 2
 --- !u!1 &1649145031371011728
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,7 +918,7 @@ MonoBehaviour:
   _speakerImage: {fileID: 2846795943918296993}
   _speakerName: {fileID: 8490831422463050596}
   _speakerContainer: {fileID: 6307662053103272340}
-  _playerArticyTag: Player
+  _playerArticyTag: Todd
 --- !u!114 &9058395692898162783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,7 +1056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa4d8fb88868e04e8763a936b9dfbe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _test: {fileID: 0}
+  _worldData: {fileID: 11400000, guid: 7dffe3e24db7fee40a15e0db4476fc70, type: 2}
+  _player: {fileID: 0}
 --- !u!1 &8091627229641952431
 GameObject:
   m_ObjectHideFlags: 0

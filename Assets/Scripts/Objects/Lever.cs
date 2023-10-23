@@ -11,6 +11,9 @@ public class Lever : MonoBehaviour
     [Tooltip("Drag Desired Affected Object Here")]
     [SerializeReference]
     private GameObject _affectedObject;
+    [SerializeField]
+    private GameObject _pipeMask = null;
+
     private IOnOffObjects _affectedObjectI;
 
 
@@ -34,6 +37,7 @@ public class Lever : MonoBehaviour
         if (_hj.jointAngle <= 35)
         {
             _affectedObjectI.TurnOff();
+            _pipeMask.SetActive(false);
             _turnedOn = false;
             lever.SetBool("Lever_State", false);
             if (_hasPlayed)
@@ -48,6 +52,7 @@ public class Lever : MonoBehaviour
         if (_hj.jointAngle >= 45)
         {
             _affectedObjectI.TurnOn();
+            _pipeMask.SetActive(true);
             _turnedOn = true;
             lever.SetBool("Lever_State", true);
             if (!_hasPlayed)

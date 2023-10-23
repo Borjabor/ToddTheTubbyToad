@@ -108,6 +108,8 @@ public class CharacterController : MonoBehaviour
 	private SpringJoint2D _springJoint;
 	[SerializeField]
 	private float _tongueLengthChanger = 0.8f;
+	[SerializeField]
+	private LayerMask _ignoredLayers;
 
 	private bool _hasPlayed = false;
 	private GameObject _movingObject;
@@ -413,9 +415,10 @@ public class CharacterController : MonoBehaviour
     
     private bool CanAttach()
     {
-        _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
-        return _hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance;
+	    _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+	    _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized, _maxDistance, _ignoredLayers, -Mathf.Infinity, Mathf.Infinity);
+	    Debug.DrawLine(transform.position, _hit.point);
+        return _hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance; 
     }
     
     //This is the final method to determine the anchor point; Probably where a new location should be set to fix the offset

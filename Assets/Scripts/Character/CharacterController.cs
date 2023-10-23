@@ -416,7 +416,7 @@ public class CharacterController : MonoBehaviour
     private bool CanAttach()
     {
 	    _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-	    _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized, _maxDistance, _ignoredLayers, -Mathf.Infinity, Mathf.Infinity);
+	    _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized, _ignoredLayers);
 	    Debug.DrawLine(transform.position, _hit.point);
         return _hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance; 
     }

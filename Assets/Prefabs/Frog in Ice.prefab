@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8442729970159063522}
   - component: {fileID: 8472189178532457418}
   - component: {fileID: 5962572676772734049}
+  - component: {fileID: 1516781851407756394}
   m_Layer: 2
   m_Name: Frog in Ice
   m_TagString: Object
@@ -170,3 +171,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1516781851407756394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987017340914148005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e04840849f773489fa1b564a611899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 8472189178532457418}

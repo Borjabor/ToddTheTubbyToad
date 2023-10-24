@@ -18,6 +18,9 @@ public class ButtonScript : ObjectFSM
     private BoxCollider2D _collider;
 
     [SerializeField]
+    private GameObject _pipeMask = null;
+
+    [SerializeField]
     private Animator button;
     private AudioSource _audioSource;
     private bool _hasPlayed;
@@ -74,11 +77,13 @@ public class ButtonScript : ObjectFSM
             if (Vector2.Distance(transform.position, _targetPos.transform.position) <= 0.1f) break;
             yield return 0;
         }
+        _pipeMask.SetActive(true);
         _affectedObjectI.TurnOn();
     }
 
     protected override IEnumerator Off()
     {
+        _pipeMask.SetActive(false);
         _affectedObjectI.TurnOff();
         _isPressed = false;
         while (transform.position.y < _oringialPos.y)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3391198976261844302}
   - component: {fileID: 8442729970159063522}
   - component: {fileID: 8472189178532457418}
+  - component: {fileID: 5962572676772734049}
   m_Layer: 2
   m_Name: Frog in Ice
   m_TagString: Object
@@ -119,7 +120,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4.02, y: 1.91}
+  m_Size: {x: 4, y: 2}
   m_Direction: 1
 --- !u!50 &8472189178532457418
 Rigidbody2D:
@@ -148,3 +149,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!95 &5962572676772734049
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987017340914148005}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6482e2c785ded4648ae0540ff4cd2315, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

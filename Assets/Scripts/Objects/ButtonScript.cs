@@ -27,6 +27,7 @@ public class ButtonScript : ObjectFSM
 
     private void Awake()
     {
+        _pipeMask.SetActive(false);
         _oringialPos = transform.position;
         _audioSource = GetComponent<AudioSource>();
         _affectedObjectI = _affectedObject.GetComponent<IOnOffObjects>();

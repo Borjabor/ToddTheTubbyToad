@@ -514,7 +514,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.5}
-  m_ConnectedAnchor: {x: -0.0000038146973, y: -0.50000095}
+  m_ConnectedAnchor: {x: -0.0000038146973, y: -0.5000007}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1398,8 +1398,9 @@ GameObject:
   - component: {fileID: 5969082555872437090}
   - component: {fileID: 7132261908172452765}
   - component: {fileID: 2926112175184387847}
+  - component: {fileID: 6554148847479977037}
   m_Layer: 2
-  m_Name: Vine9
+  m_Name: VineEnd
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1534,6 +1535,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &6554148847479977037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935947828278381824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb44c6314bacac4baf63648c8999c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidBody: {fileID: 7132261908172452765}
+  _swingForce: 20
 --- !u!1 &8205296459164066055
 GameObject:
   m_ObjectHideFlags: 0

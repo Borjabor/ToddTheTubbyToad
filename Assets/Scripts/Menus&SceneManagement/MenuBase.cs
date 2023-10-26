@@ -16,6 +16,12 @@ public class MenuBase : MonoBehaviour
     protected Button _startButton;
     [SerializeField] 
     protected LevelLoader _levelLoader;
+    protected GameState _gameState;
+
+    private void Awake()
+    {
+        _gameState = Resources.Load<GameState>("SOAssets/Game State");
+    }
 
     private async void OnEnable()
     {
@@ -24,6 +30,7 @@ public class MenuBase : MonoBehaviour
     }
     
     public void MainMenu() {
+        _gameState.Value = States.NORMAL;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -35,6 +42,7 @@ public class MenuBase : MonoBehaviour
 
     public void LevelSelect()
     {
+        _gameState.Value = States.NORMAL;
         SceneManager.LoadScene("LevelSelect");
     }
 

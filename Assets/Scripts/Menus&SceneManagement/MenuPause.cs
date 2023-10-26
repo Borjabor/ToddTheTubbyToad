@@ -5,13 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuPause : MenuBase
 {
-    private GameState _gameState;
-
     private bool _isPaused;
 
     private void Awake()
     {
-        _gameState = Resources.Load<GameState>("SOAssets/Game State");
         _thisMenu.SetActive(false);
         _levelLoader = GetComponentInChildren<LevelLoader>();
     }

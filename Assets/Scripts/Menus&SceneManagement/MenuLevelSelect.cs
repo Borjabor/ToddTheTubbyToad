@@ -16,6 +16,7 @@ public class MenuLevelSelect : MenuBase
 
     private void Awake()
     {
+        _gameState.Value = States.NORMAL;
         int i = 0 + _indexFixer;
         foreach (var button in _button)
         {

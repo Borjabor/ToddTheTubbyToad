@@ -4818,13 +4818,13 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: Lavafall_Top
+      name: Lavafall
       rect:
         serializedVersion: 2
         x: 208
-        y: 144
+        y: 128
         width: 16
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4879,74 +4879,13 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: Lavafall_Bottom
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 128
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8876f3f4b7efa144a0267346519a3ad
-      internalID: 1341944757
-      vertices:
-      - {x: 0, y: 0}
-      - {x: 16, y: 0}
-      - {x: 0, y: 16}
-      - {x: 16, y: 16}
-      indices: 000000000200000001000000010000000200000003000000
-      edges:
-      - {x: 0, y: 1}
-      - {x: 0, y: 2}
-      - {x: 1, y: 3}
-      - {x: 2, y: 3}
-      weights:
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-    - serializedVersion: 2
       name: Platform_Off_Middle
       rect:
         serializedVersion: 2
         x: 0
-        y: 176
+        y: 224
         width: 48
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 16, y: 0, z: 16, w: 0}
@@ -5005,9 +4944,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 192
         width: 48
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 16, y: 0, z: 16, w: 0}
@@ -5627,11 +5566,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloatingPlatformRail_Off
+      name: Rail_Off
       rect:
         serializedVersion: 2
         x: 0
-        y: 208
+        y: 176
         width: 48
         height: 16
       alignment: 0
@@ -5648,11 +5587,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlatformRail_On
+      name: Rail_On
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 160
         width: 48
         height: 16
       alignment: 0
@@ -5677,7 +5616,7 @@ TextureImporter:
         width: 96
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5698,7 +5637,7 @@ TextureImporter:
         width: 96
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5706,6 +5645,132 @@ TextureImporter:
       bones: []
       spriteID: df3e5361132d1d54db24d4dd7ca24f25
       internalID: 623581494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c2b8c9ab615a0478eb8ddebc1fd08a
+      internalID: -1167240407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e8086832a9f2040979ed3b93865050
+      internalID: -172915752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 508ca2062d0dc2a44b3319baa69778e6
+      internalID: -2040230899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3ba5e528732824998490bee939d173
+      internalID: 45362978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_5
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f4600d23af0dd4289482097406f41f
+      internalID: 1289530747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd94c57da76b3c74786e68257330a21a
+      internalID: 235965271
       vertices: []
       indices: 
       edges: []
@@ -5747,7 +5812,6 @@ TextureImporter:
       Fan_Blades: -807835472
       Fan_Grate_Off: 66898554
       Fan_Grate_On: -1849991475
-      FloatingPlatformRail_Off: 610961461
       Gear_Large_Off: 800812208
       Gear_Large_On: -1953371015
       Gear_Small_Off: -1157668965
@@ -5759,8 +5823,8 @@ TextureImporter:
       Icicle_5: 82306458
       Lava_Deep: -935459141
       Lava_Surface: -1813363923
+      Lavafall: -1681808766
       Lavafall_Bottom: 1341944757
-      Lavafall_Top: -1681808766
       Lever_Base_Off: 757803050
       Lever_Base_On: 2137006052
       Lever_Stick: -1877890547
@@ -5811,13 +5875,20 @@ TextureImporter:
       Pipe_Red_On_TopLeft: 163476651
       Pipe_Red_On_TopRight: -861859963
       Pipe_Red_On_Vertical: -142008760
-      PlatformRail_On: -323476019
       Platform_Off_Left: -249563023
       Platform_Off_Middle: 1367284209
       Platform_Off_Right: 1033311387
       Platform_On_Left: 791198221
       Platform_On_Middle: -212099717
       Platform_On_Righ: 509375694
+      Rail_Off: 610961461
+      Rail_On: -323476019
+      Snow_1: -1167240407
+      Snow_2: -172915752
+      Snow_3: -2040230899
+      Snow_4: 45362978
+      Snow_5: 1289530747
+      Snow_6: 235965271
       TilesetComplete_0: 1470601903
       TilesetComplete_1: 1768398802
       TilesetComplete_10: -133957390

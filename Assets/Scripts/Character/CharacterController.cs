@@ -344,6 +344,7 @@ public class CharacterController : MonoBehaviour
 		_deathParticles.Stop();
 		_characterSprite.enabled = true;
 		_arms.SetActive(true);
+		_rb.velocity = Vector2.zero;
 		_playerState.Value = PlayerStates.NORMAL;
 		//GameManager.Instance.Load();
 	}

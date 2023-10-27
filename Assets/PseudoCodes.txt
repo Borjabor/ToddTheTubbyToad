@@ -25,5 +25,14 @@ Moveable attach - offset not working properly all the time
 Light Sphere - for now, working by basically making whole level/scene a danger zone after you get within it's radius once
 
 
+- Break tongue raycast in pieces that loop before finally drawing
+- Cursor close to todd instead of at the mouse
+- have an invisible collider that gets extended with a vector and hits stuff to draw and throw tongue. Could help with dynamic drawing and player feedback 
 
-New checkpoint: with an empty to serve as the location todd will spawn; will have to change a little more, perhaps have a public method on todd for checkpoint coordinates setup, and the checkpoints will call it
+ - Have invisible collider that rotates around todd (crosshair)
+ - Use raycast to get direction to shoot the collider
+ - Collider flies in that direction and starts drawing tongue
+ - If it collides with something attachable, set anchor
+	- If it doesn't, give some feedback of failure
+ - If mouse released, move collider back, so tongue is always drawn
+ - Use layer and Unity's collision matrix

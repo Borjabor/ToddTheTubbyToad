@@ -43,41 +43,32 @@ public class CharacterController : MonoBehaviour
 	[Header("Mouse Cursor")]
 	[SerializeField]
 	private Texture2D _canAttach;
-
 	[SerializeField]
 	private Texture2D _cannotAttach;
 
 	[Header("Audio")]
 	[SerializeField]
 	private AudioClip _collideAudio;
-
 	[SerializeField]
 	private AudioClip _deathAudio;
-
 	[SerializeField]
 	private AudioClip _grabbing;
-
-	private AudioSource _audioSource;
-
 	[SerializeField]
 	private AudioClip _tongueConnect;
-
 	[SerializeField]
 	private AudioClip _tongueDisconnect;
-
 	[SerializeField]
 	private AudioClip _tongueThrow;
+	private AudioSource _audioSource;
 
 	[Header("Particles")]
 	[SerializeField]
 	private ParticleSystem _deathParticles;
-
 	[SerializeField]
 	private ParticleSystem _moveParticles;
-
 	[SerializeField]
 	private ParticleSystem _jumpParticles;
-
+	
 	[Header("Other")]
 	[SerializeField]
 	private float _moveSpeed = 60f;
@@ -89,14 +80,12 @@ public class CharacterController : MonoBehaviour
 	private GameObject _arms;
 	private Rigidbody2D _rb;
 	[SerializeField]
-	private HookShot _hookShot;
-	[SerializeField]
 	private CircleCollider2D _triggerZone;
-
 	[SerializeField]
-	//private GameObject _screenCenter;
+	private Transform _cursorPivot;
+
 	
-	private bool _isHolding;
+	
 	public bool IsSafe = true;
 	private Bubble _currentBubble;
 
@@ -155,7 +144,7 @@ public class CharacterController : MonoBehaviour
 	{
 		if (_gameState.Value != States.NORMAL) return;
 		
-		SetCursor();
+		RotateCursor();
 		GetInputs();
 		// float time = Time.timeScale;
 		//if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
@@ -210,12 +199,10 @@ public class CharacterController : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Space))
         {
-	        _isHolding = true;
 	        _triggerZone.enabled = true;
         }
         else
         {
-	        _isHolding = false;
 	        _triggerZone.enabled = false;
 	        Tentacle.GrabbedObject = null;
 	        Destroy(GetComponent<FixedJoint2D>());
@@ -417,7 +404,7 @@ public class CharacterController : MonoBehaviour
     private bool CanAttach()
     {
 	    _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-	    _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized, _maxDistance, _ignoredLayers, -Mathf.Infinity, Mathf.Infinity);
+	    _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized/*, Mathf.Infinity, _ignoredLayers, -Mathf.Infinity, Mathf.Infinity*/);
 	    Debug.DrawLine(transform.position, _hit.point);
         return _hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance; 
     }
@@ -449,16 +436,12 @@ public class CharacterController : MonoBehaviour
         _audioSource.PlayOneShot(_tongueConnect);
     }
     
-    private void SetCursor()
+    private void RotateCursor()
     {
-	    if (CanAttach())
-	    {
-		    Cursor.SetCursor(_canAttach, Vector2.zero, CursorMode.ForceSoftware);
-	    }
-	    else
-	    {
-		    Cursor.SetCursor(_cannotAttach, Vector2.zero, CursorMode.ForceSoftware);
-	    }
+	    _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - _cursorPivot.position;
+	    float angle = Mathf.Atan2(_mouseFirePointDistanceVector.y, _mouseFirePointDistanceVector.x) * Mathf.Rad2Deg;
+	    _cursorPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+	    
     }
     
     private void OnDrawGizmos()

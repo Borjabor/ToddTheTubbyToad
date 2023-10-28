@@ -44,6 +44,7 @@ public class ButtonScript : ObjectFSM
         if (other.transform.tag == "Player" || other.transform.tag == "Object")
         {
             if(!_isPressed) SetState(On());
+            _isPressed = true;
         }
     }
 

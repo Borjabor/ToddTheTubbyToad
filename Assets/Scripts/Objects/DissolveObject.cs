@@ -19,11 +19,11 @@ public class DissolveObject : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(!_audioSource.isPlaying) _audioSource.Play();
+        if (!_audioSource.isPlaying) _audioSource.Play();
         
-        if (other.gameObject.CompareTag("Checkpoint"))
+        if (other.gameObject.CompareTag("Dissolve"))
         {
             //Destroy(gameObject);
             Debug.Log($"hit check");

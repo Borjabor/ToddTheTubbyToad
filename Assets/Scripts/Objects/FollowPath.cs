@@ -40,6 +40,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     {
         _gameState = Resources.Load<GameState>("SOAssets/Game State");
         _nodes = GetComponentsInChildren<Node>();
+        if(_nodes.Length == 2) _loop = true;
         _currentNodePosition = _nodes[_currentNodeIndex].transform.position;
         if (_startOn) TurnOn();
         if (_loop) _timeToWait = 0f;
@@ -103,6 +104,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
         }
 
         _currentNodeIndex = _forward ? _currentNodeIndex + 1 : _currentNodeIndex - 1;
+        if (_currentNodeIndex > _nodes.Length - 1) _currentNodeIndex = _nodes.Length - 1;
         _currentNodePosition = _nodes[_currentNodeIndex].transform.position;
         SetState(On());
     }

@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Tongue : MonoBehaviour
 {
     [Header("General refrences:")]
     [SerializeField] 
-    private CharacterController _hookShot;
+    private CharacterController _player;
     [SerializeField] 
     private LineRenderer _lineRenderer;
+    private CircleCollider2D _circleCollider;
 
     [Header("General Settings:")]
     [SerializeField] 
@@ -31,16 +33,16 @@ public class Tongue : MonoBehaviour
     private float _ropeLaunchSpeedMultiplayer = 4;
 
     private float _moveTime = 0;
-
-    [SerializeField] 
-    private bool _isGrappling = false;
     
-    private bool _straightLine = true;
+    public bool _isGrappling {get; private set;}
+    
+    private bool _straightLine;
     
 
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
+        _circleCollider = GetComponent<CircleCollider2D>();
         _lineRenderer.enabled = false;
         _lineRenderer.positionCount = _precision;
         _currentWaveSize = _waveSize;
@@ -64,26 +66,36 @@ public class Tongue : MonoBehaviour
         _isGrappling = false;
     }
 
-    void LinePointToFirePoint()
+    private void LinePointToFirePoint()
     {
         for (int i = 0; i < _precision; i++)
         {
-            _lineRenderer.SetPosition(i, _hookShot.transform.position);
+            _lineRenderer.SetPosition(i, _player.transform.position);
         }
     }
 
-    void Update()
+    private void Update()
     {
         _moveTime += Time.deltaTime;
-
         DrawRope();
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _circleCollider.radius);
+        foreach (Collider2D collider2D in colliders)
+        {
+            if (collider2D.gameObject.layer == 3)
+            {
+                _isGrappling = true;
+                _straightLine = true;
+                _player.Grapple();
+            }
+        }
     }
 
-    void DrawRope()
+    private void DrawRope()
     {
+        /*
         if (!_straightLine) 
         {
-            if (_lineRenderer.GetPosition(_precision - 1).x != _hookShot.GrapplePoint.x)
+            if (_lineRenderer.GetPosition(_precision - 1).x != transform.position.x)//_hookShot.GrapplePoint.x)
             {
                 DrawRopeWaves();
             }
@@ -110,25 +122,81 @@ public class Tongue : MonoBehaviour
                 DrawRopeNoWaves();
             }
         }
+        */
+        
+        if (!_straightLine) 
+        {
+            DrawRopeWaves();
+        }
+        else 
+        {
+            if (_currentWaveSize > 0)
+            {
+                _currentWaveSize -= Time.deltaTime * _straightenLineSpeed;
+                DrawRopeWaves();
+            }
+            else 
+            {
+                _currentWaveSize = 0;
+                DrawRopeNoWaves();
+            }
+        }
     }
 
-    void DrawRopeWaves() 
+    private void DrawRopeWaves() 
     {
         for (int i = 0; i < _precision; i++)
         {
             float delta = (float)i / ((float)_precision - 1f);
-            Vector2 offset = Vector2.Perpendicular(_hookShot.DistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * _currentWaveSize;
-            Vector2 targetPosition = Vector2.Lerp(_hookShot.transform.position, _hookShot.GrapplePoint, delta) + offset;
-            Vector2 currentPosition = Vector2.Lerp(_hookShot.transform.position, targetPosition, _ropeLaunchSpeedCurve.Evaluate(_moveTime) * _ropeLaunchSpeedMultiplayer);
+            Vector2 offset = Vector2.Perpendicular(_player.DistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * _currentWaveSize;
+            Vector2 targetPosition = Vector2.Lerp(_player.transform.position, transform.position/*_hookShot.GrapplePoint*/, delta) + offset;
+            Vector2 currentPosition = Vector2.Lerp(_player.transform.position, targetPosition, _ropeLaunchSpeedCurve.Evaluate(_moveTime) * _ropeLaunchSpeedMultiplayer);
             _lineRenderer.SetPosition(i, currentPosition);
         }
     }
 
-    void DrawRopeNoWaves() 
+    private void DrawRopeNoWaves() 
     {
         _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPosition(0, _hookShot.GrapplePoint);
-        _lineRenderer.SetPosition(1, _hookShot.transform.position);
+        _lineRenderer.SetPosition(0, transform.position/*_hookShot.GrapplePoint*/);
+        _lineRenderer.SetPosition(1, _player.transform.position);
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log($"{other.gameObject.name}");
+        if (other.gameObject.layer == 3)
+        {
+            _isGrappling = true;
+            _straightLine = true;
+            _player.Grapple();
+        }
+        
+        if (other.gameObject.layer == 10)
+        {
+            _player.SetMovingObject(other.gameObject);
+            _isGrappling = true;
+            _straightLine = true;
+            _player.Grapple();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Debug.Log($"{other.gameObject.name}");
+        // if (other.gameObject.layer == 3)
+        // {
+        //     _isGrappling = true;
+        //     _straightLine = true;
+        //     _player.Grapple();
+        // }
+        //
+        // if (other.gameObject.layer == 10)
+        // {
+        //     _player.SetMovingObject(other.gameObject);
+        //     _isGrappling = true;
+        //     _straightLine = true;
+        //     _player.Grapple();
+        // }
+    }
 }

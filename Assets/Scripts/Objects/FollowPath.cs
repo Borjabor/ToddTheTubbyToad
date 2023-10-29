@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class FollowPath : ObjectFSM, IOnOffObjects
 {
@@ -25,6 +26,10 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     private bool _loop;
     [SerializeField]
     private float _timeToWait = 2f;
+
+    private SpriteShape _spriteShape;
+    [SerializeField]
+    private SpriteShape _spriteShapePlatform;
     
     void Awake()
     {
@@ -38,6 +43,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     public void TurnOn()
     {
         SetState(On());
+        
     }
 
     public void TurnOff()

@@ -9,6 +9,7 @@ public class Tongue : MonoBehaviour
     private CharacterController _player;
     [SerializeField] 
     private LineRenderer _lineRenderer;
+    private CircleCollider2D _circleCollider;
 
     [Header("General Settings:")]
     [SerializeField] 
@@ -41,6 +42,7 @@ public class Tongue : MonoBehaviour
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
+        _circleCollider = GetComponent<CircleCollider2D>();
         _lineRenderer.enabled = false;
         _lineRenderer.positionCount = _precision;
         _currentWaveSize = _waveSize;
@@ -76,6 +78,16 @@ public class Tongue : MonoBehaviour
     {
         _moveTime += Time.deltaTime;
         DrawRope();
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _circleCollider.radius);
+        foreach (Collider2D collider2D in colliders)
+        {
+            if (collider2D.gameObject.layer == 3)
+            {
+                _isGrappling = true;
+                _straightLine = true;
+                _player.Grapple();
+            }
+        }
     }
 
     private void DrawRope()
@@ -171,20 +183,20 @@ public class Tongue : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"{other.gameObject.name}");
-        if (other.gameObject.layer == 3)
-        {
-            _isGrappling = true;
-            _straightLine = true;
-            _player.Grapple();
-        }
-        
-        if (other.gameObject.layer == 10)
-        {
-            _player.SetMovingObject(other.gameObject);
-            _isGrappling = true;
-            _straightLine = true;
-            _player.Grapple();
-        }
+        // Debug.Log($"{other.gameObject.name}");
+        // if (other.gameObject.layer == 3)
+        // {
+        //     _isGrappling = true;
+        //     _straightLine = true;
+        //     _player.Grapple();
+        // }
+        //
+        // if (other.gameObject.layer == 10)
+        // {
+        //     _player.SetMovingObject(other.gameObject);
+        //     _isGrappling = true;
+        //     _straightLine = true;
+        //     _player.Grapple();
+        // }
     }
 }

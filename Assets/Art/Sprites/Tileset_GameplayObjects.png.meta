@@ -445,7 +445,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 134
-        y: 144
+        y: 145
         width: 36
         height: 7
       alignment: 7
@@ -506,7 +506,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 136
+        y: 140
         width: 48
         height: 5
       alignment: 7
@@ -1162,7 +1162,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 135
         width: 48
         height: 5
       alignment: 7
@@ -1223,7 +1223,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 176
-        y: 144
+        y: 145
         width: 32
         height: 15
       alignment: 7
@@ -1284,7 +1284,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 176
-        y: 128
+        y: 130
         width: 32
         height: 15
       alignment: 7
@@ -1344,10 +1344,10 @@ TextureImporter:
       name: Lever_Stick
       rect:
         serializedVersion: 2
-        x: 147
-        y: 154
-        width: 22
-        height: 6
+        x: 145
+        y: 152
+        width: 26
+        height: 10
       alignment: 4
       pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1407,8 +1407,8 @@ TextureImporter:
         serializedVersion: 2
         x: 128
         y: 96
-        width: 32
-        height: 32
+        width: 38
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1466,12 +1466,12 @@ TextureImporter:
       name: Crate_Light
       rect:
         serializedVersion: 2
-        x: 162
-        y: 98
-        width: 28
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 163
+        y: 96
+        width: 34
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0.088}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1527,10 +1527,10 @@ TextureImporter:
       name: LightOrb
       rect:
         serializedVersion: 2
-        x: 196
-        y: 100
-        width: 24
-        height: 24
+        x: 194
+        y: 97
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5775,6 +5775,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Crate_Long
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 192
+        width: 112
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccd3f87a4ae848e41b3af93ac8367df1
+      internalID: 1127426073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -5800,6 +5821,7 @@ TextureImporter:
       Conveyor_On_4: 758708771
       Crate_Heavy: 962890009
       Crate_Light: 1618328186
+      Crate_Long: 1127426073
       Deco_Vines_End_1: -801448454
       Deco_Vines_End_2: -746083755
       Deco_Vines_Middle_1: -1586977728

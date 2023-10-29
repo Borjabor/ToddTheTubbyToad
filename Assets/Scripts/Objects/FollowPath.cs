@@ -27,10 +27,15 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     [SerializeField]
     private float _timeToWait = 2f;
 
-    private SpriteShape _spriteShape;
     [SerializeField]
-    private SpriteShape _spriteShapePlatform;
-    
+    private GameObject _spriteShapeOff = null;
+    [SerializeField]
+    private GameObject _platformOff = null;
+    [SerializeField]
+    private GameObject _spriteShapeOn = null;
+    [SerializeField]
+    private GameObject _platformOn = null;
+
     void Awake()
     {
         _gameState = Resources.Load<GameState>("SOAssets/Game State");
@@ -38,17 +43,32 @@ public class FollowPath : ObjectFSM, IOnOffObjects
         _currentNodePosition = _nodes[_currentNodeIndex].transform.position;
         if (_startOn) TurnOn();
         if (_loop) _timeToWait = 0f;
+
+        //_spriteShapeOn.SetActive(false);
+        //_platformOn.SetActive(false);
+
+
     }
 
     public void TurnOn()
     {
         SetState(On());
-        
+        _spriteShapeOn.SetActive(true);
+        _platformOn.SetActive(true);
+        _spriteShapeOff.SetActive(false);
+        _platformOff.SetActive(false);
+
+
+
     }
 
     public void TurnOff()
     {
         SetState(Off());
+        _spriteShapeOn.SetActive(false);
+        _platformOn.SetActive(false);
+        _spriteShapeOff.SetActive(true);
+        _platformOff.SetActive(true);
     }
 
     protected override IEnumerator On()

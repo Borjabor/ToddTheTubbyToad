@@ -9,7 +9,7 @@ public class Cutscene : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        if (_player && !other.isTrigger)
         {
             _cutsceneCam.SetActive(true);
         }

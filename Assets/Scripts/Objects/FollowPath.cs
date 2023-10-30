@@ -6,26 +6,25 @@ using UnityEngine.U2D;
 
 public class FollowPath : ObjectFSM, IOnOffObjects
 {
-    [SerializeField]
-    private GameState _gameState;
-    
-    private Node[] _nodes;
+    protected GameState _gameState;
+
+    protected Node[] _nodes;
 
     [SerializeField]
-    private GameObject _movingObject;
+    protected GameObject _movingObject;
     [SerializeField]
-    private float _moveSpeed;
-    private int _currentNodeIndex;
-    private Vector2 _currentNodePosition;
-    private bool _forward;
-    private AudioSource _audioSource;
+    protected float _moveSpeed;
+    protected int _currentNodeIndex;
+    protected Vector2 _currentNodePosition;
+    protected bool _forward;
+    protected AudioSource _audioSource;
 
     [SerializeField]
-    private bool _startOn;
+    protected bool _startOn;
     [SerializeField]
-    private bool _loop;
+    protected bool _loop;
     [SerializeField]
-    private float _timeToWait = 2f;
+    protected float _timeToWait = 2f;
 
     [SerializeField]
     private GameObject _spriteShapeOff = null;
@@ -36,7 +35,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     [SerializeField]
     private GameObject _platformOn = null;
 
-    void Awake()
+    protected virtual void Awake()
     {
         _gameState = Resources.Load<GameState>("SOAssets/Game State");
         _nodes = GetComponentsInChildren<Node>();
@@ -47,29 +46,24 @@ public class FollowPath : ObjectFSM, IOnOffObjects
 
         //_spriteShapeOn.SetActive(false);
         //_platformOn.SetActive(false);
-
-
     }
 
     public void TurnOn()
     {
         SetState(On());
-        _spriteShapeOn.SetActive(true);
-        _platformOn.SetActive(true);
-        _spriteShapeOff.SetActive(false);
-        _platformOff.SetActive(false);
-
-
-
+        // _spriteShapeOn.SetActive(true);
+        // _platformOn.SetActive(true);
+        // _spriteShapeOff.SetActive(false);
+        // _platformOff.SetActive(false);
     }
 
     public void TurnOff()
     {
         SetState(Off());
-        _spriteShapeOn.SetActive(false);
-        _platformOn.SetActive(false);
-        _spriteShapeOff.SetActive(true);
-        _platformOff.SetActive(true);
+        // _spriteShapeOn.SetActive(false);
+        // _platformOn.SetActive(false);
+        // _spriteShapeOff.SetActive(true);
+        // _platformOff.SetActive(true);
     }
 
     protected override IEnumerator On()

@@ -8,7 +8,7 @@ public class LavaEscape : FollowPath
     private Camera _mainCamera;
 
     [SerializeField]
-    private float _minSpeed, _maxSpeed;
+    private float _minSpeed, _maxSpeed, _speedRatio = 2;
 
     protected override void Awake()
     {
@@ -23,7 +23,7 @@ public class LavaEscape : FollowPath
 
     private void Update()
     {
-        _moveSpeed = Mathf.Clamp(Vector2.Distance(_mainCamera.transform.position, transform.position)/2f, _minSpeed, _maxSpeed);
+        _moveSpeed = Mathf.Clamp(Vector2.Distance(_mainCamera.transform.position, transform.position)/_speedRatio, _minSpeed, _maxSpeed);
         Debug.Log($"{_moveSpeed}");
     }
 }

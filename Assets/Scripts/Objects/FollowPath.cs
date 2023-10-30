@@ -51,19 +51,19 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     public void TurnOn()
     {
         SetState(On());
-        // _spriteShapeOn.SetActive(true);
-        // _platformOn.SetActive(true);
-        // _spriteShapeOff.SetActive(false);
-        // _platformOff.SetActive(false);
+        _spriteShapeOn.SetActive(true);
+        _platformOn.SetActive(true);
+        _spriteShapeOff.SetActive(false);
+        _platformOff.SetActive(false);
     }
 
     public void TurnOff()
     {
         SetState(Off());
-        // _spriteShapeOn.SetActive(false);
-        // _platformOn.SetActive(false);
-        // _spriteShapeOff.SetActive(true);
-        // _platformOff.SetActive(true);
+        _spriteShapeOn.SetActive(false);
+        _platformOn.SetActive(false);
+        _spriteShapeOff.SetActive(true);
+        _platformOff.SetActive(true);
     }
 
     protected override IEnumerator On()

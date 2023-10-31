@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class LavaEscape : FollowPath
 {
-    private Camera _mainCamera;
+    [SerializeField]
+    private GameObject _target;
 
     [SerializeField]
     private float _minSpeed, _maxSpeed, _speedRatio = 2;
@@ -13,7 +14,6 @@ public class LavaEscape : FollowPath
     protected override void Awake()
     {
         _gameState = Resources.Load<GameState>("SOAssets/Game State");
-        _mainCamera = Camera.main;
         _nodes = GetComponentsInChildren<Node>();
         if(_nodes.Length == 2) _loop = true;
         _currentNodePosition = _nodes[_currentNodeIndex].transform.position;
@@ -23,7 +23,7 @@ public class LavaEscape : FollowPath
 
     private void Update()
     {
-        _moveSpeed = Mathf.Clamp(Vector2.Distance(_mainCamera.transform.position, transform.position)/_speedRatio, _minSpeed, _maxSpeed);
+        _moveSpeed = Mathf.Clamp(Vector2.Distance(_target.transform.position, transform.position)/_speedRatio, _minSpeed, _maxSpeed);
         Debug.Log($"{_moveSpeed}");
     }
 }

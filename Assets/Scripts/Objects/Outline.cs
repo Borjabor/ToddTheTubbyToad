@@ -19,14 +19,14 @@ public class Outline : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             _spriteRenderer.enabled = true;
-        Debug.Log("Entered Collider");
+        //Debug.Log("Entered Collider");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
             _spriteRenderer.enabled = false;
-        Debug.Log("Exited Collider");
+        //Debug.Log("Exited Collider");
     }
 
 }

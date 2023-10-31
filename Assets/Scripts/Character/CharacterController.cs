@@ -250,6 +250,7 @@ public class CharacterController : MonoBehaviour
         }
         
         if(!_tongueRetract) return;
+        _tongue.TongueDetach();
         _tongue.transform.position = Vector2.MoveTowards(_tongue.transform.position, transform.position, _shootSpeed * 2 * Time.deltaTime);
         if(Vector2.Distance(_tongue.transform.position, transform.position) >= 0.1f) return;
         _tongue.enabled = false;

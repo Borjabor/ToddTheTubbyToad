@@ -78,6 +78,7 @@ public class Tongue : MonoBehaviour
     {
         _moveTime += Time.deltaTime;
         DrawRope();
+        if(_isGrappling) return;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _circleCollider.radius);
         foreach (Collider2D collider2D in colliders)
         {
@@ -96,6 +97,11 @@ public class Tongue : MonoBehaviour
                 _player.Grapple();
             }
         }
+    }
+
+    public void TongueDetach()
+    {
+        _isGrappling = false;
     }
 
     private void DrawRope()

@@ -87,6 +87,14 @@ public class Tongue : MonoBehaviour
                 _straightLine = true;
                 _player.Grapple();
             }
+            
+            if (collider2D.gameObject.layer == 10)
+            {
+                _player.SetMovingObject(collider2D.gameObject);
+                _isGrappling = true;
+                _straightLine = true;
+                _player.Grapple();
+            }
         }
     }
 

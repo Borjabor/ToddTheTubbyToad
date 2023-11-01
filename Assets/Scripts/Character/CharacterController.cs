@@ -95,6 +95,8 @@ public class CharacterController : MonoBehaviour
 	[SerializeField]
 	private Transform _cursorPivot;
 	[SerializeField]
+	private Transform _cursorPosition;
+	[SerializeField]
 	private float _shootSpeed;
 	private Vector2 _shootDirection;
 	[SerializeField]
@@ -144,6 +146,9 @@ public class CharacterController : MonoBehaviour
 	void Update()
 	{
 		if (_gameState.Value != States.NORMAL) return;
+		var heading = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+		heading.Normalize();
+		Debug.DrawLine(transform.position, transform.position + heading * 10, Color.red);
 		
 		RotateCursor();
 		GetInputs();
@@ -373,7 +378,7 @@ public class CharacterController : MonoBehaviour
 
 	private void SetShotDirection()
 	{
-		_shootDirection = (_camera.ScreenToWorldPoint(Input.mousePosition) - _cursorPivot.position).normalized;
+		_shootDirection = (_cursorPosition.position - _cursorPivot.position).normalized;
 		_tongue.transform.position = transform.position;
 	}
 

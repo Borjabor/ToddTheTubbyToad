@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5605311252026018265, guid: ce611121098a9bb498be51f9e14d0a3e, type: 3}
+      propertyPath: _cursorPosition
+      value: 
+      objectReference: {fileID: 517396970}
     - target: {fileID: 5666278967003085101, guid: ce611121098a9bb498be51f9e14d0a3e, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -39181,6 +39185,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!4 &517396970 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2151460390924597993, guid: ce611121098a9bb498be51f9e14d0a3e, type: 3}
+  m_PrefabInstance: {fileID: 62111022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

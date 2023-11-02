@@ -438,7 +438,7 @@ public class CharacterController : MonoBehaviour
         _springJoint.connectedBody = _hit.rigidbody;
     }
 
-	private void Detach()
+	public void Detach()
 	{
 		if (!_isStuck) _rb.bodyType = RigidbodyType2D.Dynamic;
 		_tongueRetract = true;

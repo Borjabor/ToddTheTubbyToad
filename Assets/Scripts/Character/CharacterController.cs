@@ -320,7 +320,7 @@ public class CharacterController : MonoBehaviour
 
 	public void Die()
 	{
-		//StartCoroutine(Respawn());
+		StartCoroutine(Respawn());
     }
 
     private IEnumerator Respawn()

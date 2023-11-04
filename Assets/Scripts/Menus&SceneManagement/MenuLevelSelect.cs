@@ -14,8 +14,9 @@ public class MenuLevelSelect : MenuBase
     [SerializeField]
     private Button[] _button;
 
-    private void Awake()
+    protected override void Awake()
     {
+        _gameState = Resources.Load<GameState>("SOAssets/Game State");
         _gameState.Value = States.NORMAL;
         int i = 0 + _indexFixer;
         foreach (var button in _button)

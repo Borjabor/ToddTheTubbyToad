@@ -24,6 +24,6 @@ public class LavaEscape : FollowPath
     private void Update()
     {
         _moveSpeed = Mathf.Clamp((_target.transform.position.y - _movingObject.transform.position.y)/_speedRatio, _minSpeed, _maxSpeed);
-        _moveSpeed = Mathf.Clamp((_mainCamera.transform.position.y - _movingObject.transform.position.y)/_speedRatio, _minSpeed, _maxSpeed);
+        _moveSpeed = Mathf.Clamp((_target.transform.position.y - _movingObject.transform.position.y)/_speedRatio, _minSpeed, _maxSpeed);
     }
 }

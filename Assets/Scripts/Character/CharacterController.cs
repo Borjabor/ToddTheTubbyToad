@@ -78,6 +78,8 @@ public class CharacterController : MonoBehaviour
 	[Header("Layer Settings:")]
 	[SerializeField]
 	private int[] _grappableLayerNumber;
+	[SerializeField]
+	private LayerMask _layerMask;
 
 	[Header("Attach Distance:")]
 	[SerializeField]
@@ -152,15 +154,17 @@ public class CharacterController : MonoBehaviour
 	{
 		if (_gameState.Value != States.NORMAL) return;
 		if (_playerState.Value == PlayerStates.RESPAWN) return;
+		_mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+		_hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized, _layerMask);
+		Debug.DrawLine(transform.position, _hit.point, Color.magenta);
 		
 		RotateCursor();
 		SetCursor();
 		GetInputs();
-		// float time = Time.timeScale;
-		//if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
-		//if(Input.GetKeyDown(KeyCode.L)) GameManager.Instance.Load();
-		// if (Input.GetKeyDown(KeyCode.F)) _rb.gravityScale = -_rb.gravityScale;
-		// if(time != Time.timeScale) Debug.Log($"{time}");
+		float time = Time.timeScale;
+		if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 0.1f;
+		if (Input.GetKeyDown(KeyCode.Alpha2)) Time.timeScale = 1f;
+		if(time != Time.timeScale) Debug.Log($"{time}");
 	}
 
 	private void FixedUpdate()
@@ -372,8 +376,8 @@ public class CharacterController : MonoBehaviour
 	private void SetCursor()
 	{
 		_mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-		_hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
-		Debug.DrawLine(transform.position, _hit.point);
+		_hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized, Mathf.Infinity,_layerMask);
+		Debug.DrawLine(transform.position, _hit.point, Color.magenta);
 		if (Vector2.Distance(_hit.point, transform.position) > _maxDistance)
 		{
 			Cursor.SetCursor(_tooFar, Vector2.zero, CursorMode.Auto);

@@ -58,6 +58,7 @@ public class Tongue : MonoBehaviour
         _lineRenderer.positionCount = _precision;
         _currentWaveSize = _waveSize;
         _straightLine = false;
+        _circleCollider.enabled = true;
         ChangeRigidbody(RigidbodyType2D.Dynamic);
         LinePointToFirePoint();
     }
@@ -68,6 +69,7 @@ public class Tongue : MonoBehaviour
         _lineRenderer.enabled = false;
         _isGrappling = false;
         _rb.velocity = Vector3.zero;
+        _circleCollider.enabled = false;
         ChangeRigidbody(RigidbodyType2D.Kinematic);
     }
 
@@ -218,27 +220,35 @@ public class Tongue : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log($"Trigger {other.gameObject.name}");
-        // if (other.gameObject.layer == 3)
-        // {
-        //     _isGrappling = true;
-        //     _straightLine = true;
-        //     _player.Grapple();
-        //     _rb.velocity = Vector2.zero;
-        //     ChangeRigidbody(RigidbodyType2D.Kinematic);
-        // }else if (other.gameObject.layer == 10)
-        // {
-        //     _player.SetMovingObject(other.gameObject);
-        //     _isGrappling = true;
-        //     _straightLine = true;
-        //     _player.Grapple();
-        //     _rb.velocity = Vector2.zero;
-        //     ChangeRigidbody(RigidbodyType2D.Kinematic);
-        // }else
-        // {
-        //     Debug.Log($"Not Hit");
-        //     _isGrappling = false;
-        //     _player.FalseHit();
-        // }
+        Debug.Log($"Trigger {other.gameObject.name}");
+        if (other.gameObject.CompareTag("Hazard"))
+        {
+            Debug.Log($"Not Hit");
+            _isGrappling = false;
+            _player.FalseHit();
+            _circleCollider.enabled = false;
+            return;
+        }
+        if (other.gameObject.layer == 3)
+        {
+            _isGrappling = true;
+            _straightLine = true;
+            _player.Grapple();
+            _rb.velocity = Vector2.zero;
+            ChangeRigidbody(RigidbodyType2D.Kinematic);
+        }else if (other.gameObject.layer == 10)
+        {
+            _player.SetMovingObject(other.gameObject);
+            _isGrappling = true;
+            _straightLine = true;
+            _player.Grapple();
+            _rb.velocity = Vector2.zero;
+            ChangeRigidbody(RigidbodyType2D.Kinematic);
+        }else
+        {
+            Debug.Log($"Not Hit");
+            _isGrappling = false;
+            _player.FalseHit();
+        }
     }
 }

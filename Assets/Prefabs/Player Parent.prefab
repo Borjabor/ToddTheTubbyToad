@@ -5938,9 +5938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a4bead505251a4ea861fd83779126b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canAttach: {fileID: 2800000, guid: 2b03c7ff4ffdb6f4eb0d736e0cc38afd, type: 3}
-  _cannotAttach: {fileID: 2800000, guid: 1b79706d6ad296049b47d0e4852454a7, type: 3}
-  _tooFar: {fileID: 2800000, guid: 63beacdb4a7a1e74f8e855ad093ce117, type: 3}
+  _canAttach: {fileID: 2800000, guid: a50f40df747151246a8a37b606d44e7e, type: 3}
+  _cannotAttach: {fileID: 2800000, guid: 7f3c27c1d82b6c64989c56208f348377, type: 3}
+  _tooFar: {fileID: 2800000, guid: 590217192d2bf1f40bd2bf7c9b2d975c, type: 3}
   _collideAudio: {fileID: 0}
   _deathAudio: {fileID: 8300000, guid: 9eaf34f5b5ef47744980bffbdb062167, type: 3}
   _grabbing: {fileID: 8300000, guid: a18da65141703b34a8e6c59d37008250, type: 3}
@@ -5960,7 +5960,7 @@ MonoBehaviour:
   _grappableLayerNumber: 030000000a000000
   _layerMask:
     serializedVersion: 2
-    m_Bits: 836
+    m_Bits: 1211
   _maxDistance: 25
   _launchSpeed: 0.6
   _distanceRatio: 0.05
@@ -6359,7 +6359,7 @@ GameObject:
   m_Layer: 9
   m_Name: Tongue
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6623,7 +6623,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

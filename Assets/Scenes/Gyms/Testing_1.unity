@@ -175,14 +175,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5605311252026018265, guid: ce611121098a9bb498be51f9e14d0a3e, type: 3}
-      propertyPath: _cursorPosition
-      value: 
-      objectReference: {fileID: 517396970}
-    - target: {fileID: 5666278967003085101, guid: ce611121098a9bb498be51f9e14d0a3e, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39185,11 +39177,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!4 &517396970 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2151460390924597993, guid: ce611121098a9bb498be51f9e14d0a3e, type: 3}
-  m_PrefabInstance: {fileID: 62111022}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -39581,7 +39568,7 @@ Transform:
   m_GameObject: {fileID: 616702547}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071064, w: 0.7071072}
-  m_LocalPosition: {x: 37.75, y: -4.41, z: 0}
+  m_LocalPosition: {x: 13.51, y: -3.56, z: 0}
   m_LocalScale: {x: 1, y: 6.8632, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51277,6 +51264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2540886266376219871, guid: 343f41a83271dc543a4c14bbb6eadffc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2540886266900621992, guid: 343f41a83271dc543a4c14bbb6eadffc, type: 3}
       propertyPath: m_Name
       value: Fan Up
@@ -51320,6 +51311,10 @@ PrefabInstance:
     - target: {fileID: 2540886266900621993, guid: 343f41a83271dc543a4c14bbb6eadffc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004321691533952734, guid: 343f41a83271dc543a4c14bbb6eadffc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52912,7 +52907,7 @@ Transform:
   m_GameObject: {fileID: 2268607995619710628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.63, y: 13.08, z: -0.14803568}
+  m_LocalPosition: {x: 5.25, y: 6.25, z: -0.14803568}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

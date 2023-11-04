@@ -10,6 +10,7 @@ public class Tongue : MonoBehaviour
     [SerializeField] 
     private LineRenderer _lineRenderer;
     private CircleCollider2D _circleCollider;
+    private Rigidbody2D _rb;
 
     [Header("General Settings:")]
     [SerializeField] 
@@ -43,6 +44,7 @@ public class Tongue : MonoBehaviour
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _circleCollider = GetComponent<CircleCollider2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _lineRenderer.enabled = false;
         _lineRenderer.positionCount = _precision;
         _currentWaveSize = _waveSize;
@@ -56,6 +58,7 @@ public class Tongue : MonoBehaviour
         _lineRenderer.positionCount = _precision;
         _currentWaveSize = _waveSize;
         _straightLine = false;
+        ChangeRigidbody(RigidbodyType2D.Dynamic);
         LinePointToFirePoint();
     }
 
@@ -64,6 +67,8 @@ public class Tongue : MonoBehaviour
         _animator.SetTrigger("HookOff");
         _lineRenderer.enabled = false;
         _isGrappling = false;
+        _rb.velocity = Vector3.zero;
+        ChangeRigidbody(RigidbodyType2D.Kinematic);
     }
 
     private void LinePointToFirePoint()
@@ -74,33 +79,38 @@ public class Tongue : MonoBehaviour
         }
     }
 
+    private void ChangeRigidbody(RigidbodyType2D bodyType)
+    {
+        _rb.bodyType = bodyType;
+    }
+
     private void Update()
     {
         _moveTime += Time.deltaTime;
         DrawRope();
         if(_isGrappling) return;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _circleCollider.radius);
-        foreach (Collider2D collider2D in colliders)
-        {
-            if (collider2D.gameObject.layer == 3)
-            {
-                _isGrappling = true;
-                _straightLine = true;
-                _player.Grapple();
-            }
-            else if (collider2D.gameObject.layer == 10)
-            {
-                _player.SetMovingObject(collider2D.gameObject);
-                _isGrappling = true;
-                _straightLine = true;
-                _player.Grapple();
-            }
-            else
-            {
-                _isGrappling = false;
-                _player.Detach();
-            }
-        }
+        // Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _circleCollider.radius);
+        // foreach (Collider2D collider2D in colliders)
+        // {
+        //     if (collider2D.gameObject.layer == 3)
+        //     {
+        //         _isGrappling = true;
+        //         _straightLine = true;
+        //         _player.Grapple();
+        //     }
+        //     else if (collider2D.gameObject.layer == 10)
+        //     {
+        //         _player.SetMovingObject(collider2D.gameObject);
+        //         _isGrappling = true;
+        //         _straightLine = true;
+        //         _player.Grapple();
+        //     }
+        //     else
+        //     {
+        //         _isGrappling = false;
+        //         _player.Detach();
+        //     }
+        // }
     }
 
     public void TongueDetach()
@@ -182,39 +192,53 @@ public class Tongue : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log($"{other.gameObject.name}");
+        Debug.Log($"Collide {other.gameObject.name}");
         if (other.gameObject.layer == 3)
         {
             _isGrappling = true;
             _straightLine = true;
             _player.Grapple();
-        }
-        
-        if (other.gameObject.layer == 10)
+            _rb.velocity = Vector2.zero;
+            ChangeRigidbody(RigidbodyType2D.Kinematic);
+        }else if (other.gameObject.layer == 10)
         {
             _player.SetMovingObject(other.gameObject);
             _isGrappling = true;
             _straightLine = true;
             _player.Grapple();
+            _rb.velocity = Vector2.zero;
+            ChangeRigidbody(RigidbodyType2D.Kinematic);
+        }else
+        {
+            Debug.Log($"Not Hit");
+            _isGrappling = false;
+            _player.FalseHit();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log($"{other.gameObject.name}");
+        // Debug.Log($"Trigger {other.gameObject.name}");
         // if (other.gameObject.layer == 3)
         // {
         //     _isGrappling = true;
         //     _straightLine = true;
         //     _player.Grapple();
-        // }
-        //
-        // if (other.gameObject.layer == 10)
+        //     _rb.velocity = Vector2.zero;
+        //     ChangeRigidbody(RigidbodyType2D.Kinematic);
+        // }else if (other.gameObject.layer == 10)
         // {
         //     _player.SetMovingObject(other.gameObject);
         //     _isGrappling = true;
         //     _straightLine = true;
         //     _player.Grapple();
+        //     _rb.velocity = Vector2.zero;
+        //     ChangeRigidbody(RigidbodyType2D.Kinematic);
+        // }else
+        // {
+        //     Debug.Log($"Not Hit");
+        //     _isGrappling = false;
+        //     _player.FalseHit();
         // }
     }
 }

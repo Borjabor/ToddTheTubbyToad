@@ -20,10 +20,13 @@ public class CharacterController : MonoBehaviour
 	private Vector2 _velocity;
 
 	[Header("Mouse Cursor")]
-	//[SerializeField]
+	[SerializeField]
 	private Texture2D _canAttach;
-	//[SerializeField]
+	[SerializeField]
 	private Texture2D _cannotAttach;
+	[SerializeField]
+	private Texture2D _tooFar;
+	
 
 	[Header("Audio")]
 	[SerializeField]
@@ -69,10 +72,12 @@ public class CharacterController : MonoBehaviour
 	[Header("Tongue Draw Script:")]
 	[SerializeField]
 	private Tongue _tongue;
+	[SerializeField]
+	private Rigidbody2D _tongueRb;
 
 	[Header("Layer Settings:")]
 	[SerializeField]
-	private int _grappableLayerNumber = 3;
+	private int[] _grappableLayerNumber;
 
 	[Header("Attach Distance:")]
 	[SerializeField]
@@ -101,7 +106,7 @@ public class CharacterController : MonoBehaviour
 	private Vector2 _shootDirection;
 	[SerializeField]
 	private float _tongueLengthChanger = 0.8f;
-	private bool _tongueWentTooFar;
+	private bool _tongueDidntHit;
 	private bool _tongueRetract;
 
 	private bool _hasPlayed = false;
@@ -146,11 +151,10 @@ public class CharacterController : MonoBehaviour
 	void Update()
 	{
 		if (_gameState.Value != States.NORMAL) return;
-		var heading = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-		heading.Normalize();
-		Debug.DrawLine(transform.position, transform.position + heading * 10, Color.red);
+		if (_playerState.Value == PlayerStates.RESPAWN) return;
 		
 		RotateCursor();
+		SetCursor();
 		GetInputs();
 		// float time = Time.timeScale;
 		//if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
@@ -251,7 +255,6 @@ public class CharacterController : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
 	        Detach();
-	        _tongueWentTooFar = false;
         }
         
         if(!_tongueRetract) return;
@@ -328,7 +331,12 @@ public class CharacterController : MonoBehaviour
 		_playerState.Value = PlayerStates.RESPAWN;
 		IsSafe = true;
 		_rb.velocity = Vector2.zero;
-		Detach();
+		_tongue.enabled = false;
+		_springJoint.enabled = false;
+		_movingObject = null;
+		_triggerZone.enabled = false;
+		Tentacle.GrabbedObject = null;
+		Destroy(GetComponent<FixedJoint2D>());
 		_audioSource.PlayOneShot(_deathAudio);
 		CameraManager.Instance.ShakeCamera(5f, 0.2f);
 		_deathParticles.Play();
@@ -361,12 +369,22 @@ public class CharacterController : MonoBehaviour
 	
 	//Hookshot methods
 	
-	private bool CanAttach()
+	private void SetCursor()
 	{
 		_mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 		_hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized);
 		Debug.DrawLine(transform.position, _hit.point);
-		return _hit.transform.gameObject.layer == _grappableLayerNumber && Vector2.Distance(_hit.point, transform.position) <= _maxDistance; 
+		if (Vector2.Distance(_hit.point, transform.position) > _maxDistance)
+		{
+			Cursor.SetCursor(_tooFar, Vector2.zero, CursorMode.Auto);
+		}else if (_hit.transform.gameObject.layer == _grappableLayerNumber[0] || _hit.transform.gameObject.layer == _grappableLayerNumber[1])
+		{
+			Cursor.SetCursor(_canAttach, Vector2.zero, CursorMode.Auto);
+		}
+		else
+		{
+			Cursor.SetCursor(_cannotAttach, Vector2.zero, CursorMode.Auto);
+		}
 	}
 	
 	private void RotateCursor()
@@ -384,15 +402,18 @@ public class CharacterController : MonoBehaviour
 
 	private void ShootTongue()
 	{
-		if (_tongueWentTooFar) return;
-		if(_tongue._isGrappling) return;
-		_tongue.transform.Translate(_shootDirection * _shootSpeed * Time.deltaTime);
-		DistanceVector = _tongue.transform.position - transform.position;
-		_tongueWentTooFar = Vector2.Distance(_tongue.transform.position, transform.position) >= _maxDistance;
-		if (_tongueWentTooFar)
+		if (_tongueDidntHit)
 		{
 			_tongueRetract = true;
-		}
+			return;
+		} 
+		if (_tongue._isGrappling) return;
+		if (_tongueRetract) return;
+		//_tongue.transform.Translate(_shootDirection * _shootSpeed * Time.deltaTime);
+		//_tongue.transform.position += (Vector3)_shootDirection * _shootSpeed * Time.deltaTime;
+		_tongueRb.velocity = _shootDirection * _shootSpeed;
+		DistanceVector = _tongue.transform.position - transform.position;
+		_tongueDidntHit = Vector2.Distance(_tongue.transform.position, transform.position) >= _maxDistance;
 		if (_tongue.enabled) return;
 		_tongue.enabled = true;
 	}
@@ -401,11 +422,14 @@ public class CharacterController : MonoBehaviour
 	{
 		_movingObject = movingObject;
 	}
+
+	public void FalseHit()
+	{
+		_tongueDidntHit = true;
+	}
 	
 	private void SetGrapplePoint()
     {
-        if (!CanAttach()) return;
-
         if (_currentBubble)
         {
 	        _currentBubble.Pop();
@@ -441,6 +465,7 @@ public class CharacterController : MonoBehaviour
 	public void Detach()
 	{
 		if (!_isStuck) _rb.bodyType = RigidbodyType2D.Dynamic;
+		_tongueDidntHit = false;
 		_tongueRetract = true;
 		// _tongue.enabled = false;
 		// _springJoint.enabled = false;

@@ -18,7 +18,7 @@ public class MenuBase : MonoBehaviour
     protected LevelLoader _levelLoader;
     protected GameState _gameState;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _gameState = Resources.Load<GameState>("SOAssets/Game State");
     }
@@ -28,7 +28,7 @@ public class MenuBase : MonoBehaviour
         await Task.Delay((int) (1000.0f * Time.deltaTime));
         _startButton.Select();
     }
-    
+
     public void MainMenu() {
         _gameState.Value = States.NORMAL;
         SceneManager.LoadScene("MainMenu");

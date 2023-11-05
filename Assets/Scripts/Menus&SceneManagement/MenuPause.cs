@@ -31,6 +31,7 @@ public class MenuPause : MenuBase
         {
            _gameState.Value = States.NORMAL;
             _thisMenu.SetActive(false);
+            _settingsMenu.SetActive(false);
         }
     }
 

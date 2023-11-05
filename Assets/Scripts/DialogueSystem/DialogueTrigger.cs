@@ -14,9 +14,6 @@ namespace DialogueSystem
         [SerializeField]
         private GameObject _cutscene;
 
-        
-
-
         private void Awake()
         {
             _prompt.SetActive(false);

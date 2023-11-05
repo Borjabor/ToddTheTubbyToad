@@ -7,6 +7,9 @@ public class LavaEscape : FollowPath
 {
     [SerializeField]
     private GameObject _target;
+    private float _cameraShakeAmount;
+    [SerializeField]
+    private float _maxCameraShakeAmount = 10f;
 
     [SerializeField]
     private float _minSpeed, _maxSpeed, _speedRatio = 2;
@@ -24,6 +27,7 @@ public class LavaEscape : FollowPath
     private void Update()
     {
         _moveSpeed = Mathf.Clamp((_target.transform.position.y - _movingObject.transform.position.y)/_speedRatio, _minSpeed, _maxSpeed);
-        _moveSpeed = Mathf.Clamp((_target.transform.position.y - _movingObject.transform.position.y)/_speedRatio, _minSpeed, _maxSpeed);
+        _cameraShakeAmount = Mathf.Clamp(_maxCameraShakeAmount/_moveSpeed, 0f, _maxCameraShakeAmount);
+        CameraManager.Instance.ShakeCamera(_cameraShakeAmount, 1f);
     }
 }

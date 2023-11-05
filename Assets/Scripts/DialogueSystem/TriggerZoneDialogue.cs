@@ -24,7 +24,7 @@ public class TriggerZoneDialogue : MonoBehaviour
         if(!other.gameObject.CompareTag("Player")) return;
         var positionX = _npc.transform.position.x - other.gameObject.transform.position.x > 0 ? 1 : -1;
         var positionY = _camera.transform.position.y - other.gameObject.transform.position.y > 0 ? 1 : -1;
-        DialogueManager.GetInstance().GetPlayer(positionX, positionY);
+        DialogueManager.Instance.GetPlayer(positionX, positionY);
         _character.Interact();
         gameObject.SetActive(false);
     }

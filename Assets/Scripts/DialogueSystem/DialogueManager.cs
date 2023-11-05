@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Articy.Unity;
@@ -10,11 +11,14 @@ using Articy.Todd_The_Tubby_Toad;
 
 namespace DialogueSystem
 {
-    public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
+    public class DialogueManager : Singleton<DialogueManager>, IArticyFlowPlayerCallbacks
     {
         private static DialogueManager instance;
         [SerializeField] 
         private GameState _gameState;
+        [SerializeField]
+        private float _typingSpeed = 0.02f;
+        private Coroutine _coroutine;
         private float _playerPositionX;
         private float _playerPositionY;
 
@@ -26,6 +30,8 @@ namespace DialogueSystem
         private TextMeshProUGUI _dialogueText;
         [SerializeField] 
         private Button _continueCloseButton;
+        [SerializeField] 
+        private GameObject _continueCloseButtonObject;
         [SerializeField] 
         private TextMeshProUGUI _buttonText;
         
@@ -47,11 +53,8 @@ namespace DialogueSystem
         private ArticyObject _currentDialogue;
         private GameObject _cutscene;
 
-
-        private void Awake()
+        protected override void SingletonAwake()
         {
-            if(instance != null) Debug.Log($"There is another Dialogue Manager");
-            instance = this;
         }
 
         private void Start()
@@ -60,11 +63,6 @@ namespace DialogueSystem
             _flowPlayer = GetComponent<ArticyFlowPlayer>();
             _dialoguePanelTransform = _dialoguePanel.GetComponent<RectTransform>();
             _dialoguePanel.SetActive(false);
-        }
-
-        public static DialogueManager GetInstance()
-        {
-            return instance;
         }
 
         public void SetCutscene(GameObject cutsceneTrigger)
@@ -111,7 +109,9 @@ namespace DialogueSystem
             _dialogueText.text = string.Empty;
             _speakerName.text = string.Empty;
 
-            if (aObject is IObjectWithText objectWithText) _dialogueText.text = objectWithText.Text;
+            //if (aObject is IObjectWithText objectWithText) _dialogueText.text = objectWithText.Text;
+            if(_coroutine != null) StopCoroutine(_coroutine);
+            if (aObject is IObjectWithText objectWithText) _coroutine = StartCoroutine(DisplayLine(objectWithText.Text));
 
             if (aObject is not IObjectWithSpeaker objectWithSpeaker) return;
             var speakerEntity = objectWithSpeaker.Speaker as Entity;
@@ -120,6 +120,26 @@ namespace DialogueSystem
             _speakerContainer.localPosition = speakerEntity.DisplayName == _playerArticyTag ? new Vector3(796 * -_playerPositionX, 0, 0) : new Vector3(796 * _playerPositionX, 0, 0);
             var speakerAsset = (speakerEntity as IObjectWithPreviewImage).PreviewImage.Asset as Asset;
             if (speakerAsset != null) _speakerImage.sprite = speakerAsset.LoadAssetAsSprite();
+        }
+
+        private IEnumerator DisplayLine(string line)
+        {
+            _continueCloseButtonObject.SetActive(false);
+            _dialogueText.text = "";
+
+            foreach (char letter in line)
+            {
+                // if (Input.GetKeyDown(KeyCode.Space))
+                // {
+                //     Debug.Log($"press");
+                //     _dialogueText.text = line;
+                //     break;
+                // }  
+                _dialogueText.text += letter;
+                yield return new WaitForSeconds(_typingSpeed);
+            }
+
+            _continueCloseButtonObject.SetActive(true);
         }
 
         public void OnBranchesUpdated(IList<Branch> aBranches)

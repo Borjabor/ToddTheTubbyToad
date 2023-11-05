@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cinemachine;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -13,7 +15,7 @@ public class Room : MonoBehaviour
         CameraManager.Instance.SetCamera(_virtualCamera);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private async void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         CameraManager.Instance.SetCamera(_virtualCamera);

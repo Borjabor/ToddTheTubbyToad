@@ -26,8 +26,8 @@ namespace DialogueSystem
         public void Interact()
         {
             if(_gameState.Value != States.NORMAL) return;
-            DialogueManager.GetInstance().EnterDialogue(_dialogue);
-            if(_cutscene != null) DialogueManager.GetInstance().SetCutscene(_cutscene);
+            DialogueManager.Instance.EnterDialogue(_dialogue);
+            if(_cutscene != null) DialogueManager.Instance.SetCutscene(_cutscene);
             //Debug.Log($"interact");
         }
 

@@ -7,7 +7,7 @@ public class MenuPause : MenuBase
 {
     private bool _isPaused;
 
-    private void Awake()
+    private void Start()
     {
         _thisMenu.SetActive(false);
         _levelLoader = GetComponentInChildren<LevelLoader>();

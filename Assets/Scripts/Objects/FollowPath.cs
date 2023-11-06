@@ -35,6 +35,8 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     [SerializeField]
     private GameObject _platformOn = null;
 
+    protected bool _isOn;
+
     protected virtual void Awake()
     {
         _gameState = Resources.Load<GameState>("SOAssets/Game State");
@@ -68,6 +70,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
 
     protected override IEnumerator On()
     {
+        _isOn = true;
         while ((Vector2)_movingObject.transform.position != _currentNodePosition)
         {
             yield return new WaitUntil(() => _gameState.Value == States.NORMAL);
@@ -77,7 +80,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
         SetState(GetNextNode());
     }
 
-    protected IEnumerator GetNextNode()
+    private IEnumerator GetNextNode()
     {
         if (_currentNodeIndex == 0)
         {
@@ -105,6 +108,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
 
     protected override IEnumerator Off()
     {
+        _isOn = false;
         yield break;
     }
 }

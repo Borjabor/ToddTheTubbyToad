@@ -77,7 +77,7 @@ public class FollowPath : ObjectFSM, IOnOffObjects
         SetState(GetNextNode());
     }
 
-    private IEnumerator GetNextNode()
+    protected IEnumerator GetNextNode()
     {
         if (_currentNodeIndex == 0)
         {

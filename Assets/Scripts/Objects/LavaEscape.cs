@@ -23,6 +23,17 @@ public class LavaEscape : FollowPath
         if (_startOn) TurnOn();
         if (_loop) _timeToWait = 0f;
     }
+    
+    protected override IEnumerator On()
+    {
+        while ((Vector2)_movingObject.transform.position != _currentNodePosition)
+        {
+            yield return new WaitUntil(() => _gameState.Value == States.NORMAL);
+            _movingObject.transform.position = Vector2.MoveTowards(_movingObject.transform.position, _currentNodePosition, _moveSpeed * Time.deltaTime);
+            yield return 0;
+        }
+        SetState(GetNextNode());
+    }
 
     private void Update()
     {

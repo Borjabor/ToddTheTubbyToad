@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SoundManager : Singleton<SoundManager>
@@ -15,6 +17,15 @@ public class SoundManager : Singleton<SoundManager>
     public void PlaySound(AudioClip clip)
     {
         _effectSource.PlayOneShot(clip);
+    }
+
+    public async void PlaySoundWithVolume(AudioClip clip, float volume)
+    {
+        var currentVolume = _effectSource.volume;
+        _effectSource.volume = volume;
+        _effectSource.PlayOneShot(clip);
+        await Task.Delay(TimeSpan.FromSeconds(clip.length));
+        _effectSource.volume = currentVolume;
     }
 
     public void ChangeMasterVolume(float volume)

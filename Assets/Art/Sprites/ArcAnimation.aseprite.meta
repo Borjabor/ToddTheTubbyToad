@@ -126,7 +126,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 39
       y: 122
       width: 1
       height: 1
@@ -138,7 +138,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 122}
+    uvTransform: {x: 39, y: 122}
   - name: ArcAnimation_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -146,8 +146,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 21
-      y: 75
+      x: 4
+      y: 98
       width: 2
       height: 5
     spriteID: e02b5fc1be4e7ee4e8e561dac8560da2
@@ -158,17 +158,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 21, y: 75}
+    uvTransform: {x: 4, y: 98}
   - name: ArcAnimation_Frame_2
     originalName: 
-    pivot: {x: 0.33333334, y: 0}
+    pivot: {x: 0.2857143, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
-      width: 9
+      x: 39
+      y: 82
+      width: 7
       height: 32
     spriteID: 2a44b5b5c780c1141aefc333d421a5f7
     spriteBone: []
@@ -178,17 +178,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 39, y: 82}
   - name: ArcAnimation_Frame_3
     originalName: 
-    pivot: {x: 0.42857146, y: 0}
+    pivot: {x: 0.375, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 44
-      width: 7
+      x: 39
+      y: 42
+      width: 8
       height: 32
     spriteID: 5ed174168834fcb4eb9dd572d5205320
     spriteBone: []
@@ -198,17 +198,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 44}
+    uvTransform: {x: 39, y: 42}
   - name: ArcAnimation_Frame_4
     originalName: 
-    pivot: {x: 0.2857143, y: -0.06666667}
+    pivot: {x: 0.5, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 84
-      width: 7
+      x: 39
+      y: 4
+      width: 12
       height: 30
     spriteID: ada4b915664439f48bbffa0367fae704
     spriteBone: []
@@ -218,18 +218,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 84}
+    uvTransform: {x: 39, y: 4}
   - name: ArcAnimation_Frame_5
     originalName: 
-    pivot: {x: 0.2857143, y: -0.14285715}
+    pivot: {x: 0.5, y: -0.23076925}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 21
-      y: 4
-      width: 7
-      height: 28
+      x: 4
+      y: 64
+      width: 16
+      height: 26
     spriteID: 234f4748e0198c640954d7066bb7bd0f
     spriteBone: []
     spriteOutline: []
@@ -238,18 +238,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 21, y: 4}
+    uvTransform: {x: 4, y: 64}
   - name: ArcAnimation_Frame_6
     originalName: 
-    pivot: {x: 0.33333334, y: -0.1851852}
+    pivot: {x: 0.5263158, y: -0.3478261}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 21
-      y: 40
-      width: 6
-      height: 27
+      x: 4
+      y: 33
+      width: 19
+      height: 23
     spriteID: 0cc7a9e8f71b7b14fb422736709856ea
     spriteBone: []
     spriteOutline: []
@@ -258,7 +258,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 21, y: 40}
+    uvTransform: {x: 4, y: 33}
+  - name: ArcAnimation_Frame_7
+    originalName: 
+    pivot: {x: 0.5185185, y: -0.52380955}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 27
+      height: 21
+    spriteID: 3425095daa4b02a45a9e89693d0fa380
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -271,7 +291,7 @@ ScriptedImporter:
     - name: ArcAnimation_Frame_0
       frameIndex: 0
       cellRect:
-        x: 8
+        x: 16
         y: 0
         width: 1
         height: 1
@@ -279,7 +299,7 @@ ScriptedImporter:
     - name: ArcAnimation_Frame_1
       frameIndex: 1
       cellRect:
-        x: 7
+        x: 15
         y: 0
         width: 2
         height: 5
@@ -287,46 +307,54 @@ ScriptedImporter:
     - name: ArcAnimation_Frame_2
       frameIndex: 2
       cellRect:
-        x: 5
+        x: 14
         y: 0
-        width: 9
+        width: 7
         height: 32
       spriteId: 2a44b5b5c780c1141aefc333d421a5f7
     - name: ArcAnimation_Frame_3
       frameIndex: 3
       cellRect:
-        x: 5
+        x: 13
         y: 0
-        width: 7
+        width: 8
         height: 32
       spriteId: 5ed174168834fcb4eb9dd572d5205320
     - name: ArcAnimation_Frame_4
       frameIndex: 4
       cellRect:
-        x: 6
+        x: 10
         y: 2
-        width: 7
+        width: 12
         height: 30
       spriteId: ada4b915664439f48bbffa0367fae704
     - name: ArcAnimation_Frame_5
       frameIndex: 5
       cellRect:
-        x: 6
-        y: 4
-        width: 7
-        height: 28
+        x: 8
+        y: 6
+        width: 16
+        height: 26
       spriteId: 234f4748e0198c640954d7066bb7bd0f
     - name: ArcAnimation_Frame_6
       frameIndex: 6
       cellRect:
         x: 6
-        y: 5
-        width: 6
-        height: 27
+        y: 8
+        width: 19
+        height: 23
       spriteId: 0cc7a9e8f71b7b14fb422736709856ea
+    - name: ArcAnimation_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 2
+        y: 11
+        width: 27
+        height: 21
+      spriteId: 3425095daa4b02a45a9e89693d0fa380
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 32}
+  canvasSize: {x: 32, y: 32}

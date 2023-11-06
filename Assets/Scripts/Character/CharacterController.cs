@@ -234,7 +234,8 @@ public class CharacterController : MonoBehaviour
 	        if (!_hasPlayed)
 	        {
 		        //_audioSource.PlayOneShot(_tongueThrow);
-		        SoundManager.Instance.PlaySound(_tongueThrow);
+		        //SoundManager.Instance.PlaySound(_tongueThrow);
+		        SoundManager.Instance.PlaySoundWithVolume(_tongueThrow, 0.075f);
 		        _hasPlayed = true;
 	        }
 

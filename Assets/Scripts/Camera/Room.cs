@@ -12,10 +12,10 @@ public class Room : MonoBehaviour
 
     private void OnEnable()
     {
-        CameraManager.Instance.SetCamera(_virtualCamera);
+        if(CameraManager.Instance) CameraManager.Instance.SetCamera(_virtualCamera);
     }
 
-    private async void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         CameraManager.Instance.SetCamera(_virtualCamera);

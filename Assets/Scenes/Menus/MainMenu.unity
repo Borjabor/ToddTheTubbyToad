@@ -123,6 +123,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &20144809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7414390157368535393, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
+  m_PrefabInstance: {fileID: 706957356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &20144810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1676946398224671270, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
+  m_PrefabInstance: {fileID: 706957356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20144809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694c76c01e8a1dd479cf4a02b623d439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &177628479
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,16 +419,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196815745}
   m_CullTransparentMesh: 1
---- !u!1 &275255763 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 721547301571060170, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
-  m_PrefabInstance: {fileID: 706957356}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &275255768 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7929496247124421809, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
-  m_PrefabInstance: {fileID: 706957356}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &322233403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +1034,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1676946398224671270, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
+      propertyPath: _thisMenu
+      value: 
+      objectReference: {fileID: 20144809}
+    - target: {fileID: 1676946398224671270, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
+      propertyPath: _settingsMenu
+      value: 
+      objectReference: {fileID: 510000120}
     - target: {fileID: 3191242139088981641, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
       propertyPath: m_Name
       value: SettingMenuContainer
@@ -1052,6 +1066,14 @@ PrefabInstance:
       propertyPath: _previousMenuButton
       value: 
       objectReference: {fileID: 1725882916}
+    - target: {fileID: 5649957170818271018, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 20144810}
+    - target: {fileID: 5649957170818271018, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SettingsMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 7929496247124421809, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -1068,8 +1090,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3818063707372336254, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7929496247124421809, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
-      insertIndex: 0
+    - targetCorrespondingSourceObject: {fileID: 1301324993281577261, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1224735678}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
@@ -1249,7 +1271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisMenu: {fileID: 510000120}
-  _settingsMenu: {fileID: 275255763}
+  _settingsMenu: {fileID: 20144809}
   _startButton: {fileID: 851253334}
   _levelLoader: {fileID: 1170026138}
 --- !u!4 &914847239
@@ -1537,7 +1559,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 275255768}
+  m_Father: {fileID: 1511271249}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

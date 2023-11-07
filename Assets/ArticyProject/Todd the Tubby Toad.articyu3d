@@ -2490,7 +2490,7 @@
             "Text": ">> Continuation",
             "ExternalId": "",
             "Position": {
-              "x": 2842.0,
+              "x": 2967.0,
               "y": -2450.0
             },
             "ZIndex": 2.0,
@@ -3037,13 +3037,181 @@
                   {
                     "Color": {
                       "a": 1.0,
-                      "r": 0.5764706,
-                      "g": 0.75686276,
-                      "b": 0.8
+                      "r": 0.577580452,
+                      "g": 0.7605245,
+                      "b": 0.7991027
                     },
                     "Label": "",
                     "TargetPin": "0x01000000000003B8",
                     "Target": "0x01000000000003B7"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "Type": "DialogueFragment",
+          "Properties": {
+            "TechnicalName": "DFr_39D9C88F",
+            "Id": "0x01000000000003B7",
+            "Parent": "0x0100000000000273",
+            "MenuText": "",
+            "StageDirections": "",
+            "Speaker": "0x010000000000011D",
+            "SplitHeight": 64.0,
+            "Color": {
+              "r": 0.577580452,
+              "g": 0.7605245,
+              "b": 0.7991027
+            },
+            "Text": "Keke... Ya aren't as bad as Frances makes it. Thanks, I guess.",
+            "ExternalId": "",
+            "Position": {
+              "x": 1100.0,
+              "y": 425.0
+            },
+            "ZIndex": 0.0,
+            "Size": {
+              "w": 225.0,
+              "h": 200.0
+            },
+            "ShortId": 970573967,
+            "InputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003B8",
+                "Owner": "0x01000000000003B7"
+              }
+            ],
+            "OutputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003B9",
+                "Owner": "0x01000000000003B7",
+                "Connections": [
+                  {
+                    "Color": {
+                      "a": 1.0,
+                      "r": 0.577580452,
+                      "g": 0.7605245,
+                      "b": 0.7991027
+                    },
+                    "Label": "",
+                    "TargetPin": "0x01000000000003BF",
+                    "Target": "0x01000000000003BE"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "Type": "DialogueFragment",
+          "Properties": {
+            "TechnicalName": "DFr_9DAA44DC",
+            "Id": "0x01000000000003BE",
+            "Parent": "0x0100000000000273",
+            "MenuText": "",
+            "StageDirections": "",
+            "Speaker": "0x010000000000013F",
+            "SplitHeight": 64.0,
+            "Color": {
+              "r": 0.577580452,
+              "g": 0.7605245,
+              "b": 0.7991027
+            },
+            "Text": ":D",
+            "ExternalId": "",
+            "Position": {
+              "x": 1400.0,
+              "y": 425.0
+            },
+            "ZIndex": 0.0,
+            "Size": {
+              "w": 225.0,
+              "h": 200.0
+            },
+            "ShortId": 2645181660,
+            "InputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003BF",
+                "Owner": "0x01000000000003BE"
+              }
+            ],
+            "OutputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003C0",
+                "Owner": "0x01000000000003BE",
+                "Connections": [
+                  {
+                    "Color": {
+                      "a": 1.0,
+                      "r": 0.577580452,
+                      "g": 0.7605245,
+                      "b": 0.7991027
+                    },
+                    "Label": "",
+                    "TargetPin": "0x01000000000003C6",
+                    "Target": "0x01000000000003C5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "Type": "DialogueFragment",
+          "Properties": {
+            "TechnicalName": "DFr_C4357F0D",
+            "Id": "0x01000000000003C5",
+            "Parent": "0x0100000000000273",
+            "MenuText": "",
+            "StageDirections": "",
+            "Speaker": "0x010000000000011D",
+            "SplitHeight": 64.0,
+            "Color": {
+              "r": 0.577580452,
+              "g": 0.7605245,
+              "b": 0.7991027
+            },
+            "Text": "This is the least I can do for ya. Kekeke~",
+            "ExternalId": "",
+            "Position": {
+              "x": 1700.0,
+              "y": 425.0
+            },
+            "ZIndex": 0.0,
+            "Size": {
+              "w": 225.0,
+              "h": 200.0
+            },
+            "ShortId": 3291840269,
+            "InputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003C6",
+                "Owner": "0x01000000000003C5"
+              }
+            ],
+            "OutputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003C7",
+                "Owner": "0x01000000000003C5",
+                "Connections": [
+                  {
+                    "Color": {
+                      "a": 1.0,
+                      "r": 0.577580452,
+                      "g": 0.7605245,
+                      "b": 0.7991027
+                    },
+                    "Label": "",
+                    "TargetPin": "0x0100000000000275",
+                    "Target": "0x0100000000000273"
                   }
                 ]
               }
@@ -3382,6 +3550,92 @@
                     "Target": "0x01000000000002FB"
                   }
                 ]
+              }
+            ]
+          }
+        },
+        {
+          "Type": "DialogueFragment",
+          "Properties": {
+            "TechnicalName": "DFr_10DDA1BC",
+            "Id": "0x01000000000003CD",
+            "Parent": "0x01000000000002FB",
+            "MenuText": "",
+            "StageDirections": "",
+            "Speaker": "0x010000000000013F",
+            "SplitHeight": 64.0,
+            "Color": {
+              "r": 0.577580452,
+              "g": 0.7605245,
+              "b": 0.7991027
+            },
+            "Text": "O _ O",
+            "ExternalId": "",
+            "Position": {
+              "x": 1425.0,
+              "y": 400.0
+            },
+            "ZIndex": 4.0,
+            "Size": {
+              "w": 225.0,
+              "h": 200.0
+            },
+            "ShortId": 282960316,
+            "InputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003CE",
+                "Owner": "0x01000000000003CD"
+              }
+            ],
+            "OutputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003CF",
+                "Owner": "0x01000000000003CD"
+              }
+            ]
+          }
+        },
+        {
+          "Type": "DialogueFragment",
+          "Properties": {
+            "TechnicalName": "DFr_005BF11A",
+            "Id": "0x01000000000003D9",
+            "Parent": "0x01000000000002FB",
+            "MenuText": "",
+            "StageDirections": "",
+            "Speaker": "0x010000000000011D",
+            "SplitHeight": 64.0,
+            "Color": {
+              "r": 0.577580452,
+              "g": 0.7605245,
+              "b": 0.7991027
+            },
+            "Text": "Got no time for ya. Keh.",
+            "ExternalId": "",
+            "Position": {
+              "x": 1750.0,
+              "y": 400.0
+            },
+            "ZIndex": 0.0,
+            "Size": {
+              "w": 225.0,
+              "h": 200.0
+            },
+            "ShortId": 6025498,
+            "InputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003DA",
+                "Owner": "0x01000000000003D9"
+              }
+            ],
+            "OutputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000003DB",
+                "Owner": "0x01000000000003D9"
               }
             ]
           }
@@ -3947,260 +4201,6 @@
           }
         },
         {
-          "Type": "DialogueFragment",
-          "Properties": {
-            "TechnicalName": "DFr_39D9C88F",
-            "Id": "0x01000000000003B7",
-            "Parent": "0x0100000000000273",
-            "MenuText": "",
-            "StageDirections": "",
-            "Speaker": "0x010000000000011D",
-            "SplitHeight": 64.0,
-            "Color": {
-              "r": 0.5764706,
-              "g": 0.75686276,
-              "b": 0.8
-            },
-            "Text": "Keke... Ya aren't as bad as Frances makes it. Thanks, I guess.",
-            "ExternalId": "",
-            "Position": {
-              "x": 1100.0,
-              "y": 425.0
-            },
-            "ZIndex": 0.0,
-            "Size": {
-              "w": 225.0,
-              "h": 200.0
-            },
-            "ShortId": 970573967,
-            "InputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003B8",
-                "Owner": "0x01000000000003B7"
-              }
-            ],
-            "OutputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003B9",
-                "Owner": "0x01000000000003B7",
-                "Connections": [
-                  {
-                    "Color": {
-                      "a": 1.0,
-                      "r": 0.5764706,
-                      "g": 0.75686276,
-                      "b": 0.8
-                    },
-                    "Label": "",
-                    "TargetPin": "0x01000000000003BF",
-                    "Target": "0x01000000000003BE"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "Type": "DialogueFragment",
-          "Properties": {
-            "TechnicalName": "DFr_9DAA44DC",
-            "Id": "0x01000000000003BE",
-            "Parent": "0x0100000000000273",
-            "MenuText": "",
-            "StageDirections": "",
-            "Speaker": "0x010000000000013F",
-            "SplitHeight": 64.0,
-            "Color": {
-              "r": 0.5764706,
-              "g": 0.75686276,
-              "b": 0.8
-            },
-            "Text": ":D",
-            "ExternalId": "",
-            "Position": {
-              "x": 1400.0,
-              "y": 425.0
-            },
-            "ZIndex": 0.0,
-            "Size": {
-              "w": 225.0,
-              "h": 200.0
-            },
-            "ShortId": 2645181660,
-            "InputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003BF",
-                "Owner": "0x01000000000003BE"
-              }
-            ],
-            "OutputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003C0",
-                "Owner": "0x01000000000003BE",
-                "Connections": [
-                  {
-                    "Color": {
-                      "a": 1.0,
-                      "r": 0.5764706,
-                      "g": 0.75686276,
-                      "b": 0.8
-                    },
-                    "Label": "",
-                    "TargetPin": "0x01000000000003C6",
-                    "Target": "0x01000000000003C5"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "Type": "DialogueFragment",
-          "Properties": {
-            "TechnicalName": "DFr_C4357F0D",
-            "Id": "0x01000000000003C5",
-            "Parent": "0x0100000000000273",
-            "MenuText": "",
-            "StageDirections": "",
-            "Speaker": "0x010000000000011D",
-            "SplitHeight": 64.0,
-            "Color": {
-              "r": 0.5764706,
-              "g": 0.75686276,
-              "b": 0.8
-            },
-            "Text": "This is the least I can do for ya. Kekeke~",
-            "ExternalId": "",
-            "Position": {
-              "x": 1700.0,
-              "y": 425.0
-            },
-            "ZIndex": 0.0,
-            "Size": {
-              "w": 225.0,
-              "h": 200.0
-            },
-            "ShortId": 3291840269,
-            "InputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003C6",
-                "Owner": "0x01000000000003C5"
-              }
-            ],
-            "OutputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003C7",
-                "Owner": "0x01000000000003C5",
-                "Connections": [
-                  {
-                    "Color": {
-                      "a": 1.0,
-                      "r": 0.5764706,
-                      "g": 0.75686276,
-                      "b": 0.8
-                    },
-                    "Label": "",
-                    "TargetPin": "0x0100000000000275",
-                    "Target": "0x0100000000000273"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "Type": "DialogueFragment",
-          "Properties": {
-            "TechnicalName": "DFr_10DDA1BC",
-            "Id": "0x01000000000003CD",
-            "Parent": "0x01000000000002FB",
-            "MenuText": "",
-            "StageDirections": "",
-            "Speaker": "0x010000000000013F",
-            "SplitHeight": 64.0,
-            "Color": {
-              "r": 0.5764706,
-              "g": 0.75686276,
-              "b": 0.8
-            },
-            "Text": "O _ O",
-            "ExternalId": "",
-            "Position": {
-              "x": 1425.0,
-              "y": 400.0
-            },
-            "ZIndex": 4.0,
-            "Size": {
-              "w": 225.0,
-              "h": 200.0
-            },
-            "ShortId": 282960316,
-            "InputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003CE",
-                "Owner": "0x01000000000003CD"
-              }
-            ],
-            "OutputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003CF",
-                "Owner": "0x01000000000003CD"
-              }
-            ]
-          }
-        },
-        {
-          "Type": "DialogueFragment",
-          "Properties": {
-            "TechnicalName": "DFr_005BF11A",
-            "Id": "0x01000000000003D9",
-            "Parent": "0x01000000000002FB",
-            "MenuText": "",
-            "StageDirections": "",
-            "Speaker": "0x010000000000011D",
-            "SplitHeight": 64.0,
-            "Color": {
-              "r": 0.5764706,
-              "g": 0.75686276,
-              "b": 0.8
-            },
-            "Text": "Got no time for ya. Keh.",
-            "ExternalId": "",
-            "Position": {
-              "x": 1750.0,
-              "y": 400.0
-            },
-            "ZIndex": 0.0,
-            "Size": {
-              "w": 225.0,
-              "h": 200.0
-            },
-            "ShortId": 6025498,
-            "InputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003DA",
-                "Owner": "0x01000000000003D9"
-              }
-            ],
-            "OutputPins": [
-              {
-                "Text": "",
-                "Id": "0x01000000000003DB",
-                "Owner": "0x01000000000003D9"
-              }
-            ]
-          }
-        },
-        {
           "Type": "DefaultMainCharacterTemplate",
           "Properties": {
             "TechnicalName": "Ntt_4D90CCA1",
@@ -4232,7 +4232,7 @@
                 "h": 0.0
               },
               "Mode": "FromAsset",
-              "Asset": "0x0100000000000129"
+              "Asset": "0x01000000000003E7"
             },
             "ShortId": 1301335201
           },
@@ -4260,7 +4260,10 @@
             "TechnicalName": "Ntt_E522C5BC",
             "Id": "0x010000000000013F",
             "Parent": "0x03000000AC61A2B3",
-            "Attachments": [],
+            "Attachments": [
+              "0x01000000000003EA",
+              "0x01000000000003ED"
+            ],
             "DisplayName": "Todd",
             "Color": {
               "r": 0.577580452,
@@ -4286,7 +4289,7 @@
                 "h": 0.0
               },
               "Mode": "FromAsset",
-              "Asset": "0x010000000000013C"
+              "Asset": "0x01000000000003E4"
             },
             "ShortId": 3844261308
           },
@@ -4359,6 +4362,89 @@
               "Accent": "",
               "Personality": "Queen Bee",
               "Appearance": "Proud looking."
+            }
+          }
+        },
+        {
+          "Type": "Entity",
+          "Properties": {
+            "TechnicalName": "Ntt_15CCAE4D",
+            "Id": "0x01000000000003E0",
+            "Parent": "0x03000000AC61A2B3",
+            "Attachments": [],
+            "DisplayName": "ToddSurprised",
+            "Color": {
+              "r": 0.577580452,
+              "g": 0.7605245,
+              "b": 0.7991027
+            },
+            "Text": "",
+            "ExternalId": "",
+            "Position": {
+              "x": 60.0,
+              "y": 60.0
+            },
+            "ZIndex": 3.0,
+            "Size": {
+              "w": 256.0,
+              "h": 196.0
+            },
+            "PreviewImage": {
+              "ViewBox": {
+                "x": 0.0,
+                "y": 0.0,
+                "w": 0.0,
+                "h": 0.0
+              },
+              "Mode": "FromAsset",
+              "Asset": "0x01000000000003EA"
+            },
+            "ShortId": 365735501
+          }
+        },
+        {
+          "Type": "DefaultSupportingCharacterTemplate",
+          "Properties": {
+            "TechnicalName": "Ntt_F8584ACE",
+            "Id": "0x01000000000003F0",
+            "Parent": "0x03000000AC61A2B3",
+            "Attachments": [],
+            "DisplayName": "ToddWondering",
+            "Color": {
+              "r": 0.5764706,
+              "g": 0.75686276,
+              "b": 0.8
+            },
+            "Text": "",
+            "ExternalId": "",
+            "Position": {
+              "x": 294.0,
+              "y": 179.0
+            },
+            "ZIndex": 4.0,
+            "Size": {
+              "w": 256.0,
+              "h": 196.0
+            },
+            "PreviewImage": {
+              "ViewBox": {
+                "x": 0.0,
+                "y": 0.0,
+                "w": 0.0,
+                "h": 0.0
+              },
+              "Mode": "FromAsset",
+              "Asset": "0x01000000000003ED"
+            },
+            "ShortId": 4166535886
+          },
+          "Template": {
+            "DefaultBasicCharacterFeature": {
+              "Species": "",
+              "Sex": null,
+              "Accent": "",
+              "Personality": "",
+              "Appearance": ""
             }
           }
         },
@@ -4440,13 +4526,13 @@
         },
         {
           "Type": "Asset",
-          "AssetRef": "Assets/Images/ToddTemp.png",
+          "AssetRef": "Assets/Images/Todd.png",
           "Category": "Image",
           "Properties": {
             "TechnicalName": "Ast_8B4576BB",
             "Id": "0x010000000000013C",
             "Parent": "0x0100000000000105",
-            "DisplayName": "ToddTemp",
+            "DisplayName": "Todd",
             "Filename": "ToddTemp(003C).png",
             "OriginalSource": "file:///C:/Users/KYLA/Downloads/ToddTemp.png",
             "PreviewImage": {
@@ -4474,6 +4560,158 @@
               "h": 196.0
             },
             "ShortId": 2336585403
+          }
+        },
+        {
+          "Type": "Asset",
+          "AssetRef": "Assets/Images/Todd_Happy.PNG",
+          "Category": "Image",
+          "Properties": {
+            "TechnicalName": "Ast_AF118A96",
+            "Id": "0x01000000000003E4",
+            "Parent": "0x0100000000000105",
+            "DisplayName": "Todd_Happy",
+            "Filename": "Todd_Happy(02E4).PNG",
+            "OriginalSource": "file:///C:/GitKraken Repo/ToddTheTubbyToad/Assets/Art/Portraits/Todd_Happy.PNG",
+            "PreviewImage": {
+              "ViewBox": {
+                "x": 0.0,
+                "y": 0.0,
+                "w": 0.0,
+                "h": 0.0
+              }
+            },
+            "Color": {
+              "r": 0.5764706,
+              "g": 0.75686276,
+              "b": 0.8
+            },
+            "Text": "",
+            "ExternalId": "",
+            "Position": {
+              "x": 60.0,
+              "y": 60.0
+            },
+            "ZIndex": 3.0,
+            "Size": {
+              "w": 256.0,
+              "h": 196.0
+            },
+            "ShortId": 2937162390
+          }
+        },
+        {
+          "Type": "Asset",
+          "AssetRef": "Assets/Images/Graham_Surprised.PNG",
+          "Category": "Image",
+          "Properties": {
+            "TechnicalName": "Ast_DDE9FEBB",
+            "Id": "0x01000000000003E7",
+            "Parent": "0x0100000000000105",
+            "DisplayName": "Graham_Surprised",
+            "Filename": "Graham_Surprised(02E7).PNG",
+            "OriginalSource": "file:///C:/GitKraken Repo/ToddTheTubbyToad/Assets/Art/Portraits/Graham_Surprised.PNG",
+            "PreviewImage": {
+              "ViewBox": {
+                "x": 0.0,
+                "y": 0.0,
+                "w": 0.0,
+                "h": 0.0
+              }
+            },
+            "Color": {
+              "r": 0.5764706,
+              "g": 0.75686276,
+              "b": 0.8
+            },
+            "Text": "",
+            "ExternalId": "",
+            "Position": {
+              "x": 80.0,
+              "y": 80.0
+            },
+            "ZIndex": 4.0,
+            "Size": {
+              "w": 256.0,
+              "h": 196.0
+            },
+            "ShortId": 3723099835
+          }
+        },
+        {
+          "Type": "Asset",
+          "AssetRef": "Assets/Images/Todd_Surprised.PNG",
+          "Category": "Image",
+          "Properties": {
+            "TechnicalName": "Ast_2D627C75",
+            "Id": "0x01000000000003EA",
+            "Parent": "0x0100000000000105",
+            "DisplayName": "Todd_Surprised",
+            "Filename": "Todd_Surprised(02EA).PNG",
+            "OriginalSource": "file:///C:/GitKraken Repo/ToddTheTubbyToad/Assets/Art/Portraits/Todd_Surprised.PNG",
+            "PreviewImage": {
+              "ViewBox": {
+                "x": 0.0,
+                "y": 0.0,
+                "w": 0.0,
+                "h": 0.0
+              }
+            },
+            "Color": {
+              "r": 0.5764706,
+              "g": 0.75686276,
+              "b": 0.8
+            },
+            "Text": "",
+            "ExternalId": "",
+            "Position": {
+              "x": 100.0,
+              "y": 100.0
+            },
+            "ZIndex": 5.0,
+            "Size": {
+              "w": 256.0,
+              "h": 196.0
+            },
+            "ShortId": 761429109
+          }
+        },
+        {
+          "Type": "Asset",
+          "AssetRef": "Assets/Images/Todd_Wondering.PNG",
+          "Category": "Image",
+          "Properties": {
+            "TechnicalName": "Ast_25A5D80E",
+            "Id": "0x01000000000003ED",
+            "Parent": "0x0100000000000105",
+            "DisplayName": "Todd_Wondering",
+            "Filename": "Todd_Wondering(02ED).PNG",
+            "OriginalSource": "file:///C:/GitKraken Repo/ToddTheTubbyToad/Assets/Art/Portraits/Todd_Wondering.PNG",
+            "PreviewImage": {
+              "ViewBox": {
+                "x": 0.0,
+                "y": 0.0,
+                "w": 0.0,
+                "h": 0.0
+              }
+            },
+            "Color": {
+              "r": 0.5764706,
+              "g": 0.75686276,
+              "b": 0.8
+            },
+            "Text": "",
+            "ExternalId": "",
+            "Position": {
+              "x": 120.0,
+              "y": 120.0
+            },
+            "ZIndex": 6.0,
+            "Size": {
+              "w": 256.0,
+              "h": 196.0
+            },
+            "ShortId": 631625742
           }
         },
         {
@@ -4801,6 +5039,16 @@
             "Id": "0x010000000000013F",
             "TechnicalName": "Ntt_E522C5BC",
             "Type": "Entity"
+          },
+          {
+            "Id": "0x01000000000003E0",
+            "TechnicalName": "Ntt_15CCAE4D",
+            "Type": "Entity"
+          },
+          {
+            "Id": "0x01000000000003F0",
+            "TechnicalName": "Ntt_F8584ACE",
+            "Type": "Entity"
           }
         ]
       },
@@ -5039,8 +5287,28 @@
                 "Type": "Asset"
               },
               {
+                "Id": "0x01000000000003E7",
+                "TechnicalName": "Ast_DDE9FEBB",
+                "Type": "Asset"
+              },
+              {
                 "Id": "0x010000000000013C",
                 "TechnicalName": "Ast_8B4576BB",
+                "Type": "Asset"
+              },
+              {
+                "Id": "0x01000000000003E4",
+                "TechnicalName": "Ast_AF118A96",
+                "Type": "Asset"
+              },
+              {
+                "Id": "0x01000000000003EA",
+                "TechnicalName": "Ast_2D627C75",
+                "Type": "Asset"
+              },
+              {
+                "Id": "0x01000000000003ED",
+                "TechnicalName": "Ast_25A5D80E",
                 "Type": "Asset"
               }
             ]

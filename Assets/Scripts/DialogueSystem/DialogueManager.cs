@@ -78,6 +78,8 @@ namespace DialogueSystem
         public async void EnterDialogue(IArticyObject aObject)
         {
             _gameState.Value = States.DIALOGUE;
+            DialogueActive = true;
+            _dialoguePanel.SetActive(DialogueActive);
             await Task.Delay((int) (1000.0f * Time.deltaTime));
             _continueCloseButton.Select();
             _dialogueText.text = string.Empty;
@@ -85,8 +87,6 @@ namespace DialogueSystem
             _continueCloseButton.onClick.AddListener(ContinueDialogue);
             _buttonText.text = "Continue";
             _dialoguePanelTransform.localPosition = new Vector3(0, 340 * _playerPositionY, 0);
-            DialogueActive = true;
-            _dialoguePanel.SetActive(DialogueActive);
             _flowPlayer.StartOn = aObject;
         }
 

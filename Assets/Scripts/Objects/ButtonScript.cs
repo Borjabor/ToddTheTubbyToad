@@ -25,6 +25,9 @@ public class ButtonScript : ObjectFSM
     private AudioSource _audioSource;
     private bool _hasPlayed;
 
+    [SerializeField]
+    private ParticleSystem _electricity;
+
     private void Awake()
     {
         _pipeMask.SetActive(false);
@@ -39,6 +42,7 @@ public class ButtonScript : ObjectFSM
         if (other.transform.tag == "Player" || other.transform.tag == "Object")
         {
             if(!_isPressed) SetState(On());
+            _electricity.Play();
             _isPressed = true;
         }
     }

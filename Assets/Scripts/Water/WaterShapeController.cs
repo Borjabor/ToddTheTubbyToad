@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 
-[ExecuteAlways]
+//[ExecuteAlways]
 public class WaterShapeController : MonoBehaviour
 {
     private int CorsnersCount = 2;
@@ -26,7 +26,7 @@ public class WaterShapeController : MonoBehaviour
     public float spread = 0.006f;
 
     
-    void OnValidate()
+    void OnEnable()
     {
         // Clean waterpoints 
         StartCoroutine(CreateWaves());

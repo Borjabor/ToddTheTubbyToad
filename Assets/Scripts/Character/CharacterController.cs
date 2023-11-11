@@ -63,6 +63,7 @@ public class CharacterController : MonoBehaviour
 	private Rigidbody2D _rb;
 	[SerializeField]
 	private CircleCollider2D _triggerZone;
+	private Animator _animator;
 	
 	public bool IsSafe = true;
 	private Bubble _currentBubble;
@@ -128,6 +129,7 @@ public class CharacterController : MonoBehaviour
 		_gameState = Resources.Load<GameState>("SOAssets/Game State");
 		_playerState = Resources.Load<PlayerState>("SOAssets/Player State");
 		_rb = GetComponent<Rigidbody2D>();
+		_animator = GetComponent<Animator>();
         _checkpoint = transform.position;
 		_audioSource = GetComponent<AudioSource>();
 		_triggerZone.enabled = false;
@@ -413,6 +415,10 @@ public class CharacterController : MonoBehaviour
 	{
 		if (_tongueDidntHit)
 		{
+			if (Vector2.Distance(_tongue.transform.position, transform.position) > 0.1f)
+			{
+				_animator.SetTrigger("NoHit");
+			}
 			_tongueRetract = true;
 			return;
 		} 

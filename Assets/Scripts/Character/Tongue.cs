@@ -220,10 +220,10 @@ public class Tongue : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"Trigger {other.gameObject.name}");
+        //Debug.Log($"Trigger {other.gameObject.name}");
         if (other.gameObject.CompareTag("Hazard"))
         {
-            Debug.Log($"Not Hit");
+            _animator.SetTrigger("Gross");
             _isGrappling = false;
             _player.FalseHit();
             _circleCollider.enabled = false;
@@ -246,7 +246,7 @@ public class Tongue : MonoBehaviour
             ChangeRigidbody(RigidbodyType2D.Kinematic);
         }else
         {
-            Debug.Log($"Not Hit");
+            _animator.SetTrigger("Gross");
             _isGrappling = false;
             _player.FalseHit();
         }

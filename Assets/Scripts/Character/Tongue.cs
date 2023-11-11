@@ -212,6 +212,7 @@ public class Tongue : MonoBehaviour
             ChangeRigidbody(RigidbodyType2D.Kinematic);
         }else
         {
+            _animator.SetTrigger("MissHook");
             Debug.Log($"Not Hit");
             _isGrappling = false;
             _player.FalseHit();

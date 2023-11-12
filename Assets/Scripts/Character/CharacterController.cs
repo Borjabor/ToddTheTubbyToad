@@ -236,9 +236,7 @@ public class CharacterController : MonoBehaviour
 	        if (!_tongue.enabled) return;
 	        if (!_hasPlayed)
 	        {
-		        //_audioSource.PlayOneShot(_tongueThrow);
-		        //SoundManager.Instance.PlaySound(_tongueThrow);
-		        SoundManager.Instance.PlaySoundWithVolume(_tongueThrow, 0.075f);
+		        _audioSource.PlayOneShot(_tongueThrow);
 		        _hasPlayed = true;
 	        }
 
@@ -309,8 +307,7 @@ public class CharacterController : MonoBehaviour
 				fj.connectedBody = rb;
 				fj.enableCollision = true;
 				//other.gameObject.layer = 2;
-				//_audioSource.PlayOneShot(_grabbing);
-				SoundManager.Instance.PlaySound(_grabbing);
+				_audioSource.PlayOneShot(_grabbing);
 			}
 			else
 			{
@@ -321,8 +318,7 @@ public class CharacterController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		//_audioSource.PlayOneShot(_collideAudio);
-		SoundManager.Instance.PlaySound(_collideAudio);
+		_audioSource.PlayOneShot(_collideAudio);
 		var sticky = other.gameObject.GetComponent<StickySurface>();
 		_isStuck = true;
 		if (sticky) _rb.bodyType = RigidbodyType2D.Static;
@@ -368,8 +364,7 @@ public class CharacterController : MonoBehaviour
 		_triggerZone.enabled = false;
 		Tentacle.GrabbedObject = null;
 		Destroy(GetComponent<FixedJoint2D>());
-		//_audioSource.PlayOneShot(_deathAudio);
-		SoundManager.Instance.PlaySound(_deathAudio);
+		_audioSource.PlayOneShot(_deathAudio);
 		CameraManager.Instance.ShakeCamera(5f, 0.2f);
 		_deathParticles.Play();
 		_characterSprite.enabled = false;

@@ -10631,9 +10631,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
-      minScalar: 5
+      minMaxState: 3
+      scalar: 1
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11763,7 +11763,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -11772,7 +11772,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 0.33962262, g: 0, b: 0.006651068, a: 0.5029412}
+        key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0.14150941, g: 0, b: 0, a: 0}
         key3: {r: 0.14150941, g: 0, b: 0, a: 0}
         key4: {r: 1, g: 1, b: 1, a: 0}
@@ -11787,10 +11787,10 @@ ParticleSystem:
         ctime5: 65342
         ctime6: 0
         ctime7: 0
-        atime0: 0
-        atime1: 32768
+        atime0: 48959
+        atime1: 65535
         atime2: 65535
-        atime3: 0
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
@@ -11798,7 +11798,7 @@ ParticleSystem:
         m_Mode: 0
         m_ColorSpace: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 3
+        m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -17013,19 +17013,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6338289456692084914, guid: 90185a3ae354af645950c4110067a9df, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 20.5207
+      value: 20.5185
       objectReference: {fileID: 0}
     - target: {fileID: 6338289456692084914, guid: 90185a3ae354af645950c4110067a9df, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: 3.33485
+      value: 3.3473501
       objectReference: {fileID: 0}
     - target: {fileID: 6338289456692084914, guid: 90185a3ae354af645950c4110067a9df, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 27.5427
+      value: 27.5446
       objectReference: {fileID: 0}
     - target: {fileID: 6338289456692084914, guid: 90185a3ae354af645950c4110067a9df, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 3.90605
+      value: 3.90695
       objectReference: {fileID: 0}
     - target: {fileID: 6338289456692084914, guid: 90185a3ae354af645950c4110067a9df, type: 3}
       propertyPath: m_ShapePath.Array.data[0].x

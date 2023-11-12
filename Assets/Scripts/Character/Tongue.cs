@@ -90,29 +90,6 @@ public class Tongue : MonoBehaviour
     {
         _moveTime += Time.deltaTime;
         DrawRope();
-        if(_isGrappling) return;
-        // Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _circleCollider.radius);
-        // foreach (Collider2D collider2D in colliders)
-        // {
-        //     if (collider2D.gameObject.layer == 3)
-        //     {
-        //         _isGrappling = true;
-        //         _straightLine = true;
-        //         _player.Grapple();
-        //     }
-        //     else if (collider2D.gameObject.layer == 10)
-        //     {
-        //         _player.SetMovingObject(collider2D.gameObject);
-        //         _isGrappling = true;
-        //         _straightLine = true;
-        //         _player.Grapple();
-        //     }
-        //     else
-        //     {
-        //         _isGrappling = false;
-        //         _player.Detach();
-        //     }
-        // }
     }
 
     public void TongueDetach()
@@ -122,38 +99,6 @@ public class Tongue : MonoBehaviour
 
     private void DrawRope()
     {
-        /*
-        if (!_straightLine) 
-        {
-            if (_lineRenderer.GetPosition(_precision - 1).x != transform.position.x)//_hookShot.GrapplePoint.x)
-            {
-                DrawRopeWaves();
-            }
-            else 
-            {
-                _straightLine = true;
-            }
-        }
-        else 
-        {
-            if (!_isGrappling) 
-            {
-                _hookShot.Grapple();
-                _isGrappling = true;
-            }
-            if (_currentWaveSize > 0)
-            {
-                _currentWaveSize -= Time.deltaTime * _straightenLineSpeed;
-                DrawRopeWaves();
-            }
-            else 
-            {
-                _currentWaveSize = 0;
-                DrawRopeNoWaves();
-            }
-        }
-        */
-        
         if (!_straightLine) 
         {
             DrawRopeWaves();
@@ -179,7 +124,7 @@ public class Tongue : MonoBehaviour
         {
             float delta = (float)i / ((float)_precision - 1f);
             Vector2 offset = Vector2.Perpendicular(_player.DistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * _currentWaveSize;
-            Vector2 targetPosition = Vector2.Lerp(_player.transform.position, transform.position/*_hookShot.GrapplePoint*/, delta) + offset;
+            Vector2 targetPosition = Vector2.Lerp(_player.transform.position, transform.position, delta) + offset;
             Vector2 currentPosition = Vector2.Lerp(_player.transform.position, targetPosition, _ropeLaunchSpeedCurve.Evaluate(_moveTime) * _ropeLaunchSpeedMultiplayer);
             _lineRenderer.SetPosition(i, currentPosition);
         }
@@ -188,7 +133,7 @@ public class Tongue : MonoBehaviour
     private void DrawRopeNoWaves() 
     {
         _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPosition(0, transform.position/*_hookShot.GrapplePoint*/);
+        _lineRenderer.SetPosition(0, transform.position);
         _lineRenderer.SetPosition(1, _player.transform.position);
     }
 
@@ -221,7 +166,6 @@ public class Tongue : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log($"Trigger {other.gameObject.name}");
         if (other.gameObject.CompareTag("Hazard"))
         {
             _animator.SetTrigger("Gross");

@@ -110,6 +110,7 @@ public class CharacterController : MonoBehaviour
 	[SerializeField]
 	private float _tongueLengthChanger = 0.8f;
 	private bool _tongueDidntHit;
+	private bool _hitGross;
 	private bool _tongueRetract;
 
 	private bool _hasPlayed = false;
@@ -120,7 +121,7 @@ public class CharacterController : MonoBehaviour
 	private Camera _camera;
 	private RaycastHit2D _hit;
 	private bool _isStuck;
-	
+
 	#endregion
 	#endregion
 
@@ -274,6 +275,7 @@ public class CharacterController : MonoBehaviour
         _movingObject = null;
         _springJoint.connectedBody = null;
         _tongueRetract = false;
+        _tongueDidntHit = false; //Works for animator, but makes tongue reshoot automatically if player holds click
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -329,6 +331,25 @@ public class CharacterController : MonoBehaviour
 		{
 			Die();
 		}
+		
+		// foreach(ContactPoint2D hitPos in other.contacts)
+		// {
+		// 	if(hitPos.normal.y >= 0  && other.gameObject.layer == 10)
+		// 	{
+		// 		ChangeParent(other.gameObject.transform);
+		// 	}
+		// }
+	}
+
+	private void OnCollisionExit2D(Collision2D other)
+	{
+		// foreach(ContactPoint2D hitPos in other.contacts)
+		// {
+		// 	if(hitPos.normal.y >= 0  && other.gameObject.layer == 10)
+		// 	{
+		// 		ChangeParent(null);
+		// 	}
+		// }
 	}
 
 	public void Die()
@@ -377,6 +398,12 @@ public class CharacterController : MonoBehaviour
 			transform.position = _currentBubble.transform.position;
 		_playerState.Value = PlayerStates.INBUBBLE;
 	}
+
+	private void ChangeParent(Transform parent)
+	{
+		transform.SetParent(parent);
+		_rb.isKinematic = parent != null;
+	}
 	
 	//Hookshot methods
 	
@@ -415,10 +442,11 @@ public class CharacterController : MonoBehaviour
 	{
 		if (_tongueDidntHit)
 		{
-			if (Vector2.Distance(_tongue.transform.position, transform.position) > 0.1f)
+			if (!_hitGross)
 			{
 				_animator.SetTrigger("NoHit");
 			}
+			_hitGross = false;
 			_tongueRetract = true;
 			return;
 		} 
@@ -440,6 +468,7 @@ public class CharacterController : MonoBehaviour
 
 	public void FalseHit()
 	{
+		_hitGross = true;
 		_tongueDidntHit = true;
 	}
 	
@@ -502,6 +531,7 @@ public class CharacterController : MonoBehaviour
 		    return;
 	    }
         if (_rb.bodyType == RigidbodyType2D.Dynamic) _isStuck = false;
+        //ChangeParent(null);
         var fixedJoint = GetComponent<FixedJoint2D>();
         if (fixedJoint != null) fixedJoint.connectedBody.bodyType = RigidbodyType2D.Dynamic;
         GrapplePoint = _tongue.transform.position;

@@ -24,9 +24,9 @@ public class VolumeSlider : MonoBehaviour
         SoundManager.Instance.ChangeMasterVolume(_masterSlider.value);
         SoundManager.Instance.ChangeMusicVolume(_musicSlider.value);
         SoundManager.Instance.ChangeEffectVolume(_effectSlider.value);
-        _masterSliderValue.text = Mathf.Round((_masterSlider.value * 100f)).ToString() + " %";
-        _musicSliderValue.text = Mathf.Round((_musicSlider.value * 100f)).ToString()+ " %";
-        _effectSliderValue.text = Mathf.Round((_effectSlider.value * 100f)).ToString()+ " %";
+        _masterSliderValue.text = Mathf.Round(_masterSlider.value * 100f).ToString() + " %";
+        _musicSliderValue.text = Mathf.Round(_musicSlider.value * 100f).ToString()+ " %";
+        _effectSliderValue.text = Mathf.Round(_effectSlider.value * 100f).ToString()+ " %";
         _masterSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMasterVolume(val));
         _musicSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMusicVolume(val));
         _effectSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeEffectVolume(val));

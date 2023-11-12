@@ -110,6 +110,7 @@ public class CharacterController : MonoBehaviour
 	[SerializeField]
 	private float _tongueLengthChanger = 0.8f;
 	private bool _tongueDidntHit;
+	private bool _hitGross;
 	private bool _tongueRetract;
 
 	private bool _hasPlayed = false;
@@ -120,7 +121,7 @@ public class CharacterController : MonoBehaviour
 	private Camera _camera;
 	private RaycastHit2D _hit;
 	private bool _isStuck;
-	
+
 	#endregion
 	#endregion
 
@@ -235,9 +236,7 @@ public class CharacterController : MonoBehaviour
 	        if (!_tongue.enabled) return;
 	        if (!_hasPlayed)
 	        {
-		        //_audioSource.PlayOneShot(_tongueThrow);
-		        //SoundManager.Instance.PlaySound(_tongueThrow);
-		        SoundManager.Instance.PlaySoundWithVolume(_tongueThrow, 0.075f);
+		        _audioSource.PlayOneShot(_tongueThrow);
 		        _hasPlayed = true;
 	        }
 
@@ -274,6 +273,7 @@ public class CharacterController : MonoBehaviour
         _movingObject = null;
         _springJoint.connectedBody = null;
         _tongueRetract = false;
+        _tongueDidntHit = false; //Works for animator, but makes tongue reshoot automatically if player holds click
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -307,8 +307,7 @@ public class CharacterController : MonoBehaviour
 				fj.connectedBody = rb;
 				fj.enableCollision = true;
 				//other.gameObject.layer = 2;
-				//_audioSource.PlayOneShot(_grabbing);
-				SoundManager.Instance.PlaySound(_grabbing);
+				_audioSource.PlayOneShot(_grabbing);
 			}
 			else
 			{
@@ -319,8 +318,7 @@ public class CharacterController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		//_audioSource.PlayOneShot(_collideAudio);
-		SoundManager.Instance.PlaySound(_collideAudio);
+		_audioSource.PlayOneShot(_collideAudio);
 		var sticky = other.gameObject.GetComponent<StickySurface>();
 		_isStuck = true;
 		if (sticky) _rb.bodyType = RigidbodyType2D.Static;
@@ -329,6 +327,25 @@ public class CharacterController : MonoBehaviour
 		{
 			Die();
 		}
+		
+		// foreach(ContactPoint2D hitPos in other.contacts)
+		// {
+		// 	if(hitPos.normal.y >= 0  && other.gameObject.layer == 10)
+		// 	{
+		// 		ChangeParent(other.gameObject.transform);
+		// 	}
+		// }
+	}
+
+	private void OnCollisionExit2D(Collision2D other)
+	{
+		// foreach(ContactPoint2D hitPos in other.contacts)
+		// {
+		// 	if(hitPos.normal.y >= 0  && other.gameObject.layer == 10)
+		// 	{
+		// 		ChangeParent(null);
+		// 	}
+		// }
 	}
 
 	public void Die()
@@ -347,8 +364,7 @@ public class CharacterController : MonoBehaviour
 		_triggerZone.enabled = false;
 		Tentacle.GrabbedObject = null;
 		Destroy(GetComponent<FixedJoint2D>());
-		//_audioSource.PlayOneShot(_deathAudio);
-		SoundManager.Instance.PlaySound(_deathAudio);
+		_audioSource.PlayOneShot(_deathAudio);
 		CameraManager.Instance.ShakeCamera(5f, 0.2f);
 		_deathParticles.Play();
 		_characterSprite.enabled = false;
@@ -376,6 +392,12 @@ public class CharacterController : MonoBehaviour
 		if (Vector2.Distance(transform.position, _currentBubble.transform.position) <= 0.1f)
 			transform.position = _currentBubble.transform.position;
 		_playerState.Value = PlayerStates.INBUBBLE;
+	}
+
+	private void ChangeParent(Transform parent)
+	{
+		transform.SetParent(parent);
+		_rb.isKinematic = parent != null;
 	}
 	
 	//Hookshot methods
@@ -415,10 +437,11 @@ public class CharacterController : MonoBehaviour
 	{
 		if (_tongueDidntHit)
 		{
-			if (Vector2.Distance(_tongue.transform.position, transform.position) > 0.1f)
+			if (!_hitGross)
 			{
 				_animator.SetTrigger("NoHit");
 			}
+			_hitGross = false;
 			_tongueRetract = true;
 			return;
 		} 
@@ -440,6 +463,7 @@ public class CharacterController : MonoBehaviour
 
 	public void FalseHit()
 	{
+		_hitGross = true;
 		_tongueDidntHit = true;
 	}
 	
@@ -502,6 +526,7 @@ public class CharacterController : MonoBehaviour
 		    return;
 	    }
         if (_rb.bodyType == RigidbodyType2D.Dynamic) _isStuck = false;
+        //ChangeParent(null);
         var fixedJoint = GetComponent<FixedJoint2D>();
         if (fixedJoint != null) fixedJoint.connectedBody.bodyType = RigidbodyType2D.Dynamic;
         GrapplePoint = _tongue.transform.position;

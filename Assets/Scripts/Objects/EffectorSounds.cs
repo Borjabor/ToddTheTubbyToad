@@ -8,6 +8,8 @@ public class EffectorSounds : MonoBehaviour
     private Effector2D _effector;
     private AudioSource _audioSource;
 
+    
+
     private void Awake()
     {
         _effector = GetComponent<Effector2D>();

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 398764332757424569}
   - component: {fileID: 2596400299840119794}
   - component: {fileID: 767635904542971684}
-  - component: {fileID: -7101582846279320212}
   - component: {fileID: 1522253637481224420}
   m_Layer: 3
   m_Name: Conveyor Belt Right
@@ -188,7 +187,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.06
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -270,18 +269,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-7101582846279320212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3506842771350577641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c6a8e78030895c49a8663c24250d297, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1522253637481224420
 MonoBehaviour:
   m_ObjectHideFlags: 0

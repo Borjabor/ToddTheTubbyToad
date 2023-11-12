@@ -4669,7 +4669,7 @@
             "Text": "Kek!",
             "ExternalId": "",
             "Position": {
-              "x": 925.0,
+              "x": 650.0,
               "y": 425.0
             },
             "ZIndex": 0.0,
@@ -4725,7 +4725,7 @@
             "Text": "I dunno why it keeps dropping me down here.",
             "ExternalId": "",
             "Position": {
-              "x": 1200.0,
+              "x": 925.0,
               "y": 425.0
             },
             "ZIndex": 0.0,
@@ -4750,13 +4750,13 @@
                   {
                     "Color": {
                       "a": 1.0,
-                      "r": 0.577580452,
-                      "g": 0.7605245,
-                      "b": 0.7991027
+                      "r": 0.5764706,
+                      "g": 0.75686276,
+                      "b": 0.8
                     },
                     "Label": "",
-                    "TargetPin": "0x01000000000004CC",
-                    "Target": "0x01000000000004CB"
+                    "TargetPin": "0x01000000000005D5",
+                    "Target": "0x01000000000005D4"
                   }
                 ]
               }
@@ -4890,7 +4890,7 @@
               "g": 0.7605245,
               "b": 0.7991027
             },
-            "Text": "                 :D",
+            "Text": "                 ^-^",
             "ExternalId": "",
             "Position": {
               "x": 1750.0,
@@ -5282,7 +5282,7 @@
               "g": 0.7605245,
               "b": 0.7991027
             },
-            "Text": "I'm feelin' good where I'm at. I dun need the wish anymore.",
+            "Text": "I'm feelin' good where I'm at. I dun think I'm in a hurry for the wish anymore.",
             "ExternalId": "",
             "Position": {
               "x": 2575.0,
@@ -5611,14 +5611,14 @@
             "Parent": "0x01000000000004FB",
             "MenuText": "",
             "StageDirections": "",
-            "Speaker": "0x010000000000013F",
+            "Speaker": "0x01000000000003F0",
             "SplitHeight": 64.0,
             "Color": {
               "r": 0.577580452,
               "g": 0.7605245,
               "b": 0.7991027
             },
-            "Text": ":D",
+            "Text": "                 ;-;?",
             "ExternalId": "",
             "Position": {
               "x": 2825.0,
@@ -6549,6 +6549,62 @@
                     "Label": "",
                     "TargetPin": "0x0100000000000335",
                     "Target": "0x0100000000000331"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "Type": "DialogueFragment",
+          "Properties": {
+            "TechnicalName": "DFr_D6ED75F8",
+            "Id": "0x01000000000005D4",
+            "Parent": "0x01000000000004B6",
+            "MenuText": "",
+            "StageDirections": "",
+            "Speaker": "0x010000000000013F",
+            "SplitHeight": 64.0,
+            "Color": {
+              "r": 0.5764706,
+              "g": 0.75686276,
+              "b": 0.8
+            },
+            "Text": "                 :D",
+            "ExternalId": "",
+            "Position": {
+              "x": 1200.0,
+              "y": 425.0
+            },
+            "ZIndex": 0.0,
+            "Size": {
+              "w": 225.0,
+              "h": 200.0
+            },
+            "ShortId": 3605886456,
+            "InputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000005D5",
+                "Owner": "0x01000000000005D4"
+              }
+            ],
+            "OutputPins": [
+              {
+                "Text": "",
+                "Id": "0x01000000000005D6",
+                "Owner": "0x01000000000005D4",
+                "Connections": [
+                  {
+                    "Color": {
+                      "a": 1.0,
+                      "r": 0.5764706,
+                      "g": 0.75686276,
+                      "b": 0.8
+                    },
+                    "Label": "",
+                    "TargetPin": "0x01000000000004CC",
+                    "Target": "0x01000000000004CB"
                   }
                 ]
               }
@@ -7660,6 +7716,11 @@
                   {
                     "Id": "0x01000000000004BE",
                     "TechnicalName": "DFr_65768261",
+                    "Type": "DialogueFragment"
+                  },
+                  {
+                    "Id": "0x01000000000005D4",
+                    "TechnicalName": "DFr_D6ED75F8",
                     "Type": "DialogueFragment"
                   },
                   {

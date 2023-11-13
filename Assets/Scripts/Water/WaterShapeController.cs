@@ -24,7 +24,6 @@ public class WaterShapeController : MonoBehaviour
     public float dampening = 0.03f;
     // How much to spread to the other springs
     public float spread = 0.006f;
-
     
     void OnEnable()
     {

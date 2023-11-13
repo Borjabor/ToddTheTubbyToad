@@ -216,6 +216,7 @@ MonoBehaviour:
   _affectedObject: {fileID: 0}
   _pipeMask: {fileID: 0}
   button: {fileID: 3062763854374829793}
+  _audioSource: {fileID: 8311760225277836311}
   _electricity: {fileID: 8396185904235312151}
 --- !u!61 &151117662
 BoxCollider2D:
@@ -271,10 +272,10 @@ AudioSource:
   m_GameObject: {fileID: 1404489692242796748}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 8d5316a07c854f541a201eb6c60001a5, type: 2}
   m_audioClip: {fileID: 8300000, guid: 31e8c11df423684428eb3b1f8f0ddfbf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.528
+  m_Volume: 0.299
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -282,8 +283,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 17.15
-  MaxDistance: 22.1
+  MinDistance: 10.37
+  MaxDistance: 16.69
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

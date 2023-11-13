@@ -34,6 +34,6 @@ public class SoundManager : Singleton<SoundManager>
     public void ChangeEffectVolume(float volume)
     {
         _effectSource.volume = volume;
-        _effectMixer.SetFloat("EffectVolume", Mathf.Log10(volume) * 20);
+        _effectMixer.SetFloat("EffectsVolume", Mathf.Log10(volume) * 20);
     }
 }

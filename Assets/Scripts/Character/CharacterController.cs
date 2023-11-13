@@ -273,7 +273,8 @@ public class CharacterController : MonoBehaviour
         _movingObject = null;
         _springJoint.connectedBody = null;
         _tongueRetract = false;
-        _tongueDidntHit = false; //Works for animator, but makes tongue reshoot automatically if player holds click
+        _animator.SetTrigger("HookOff");
+        //_tongueDidntHit = false; //Works for animator, but makes tongue reshoot automatically if player holds click
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)

@@ -103,7 +103,6 @@ MonoBehaviour:
   height: 3.6687202
   springTransform: {fileID: 2170528527217673517}
   spriteShapeController: {fileID: 8014599676524986820}
-  _waterSplash: {fileID: 0}
 --- !u!58 &6357581619828208028
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -242,7 +241,6 @@ MonoBehaviour:
   height: 3.6687202
   springTransform: {fileID: 1900378869252971958}
   spriteShapeController: {fileID: 8014599676524986820}
-  _waterSplash: {fileID: 0}
 --- !u!58 &301784530359709049
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -381,7 +379,6 @@ MonoBehaviour:
   height: 3.6687202
   springTransform: {fileID: 4426189860217884188}
   spriteShapeController: {fileID: 8014599676524986820}
-  _waterSplash: {fileID: 0}
 --- !u!58 &4264183071799291664
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -520,7 +517,6 @@ MonoBehaviour:
   height: 3.6687202
   springTransform: {fileID: 3098271554642014145}
   spriteShapeController: {fileID: 8014599676524986820}
-  _waterSplash: {fileID: 0}
 --- !u!58 &8318886306252300313
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -569,7 +565,6 @@ GameObject:
   - component: {fileID: 8014599676524986820}
   - component: {fileID: 1797539315377889361}
   - component: {fileID: 7782761745181011499}
-  - component: {fileID: 1572716673124479501}
   m_Layer: 2
   m_Name: WaterShape
   m_TagString: Untagged
@@ -838,19 +833,6 @@ PolygonCollider2D:
       - {x: 8.320799, y: 1.0482059}
       - {x: -3.3283195, y: 1.0482059}
   m_UseDelaunayMesh: 0
---- !u!114 &1572716673124479501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3537569551621808812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 574b21934cc610c42a27d98c195bdb5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _waterSplash: {fileID: 6054751988030780635, guid: 4d47179c52b5ce14b9a274920c1fe59f, type: 3}
 --- !u!1 &4260543529497186062
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +936,6 @@ MonoBehaviour:
   height: 3.6687202
   springTransform: {fileID: 3362495144262140192}
   spriteShapeController: {fileID: 8014599676524986820}
-  _waterSplash: {fileID: 0}
 --- !u!58 &168757827169228707
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1093,7 +1074,6 @@ MonoBehaviour:
   height: 3.6687202
   springTransform: {fileID: 3325076573317026286}
   spriteShapeController: {fileID: 8014599676524986820}
-  _waterSplash: {fileID: 0}
 --- !u!58 &7060204467981261584
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1232,7 +1212,6 @@ MonoBehaviour:
   height: 3.6687202
   springTransform: {fileID: 8396572622028801023}
   spriteShapeController: {fileID: 8014599676524986820}
-  _waterSplash: {fileID: 0}
 --- !u!58 &8242684304483205326
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1410,7 +1389,6 @@ MonoBehaviour:
   height: 3.6687202
   springTransform: {fileID: 5041518827758661338}
   spriteShapeController: {fileID: 8014599676524986820}
-  _waterSplash: {fileID: 0}
 --- !u!58 &4784616556695860445
 CircleCollider2D:
   m_ObjectHideFlags: 0

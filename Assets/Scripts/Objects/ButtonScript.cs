@@ -22,7 +22,6 @@ public class ButtonScript : ObjectFSM
 
     [SerializeField]
     private Animator button;
-    [SerializeField]
     private AudioSource _audioSource;
     private bool _hasPlayed;
 

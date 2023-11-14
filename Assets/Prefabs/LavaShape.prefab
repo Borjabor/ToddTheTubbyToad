@@ -5876,8 +5876,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 20.47915, y: 3.51365, z: 0}
-    m_Extent: {x: 26.48155, y: 3.99825, z: 0}
+    m_Center: {x: 20.4826, y: 3.5101001, z: 0}
+    m_Extent: {x: 26.4853, y: 3.9967, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -7173,6 +7173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3415666369917264624}
     m_Modifications:
+    - target: {fileID: 2299017054975748721, guid: b2a2472e08488ff438b3910e3258f1a2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 71d59c4f9e8e0414990f3a394b45ab9e, type: 2}
     - target: {fileID: 5656300276481144020, guid: b2a2472e08488ff438b3910e3258f1a2, type: 3}
       propertyPath: m_Name
       value: Particles_Lava

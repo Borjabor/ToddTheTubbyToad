@@ -8,6 +8,6 @@ public class TrackedObject : AObjectWithCheckpoint
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(!other.gameObject.CompareTag("ObjectCheckpoint")) return;
-        GameManager.Instance.SaveTrackedObjects();
+        //GameManager.Instance.SaveTrackedObjects();
     }
 }

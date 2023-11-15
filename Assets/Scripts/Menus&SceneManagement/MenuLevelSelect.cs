@@ -24,7 +24,7 @@ public class MenuLevelSelect : MenuBase
             var i1 = i;
             button.onClick.AddListener(() => _levelLoader.LoadSpecificLevel(i1));
             i++;
-            Debug.Log($"{i}");
+            //Debug.Log($"{i}");
         }
     }
 }

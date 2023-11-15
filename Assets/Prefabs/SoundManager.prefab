@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6134061539405914898}
   - component: {fileID: 7685505758298988179}
   m_Layer: 0
-  m_Name: MusicSource
+  m_Name: MusicSource01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,10 +174,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2976b9397609838449b802c032d4aa98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicSource: {fileID: 7685505758298988179}
-  _effectSource: {fileID: 3852363698928023381}
+  _musicSource01: {fileID: 7685505758298988179}
+  _musicSource02: {fileID: 3852363698928023381}
   _musicMixer: {fileID: 24100000, guid: 6f1b93a4e2ac08345922869a0b0b2e41, type: 2}
   _effectMixer: {fileID: 24100000, guid: 8d5316a07c854f541a201eb6c60001a5, type: 2}
+  _timeToFade: 0.75
+  _timaElapsed: 0
 --- !u!1 &6004351566082892004
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +191,7 @@ GameObject:
   - component: {fileID: 8311854063159619077}
   - component: {fileID: 3852363698928023381}
   m_Layer: 0
-  m_Name: EffectSource
+  m_Name: MusicSource02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

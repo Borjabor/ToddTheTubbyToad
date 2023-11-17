@@ -18,6 +18,6 @@ public class MenuMain : MenuBase
     public void NewGame()
     {
         _gameState.Value = States.NORMAL;
-        SceneManager.LoadScene("Area_1_Overgrown_Greenhouse");
+        SceneManager.LoadScene("OpeningCutscene");
     }
 }

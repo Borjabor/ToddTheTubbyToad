@@ -117,7 +117,7 @@ namespace DialogueSystem
             var speakerEntity = objectWithSpeaker.Speaker as Entity;
             if (speakerEntity == null) return;
             _speakerName.text = speakerEntity.DisplayName;
-            _speakerContainer.localPosition = speakerEntity.DisplayName == _playerArticyTag ? new Vector3(796 * -_playerPositionX, 0, 0) : new Vector3(796 * _playerPositionX, 0, 0);
+            _speakerContainer.localPosition = speakerEntity.DisplayName == _playerArticyTag ? new Vector3(-796, 0, 0) : new Vector3(796, 0, 0);
             var speakerAsset = (speakerEntity as IObjectWithPreviewImage).PreviewImage.Asset as Asset;
             if (speakerAsset != null) _speakerImage.sprite = speakerAsset.LoadAssetAsSprite();
         }

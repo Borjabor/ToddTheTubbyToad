@@ -5753,7 +5753,7 @@ MonoBehaviour:
       corner: 1
       m_CornerMode: 1
   m_SpriteShape: {fileID: 11400000, guid: 7829bc1b3fd66104ebc88b8ebd021d5c, type: 2}
-  m_FillPixelPerUnit: 30
+  m_FillPixelPerUnit: 22
   m_StretchTiling: 1
   m_SplineDetail: 16
   m_AdaptiveUV: 1
@@ -5877,8 +5877,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 20.485249, y: 3.5124, z: 0}
-    m_Extent: {x: 26.48415, y: 3.9911, z: 0}
+    m_Center: {x: 20.4792, y: 3.5122502, z: 0}
+    m_Extent: {x: 26.490099, y: 3.99635, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -6195,7 +6195,7 @@ Transform:
   m_GameObject: {fileID: 4833466072720036918}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 4, z: 0.11550619}
+  m_LocalPosition: {x: 10, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6221,8 +6221,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 10
-  MaxDistance: 50
+  MinDistance: 15
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

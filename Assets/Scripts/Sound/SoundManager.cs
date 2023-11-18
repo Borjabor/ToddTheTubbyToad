@@ -29,9 +29,6 @@ public class SoundManager : Singleton<SoundManager>
     private async void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         _isPlayingTrack01 = true;
-        // _source01Volume = _musicSource01.volume;
-        // _source02Volume = _musicSource02.volume;
-        Debug.Log($"On Scene Load");
         await Task.Delay((int) (10000f * Time.deltaTime));
         
         if (PlayerPrefs.HasKey("masterVolume"))

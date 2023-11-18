@@ -18,7 +18,7 @@ public class Room : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-        CameraManager.Instance.SetCamera(_virtualCamera);
+        if(CameraManager.Instance) CameraManager.Instance.SetCamera(_virtualCamera);
     }
 
    /* private void OnTriggerEnter2D(Collider2D other)

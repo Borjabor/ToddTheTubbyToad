@@ -56,23 +56,25 @@ public class CameraManager : Singleton<CameraManager>
         await Task.Delay((int) (1000.0f * Time.deltaTime));
         _shakeTimer -= Time.deltaTime;
         if(_shakeTimer > 0f) return;
+        if(_cinemachineVirtualCamera !=null) _cameraNoise.m_AmplitudeGain = 0;
+        _timeElapsed = 0;
         
-        if (_player.IsSafe)
-        {
-            _cinemachineVirtualCamera.m_Lens.OrthographicSize = _startingZoom;
-            _currentZoom = _startingZoom;
-            _cameraNoise.m_AmplitudeGain = 0;
-            _timeElapsed = 0;
-            return;
-        }
-
-        _cinemachineVirtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(_currentZoom, _targetZoom, _timeElapsed/_timeToDeath);
-        _cameraNoise.m_AmplitudeGain = Mathf.Lerp(0, _cameraShakeAmount, _timeElapsed / _timeToDeath);
-        _timeElapsed += Time.deltaTime;
-        if (_timeElapsed >= _timeToDeath)
-        {
-            _player.Die();
-        }
+        // if (_player.IsSafe)
+        // {
+        //     _cinemachineVirtualCamera.m_Lens.OrthographicSize = _startingZoom;
+        //     _currentZoom = _startingZoom;
+        //     _cameraNoise.m_AmplitudeGain = 0;
+        //     _timeElapsed = 0;
+        //     return;
+        // }
+        //
+        // _cinemachineVirtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(_currentZoom, _targetZoom, _timeElapsed/_timeToDeath);
+        // _cameraNoise.m_AmplitudeGain = Mathf.Lerp(0, _cameraShakeAmount, _timeElapsed / _timeToDeath);
+        // _timeElapsed += Time.deltaTime;
+        // if (_timeElapsed >= _timeToDeath)
+        // {
+        //     _player.Die();
+        // }
     }
 
 }

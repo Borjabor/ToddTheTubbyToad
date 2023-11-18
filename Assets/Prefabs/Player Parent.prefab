@@ -5614,6 +5614,7 @@ GameObject:
   - component: {fileID: 489678096056515865}
   - component: {fileID: 8239526376141376887}
   - component: {fileID: 6103315934607912507}
+  - component: {fileID: 3824544678168155752}
   - component: {fileID: 5605311252026018265}
   - component: {fileID: 5766886106102685570}
   - component: {fileID: 1457986978347497911}
@@ -5800,6 +5801,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3824544678168155752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986120675836158516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec816dffa3f784790ff59f4ea01d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5605311252026018265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6267,6 +6280,7 @@ MonoBehaviour:
   _precision: 120
   _straightenLineSpeed: 11.1
   _animator: {fileID: 6103315934607912507}
+  _animation: {fileID: 3824544678168155752}
   ropeAnimationCurve:
     serializedVersion: 2
     m_Curve:

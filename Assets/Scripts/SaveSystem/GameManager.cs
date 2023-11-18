@@ -43,7 +43,7 @@ public class GameManager : Singleton<GameManager>
     {
         _gameData.LatestSceneIndex = 2;
         SaveGame();
-        SceneManager.LoadScene("Area_1_Overgrown_Greenhouse");
+        SceneManager.LoadScene("OpeningCutscene");
     }
 
     public async void LoadGame()

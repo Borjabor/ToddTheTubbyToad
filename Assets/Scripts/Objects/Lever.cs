@@ -36,15 +36,16 @@ public class Lever : MonoBehaviour
     {
         if (_hj.jointAngle <= 35)
         {
-            _affectedObjectI.TurnOff();
             _pipeMask.SetActive(false);
-            _turnedOn = false;
+            if(!_turnedOn) return;
+            _affectedObjectI.TurnOff();
             lever.SetBool("Lever_State", false);
             if (_hasPlayed)
             {
                 _audioSource.Play();
                 _hasPlayed = false;
             }
+            _turnedOn = false;
         }
 
         if (_turnedOn) return;
@@ -53,7 +54,6 @@ public class Lever : MonoBehaviour
         {
             _affectedObjectI.TurnOn();
             _pipeMask.SetActive(true);
-            _turnedOn = true;
             lever.SetBool("Lever_State", true);
             if (!_hasPlayed)
             {
@@ -61,6 +61,7 @@ public class Lever : MonoBehaviour
                 _audioSource.Play();
                 _hasPlayed = true;
             }
+            _turnedOn = true;
         }
     }
 }

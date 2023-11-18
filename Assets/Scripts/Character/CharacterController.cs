@@ -285,8 +285,8 @@ public class CharacterController : MonoBehaviour
 		if (other.gameObject.CompareTag("Checkpoint"))
 		{
 			//_audioSource.PlayOneShot(_checkpointAudio);
-			//_checkpoint = other.transform.position;
-			GameManager.Instance.SaveCheckpoint(other.transform.position);
+			_checkpoint = other.transform.position;
+			//GameManager.Instance.SaveCheckpoint(other.transform.position);
 		}
 		
 		if(other.gameObject.CompareTag("Hazard") && _playerState.Value != PlayerStates.RESPAWN)

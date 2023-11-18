@@ -16,8 +16,7 @@ public class MenuPause : MenuBase
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)) {
-           
-           PauseGame();
+            if(_gameState.Value == States.PAUSED || _gameState.Value == States.NORMAL) PauseGame();
         }
     }
 

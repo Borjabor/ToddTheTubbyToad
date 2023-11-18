@@ -32,24 +32,68 @@ public class DoorOpen : ObjectFSM, IOnOffObjects
 
     protected override IEnumerator On()
     {
-        while (transform.position != _targetPos.transform.position)
+        var duration = _audioSource.clip.length * 0.6f;
+        var timeElapsed = 0f;
+        var startPos = transform.position;
+        var targetPos = _targetPos.transform.position;
+        
+        if (_audioSource.isPlaying)
         {
-            transform.position = Vector2.MoveTowards(transform.position, _targetPos.transform.position, _openSpeed * Time.deltaTime);
-            if(!_audioSource.isPlaying && transform.position.y != _targetPos.transform.position.y) _audioSource.Play();
-            Debug.Log($"Open");
-            yield return 0;
+            _audioSource.Stop();
+            _audioSource.Play();
         }
+        else
+        {
+            _audioSource.Play();
+        }
+        yield return new WaitForSeconds(0.7f);
+        while (timeElapsed < duration)
+        {
+            transform.position = Vector2.Lerp(startPos, targetPos, timeElapsed/duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        
+        // while (transform.position != _targetPos.transform.position)
+        // {
+        //     if(!_audioSource.isPlaying && transform.position.y != _targetPos.transform.position.y) _audioSource.Play();
+        //     //transform.position = Vector2.MoveTowards(transform.position, _targetPos.transform.position, _openSpeed * Time.deltaTime);
+        //     Debug.Log($"Open");
+        //     yield return null;
+        // }
     }
 
     protected override IEnumerator Off()
     {
-        while ((Vector2)transform.position != _startPos)
+        var duration = _audioSource.clip.length * 0.6f;
+        var timeElapsed = 0f;
+        var startPos = transform.position;
+        var targetPos = _startPos;
+
+        if (_audioSource.isPlaying)
         {
-            transform.position = Vector2.MoveTowards(transform.position, _startPos, _openSpeed * Time.deltaTime);
-            if(!_audioSource.isPlaying && transform.position.y != _startPos.y) _audioSource.Play();
-            Debug.Log($"Close");
-            yield return 0;
+            _audioSource.Stop();
+            _audioSource.Play();
         }
+        else
+        {
+            _audioSource.Play();
+        }
+        yield return new WaitForSeconds(0.7f);
+        while (timeElapsed < duration)
+        {
+            transform.position = Vector2.Lerp(startPos, targetPos, timeElapsed/duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        
+        // while ((Vector2)transform.position != _startPos)
+        // {
+        //     if(!_audioSource.isPlaying && transform.position.y != _startPos.y) _audioSource.Play();
+        //     transform.position = Vector2.MoveTowards(transform.position, _startPos, _openSpeed * Time.deltaTime);
+        //     Debug.Log($"Close");
+        //     yield return null;
+        // }
     }
 
 }

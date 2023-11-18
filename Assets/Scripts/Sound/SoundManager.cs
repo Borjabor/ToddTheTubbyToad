@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : Singleton<SoundManager>
 {
@@ -21,9 +23,15 @@ public class SoundManager : Singleton<SoundManager>
     protected override void SingletonAwake()
     {
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
         _isPlayingTrack01 = true;
         _source01Volume = _musicSource01.volume;
         _source02Volume = _musicSource02.volume;
+        Debug.Log($"On Scene Load");
         
         if (PlayerPrefs.HasKey("masterVolume"))
         {

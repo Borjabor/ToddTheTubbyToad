@@ -10,26 +10,50 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource _musicSource01, _musicSource02;
     private AudioSource _activeMusicSource;
+    private float _source01Volume, _source02Volume;
 
     public AudioMixer _musicMixer, _effectMixer;
-
-    [SerializeField]
-    private float _timeToFade = 0.75f;
-    private float _timaElapsed;
+    
+    private float _timeElapsed;
 
     private bool _isPlayingTrack01;
-
-    
-
-    private void Update()
-    {
-        //if(Input.GetKeyDown(KeyCode.C)) PlayerPrefs.DeleteAll();
-    }
     
     protected override void SingletonAwake()
     {
         DontDestroyOnLoad(gameObject);
         _isPlayingTrack01 = true;
+        _source01Volume = _musicSource01.volume;
+        _source02Volume = _musicSource02.volume;
+        
+        if (PlayerPrefs.HasKey("masterVolume"))
+        {
+            var value = PlayerPrefs.GetFloat("masterVolume");
+            ChangeMasterVolume(value);
+        }
+        else
+        {
+            ChangeMasterVolume(1);
+        }
+        
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            var value = PlayerPrefs.GetFloat("musicVolume");
+            ChangeMusicVolume(value);
+        }
+        else
+        {
+            ChangeMusicVolume(1);
+        }
+        
+        if (PlayerPrefs.HasKey("effectsVolume"))
+        {
+            var value = PlayerPrefs.GetFloat("effectsVolume");
+            ChangeEffectsVolume(value);
+        }
+        else
+        {
+            ChangeEffectsVolume(1);
+        }
     }
 
     public void ChangeMasterVolume(float volume)
@@ -47,23 +71,23 @@ public class SoundManager : Singleton<SoundManager>
         _effectMixer.SetFloat("EffectsVolume", Mathf.Log10(volume) * 20);
     }
     
-    public void ChangeMusic(AudioClip clip)
+    public void ChangeMusic(AudioClip clip, float timeToFade)
     {
         StopAllCoroutines();
-        StartCoroutine(CrossFade(clip));
+        StartCoroutine(CrossFade(clip, timeToFade));
     }
 
-    private IEnumerator CrossFade(AudioClip clip)
+    private IEnumerator CrossFade(AudioClip clip, float timeToFade)
     {
         if (_isPlayingTrack01)
         {
             _musicSource02.clip = clip;
             _musicSource02.Play();
-            while (_timaElapsed < _timeToFade)
+            while (_timeElapsed < timeToFade)
             {
-                _musicSource02.volume = Mathf.Lerp(0, 1, _timaElapsed / _timeToFade);
-                _musicSource01.volume = Mathf.Lerp(1, 0, _timaElapsed / _timeToFade);
-                _timaElapsed += Time.deltaTime;
+                _musicSource02.volume = Mathf.Lerp(0, _source02Volume, _timeElapsed / timeToFade);
+                _musicSource01.volume = Mathf.Lerp(_source01Volume, 0, _timeElapsed / timeToFade);
+                _timeElapsed += Time.deltaTime;
                 yield return null;
             }
             _musicSource01.Stop();
@@ -72,11 +96,11 @@ public class SoundManager : Singleton<SoundManager>
         {
             _musicSource01.clip = clip;
             _musicSource01.Play();
-            while (_timaElapsed < _timeToFade)
+            while (_timeElapsed < timeToFade)
             {
-                _musicSource01.volume = Mathf.Lerp(0, 1, _timaElapsed / _timeToFade);
-                _musicSource02.volume = Mathf.Lerp(1, 0, _timaElapsed / _timeToFade);
-                _timaElapsed += Time.deltaTime;
+                _musicSource01.volume = Mathf.Lerp(0, -_source01Volume, _timeElapsed / timeToFade);
+                _musicSource02.volume = Mathf.Lerp(_source02Volume, 0, _timeElapsed / timeToFade);
+                _timeElapsed += Time.deltaTime;
                 yield return null;
             }
             _musicSource02.Stop();

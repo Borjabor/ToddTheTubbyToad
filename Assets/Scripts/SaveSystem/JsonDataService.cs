@@ -57,4 +57,27 @@ public class JsonDataService : IDataService
             throw e;
         }
     }
+    
+    public bool SaveFirstData<T>(string RelativePath, T Data, bool Encrypted)
+    {
+        string path = Application.persistentDataPath + RelativePath;
+
+        try
+        {
+            if (!File.Exists(path))
+            {
+                Debug.Log($"Data exists. Overwriting existing files");
+                using FileStream stream = File.Create(path);
+                stream.Close();
+                File.WriteAllText(path, JsonUtility.ToJson(Data));
+            }
+            return true;
+            
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Unable to save data due to: {e.Message} {e.StackTrace}");
+            return false;
+        }
+    }
 }

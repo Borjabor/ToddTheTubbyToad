@@ -13,6 +13,8 @@ public class GameManager : Singleton<GameManager>
 
     protected override void SingletonAwake()
     {
+        //DontDestroyOnLoad(gameObject);
+        SaveScene(0);
     }
 
     private void Update()
@@ -32,18 +34,25 @@ public class GameManager : Singleton<GameManager>
         _player = player;
     }
 
-    public void SaveGame()
+    private void SaveGame()
     {
         DataService.SaveData("/save-game.json", _gameData, false);
+    }
+
+    public void NewGame()
+    {
+        _gameData.LatestSceneIndex = 2;
+        SaveGame();
+        SceneManager.LoadScene("Area_1_Overgrown_Greenhouse");
     }
 
     public async void LoadGame()
     {
         GameData data = DataService.LoadData<GameData>("/save-game.json", false);
+        _gameData = data;
         SceneManager.LoadScene(data.LatestSceneIndex);
         await Task.Delay((int) (10000f * Time.deltaTime));
-        _player.transform.position = data.LatestCheckpointPosition;
-        _gameData = data;
+        //_player.transform.position = data.LatestCheckpointPosition;
         Debug.Log($"{_gameData.LatestCheckpointPosition}/{_gameData.LatestSceneIndex}");
     }
 
@@ -61,7 +70,14 @@ public class GameManager : Singleton<GameManager>
         {
             _gameData.LatestSceneIndex = index;
             Debug.Log($"{_gameData.LatestSceneIndex}");
-            SaveGame();
+            if (index == 0)
+            {
+                DataService.SaveFirstData("/save-game.json", _gameData, false);
+            }
+            else
+            {
+                SaveGame();
+            }
         }
     }
     

@@ -46,7 +46,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -179,7 +179,6 @@ MonoBehaviour:
   _musicMixer: {fileID: 24100000, guid: 6f1b93a4e2ac08345922869a0b0b2e41, type: 2}
   _effectMixer: {fileID: 24100000, guid: 8d5316a07c854f541a201eb6c60001a5, type: 2}
   _timeToFade: 0.75
-  _timaElapsed: 0
 --- !u!1 &6004351566082892004
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,10 +222,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

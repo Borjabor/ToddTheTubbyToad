@@ -139,6 +139,8 @@ public class CharacterController : MonoBehaviour
 		_tongue.enabled = false;
 		_springJoint.enabled = false;
 		CameraManager.Instance.SetPlayer(GetComponent<CharacterController>());
+		GameManager.Instance.SetPlayer(gameObject);
+		GameManager.Instance.SaveScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	private void OnEnable()
@@ -157,17 +159,17 @@ public class CharacterController : MonoBehaviour
 	{
 		if (_gameState.Value != States.NORMAL) return;
 		if (_playerState.Value == PlayerStates.RESPAWN) return;
-		_mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-		_hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized, _layerMask);
-		Debug.DrawLine(transform.position, _hit.point, Color.magenta);
+		// _mouseFirePointDistanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+		// _hit = Physics2D.Raycast(transform.position, _mouseFirePointDistanceVector.normalized, _layerMask);
+		// Debug.DrawLine(transform.position, _hit.point, Color.magenta);
 		
 		RotateCursor();
 		SetCursor();
 		GetInputs();
-		float time = Time.timeScale;
-		if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 0.1f;
-		if (Input.GetKeyDown(KeyCode.Alpha2)) Time.timeScale = 1f;
-		if(time != Time.timeScale) Debug.Log($"{time}");
+		// float time = Time.timeScale;
+		// if (Input.GetKeyDown(KeyCode.Alpha1)) Time.timeScale = 0.1f;
+		// if (Input.GetKeyDown(KeyCode.Alpha2)) Time.timeScale = 1f;
+		// if(time != Time.timeScale) Debug.Log($"{time}");
 	}
 
 	private void FixedUpdate()
@@ -284,6 +286,7 @@ public class CharacterController : MonoBehaviour
 		{
 			//_audioSource.PlayOneShot(_checkpointAudio);
 			_checkpoint = other.transform.position;
+			//GameManager.Instance.SaveCheckpoint(other.transform.position);
 		}
 		
 		if(other.gameObject.CompareTag("Hazard") && _playerState.Value != PlayerStates.RESPAWN)
@@ -377,7 +380,6 @@ public class CharacterController : MonoBehaviour
 		_arms.SetActive(true);
 		_rb.velocity = Vector2.zero;
 		_playerState.Value = PlayerStates.NORMAL;
-		//GameManager.Instance.Load();
 	}
 
 	private IEnumerator GetInBubble()

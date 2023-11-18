@@ -230,8 +230,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Dialogue text goes here '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6c45821cbb3889c4d855378cdc8bbf4c, type: 2}
-  m_sharedMaterial: {fileID: -8941595703713988471, guid: 6c45821cbb3889c4d855378cdc8bbf4c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1009,6 +1009,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7395517099358802719}
   - {fileID: 443875415084759336}
   - {fileID: 1528163192832779999}
   - {fileID: 9199238054239449079}
@@ -1327,6 +1328,76 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &2753808637942282019
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6691763991690109082}
+    m_Modifications:
+    - target: {fileID: 575115059368676952, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_Name
+      value: StartMusicTrack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156780896930921807, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: _audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d8be0ccdb33abd448aa5749d35ead433, type: 3}
+    - target: {fileID: 1156780896930921807, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: _timeToFade
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+--- !u!4 &7395517099358802719 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4653724487473718332, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+  m_PrefabInstance: {fileID: 2753808637942282019}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4893503870858494424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1480,6 +1551,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1676946398224671270, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
+      propertyPath: _settingsMenu
+      value: 
+      objectReference: {fileID: 452112892890705126}
     - target: {fileID: 1811326492159800354, guid: ffa9f4ec41a3f0c4990f8c7997b61b0f, type: 3}
       propertyPath: m_fontColor.b
       value: 0.08235294
@@ -1940,6 +2015,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1086336778abb41488cc85e34d8939ca, type: 3}
+--- !u!1 &452112892890705126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6536965996563330081, guid: 1086336778abb41488cc85e34d8939ca, type: 3}
+  m_PrefabInstance: {fileID: 6697360308331681991}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1947992971745266235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5186287488770806524, guid: 1086336778abb41488cc85e34d8939ca, type: 3}

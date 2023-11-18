@@ -139,7 +139,7 @@ public class Tongue : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log($"Collide {other.gameObject.name}");
+        //Debug.Log($"Collide {other.gameObject.name}");
         if (other.gameObject.layer == 3)
         {
             _isGrappling = true;
@@ -158,7 +158,7 @@ public class Tongue : MonoBehaviour
         }else
         {
             _animator.SetTrigger("MissHook");
-            Debug.Log($"Not Hit");
+            //Debug.Log($"Not Hit");
             _isGrappling = false;
             _player.FalseHit();
         }

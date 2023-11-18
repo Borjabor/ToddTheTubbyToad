@@ -58,6 +58,7 @@ public class ButtonScript : ObjectFSM
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if(!_isPressed) return;
         Collider2D[] collider2Ds = Physics2D.OverlapAreaAll(_collider.bounds.min,_collider.bounds.max);
         int rigidBodies = 0;
         foreach (Collider2D collider2D in collider2Ds)

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -26,5 +27,10 @@ public class MenuLevelSelect : MenuBase
             i++;
             //Debug.Log($"{i}");
         }
+    }
+    
+    public override void MainMenu() {
+        _gameState.Value = States.NORMAL;
+        SceneManager.LoadScene("MainMenu");
     }
 }

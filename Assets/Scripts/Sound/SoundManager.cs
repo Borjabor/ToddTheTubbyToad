@@ -26,12 +26,13 @@ public class SoundManager : Singleton<SoundManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    private async void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         _isPlayingTrack01 = true;
-        _source01Volume = _musicSource01.volume;
-        _source02Volume = _musicSource02.volume;
+        // _source01Volume = _musicSource01.volume;
+        // _source02Volume = _musicSource02.volume;
         Debug.Log($"On Scene Load");
+        await Task.Delay((int) (10000f * Time.deltaTime));
         
         if (PlayerPrefs.HasKey("masterVolume"))
         {
@@ -93,8 +94,8 @@ public class SoundManager : Singleton<SoundManager>
             _musicSource02.Play();
             while (_timeElapsed < timeToFade)
             {
-                _musicSource02.volume = Mathf.Lerp(0, _source02Volume, _timeElapsed / timeToFade);
-                _musicSource01.volume = Mathf.Lerp(_source01Volume, 0, _timeElapsed / timeToFade);
+                _musicSource02.volume = Mathf.Lerp(0, 1, _timeElapsed / timeToFade);
+                _musicSource01.volume = Mathf.Lerp(1, 0, _timeElapsed / timeToFade);
                 _timeElapsed += Time.deltaTime;
                 yield return null;
             }
@@ -106,8 +107,8 @@ public class SoundManager : Singleton<SoundManager>
             _musicSource01.Play();
             while (_timeElapsed < timeToFade)
             {
-                _musicSource01.volume = Mathf.Lerp(0, -_source01Volume, _timeElapsed / timeToFade);
-                _musicSource02.volume = Mathf.Lerp(_source02Volume, 0, _timeElapsed / timeToFade);
+                _musicSource01.volume = Mathf.Lerp(0, 1, _timeElapsed / timeToFade);
+                _musicSource02.volume = Mathf.Lerp(1, 0, _timeElapsed / timeToFade);
                 _timeElapsed += Time.deltaTime;
                 yield return null;
             }

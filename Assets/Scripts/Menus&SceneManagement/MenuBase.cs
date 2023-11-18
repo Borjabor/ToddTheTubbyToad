@@ -29,8 +29,10 @@ public class MenuBase : MonoBehaviour
         _startButton.Select();
     }
 
-    public void MainMenu() {
+    public virtual void MainMenu() {
         _gameState.Value = States.NORMAL;
+        var clip = Resources.Load<AudioClip>("MainMenuMusic");
+        SoundManager.Instance.ChangeMusic(clip, 0.3f);
         SceneManager.LoadScene("MainMenu");
     }
 

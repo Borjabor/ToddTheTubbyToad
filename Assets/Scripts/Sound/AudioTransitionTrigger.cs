@@ -11,8 +11,6 @@ public class AudioTransitionTrigger : MonoBehaviour
     [SerializeField]
     private float _timeToFade;
 
-    
-
     [SerializeField]
     private bool _workOnAwake;
 

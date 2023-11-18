@@ -19,9 +19,9 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) SaveGame();
-        if(Input.GetKeyDown(KeyCode.Alpha2)) LoadGame();
-        if(Input.GetKeyDown(KeyCode.M)) _player.transform.position = _gameData.LatestCheckpointPosition;
+        // if(Input.GetKeyDown(KeyCode.Alpha1)) SaveGame();
+        // if(Input.GetKeyDown(KeyCode.Alpha2)) LoadGame();
+        // if(Input.GetKeyDown(KeyCode.M)) _player.transform.position = _gameData.LatestCheckpointPosition;
     }
 
     void OnEnable()

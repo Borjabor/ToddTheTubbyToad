@@ -4,6 +4,6 @@ using UnityEngine;
 [Serializable]
 public class GameData
 {
-    public int LatestSceneIndex = 2;
+    public int LatestSceneIndex;
     public Vector2 LatestCheckpointPosition;
 }

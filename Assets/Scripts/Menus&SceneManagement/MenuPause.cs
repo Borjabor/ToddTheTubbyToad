@@ -16,12 +16,13 @@ public class MenuPause : MenuBase
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)) {
-           _isPaused = !_isPaused;
+           
            PauseGame();
         }
     }
 
-    void PauseGame() {
+    public void PauseGame() {
+        _isPaused = !_isPaused;
         if(_isPaused)
         {
             _gameState.Value = States.PAUSED;
@@ -33,11 +34,6 @@ public class MenuPause : MenuBase
             _thisMenu.SetActive(false);
             _settingsMenu.SetActive(false);
         }
-    }
-
-    public void ResumeGame() {
-        _gameState.Value = States.NORMAL;
-       _thisMenu.SetActive(false);
     }
 
     public void Restart() {

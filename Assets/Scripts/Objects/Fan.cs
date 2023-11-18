@@ -15,6 +15,7 @@ public class Fan : MonoBehaviour, IOnOffObjects
 
     [SerializeField] 
     private bool _startOn;
+    private bool _isOn;
 
     private void Awake()
     {
@@ -23,11 +24,23 @@ public class Fan : MonoBehaviour, IOnOffObjects
         if(_startOn) TurnOn();
     }
 
+    private void Update()
+    {
+        if (_isOn && !_windParticles.isPlaying)
+        {
+            _windParticles.Play();
+        }
+        else if (!_isOn)
+        {
+            _windParticles.Stop();
+        }
+    }
+
     public void TurnOn()
     {
         _lightAnimator.SetBool("Fan_State", true);
         _bladeAnimator.SetBool("Fan_State", true);
-        if (!_windParticles.isPlaying) _windParticles.Play();
+        _isOn = true;
         _areaEffector.enabled = true;
     }
 
@@ -35,7 +48,7 @@ public class Fan : MonoBehaviour, IOnOffObjects
     {
         _lightAnimator.SetBool("Fan_State", false);
         _bladeAnimator.SetBool("Fan_State", false);
-        _windParticles.Stop();
+        _isOn = false;
         _areaEffector.enabled = false;
     }
 }

@@ -64,6 +64,7 @@ public class CharacterController : MonoBehaviour
 	[SerializeField]
 	private CircleCollider2D _triggerZone;
 	private Animator _animator;
+	private PlayerAnimation _animation;
 	
 	public bool IsSafe = true;
 	private Bubble _currentBubble;
@@ -131,6 +132,8 @@ public class CharacterController : MonoBehaviour
 		_playerState = Resources.Load<PlayerState>("SOAssets/Player State");
 		_rb = GetComponent<Rigidbody2D>();
 		_animator = GetComponent<Animator>();
+		_animation = GetComponent<PlayerAnimation>();
+		_animation.SetState("Idle");
         _checkpoint = transform.position;
 		_audioSource = GetComponent<AudioSource>();
 		_triggerZone.enabled = false;
@@ -275,6 +278,7 @@ public class CharacterController : MonoBehaviour
         _movingObject = null;
         _springJoint.connectedBody = null;
         _tongueRetract = false;
+        _animation.SetState("Idle");
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)

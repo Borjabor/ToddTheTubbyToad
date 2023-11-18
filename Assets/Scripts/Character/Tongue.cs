@@ -21,6 +21,8 @@ public class Tongue : MonoBehaviour
     [Header("Animation:")]
     [SerializeField] 
     private Animator _animator;
+    [SerializeField]
+    private PlayerAnimation _animation;
     [SerializeField] 
     private AnimationCurve ropeAnimationCurve;
     [SerializeField] [Range(0.01f, 4)] 
@@ -52,7 +54,8 @@ public class Tongue : MonoBehaviour
 
     private void OnEnable()
     {
-        _animator.SetTrigger("Hook");
+        //_animator.SetTrigger("Hook");
+        _animation.SetState("Hook");
         _moveTime = 0;
         _lineRenderer.enabled = true;
         _lineRenderer.positionCount = _precision;
@@ -65,7 +68,8 @@ public class Tongue : MonoBehaviour
 
     private void OnDisable()
     {
-        _animator.SetTrigger("HookOff");
+        //_animator.SetTrigger("HookOff");
+        _animation.SetState("Idle");
         _lineRenderer.enabled = false;
         _isGrappling = false;
         _rb.velocity = Vector3.zero;
@@ -140,35 +144,9 @@ public class Tongue : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         //Debug.Log($"Collide {other.gameObject.name}");
-        if (other.gameObject.layer == 3)
-        {
-            _isGrappling = true;
-            _straightLine = true;
-            _player.Grapple();
-            _rb.velocity = Vector2.zero;
-            ChangeRigidbody(RigidbodyType2D.Kinematic);
-        }else if (other.gameObject.layer == 10)
-        {
-            _player.SetMovingObject(other.gameObject);
-            _isGrappling = true;
-            _straightLine = true;
-            _player.Grapple();
-            _rb.velocity = Vector2.zero;
-            ChangeRigidbody(RigidbodyType2D.Kinematic);
-        }else
-        {
-            _animator.SetTrigger("MissHook");
-            //Debug.Log($"Not Hit");
-            _isGrappling = false;
-            _player.FalseHit();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
         if (other.gameObject.CompareTag("Hazard"))
         {
-            _animator.SetTrigger("Gross");
+            _animation.SetState("Gross");
             _isGrappling = false;
             _player.FalseHit();
             _circleCollider.enabled = false;
@@ -191,7 +169,38 @@ public class Tongue : MonoBehaviour
             ChangeRigidbody(RigidbodyType2D.Kinematic);
         }else
         {
-            _animator.SetTrigger("Gross");
+            _animation.SetState("Gross");
+            _isGrappling = false;
+            _player.FalseHit();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Hazard"))
+        {
+            _isGrappling = false;
+            _player.FalseHit();
+            _circleCollider.enabled = false;
+            return;
+        }
+        if (other.gameObject.layer == 3)
+        {
+            _isGrappling = true;
+            _straightLine = true;
+            _player.Grapple();
+            _rb.velocity = Vector2.zero;
+            ChangeRigidbody(RigidbodyType2D.Kinematic);
+        }else if (other.gameObject.layer == 10)
+        {
+            _player.SetMovingObject(other.gameObject);
+            _isGrappling = true;
+            _straightLine = true;
+            _player.Grapple();
+            _rb.velocity = Vector2.zero;
+            ChangeRigidbody(RigidbodyType2D.Kinematic);
+        }else
+        {
             _isGrappling = false;
             _player.FalseHit();
         }

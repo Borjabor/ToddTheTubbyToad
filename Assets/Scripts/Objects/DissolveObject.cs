@@ -19,16 +19,19 @@ public class DissolveObject : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!_audioSource.isPlaying) _audioSource.Play();
-        
-        if (other.gameObject.CompareTag("Dissolve"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            //Destroy(gameObject);
-            Debug.Log($"hit check");
-            StartCoroutine(Dissolve());
+            var rb = other.gameObject.GetComponent<Rigidbody2D>();
+            if (rb.velocity.magnitude <= 2f) return;
+            if (!_audioSource.isPlaying) _audioSource.Play();
         }
+        else
+        {
+            if (!_audioSource.isPlaying && _rb.velocity.magnitude >= 2.5f) _audioSource.Play();
+        }
+        
     }
 
     private IEnumerator Dissolve()

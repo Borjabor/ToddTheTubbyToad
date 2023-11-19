@@ -5617,6 +5617,7 @@ GameObject:
   - component: {fileID: 5605311252026018265}
   - component: {fileID: 5766886106102685570}
   - component: {fileID: 1457986978347497911}
+  - component: {fileID: 1827376342959236487}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -5951,6 +5952,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 5237244626197738940}
+--- !u!81 &1827376342959236487
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986120675836158516}
+  m_Enabled: 1
 --- !u!1 &3000814814074030979
 GameObject:
   m_ObjectHideFlags: 0

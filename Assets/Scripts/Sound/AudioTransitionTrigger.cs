@@ -27,7 +27,7 @@ public class AudioTransitionTrigger : MonoBehaviour
         }
     }
 
-    private void MusicChange()
+    public void MusicChange()
     {
         SoundManager.Instance.ChangeMusic(_audioClip, _timeToFade);
         gameObject.SetActive(false);

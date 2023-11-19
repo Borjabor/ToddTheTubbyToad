@@ -29627,6 +29627,16 @@ PlayableDirector:
     value: {fileID: 1149445271}
   - key: {fileID: -3329440321530732917, guid: 8b20e42200cbce34ba1a5597713582ef, type: 2}
     value: {fileID: 1385855049}
+  - key: {fileID: -888644902441150794, guid: 8b20e42200cbce34ba1a5597713582ef, type: 2}
+    value: {fileID: 2097236545}
+  - key: {fileID: -3846157202555201467, guid: 8b20e42200cbce34ba1a5597713582ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7047756614235722598, guid: 8b20e42200cbce34ba1a5597713582ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7928446209480140611, guid: 8b20e42200cbce34ba1a5597713582ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4016530888287814998, guid: 8b20e42200cbce34ba1a5597713582ef, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &993152379
@@ -62667,6 +62677,7 @@ GameObject:
   - component: {fileID: 2097236543}
   - component: {fileID: 2097236542}
   - component: {fileID: 2097236544}
+  - component: {fileID: 2097236545}
   m_Layer: 3
   m_Name: Bell
   m_TagString: Untagged
@@ -62777,6 +62788,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.11}
   serializedVersion: 2
   m_Radius: 0.66
+--- !u!95 &2097236545
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097236541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2100933252
 GameObject:
   m_ObjectHideFlags: 0

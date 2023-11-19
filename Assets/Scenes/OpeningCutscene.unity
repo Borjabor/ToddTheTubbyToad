@@ -41129,7 +41129,7 @@ GameObject:
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1337761885
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41184,7 +41184,7 @@ Transform:
   m_GameObject: {fileID: 1337761884}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.15, y: 0.9, z: -0.124519825}
+  m_LocalPosition: {x: -3, y: 0.9, z: -0.124519825}
   m_LocalScale: {x: 5.4241476, y: 1.2121, z: 1.2121}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46847,7 +46847,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.23}
   serializedVersion: 2
-  m_Radius: 0.79
+  m_Radius: 1.7
 --- !u!114 &1461451096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55314,6 +55314,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 3181208692439867614, guid: 5192334cec67b1a4895bf358d0767530, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -6665632979654598650, guid: 6dd3e09f4076f2d4d8022aaa567b4abd, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1761910511
@@ -62791,7 +62793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2100933253
 Transform:
   m_ObjectHideFlags: 0

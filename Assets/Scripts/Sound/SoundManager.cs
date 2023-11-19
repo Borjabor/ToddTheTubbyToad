@@ -28,7 +28,6 @@ public class SoundManager : Singleton<SoundManager>
 
     private async void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        _isPlayingTrack01 = true;
         await Task.Delay((int) (10000f * Time.deltaTime));
         
         if (PlayerPrefs.HasKey("masterVolume"))
@@ -85,7 +84,7 @@ public class SoundManager : Singleton<SoundManager>
 
     private IEnumerator CrossFade(AudioClip clip, float timeToFade)
     {
-        if (_isPlayingTrack01)
+        if (_musicSource01.isPlaying)
         {
             _musicSource02.clip = clip;
             _musicSource02.Play();

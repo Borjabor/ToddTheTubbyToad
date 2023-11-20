@@ -111,7 +111,8 @@ namespace DialogueSystem
 
             //if (aObject is IObjectWithText objectWithText) _dialogueText.text = objectWithText.Text;
             if(_coroutine != null) StopCoroutine(_coroutine);
-            if (aObject is IObjectWithText objectWithText) _coroutine = StartCoroutine(DisplayLine(objectWithText.Text));
+            //if (aObject is IObjectWithText objectWithText) _coroutine = StartCoroutine(DisplayLine(objectWithText.Text));
+            if (aObject is IObjectWithText objectWithText) _dialogueText.text = objectWithText.Text;
 
             if (aObject is not IObjectWithSpeaker objectWithSpeaker) return;
             var speakerEntity = objectWithSpeaker.Speaker as Entity;

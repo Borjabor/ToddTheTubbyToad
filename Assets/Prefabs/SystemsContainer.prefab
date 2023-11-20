@@ -230,10 +230,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dialogue text goes here '
+  m_text: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd1f41a7982dfd849a0e05214d774b32, type: 2}
-  m_sharedMaterial: {fileID: -8941595703713988471, guid: 6c45821cbb3889c4d855378cdc8bbf4c, type: 2}
+  m_sharedMaterial: {fileID: 4461036357528915116, guid: bd1f41a7982dfd849a0e05214d774b32, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -267,7 +268,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 5
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -296,7 +297,7 @@ MonoBehaviour:
   m_margin: {x: 79.23895, y: 11.973907, z: 117.28772, w: 24.918335}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &5990237846954244645
@@ -314,14 +315,15 @@ MonoBehaviour:
   typewriterStartsAutomatically: 1
   animationLoop: 0
   timeScale: 0
-  _text: 
+  _text: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy
   useDynamicScaling: 1
   referenceFontSize: 10
   isResettingTimeOnNewText: 1
   useDefaultDatabases: 1
-  databaseBehaviors: {fileID: 0}
-  databaseAppearances: {fileID: 0}
-  databaseActions: {fileID: 0}
+  databaseBehaviors: {fileID: 11400000, guid: 7224295794c0e3c4cb0366c022bafd01, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: 6c4e5694e6e61cf4cbe17ed34c037ca7, type: 2}
+  databaseActions: {fileID: 11400000, guid: 106a897163560e14baff578da0f963a4, type: 2}
   defaultAppearancesTags:
   - size
   defaultDisappearancesTags:
@@ -513,7 +515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6025242403397716169
 RectTransform:
   m_ObjectHideFlags: 0
@@ -762,7 +764,7 @@ MonoBehaviour:
   m_text: Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd1f41a7982dfd849a0e05214d774b32, type: 2}
-  m_sharedMaterial: {fileID: -7330916313522357577, guid: e50278c189ed06f4b8d6724c1e0cbccf, type: 2}
+  m_sharedMaterial: {fileID: 4461036357528915116, guid: bd1f41a7982dfd849a0e05214d774b32, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -825,7 +827,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6023174321568155830

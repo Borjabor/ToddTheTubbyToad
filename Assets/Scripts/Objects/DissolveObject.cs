@@ -34,6 +34,14 @@ public class DissolveObject : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Dissolve"))
+        {
+            StartCoroutine(Dissolve());
+        }
+    }
+
     private IEnumerator Dissolve()
     {
         while (_dissolveAmount > 0)

@@ -489,7 +489,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 9
+  m_Distance: 9.000001
   m_MaxDistanceOnly: 0
 --- !u!1 &2202537050542804228
 GameObject:
@@ -6462,7 +6462,6 @@ GameObject:
   - component: {fileID: 378714248809022680}
   - component: {fileID: 2514930613899745520}
   - component: {fileID: 1928835091936168975}
-  - component: {fileID: 7024428940624753760}
   - component: {fileID: 7185991353903012898}
   - component: {fileID: 8663566383930217003}
   - component: {fileID: 3958310928862294656}
@@ -6510,7 +6509,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 056856187b4bb5240b5c0a99de207b6a, type: 3}
+  - {fileID: 2100000, guid: 1f75f12f02e4bcc4988f198b5368102b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6604,18 +6603,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.89, y: 1}
   m_Direction: 0
---- !u!114 &7024428940624753760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6443798199970194743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0784a74f0415df24abcd8e0010f339f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7185991353903012898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,7 +6893,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.5}
-  m_ConnectedAnchor: {x: -0.0000038146973, y: -0.5}
+  m_ConnectedAnchor: {x: -0.0000038146973, y: -0.50000095}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

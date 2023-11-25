@@ -1106,7 +1106,7 @@ GameObject:
   - component: {fileID: 378714248809022680}
   - component: {fileID: 2514930613899745520}
   - component: {fileID: 1928835091936168975}
-  - component: {fileID: 7024428940624753760}
+  - component: {fileID: 4993598501131730812}
   - component: {fileID: 8663566383930217003}
   - component: {fileID: 3958310928862294656}
   m_Layer: 2
@@ -1153,7 +1153,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 056856187b4bb5240b5c0a99de207b6a, type: 3}
+  - {fileID: 2100000, guid: 1f75f12f02e4bcc4988f198b5368102b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1247,7 +1247,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.89, y: 1}
   m_Direction: 0
---- !u!114 &7024428940624753760
+--- !u!114 &4993598501131730812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1256,9 +1256,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6443798199970194743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0784a74f0415df24abcd8e0010f339f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bb44c6314bacac4baf63648c8999c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidBody: {fileID: 2514930613899745520}
+  _swingForce: 20
 --- !u!82 &8663566383930217003
 AudioSource:
   m_ObjectHideFlags: 0

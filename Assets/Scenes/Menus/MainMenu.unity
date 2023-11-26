@@ -2389,12 +2389,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7685505758298988179, guid: 600edf92c829179469797bb0cdecf0e1, type: 3}
       propertyPath: m_Volume
-      value: 0.54
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 7685505758298988179, guid: 600edf92c829179469797bb0cdecf0e1, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 6711962b971c5c74192bdf06c9d50605, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2557,6 +2557,10 @@ PrefabInstance:
     - target: {fileID: 575115059368676952, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
       propertyPath: m_Name
       value: StartMusicTrack
+      objectReference: {fileID: 0}
+    - target: {fileID: 575115059368676952, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1156780896930921807, guid: ca44a203f8be75b45993d62b898a63d9, type: 3}
       propertyPath: _audioClip

@@ -27,13 +27,13 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     protected float _timeToWait = 2f;
 
     [SerializeField]
-    private GameObject _spriteShapeOff = null;
+    protected GameObject _spriteShapeOff = null;
     [SerializeField]
-    private GameObject _platformOff = null;
+    protected GameObject _platformOff = null;
     [SerializeField]
-    private GameObject _spriteShapeOn = null;
+    protected GameObject _spriteShapeOn = null;
     [SerializeField]
-    private GameObject _platformOn = null;
+    protected GameObject _platformOn = null;
 
     protected bool _isOn;
 
@@ -71,16 +71,16 @@ public class FollowPath : ObjectFSM, IOnOffObjects
     protected override IEnumerator On()
     {
         _isOn = true;
-        while ((Vector2)_movingObject.transform.position != _currentNodePosition)
-        {
-            yield return new WaitUntil(() => _gameState.Value == States.NORMAL);
-            _movingObject.transform.position = Vector2.MoveTowards(_movingObject.transform.position, _currentNodePosition, _moveSpeed * Time.deltaTime);
-            yield return 0;
-        }
-        SetState(GetNextNode());
+         while ((Vector2)_movingObject.transform.position != _currentNodePosition)
+         {
+             yield return new WaitUntil(() => _gameState.Value == States.NORMAL);
+             _movingObject.transform.position = Vector2.MoveTowards(_movingObject.transform.position, _currentNodePosition, _moveSpeed * Time.deltaTime);
+             yield return 0;
+         }
+        if (Vector2.Distance(_movingObject.transform.position, _currentNodePosition) <= 0.1f) SetState(GetNextNode());
     }
 
-    private IEnumerator GetNextNode()
+    protected IEnumerator GetNextNode()
     {
         if (_currentNodeIndex == 0)
         {

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e4f51d1-009c-4de6-ba19-242b08ebd2e5" name="Changes" comment="" />
+    <list default="true" id="1e4f51d1-009c-4de6-ba19-242b08ebd2e5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ToddTheTubbyToad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToddTheTubbyToad/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ArticyImporter/Content/Generated/ArticyEditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArticyImporter/Content/Generated/ArticyEditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/FollowPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/FollowPath.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,10 +25,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DetectPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DialogueSystem/TriggerZoneDialogue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightFlicker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menus&amp;SceneManagement/ContinueButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/AObjectWithCheckpoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Box.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Bubble.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/ConveyorBelt.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Elevator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Fan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Lever.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/ObjectWithCheckpoint.cs" root0="FORCE_HIGHLIGHTING" />
@@ -34,7 +41,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Waterfall.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SO/ObjectPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SO/TAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SO/WorldData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ShakeWithButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sound/VolumeSlider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ZSerializer/Samples/2 - Scene Groups/House/Scripts/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
@@ -79,7 +85,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../ToddBuildTests\ToddTheTubbyToad.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../ToddAnimText\Todd The Tubby Toad.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\andre\UnityProjects\ToddBuildTests" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -158,6 +164,8 @@
       <workItem from="1697152133047" duration="16701000" />
       <workItem from="1698452212766" duration="20000" />
       <workItem from="1698452244601" duration="25369000" />
+      <workItem from="1700083402979" duration="46858000" />
+      <workItem from="1701124629067" duration="359000" />
     </task>
     <servers />
   </component>
@@ -187,27 +195,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/SO/WorldData.cs</url>
           <line>29</line>
-          <properties documentPath="C:\Users\andre\UnityProjects\ToddTheTubbyToad\Assets\Scripts\SO\WorldData.cs" initialLine="29" containingFunctionPresentation="Method 'ClearObjects'">
-            <startOffsets>
-              <option value="741" />
-            </startOffsets>
-            <endOffsets>
-              <option value="769" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\andre\UnityProjects\ToddTheTubbyToad\Assets\Scripts\SO\WorldData.cs" initialLine="29" containingFunctionPresentation="Method 'ClearObjects'" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
           <line>47</line>
-          <properties documentPath="C:\Users\andre\UnityProjects\ToddTheTubbyToad\Assets\Scripts\GameManager.cs" initialLine="47" containingFunctionPresentation="Method 'SaveTrackedObjects'">
-            <startOffsets>
-              <option value="1092" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1118" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\andre\UnityProjects\ToddTheTubbyToad\Assets\Scripts\GameManager.cs" initialLine="47" containingFunctionPresentation="Method 'SaveTrackedObjects'" />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

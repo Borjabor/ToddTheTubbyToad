@@ -116,7 +116,8 @@ public class Waterfall : MonoBehaviour
 
     private void CheckForSplash(float currentLength, float currentMaxLength)
     {
-        _splashEffect.SetActive(currentLength >= currentMaxLength);
+        bool setActive = _isGeyser || currentLength >= currentMaxLength;
+        _splashEffect.SetActive(setActive);
         _splashEffect.transform.position = transform.position + direction * currentLength;
     }
     

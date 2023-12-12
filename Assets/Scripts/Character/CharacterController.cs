@@ -378,6 +378,7 @@ public class CharacterController : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		_screenWipe.SetTrigger("Start");
 		yield return new WaitForSeconds(0.5f);
+		_screenWipe.SetTrigger("Stop");
 		transform.position = _checkpoint;
 		_deathParticles.Stop();
 		_characterSprite.enabled = true;

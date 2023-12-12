@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     {
         //DontDestroyOnLoad(gameObject);
         SaveScene(0);
+        Screen.SetResolution(1920,1080, true);
     }
 
     private void Update()

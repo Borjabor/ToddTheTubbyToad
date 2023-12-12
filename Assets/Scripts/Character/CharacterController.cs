@@ -63,7 +63,8 @@ public class CharacterController : MonoBehaviour
 	private Rigidbody2D _rb;
 	[SerializeField]
 	private CircleCollider2D _triggerZone;
-	private Animator _animator;
+	[SerializeField]
+	private Animator _screenWipe;
 	private PlayerAnimation _animation;
 	
 	public bool IsSafe = true;
@@ -131,7 +132,6 @@ public class CharacterController : MonoBehaviour
 		_gameState = Resources.Load<GameState>("SOAssets/Game State");
 		_playerState = Resources.Load<PlayerState>("SOAssets/Player State");
 		_rb = GetComponent<Rigidbody2D>();
-		_animator = GetComponent<Animator>();
 		_animation = GetComponent<PlayerAnimation>();
 		_animation.SetState("Idle");
         _checkpoint = transform.position;
@@ -375,7 +375,9 @@ public class CharacterController : MonoBehaviour
 		_deathParticles.Play();
 		_characterSprite.enabled = false;
 		_arms.SetActive(false);
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(1f);
+		_screenWipe.SetTrigger("Start");
+		yield return new WaitForSeconds(0.5f);
 		transform.position = _checkpoint;
 		_deathParticles.Stop();
 		_characterSprite.enabled = true;
